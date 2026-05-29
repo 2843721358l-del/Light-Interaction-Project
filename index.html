@@ -10,126 +10,175 @@
 <body>
   <main>
     <section class="hero">
-      <h1>Light Interaction: Training-Free Inference Acceleration for Interactive Video World Models</h1>
-      <p class="venue">Preprint</p>
+      <div class="hero-inner">
+        <p class="eyebrow">Preprint</p>
+        <h1>Light Interaction: Training-Free Inference Acceleration for Interactive Video World Models</h1>
+        <p class="hero-summary">
+          Training-free adaptive computation for long-horizon interactive video generation.
+        </p>
 
-      <p class="authors">
-        <span>Jiacheng Lu<sup>1</sup></span>
-        <span>Haoyi Zhu<sup>2</sup></span>
-        <span>Sipei Yi<sup>1</sup></span>
-        <span>Enze Xie<sup>2</sup></span>
-        <span>Yu Li<sup>1,*</sup></span>
-        <span>Cheng Zhuo<sup>1</sup></span>
-      </p>
-      <p class="affiliations">
-        <span><sup>1</sup>Zhejiang University</span>
-        <span><sup>2</sup>NVIDIA</span>
-      </p>
-      <p class="correspondence"><sup>*</sup>Corresponding author</p>
+        <p class="authors">
+          <span>Jiacheng Lu<sup>1</sup></span>
+          <span>Haoyi Zhu<sup>2</sup></span>
+          <span>Sipei Yi<sup>1</sup></span>
+          <span>Enze Xie<sup>2</sup></span>
+          <span>Yu Li<sup>1,*</sup></span>
+          <span>Cheng Zhuo<sup>1</sup></span>
+        </p>
+        <p class="affiliations">
+          <span><sup>1</sup>Zhejiang University</span>
+          <span><sup>2</sup>NVIDIA</span>
+        </p>
+        <p class="correspondence"><sup>*</sup>Corresponding author</p>
 
-      <div class="links" aria-label="Project links">
-        <a class="button disabled" href="#" aria-disabled="true">
-          <span>arXiv Coming Soon</span>
-        </a>
-        <a class="button disabled" href="#" aria-disabled="true">
-          <span>Code Coming Soon</span>
-        </a>
+        <div class="links" aria-label="Project links">
+          <a class="button disabled" href="#" aria-disabled="true">
+            <span>arXiv Coming Soon</span>
+          </a>
+          <a class="button disabled" href="#" aria-disabled="true">
+            <span>Code Coming Soon</span>
+          </a>
+        </div>
+
+        <div class="metric-strip" aria-label="Key results">
+          <div class="metric-card">
+            <span class="metric-value">2.59×</span>
+            <span class="metric-label">Speedup on HY-WorldPlay</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-value">24.81</span>
+            <span class="metric-label">PSNR vs. original model</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-value">21.91 GB</span>
+            <span class="metric-label">Peak memory reduction<br>76.57 → 54.66 GB</span>
+          </div>
+        </div>
       </div>
     </section>
 
-    <nav class="toc" aria-label="Table of contents">
-      <p class="toc-title">Table of Contents</p>
-      <a href="#abstract">Abstract</a>
-      <a href="#overview">Overview</a>
-      <a href="#gallery">Video Gallery</a>
-      <a href="#results">Results</a>
-      <a href="#bibtex">BibTeX</a>
-    </nav>
-
-    <section id="abstract" class="section">
-      <h2>Abstract</h2>
+    <section id="abstract" class="section abstract-section">
+      <div class="section-heading">
+        <span class="section-kicker">Summary</span>
+        <h2>Abstract</h2>
+      </div>
       <p>
         Interactive video world models generate video chunk by chunk in response to user-controlled camera movements,
-        paving the way toward real-time game simulation, virtual scene navigation, and embodied AI training. However,
-        scaling to long interactive trajectories is prohibitively expensive: generating a 10-second video on HY-WorldPlay
-        with a single A100 GPU can take more than 200 seconds due to growing context memory, quadratic attention complexity,
-        and repeated denoising steps.
+        enabling applications such as real-time game simulation, virtual scene navigation, and embodied AI training.
+        However, scaling to long interactive trajectories is prohibitively expensive due to growing context memory,
+        quadratic attention complexity, and repeated denoising steps.
       </p>
       <p>
         We present <strong>Light Interaction</strong>, a training-free acceleration framework for interactive video world
         models. It combines adaptive context management, denoising cache acceleration, and hardware-software co-designed
-        sparse attention with fused kernels. Evaluated on HY-WorldPlay and Matrix-Game-3.0, Light Interaction achieves
+        3D sparse attention with fused kernels. Evaluated on HY-WorldPlay and Matrix-Game-3.0, Light Interaction achieves
         up to <strong>2.59&times;</strong> speedup without model retraining while maintaining competitive visual quality.
       </p>
     </section>
 
     <section id="overview" class="section">
-      <h2>Overview</h2>
+      <div class="section-heading">
+        <span class="section-kicker">Method</span>
+        <h2>Overview</h2>
+      </div>
       <figure class="wide-figure">
         <img src="static/assets/pipeline.png" alt="Light Interaction overview">
         <figcaption>
           Light Interaction combines adaptive context management, denoising cache acceleration, and AR-aware 3D sparse attention.
         </figcaption>
       </figure>
-      <ol class="module-list">
-        <li>
-          <strong>Adaptive Context Management:</strong>
-          Selects valid temporal context and retrieved spatial memory using camera-pose-aware similarity and local latent dynamics.
-        </li>
-        <li>
-          <strong>Denoising Cache Acceleration:</strong>
-          Reuses early-step model outputs during reliable revisiting while preserving the final denoising step for quality correction.
-        </li>
-        <li>
-          <strong>Hardware-Software Co-designed 3D Sparse Attention:</strong>
-          Sparsifies historical visual KV blocks and uses fused kernels to reduce layout conversion and gather/scatter overhead.
-        </li>
-      </ol>
-    </section>
 
-    <section id="gallery" class="section">
-      <h2>Gallery</h2>
-      <div class="gallery-grid">
-        <article class="example">
-          <h3>HY-WorldPlay 480P</h3>
-          <div class="comparison">
-            <figure>
-              <video controls muted loop playsinline preload="metadata" aria-label="HY-WorldPlay original video">
-                <source src="static/assets/beach_original.mp4" type="video/mp4">
-              </video>
-              <figcaption>Original: 228.60 s</figcaption>
-            </figure>
-            <figure>
-              <video controls muted loop playsinline preload="metadata" aria-label="HY-WorldPlay accelerated video">
-                <source src="static/assets/beach_accelerated.mp4" type="video/mp4">
-              </video>
-              <figcaption>Light Interaction: 88.24 s, 2.59&times;</figcaption>
-            </figure>
-          </div>
+      <div class="module-grid">
+        <article class="module-card">
+          <span class="module-index">01</span>
+          <h3>Adaptive Context Management</h3>
+          <p>
+            Selects valid temporal context and retrieved spatial memory using camera-pose-aware similarity and local latent dynamics.
+          </p>
         </article>
-
-        <article class="example">
-          <h3>Matrix-Game-3.0 720P</h3>
-          <div class="comparison">
-            <figure>
-              <video controls muted loop playsinline preload="metadata" aria-label="Matrix-Game original video">
-                <source src="static/assets/castle_original.mp4" type="video/mp4">
-              </video>
-              <figcaption>Original: 59.70 s</figcaption>
-            </figure>
-            <figure>
-              <video controls muted loop playsinline preload="metadata" aria-label="Matrix-Game accelerated video">
-                <source src="static/assets/castle_accelerated.mp4" type="video/mp4">
-              </video>
-              <figcaption>Light Interaction: 37.07 s, 1.61&times;</figcaption>
-            </figure>
-          </div>
+        <article class="module-card">
+          <span class="module-index">02</span>
+          <h3>Denoising Cache Acceleration</h3>
+          <p>
+            Reuses early-step model outputs during reliable revisiting while preserving the final denoising step for quality correction.
+          </p>
+        </article>
+        <article class="module-card">
+          <span class="module-index">03</span>
+          <h3>Co-designed 3D Sparse Attention</h3>
+          <p>
+            Sparsifies historical visual KV blocks and uses fused kernels to reduce layout conversion and gather/scatter overhead.
+          </p>
         </article>
       </div>
     </section>
 
+    <section id="gallery" class="section">
+      <div class="section-heading">
+        <span class="section-kicker">Qualitative comparison</span>
+        <h2>Video Gallery</h2>
+      </div>
+
+      <article class="example">
+        <div class="example-title">
+          <h3>HY-WorldPlay 480P</h3>
+          <span>2.59× speedup</span>
+        </div>
+        <div class="comparison">
+          <figure>
+            <video controls muted loop playsinline preload="metadata" aria-label="HY-WorldPlay original video">
+              <source src="static/assets/beach_original.mp4" type="video/mp4">
+            </video>
+            <figcaption>
+              <strong>Original</strong>
+              <span>228.60 s</span>
+            </figcaption>
+          </figure>
+          <figure>
+            <video controls muted loop playsinline preload="metadata" aria-label="HY-WorldPlay accelerated video">
+              <source src="static/assets/beach_accelerated.mp4" type="video/mp4">
+            </video>
+            <figcaption>
+              <strong>Light Interaction</strong>
+              <span>88.24 s · 2.59×</span>
+            </figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="example">
+        <div class="example-title">
+          <h3>Matrix-Game-3.0 720P</h3>
+          <span>1.61× speedup</span>
+        </div>
+        <div class="comparison">
+          <figure>
+            <video controls muted loop playsinline preload="metadata" aria-label="Matrix-Game original video">
+              <source src="static/assets/castle_original.mp4" type="video/mp4">
+            </video>
+            <figcaption>
+              <strong>Original</strong>
+              <span>59.70 s</span>
+            </figcaption>
+          </figure>
+          <figure>
+            <video controls muted loop playsinline preload="metadata" aria-label="Matrix-Game accelerated video">
+              <source src="static/assets/castle_accelerated.mp4" type="video/mp4">
+            </video>
+            <figcaption>
+              <strong>Light Interaction</strong>
+              <span>37.07 s · 1.61×</span>
+            </figcaption>
+          </figure>
+        </div>
+      </article>
+    </section>
+
     <section id="results" class="section">
-      <h2>Results</h2>
+      <div class="section-heading">
+        <span class="section-kicker">Efficiency analysis</span>
+        <h2>Results</h2>
+      </div>
       <div class="result-grid">
         <figure>
           <img src="static/assets/latency_breakdown.png" alt="Stage-wise latency breakdown">
@@ -143,7 +192,10 @@
     </section>
 
     <section id="bibtex" class="section">
-      <h2>BibTeX</h2>
+      <div class="section-heading">
+        <span class="section-kicker">Citation</span>
+        <h2>BibTeX</h2>
+      </div>
       <pre><code>@article{lu2026lightinteraction,
   title   = {Light Interaction: Training-Free Inference Acceleration for Interactive Video World Models},
   author  = {Lu, Jiacheng and Zhu, Haoyi and Yi, Sipei and Xie, Enze and Li, Yu and Zhuo, Cheng},
