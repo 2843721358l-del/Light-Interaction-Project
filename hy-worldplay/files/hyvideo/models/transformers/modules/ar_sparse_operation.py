@@ -1,3 +1,8 @@
+# Copyright (c) 2026 Jiacheng Lu and contributors.
+# Licensed under the repository LICENSE.
+#
+# This file is part of Light Interaction.
+
 import torch
 import torch.nn.functional as F
 import math

@@ -1,3 +1,13 @@
+# Adapted from LongCat-Video.
+# Original copyright (c) 2025 Meituan.
+# Licensed under the MIT License.
+#
+# Modifications for Light Interaction:
+# - adapted the sparse-attention kernel to HY-WorldPlay
+# - integrated it with AR denoising and KV-cache recomputation paths
+#
+# Modifications copyright (c) 2026 Jiacheng Lu and contributors.
+
 import torch
 import triton
 import triton.language as tl

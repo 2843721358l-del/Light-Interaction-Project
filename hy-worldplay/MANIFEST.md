@@ -36,3 +36,11 @@ The pipeline, transformer, attention module, context-selection helper,
 redistributing the full upstream codebase, this repository stores only the
 integration diff for those files. Users should obtain the upstream repository
 first, then apply this patch.
+
+## License Attribution
+
+`LICENSE_LONGCAT` preserves the MIT license notice for the LongCat-Video-derived
+`longcat_kernel.py`.
+
+`ar_sparse_operation.py` and `bi_sparse_operation_for_KV_cache.py` are authored
+by the Light Interaction authors.
