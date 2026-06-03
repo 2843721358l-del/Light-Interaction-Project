@@ -18,7 +18,7 @@ Current release status:
 
 * **HY-WorldPlay**: released. The patch includes standalone acceleration modules, an integration patch, preset-based ablation switches, and latency / memory reporting support.
 * **Matrix-Game-3.0**: planned. The integration patch is still being cleaned and will be added in a future update.
-* **Evaluation utilities**: planned. Scripts for video quality evaluation, latency benchmarking, and peak-memory reporting will be added after the inference patches are finalized.
+* **Evaluation utilities**: released. The current release includes the fixed 200-prompt sample set, batch generation helpers, PSNR / SSIM / LPIPS evaluation, and selected VBench evaluation.
 
 Planned updates:
 
@@ -62,8 +62,8 @@ matrix-game/
   Status: planned.
 
 evaluation/
-  Video quality.
-  Status: planned.
+  Fixed-prompt samples and quality evaluation utilities.
+  Status: released.
 ```
 
 ## HY-WorldPlay Integration

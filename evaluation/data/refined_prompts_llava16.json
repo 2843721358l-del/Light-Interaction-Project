@@ -1,0 +1,1202 @@
+[
+  {
+    "filename": "A black and white abstract video featuring mesmerizing bubbles.jpg",
+    "original_prompt": "A black and white abstract video featuring mesmerizing bubbles",
+    "refined_prompt": "In this mesmerizing video, the main subject is a black and white abstract bubble, which dances across the frame with an organic, almost whimsical motion. The bubble is set against a dynamic, swirling backdrop of gray and black colors, creating a stark contrast that draws the viewer's attention. The camera follows the bubble, moving in and out of focus, adding depth and intrigue to the scene. The lighting is dramatic, with highlights and shadows interplaying to emphasize the bubble's texture and the flowing patterns in the background. The overall effect is a captivating visual experience that blurs the lines between realism and abstract art.",
+    "image_path": "data/sampled_200/A black and white abstract video featuring mesmerizing bubbles.jpg"
+  },
+  {
+    "filename": "A budding and blossoming flower bud seedling.jpg",
+    "original_prompt": "A budding and blossoming flower bud seedling",
+    "refined_prompt": "In this cinematic scene, a budding and blossoming flower bud seedling takes center stage. The seedling, exhibiting vibrant shades of red and yellow, is captured in the midst of its transformation, with its petals just beginning to unfurling. The camera is positioned in a low angle shot, looking upwards towards the seedling, emphasizing its growth and the scale of its blossoming. The background is a dark, moody blue, providing a stark contrast to the brightly colored seedling, making it the focal point of the image. The lighting is soft and diffused, casting gentle shadows and highlighting the delicate texture of the seedling's petals. The overall composition creates a sense of anticipation for the viewer, as if they are witnessing the first stages of a beautiful flower's journey towards full bloom.",
+    "image_path": "data/sampled_200/A budding and blossoming flower bud seedling.jpg"
+  },
+  {
+    "filename": "A bunch of cars are driving on a highway.jpg",
+    "original_prompt": "A bunch of cars are driving on a highway",
+    "refined_prompt": "Title: \"Sunset Scramble: The Last Commute Home\"\n\nAs the sun sets, casting a warm glow over the cityscape, a highway becomes a stage for the final rush of the day. A traffic jam unfolds, with cars of varying models and colors bumper to bumper, their headlights piercing the twilight. The camera captures the chaos from a high angle, panning down the length of the highway, emphasizing the density of vehicles. A car in the foreground speeds ahead, its driver's face etched with urgency. The sky transitions from orange to deep blue, adding a dramatic backdrop to this urban ballet. The camera tilts to follow a car's path, as if in pursuit of the sunset, creating a dynamic sense of motion.",
+    "image_path": "data/sampled_200/A bunch of cars are driving on a highway.jpg"
+  },
+  {
+    "filename": "A group of people in a yellow raft is rowing through turbulent waters.jpg",
+    "original_prompt": "A group of people in a yellow raft is rowing through turbulent waters",
+    "refined_prompt": "The image depicts an adventurous scene of a group of five people in a vibrant yellow raft, skillfully navigating through a rapid river. Each person is wearing a blue helmet and holding a paddle, demonstrating teamwork and balance. The raft is in the center of the frame, surrounded by the forceful white water that surrounds them. The camera should be positioned close to the raft, following the motion of the raft and the people, capturing their faces as they row. The lighting should be bright and dynamic, reflecting the energy of the rapids. The background should feature rugged cliffs and trees, emphasizing the wilderness and the thrill of the adventure.",
+    "image_path": "data/sampled_200/A group of people in a yellow raft is rowing through turbulent waters.jpg"
+  },
+  {
+    "filename": "A man and woman dressed as sugar skulls in a field of flowers, sharing a loving gaze with each other.jpg",
+    "original_prompt": "A man and woman dressed as sugar skulls in a field of flowers, sharing a loving gaze with each other",
+    "refined_prompt": "In the image, a man and a woman are the main subjects, both adorned with sugar skull makeup. They are positioned in a field of vibrant orange flowers, their gaze meeting each other's in a tender moment. The camera should focus on their faces, capturing the nuances of their expressions and the intricate details of their makeup. The lighting should be soft and warm, enhancing the romantic atmosphere. In the background, a grand building can be seen, adding a touch of grandeur to the scene. The camera should move closer to the subjects as they share a gentle kiss, with a slow, smooth panning motion that captures their surroundings in the background. The overall mood should be romantic and celebratory, reflecting the significance of the sugar skulls and the loving connection between the two subjects.",
+    "image_path": "data/sampled_200/A man and woman dressed as sugar skulls in a field of flowers, sharing a loving gaze with each other.jpg"
+  },
+  {
+    "filename": "A person is making dumplings.jpg",
+    "original_prompt": "A person is making dumplings",
+    "refined_prompt": "In a warmly lit kitchen, a skilled dumpling maker is meticulously crafting delicate dumplings on a large wooden table. The main subject, a person, is captured in the midst of folding dough with precision. The dumplings are arranged in a circular pattern on a white plate, ready to be cooked. The background features a rustic wooden table, a bamboo steamer, and a bowl of fresh ingredients, adding to the authenticity of the dumpling-making process. The camera should focus on the dumplings, capturing the intricate folds and the person's hands in action. The lighting should emphasize the textures and colors of the dumplings, highlighting their softness and the person's focused expression.",
+    "image_path": "data/sampled_200/A person is making dumplings.jpg"
+  },
+  {
+    "filename": "A person is pouring water into a teacup.jpg",
+    "original_prompt": "A person is pouring water into a teacup",
+    "refined_prompt": "In a dimly lit room, a person in a traditional Asian attire is meticulously pouring water from a golden teapot into a white teacup with black characters on it. The camera moves slowly, following the teapot's trajectory, creating a sense of anticipation. The person's hands are steady as they pour, emphasizing the importance of the task. The room is adorned with other ceramic teacups and bowls, adding to the authenticity of the setting. The overall scene captures a moment of tranquility and cultural appreciation.",
+    "image_path": "data/sampled_200/A person is pouring water into a teacup.jpg"
+  },
+  {
+    "filename": "A red sports car driving through sand, kicking up a large amount of dust.jpg",
+    "original_prompt": "A red sports car driving through sand, kicking up a large amount of dust",
+    "refined_prompt": "A dynamic, action-packed scene unfolds as a vibrant red sports car, possibly a Ford Mustang, roars onto a sandy track, kicking up a massive cloud of dust. The car, sleek and powerful, dominates the foreground, with its headlights piercing through the dust and sand. The camera follows the car, moving in a sense of pursuit, with the dust cloud engulfing the entire scene, creating a sense of speed and movement. The background is a hazy, orange sky, suggesting a sunset or sunrise, adding a dramatic contrast to the intense action.",
+    "image_path": "data/sampled_200/A red sports car driving through sand, kicking up a large amount of dust.jpg"
+  },
+  {
+    "filename": "A teddy bear is climbing over a wooden fence.jpg",
+    "original_prompt": "A teddy bear is climbing over a wooden fence",
+    "refined_prompt": "In this image, a light brown teddy bear with black eyes and a brown nose is the main subject, perched on a weathered wooden fence. The bear is positioned in the center of the frame, leaning forward with its left paw on the fence and its right paw resting on the ground. The camera is set up to capture the bear from a low angle, looking up at it, which adds a sense of anticipation and adventure to the scene. The background is a blurred outdoor setting with trees, suggesting a serene and natural environment. The lighting is bright and natural, with the sun casting shadows on the bear and the fence, highlighting their textures and adding depth to the image.",
+    "image_path": "data/sampled_200/A teddy bear is climbing over a wooden fence.jpg"
+  },
+  {
+    "filename": "A yellow boat is cruising in front of a bridge.jpg",
+    "original_prompt": "A yellow boat is cruising in front of a bridge",
+    "refined_prompt": "In the image, a vibrant yellow boat is gracefully gliding across a deep blue river, positioned centrally and drawing the viewer's attention. The boat is moving from the left to the right side of the frame, leaving a slight wake behind it. The camera follows the boat's journey, capturing the dynamic motion and the expansive river in the background. The scene is set against a backdrop of towering buildings, their silhouettes adding depth and contrast to the image. The overall atmosphere is serene yet energetic, with the boat's movement creating a sense of motion and life in the otherwise still water.",
+    "image_path": "data/sampled_200/A yellow boat is cruising in front of a bridge.jpg"
+  },
+  {
+    "filename": "A young boy is lifting a bundle of dry grass wrapped in waterproof fabric over his head.jpg",
+    "original_prompt": "A young boy is lifting a bundle of dry grass wrapped in waterproof fabric over his head",
+    "refined_prompt": "In this cinematic scene, a young boy is the central figure, captured in the midst of a powerful action. He is seen lifting a bundle of dry grass wrapped in waterproof fabric over his head with both hands, a symbol of resilience and strength. The camera is positioned low to the ground, looking up towards the boy, emphasizing his towering figure. The boy's face is lit by a soft, natural light that filters through a nearby tree, adding a touch of warmth to the image. The background features a simple, rustic setting with white tents and a dirt ground, providing a contrast to the boy's action and enhancing the sense of isolation. The overall composition of the image captures the essence of a moment of struggle and triumph.",
+    "image_path": "data/sampled_200/A young boy is lifting a bundle of dry grass wrapped in waterproof fabric over his head.jpg"
+  },
+  {
+    "filename": "Chopsticks are slowly picking up the buns from the plastic container.jpg",
+    "original_prompt": "Chopsticks are slowly picking up the buns from the plastic container",
+    "refined_prompt": "Create a dynamic, realistic scene where a pair of wooden chopsticks are delicately picking up a single, round steamed bun from a plastic container filled with similar buns. The camera should be positioned slightly above and to the right of the chopsticks, capturing the bun's gentle ascension. The lighting should emphasize the texture of the bun and the shine on the plastic container. The background should be a simple, blurred indoor setting to keep the focus on the main action.",
+    "image_path": "data/sampled_200/Chopsticks are slowly picking up the buns from the plastic container.jpg"
+  },
+  {
+    "filename": "Colorful buildings on the seaside cliffs.jpg",
+    "original_prompt": "Colorful buildings on the seaside cliffs",
+    "refined_prompt": "Create a breathtaking video of a vibrant seaside town perched atop a cliff. The town is a riot of colors, with each building exhibiting a unique hue, ranging from sunny yellows to deep blues. The cliff's steep drop provides a dramatic backdrop to the scene.\n\nThe camera should soar over the town, capturing the architecture from a high angle. As the viewer approaches, the camera should dip down, offering a bird's eye view of the town's layout. This perspective highlights the cliff's edge and the town's precarious position.\n\nThe lighting should be bright, with the sun casting a warm glow on the buildings. This effect is heightened as the camera moves through the town, giving a sense of movement and dynamism.",
+    "image_path": "data/sampled_200/Colorful buildings on the seaside cliffs.jpg"
+  },
+  {
+    "filename": "One person is riding on the back of a horse led by another person.jpg",
+    "original_prompt": "One person is riding on the back of a horse led by another person",
+    "refined_prompt": "In the image, the main subject is a person in a red jacket riding a white horse led by another person in a blue jacket. The rider on the white horse is seen from the back, giving a dynamic perspective of their journey. The camera follows the horse and rider from behind, capturing the motion of the horse's stride and the rider's posture. The lighting is soft and diffused, suggesting either a cloudy day or a shaded area. The background is a desolate, open landscape with hills and sparse vegetation, adding a sense of adventure and solitude to the scene.",
+    "image_path": "data/sampled_200/One person is riding on the back of a horse led by another person.jpg"
+  },
+  {
+    "filename": "a bald eagle flying over a tree filled forest.jpg",
+    "original_prompt": "a bald eagle flying over a tree filled forest",
+    "refined_prompt": "The image captures a majestic bald eagle, the national bird of the United States, soaring effortlessly through a lush, verdant forest. The eagle is the central focus of the image, its wings spread wide in flight, displaying its impressive size and the silhouette of its white head and tail. The camera follows the eagle's path, moving from the left to the right of the frame, creating a sense of motion and depth. The forest, filled with towering trees and a mix of sunlight and shadows, serves as a serene and natural backdrop. The overall atmosphere is one of tranquility and awe, showcasing the beauty of nature and the majesty of the bald eagle in its natural habitat.",
+    "image_path": "data/sampled_200/a bald eagle flying over a tree filled forest.jpg"
+  },
+  {
+    "filename": "a beach with a lot of buildings on the side of a cliff.jpg",
+    "original_prompt": "a beach with a lot of buildings on the side of a cliff",
+    "refined_prompt": "\"Create a dynamic scene of a coastal town at dusk, where the main subject is a lively beach with boats docked in the shallow water. The sky is painted with hues of orange, casting a warm glow on the buildings and the water. The camera should start with an aerial view, panning down to the beach, highlighting the boats and the colorful buildings. As the camera moves, capture the vibrant lights of the town, reflecting on the water. The scene should be illuminated with a mix of ambient light and the glowing lights of the buildings, creating a sense of warmth and energy. The overall mood should be serene yet bustling, capturing the essence of a coastal town at dusk.",
+    "image_path": "data/sampled_200/a beach with a lot of buildings on the side of a cliff.jpg"
+  },
+  {
+    "filename": "a bicycle leaning against a fence in the snow.jpg",
+    "original_prompt": "a bicycle leaning against a fence in the snow",
+    "refined_prompt": "In the midst of a snowstorm, a solitary bicycle leans against a sturdy green fence, its wheels sinking slightly into the fresh snow. The scene is bathed in soft, diffused light, creating a serene and somewhat melancholic atmosphere. The camera should start at a distance, panning across the fence and the bicycle, then slowly zoom in as the cyclist emerges from the background, their figure illuminated by the fading light of the storm. The cyclist, bundled up against the cold, approaches the bicycle, their shadow flickering on the snow-covered ground. They pause for a moment, perhaps contemplating the journey ahead or simply enjoying the stillness of the snow-covered landscape. The camera should then follow the cyclist as they mount the bicycle and ride away, disappearing into the snowstorm.",
+    "image_path": "data/sampled_200/a bicycle leaning against a fence in the snow.jpg"
+  },
+  {
+    "filename": "a bird with a fish in its beak flying over a field.jpg",
+    "original_prompt": "a bird with a fish in its beak flying over a field",
+    "refined_prompt": "In the image, a majestic gray heron, its feathers gleaming under the sunlight, is captured in mid-flight over a vibrant field. The bird's wings are fully extended, showcasing the strength and grace of its flight. The heron is in the center of the frame, with its wings spread wide, emphasizing the sense of motion. The field below is a lush, verdant expanse, dotted with yellow wildflowers that add a touch of color to the scene. The camera follows the bird's path, tracking its flight from the ground up, creating a dynamic sense of movement. The sunlight bathes the scene in a warm, golden light, casting long shadows and highlighting the texture of the heron's feathers. The overall effect is a captivating snapshot of nature in action, with the heron as the star of the show.",
+    "image_path": "data/sampled_200/a bird with a fish in its beak flying over a field.jpg"
+  },
+  {
+    "filename": "a blue and white smoke is swirly in the dark.jpg",
+    "original_prompt": "a blue and white smoke is swirly in the dark",
+    "refined_prompt": "The scene unfolds in a dimly lit room with a stark black background, punctuated by the silhouette of a solitary figure standing in the center. The central figure, cloaked in a blue hue, is the focal point of this image. They are caught in the act of exhaling, releasing a plume of white smoke that dances and swirls in the air, creating a mesmerizing spectacle. The smoke's path is guided by the figure's gentle movements, leading to a dynamic and captivating visual. The camera captures this scene from a low angle, following the smoke as it ascends and spirals around the figure, enhancing the sense of movement and adding depth to the image.",
+    "image_path": "data/sampled_200/a blue and white smoke is swirly in the dark.jpg"
+  },
+  {
+    "filename": "a blue car driving down a dirt road near train tracks.jpg",
+    "original_prompt": "a blue car driving down a dirt road near train tracks",
+    "refined_prompt": "The image portrays a blue car driving down a dirt road next to train tracks, with a dynamic composition that captures the motion of the vehicle. The camera should be positioned at the front of the car, following the driver's perspective as they navigate the uneven terrain. The lighting should highlight the car's blue color, contrasting with the earthy tones of the dirt road and the surrounding environment. The camera should focus on the interaction between the car and the train tracks, emphasizing the proximity of the car to the train. The overall mood should be one of adventure and movement, with the car's speed and the train's stationary presence creating a sense of anticipation.",
+    "image_path": "data/sampled_200/a blue car driving down a dirt road near train tracks.jpg"
+  },
+  {
+    "filename": "a blue fishing boat is navigating in the ocean next to a cruise ship.jpg",
+    "original_prompt": "a blue fishing boat is navigating in the ocean next to a cruise ship",
+    "refined_prompt": "Create a dynamic and cinematic scene of a blue fishing boat navigating through the ocean waters next to a cruise ship. The fishing boat, with its vibrant blue hull, is the main subject and is positioned in the foreground. The camera should be on a dolly track, following the fishing boat's movement, capturing the boat's bow cutting through the water and the wake left behind. The camera should be slightly tilted downwards, adding to the sense of movement and depth.\n\nIn the background, the cruise ship should be captured in mid-motion, creating a sense of movement and scale. The ship's hull should be clearly visible, with the bridge and various deck areas adding to the complexity of the scene. The sky should be a mix of warm colors, suggesting either sunrise or sunset, with the light reflecting off the water's surface.",
+    "image_path": "data/sampled_200/a blue fishing boat is navigating in the ocean next to a cruise ship.jpg"
+  },
+  {
+    "filename": "a blue train traveling through a lush green area.jpg",
+    "original_prompt": "a blue train traveling through a lush green area",
+    "refined_prompt": "In the serene countryside, a majestic blue train, painted in a vibrant hue of royal blue, is captured in motion, gracefully navigating the winding tracks that cut through the verdant landscape. The train's vivid color contrasts beautifully with the lush greenery that surrounds it. The camera follows the train, maintaining a close-up shot of the locomotive, while also capturing the expansive view of the green valley in the background. The camera's movement should be smooth and fluid, reflecting the rhythmic motion of the train. The lighting should be natural and soft, enhancing the tranquil atmosphere. The overall mood of the scene should be one of peacefulness and tranquility, as the train moves quietly through the picturesque countryside.",
+    "image_path": "data/sampled_200/a blue train traveling through a lush green area.jpg"
+  },
+  {
+    "filename": "a boat sits on the shore of a lake with mt fuji in the background.jpg",
+    "original_prompt": "a boat sits on the shore of a lake with mt fuji in the background",
+    "refined_prompt": "In this cinematic scene, a tranquil lake is nestled amidst a serene forest. A boat, painted in hues of blue, rests on the shore, invitingly waiting to be taken out onto the calm waters. The lake mirrors the deep blue of the sky, reflecting the majestic silhouette of Mt. Fuji standing tall in the distance. The sun casts a warm glow over the scene, highlighting the textures of the water and the boat. As the camera pans across the lake, it captures the boat in motion, creating a sense of anticipation for the journey ahead. The forest in the background adds a touch of mystery and adventure, while the clear sky above promises a perfect day for a journey.",
+    "image_path": "data/sampled_200/a boat sits on the shore of a lake with mt fuji in the background.jpg"
+  },
+  {
+    "filename": "a book on fire with flames coming out of it.jpg",
+    "original_prompt": "a book on fire with flames coming out of it",
+    "refined_prompt": "In a dimly lit room, a book with a fiery heart of flames sits open, its pages curling in the heat. The flames, an intense orange-yellow, dance and roar from the book's center, casting a glow that flickers in the background. The camera zooms in on the book, capturing the flames' intense heat and the book's charred edges. The background, blurred by the camera's focus, reveals the silhouette of a dark room, adding to the eerie atmosphere.",
+    "image_path": "data/sampled_200/a book on fire with flames coming out of it.jpg"
+  },
+  {
+    "filename": "a bridge that is over a body of water.jpg",
+    "original_prompt": "a bridge that is over a body of water",
+    "refined_prompt": "The scene unfolds at dusk, where a majestic suspension bridge spans the tranquil waters of a river. The bridge, a marvel of modern engineering, stands tall against the backdrop of the fading light. The camera, poised at the edge of the bridge, captures the bridge's elegant curves and the gentle sway of its cables. The river below reflects the last rays of the sun, creating a mirror-like effect that adds depth and symmetry to the image. The sky, painted in hues of pink and orange, stretches out above, creating a warm, inviting atmosphere. The bridge, bathed in these soft lights, serves as a beacon of connection between the land and the water, symbolizing human achievement amidst the beauty of nature.",
+    "image_path": "data/sampled_200/a bridge that is over a body of water.jpg"
+  },
+  {
+    "filename": "a brown bear in the water with a fish in its mouth.jpg",
+    "original_prompt": "a brown bear in the water with a fish in its mouth",
+    "refined_prompt": "In this image, the main subject is a majestic brown bear, captured in a dynamic moment of hunting. The bear is seen in the center of the frame, standing in the middle of a calm body of water, with a fish gripped firmly in its mouth. The bear's fur is a rich, dark brown, and its eyes are focused on the water, suggesting it's either observing its surroundings or preparing to release the fish. The water around the bear is rippling slightly, indicating movement. The background is a serene landscape with trees and a clear sky, providing a stark contrast to the intense action of the bear's hunt. The camera should be positioned low, close to the bear, to emphasize its size and the fish it's holding. The lighting should be bright, highlighting the bear and the water, and creating a sense of depth and distance in the scene.",
+    "image_path": "data/sampled_200/a brown bear in the water with a fish in its mouth.jpg"
+  },
+  {
+    "filename": "a bunch of food is cooking on a grill over an open fire.jpg",
+    "original_prompt": "a bunch of food is cooking on a grill over an open fire",
+    "refined_prompt": "In this cinematic scene, the main focus is on a lively barbecue taking place on a hill. A skilled chef, dressed in a vibrant apron and a chef's hat, is seen expertly grilling a variety of meats and vegetables. The chef's hands are steady and focused, demonstrating their culinary prowess. The grill is positioned over a roaring fire, with the chef's tools of the trade, including a pair of tongs, visible in action. The camera is placed at a low angle, capturing the flames and the sizzling food, while the background reveals a breathtaking view of a sunset over the hills, casting a warm glow over the entire scene.",
+    "image_path": "data/sampled_200/a bunch of food is cooking on a grill over an open fire.jpg"
+  },
+  {
+    "filename": "a busy street with cars and people on motorcycles.jpg",
+    "original_prompt": "a busy street with cars and people on motorcycles",
+    "refined_prompt": "In the image, a vibrant street bustles with life. The camera captures the essence of the scene, moving from a close-up of a woman in a red shirt, holding a bag, walking on the sidewalk. She is followed by a man in a striped shirt riding a motorcycle, adding a dynamic element to the scene. The street is alive with movement, with cars and motorcycles passing by, and people walking on the sidewalk. The scene is set against a backdrop of buildings adorned with colorful banners and signs, creating a lively atmosphere. The camera pans and tilts to follow the woman and the motorcyclist, providing a sense of depth and movement in the image. The lighting is natural and bright, reflecting off the wet street, enhancing the overall vibrancy of the scene.",
+    "image_path": "data/sampled_200/a busy street with cars and people on motorcycles.jpg"
+  },
+  {
+    "filename": "a castle on top of a hill covered in snow.jpg",
+    "original_prompt": "a castle on top of a hill covered in snow",
+    "refined_prompt": "Create a scene of a majestic, historic castle standing atop a snow-covered hill, bathed in the soft, diffused light of a winter's day. The camera should approach the castle from a distance, giving a sense of the grand scale and isolation of the structure. As the camera draws closer, the castle's architectural details and the intricate snow formations on the roof and walls become more pronounced. The sky should be a clear, serene blue, suggesting a calm, quiet day. The snow-covered landscape and the castle's imposing presence create a sense of tranquility and timelessness.",
+    "image_path": "data/sampled_200/a castle on top of a hill covered in snow.jpg"
+  },
+  {
+    "filename": "a chair in a room next to some drawings.jpg",
+    "original_prompt": "a chair in a room next to some drawings",
+    "refined_prompt": "In a room with a concrete wall, a chair with a yellow frame sits on the left. The chair is positioned near two drawings, both featuring the same woman. The woman is depicted in various states of undress, her body angled differently in each drawing. The left drawing shows her from the waist up, her head turned to the side. In the right drawing, she is shown from the waist down, her body facing the viewer. The room has a stark, minimalistic aesthetic, with the focus on the chair, the drawings, and the woman's portrayals. Camera movement should be smooth, with a close-up on the chair, and a panning shot to capture the drawings. Lighting should be subdued, with a soft, even illumination that accentuates the texture of the concrete wall and the yellow of the chair's frame.",
+    "image_path": "data/sampled_200/a chair in a room next to some drawings.jpg"
+  },
+  {
+    "filename": "a church sits on top of a hill under a cloudy sky.jpg",
+    "original_prompt": "a church sits on top of a hill under a cloudy sky",
+    "refined_prompt": "The image presents a church perched on a hill under a cloudy sky. The church, painted in vibrant shades of orange, stands out against the natural backdrop. The camera should begin from a low angle, emphasizing the church's height and the vastness of the hill. The camera should then slowly ascend the hill, capturing the church from a distance, as the perspective changes. The sky should be dynamic, with dramatic clouds, suggesting a time of day when the light is fading. As the camera reaches the church, the shot should be composed to include the church's architectural details, such as the dome and towers. The lighting should be soft and diffused, casting a warm glow on the church and the surrounding landscape. The final shot should be a close-up of the church, capturing its details and the tranquility of the hill under the cloudy sky.",
+    "image_path": "data/sampled_200/a church sits on top of a hill under a cloudy sky.jpg"
+  },
+  {
+    "filename": "a city bus driving down a snowy street at night.jpg",
+    "original_prompt": "a city bus driving down a snowy street at night",
+    "refined_prompt": "In a city blanketed in snow, a city bus embarks on its nightly route. The bus, with its headlights piercing through the falling snowflakes, is the main subject of this scene. The camera follows the bus from behind, capturing its movement along the snowy street. The background is a blur of illuminated buildings, their windows glowing with warm light, creating a stark contrast against the cold, dark night. The camera's movement should be fluid and dynamic, mirroring the bus's path down the street. The lighting should be dramatic, with the bus's headlights creating a path of illumination on the snowy street. The scene should convey a sense of solitude and tranquility, with the bus as the only visible moving object in the midst of the quiet city.",
+    "image_path": "data/sampled_200/a city bus driving down a snowy street at night.jpg"
+  },
+  {
+    "filename": "a city street at night during a snow storm.jpg",
+    "original_prompt": "a city street at night during a snow storm",
+    "refined_prompt": "In this city street at night during a snowstorm, the main subject is a solitary figure walking along the sidewalk. They are wearing a winter coat and a beanie, navigating the snowy conditions with purpose. The camera follows this individual, capturing the falling snowflakes and the glow of streetlights and car headlights, creating a sense of atmosphere. The lighting emphasizes the individual's silhouette and the motion of the snow, while the background reveals the hustle and bustle of the city, with cars driving on the road and illuminated buildings standing tall. The overall mood is one of quiet resilience amidst the challenges of the snowstorm.",
+    "image_path": "data/sampled_200/a city street at night during a snow storm.jpg"
+  },
+  {
+    "filename": "a city street with cars driving in the rain.jpg",
+    "original_prompt": "a city street with cars driving in the rain",
+    "refined_prompt": "A city street bathed in the warm glow of streetlights and car headlights under a dark, rain-soaked sky. The camera follows a pedestrian, huddled against the rain, as they navigate the crowded street, their silhouette stark against the blurred city lights. The camera pans across the street, capturing the movement of cars, trucks, and buses, their headlights piercing the gloom. The rain-slicked asphalt reflects the city lights, adding a glossy sheen to the scene. The wet streets glisten under the streetlights, creating a mirror-like effect. The overall atmosphere is one of urban hustle and bustle, with the rain adding a sense of urgency and melancholy to the cityscape.",
+    "image_path": "data/sampled_200/a city street with cars driving in the rain.jpg"
+  },
+  {
+    "filename": "a close up of leaves with water droplets on them.jpg",
+    "original_prompt": "a close up of leaves with water droplets on them",
+    "refined_prompt": "Create a cinematic scene of a close-up shot of a single, freshly rained-on green leaf. The leaf is hanging from a branch, suspended in the foreground. The water droplets on the leaf are shimmering, reflecting the surrounding light, and appear to be in the process of evaporating. The camera should be positioned in a way that captures the leaf's texture and the droplets' movement. The background is dark, which contrasts with the vibrant green of the leaf and highlights its prominence. The overall mood of the image is serene and tranquil, evoking a sense of freshness and natural beauty.",
+    "image_path": "data/sampled_200/a close up of leaves with water droplets on them.jpg"
+  },
+  {
+    "filename": "a close-up of a pink rose with water droplets on it.jpg",
+    "original_prompt": "a close-up of a pink rose with water droplets on it",
+    "refined_prompt": "\"Create a cinematic scene featuring a single, vibrant pink rose with droplets of water glistening on its petals. The rose should be the central focus, captured in a close-up shot from an angle that emphasizes the textures and colors of its petals. As the camera zooms in, the droplets should become more prominent, adding a sense of freshness and vitality. The background should be a blurred array of green foliage, providing a natural and serene setting. The overall color palette should be dominated by soft pinks and greens, enhancing the delicate and gentle aesthetic of the scene.",
+    "image_path": "data/sampled_200/a close-up of a pink rose with water droplets on it.jpg"
+  },
+  {
+    "filename": "a close-up of a sea anemone in the water.jpg",
+    "original_prompt": "a close-up of a sea anemone in the water",
+    "refined_prompt": "Title: \"Reef Encounter\"\n\nDescription: In the depths of a vibrant underwater coral reef, a close-up of a sea anemone, its tentacles glowing with a soft greenish hue, dominates the frame. The anemone, the main subject, is the focal point, its intricate structure captured in detail. The camera, positioned slightly above and to the left of the anemone, follows its movements, creating a sense of interaction with the viewer. As the anemone extends its tentacles, the camera responds with a slow, graceful pan, revealing the complexity of the reef. The background, though blurred, hints at the biodiversity of the reef, with hints of other corals and marine life.",
+    "image_path": "data/sampled_200/a close-up of a sea anemone in the water.jpg"
+  },
+  {
+    "filename": "a close-up view of a green plant with unfurled fronds.jpg",
+    "original_prompt": "a close-up view of a green plant with unfurled fronds",
+    "refined_prompt": "The image depicts a close-up of a green plant with unfurled fronds, creating an intricate texture of nature's design. To create a cinematic prompt, we focus on the main subject's actions, camera movement, lighting, and background.\n\nThe camera should be positioned at a slight angle to capture the full depth and texture of the plant's foliage. The camera should move in a circular motion around the plant, allowing the viewer to observe the intricate details and the plant's growth pattern.\n\nLighting should be soft and diffused, enhancing the natural colors of the plant and highlighting its intricate details. The background should be a neutral, out-of-focus area that doesn't distract from the main subject. This could be a blurred greenery or a simple, solid color to avoid any distractions.",
+    "image_path": "data/sampled_200/a close-up view of a green plant with unfurled fronds.jpg"
+  },
+  {
+    "filename": "a close-up view of a sea fan in the water.jpg",
+    "original_prompt": "a close-up view of a sea fan in the water",
+    "refined_prompt": "A close-up view of a sea fan in the water, showcasing its intricate branching pattern in vibrant hues of green and blue. The camera follows the sea fan's form as it sways gently with the underwater currents, creating a sense of movement and life. The lighting highlights the textures and colors of the sea fan, enhancing its natural beauty. The background is a blurred, serene underwater scene, hinting at the vastness of the ocean.",
+    "image_path": "data/sampled_200/a close-up view of a sea fan in the water.jpg"
+  },
+  {
+    "filename": "a close-up view of the flames of a fireplace.jpg",
+    "original_prompt": "a close-up view of the flames of a fireplace",
+    "refined_prompt": "A cinematic, high-definition fireplace scene. The main subject is a close-up view of the flames, featuring vibrant orange and yellow hues, with the flames' motion creating a mesmerizing, dynamic visual. The camera pans slowly, moving from the left to the right of the frame, capturing the flames' intricate details and the crackling texture of the fire. The background is a dark, enveloping black, which contrasts with the bright flames and emphasizes the warmth and intensity of the fire. The overall atmosphere is one of warmth and coziness, evoking the feeling of a comforting fireplace on a cold night.",
+    "image_path": "data/sampled_200/a close-up view of the flames of a fireplace.jpg"
+  },
+  {
+    "filename": "a clown fish hiding in a purple anemone.jpg",
+    "original_prompt": "a clown fish hiding in a purple anemone",
+    "refined_prompt": "In the depths of the ocean, a clownfish, with its distinctive orange stripes and white underbelly, is captured in a moment of stealth. It swims swiftly towards the left side of the frame, its body hidden amidst the purple tentacles of a large anemone. The anemone, with its vibrant color and intricate structure, stands as a stark contrast to the clownfish's natural camouflage. The camera follows the fish, moving in sync with its path, creating a sense of movement and suspense. The background fades into a soft blur, drawing focus to the interaction between the clownfish and the anemone. The lighting is dim, enhancing the overall atmosphere of the scene.",
+    "image_path": "data/sampled_200/a clown fish hiding in a purple anemone.jpg"
+  },
+  {
+    "filename": "a couple of boats floating on a body of water.jpg",
+    "original_prompt": "a couple of boats floating on a body of water",
+    "refined_prompt": "The image depicts a serene scene of two small boats floating on a body of water during a sunset. The boats, appearing as canoes, are positioned diagonally in the frame, with the one on the left being slightly closer to the viewer. The sunset casts a warm, golden glow on the water, creating a reflection on the surface. The sky is filled with a gradient of orange and pink hues, suggesting that the sun is setting. In the background, there are silhouettes of buildings, indicating that the water is located near a city. The camera should be positioned on a tripod to maintain stability, and a slow, smooth pan or zoom should be used to capture the tranquil atmosphere. The lighting should be soft and warm, with the sunset as the main source of light.",
+    "image_path": "data/sampled_200/a couple of boats floating on a body of water.jpg"
+  },
+  {
+    "filename": "a couple of wooden benches in the middle of a street.jpg",
+    "original_prompt": "a couple of wooden benches in the middle of a street",
+    "refined_prompt": "In a serene winter night, a couple of wooden benches stand in the middle of a snow-covered street. The main focus is on the benches, with the camera capturing them from a low angle, emphasizing their prominence in the foreground. The lighting is soft and warm, illuminating the benches and casting gentle shadows, creating a cozy atmosphere. In the background, the street is lined with festive lights that twinkle gently against the night sky, adding to the overall charm of the scene. As the camera moves along the street, it should capture the tranquil ambiance and the quiet beauty of the snow-covered surroundings.",
+    "image_path": "data/sampled_200/a couple of wooden benches in the middle of a street.jpg"
+  },
+  {
+    "filename": "a dandelion blowing in the wind.jpg",
+    "original_prompt": "a dandelion blowing in the wind",
+    "refined_prompt": "In the image, a single dandelion, with its white head and green stem, stands as the main subject against a backdrop of a clear blue sky. The dandelion is caught in the midst of a gentle breeze, its seeds scattered across the sky. The camera is positioned low, as if looking up at the dandelion, with a focus on the dandelion's movement. The lighting is natural and soft, enhancing the delicate details of the dandelion's structure and texture. The overall scene conveys a sense of tranquility and the beauty of nature.",
+    "image_path": "data/sampled_200/a dandelion blowing in the wind.jpg"
+  },
+  {
+    "filename": "a dark alleyway with a bus driving down it.jpg",
+    "original_prompt": "a dark alleyway with a bus driving down it",
+    "refined_prompt": "In the heart of a bustling city, a vibrant purple bus is the centerpiece of this scene, driving down a narrow alleyway. The alleyway is a symphony of shadows and light, with dimly lit buildings on either side casting long, dramatic shadows. The bus, with its bright color, stands out against the dark backdrop, adding a sense of urgency and motion to the scene. The camera follows the bus, capturing its path from the perspective of a pedestrian on the sidewalk, creating a sense of depth and perspective. The scene is a blend of urban life and cinematic storytelling, with the bus's journey down the alleyway serving as a metaphor for the constant movement and energy of city life.",
+    "image_path": "data/sampled_200/a dark alleyway with a bus driving down it.jpg"
+  },
+  {
+    "filename": "a dog carrying a soccer ball in its mouth.jpg",
+    "original_prompt": "a dog carrying a soccer ball in its mouth",
+    "refined_prompt": "In this dynamic scene, a white and brown dog is captured mid-stride in a grassy field, energetically carrying a green soccer ball in its mouth. The dog's eyes are focused ahead, its muscles taut with the effort of the run. The camera follows the dog from a low angle, emphasizing its speed and agility. The sun casts long shadows, suggesting it's late afternoon, and the grass is a vibrant green, indicating a well-maintained outdoor area. The background is blurred, ensuring the dog remains the central focus of the image.",
+    "image_path": "data/sampled_200/a dog carrying a soccer ball in its mouth.jpg"
+  },
+  {
+    "filename": "a dynamic video of a blurry neon light in the dark, radiating captivating colors.jpg",
+    "original_prompt": "a dynamic video of a blurry neon light in the dark, radiating captivating colors",
+    "refined_prompt": "Create a dynamic, blurry video of a neon light in the dark, radiating captivating colors. The light source, resembling a guitar pick, should be the main subject and appear as a vibrant, shimmering, neon line that dances across the frame. The camera should move in a smooth, swooping motion, creating a sense of motion and energy. The background should remain dark, enhancing the neon's brightness and the colors should be a mix of red, blue, and purple, creating a hypnotic, otherworldly effect. The overall atmosphere should be one of mystery and allure, capturing the viewer's attention and imagination.",
+    "image_path": "data/sampled_200/a dynamic video of a blurry neon light in the dark, radiating captivating colors.jpg"
+  },
+  {
+    "filename": "a flock of birds flying over a tree at sunset.jpg",
+    "original_prompt": "a flock of birds flying over a tree at sunset",
+    "refined_prompt": "In this captivating scene, a flock of birds, possibly a mix of pigeons and crows, soars against the backdrop of a vibrant sunset. The sun, a radiant orange orb, is positioned in the top left corner of the image, casting a warm glow over the scene. The birds, scattered across the sky, add a sense of dynamism and life to the image. The camera follows their flight path, moving from the bottom left to the top right, capturing the birds in various stages of their journey. The silhouette of a lone tree stands tall in the bottom right corner, its bare branches contrasting with the colorful sky. The entire scene is set against a grassy hill, its undulating contours adding depth to the image. The overall composition creates a serene yet lively atmosphere, perfectly encapsulating the essence of a flock of birds flying over a tree at sunset.",
+    "image_path": "data/sampled_200/a flock of birds flying over a tree at sunset.jpg"
+  },
+  {
+    "filename": "a frog sitting on top of water lily leaves.jpg",
+    "original_prompt": "a frog sitting on top of water lily leaves",
+    "refined_prompt": "In the image, a green frog with brown spots is the main subject, perched on a water lily leaf. The frog is facing the camera with a calm demeanor, seemingly undisturbed by the photographer. The water lily leaf is large and vibrant, with a yellowish hue that contrasts with the frog's green skin. The background is filled with more water lily leaves, creating a lush and serene environment. The camera should be positioned low to the ground, with a slow, steady zoom from a close-up of the frog's head to a wide shot of the entire scene. The lighting should be soft and diffused, with an emphasis on the frog's face and the water lily leaves, creating a peaceful and natural atmosphere.",
+    "image_path": "data/sampled_200/a frog sitting on top of water lily leaves.jpg"
+  },
+  {
+    "filename": "a green toy car is sitting on the ground.jpg",
+    "original_prompt": "a green toy car is sitting on the ground",
+    "refined_prompt": "The image showcases a vibrant green toy car, which is the main subject, sitting on a textured surface that mimics a dirt or gravel ground. The camera angle is from a low angle, looking up towards the car, giving a sense of perspective and emphasizing the toy's size. The lighting is natural and soft, creating a warm atmosphere, with the car being the brightest point in the frame. The background features a blurred greenery, suggesting the car is outdoors in a natural environment. The overall scene is simple yet engaging, capturing the viewer's attention on the toy car and its surroundings.",
+    "image_path": "data/sampled_200/a green toy car is sitting on the ground.jpg"
+  },
+  {
+    "filename": "a group of cactus plants in the desert.jpg",
+    "original_prompt": "a group of cactus plants in the desert",
+    "refined_prompt": "In a vast desert landscape, a group of cactus plants stands tall, their unique shapes and textures forming a mesmerizing pattern under the clear blue sky. The camera should slowly approach the scene, capturing the cacti from a distance, then moving in for a close-up, highlighting the intricate details and patterns of the cactus. The lighting should be natural and soft, casting gentle shadows and enhancing the colors of the cacti. In the background, the expansive desert stretches out, with distant mountains forming a serene horizon under the vast blue sky. The scene should convey a sense of tranquility and the resilience of life in harsh environments.",
+    "image_path": "data/sampled_200/a group of cactus plants in the desert.jpg"
+  },
+  {
+    "filename": "a group of fish swimming over a coral reef.jpg",
+    "original_prompt": "a group of fish swimming over a coral reef",
+    "refined_prompt": "\"Create a vivid underwater scene featuring a school of colorful, striped fish swimming over a coral reef. The camera should be positioned below the water's surface, focusing on the fish's path as they navigate the reef. Use natural lighting to enhance the colors of the coral and the fish, with ambient light filtering through the water's surface. Include dynamic camera movements that follow the fish, capturing their swift swims and the intricate details of the coral. The background should remain out of focus, with the emphasis on the main subject's actions and the textures of the coral reef.",
+    "image_path": "data/sampled_200/a group of fish swimming over a coral reef.jpg"
+  },
+  {
+    "filename": "a group of hot air balloons flying over a field.jpg",
+    "original_prompt": "a group of hot air balloons flying over a field",
+    "refined_prompt": "In a serene and picturesque landscape, a group of vibrant hot air balloons, each adorned with unique patterns of red, yellow, and blue, ascends from a verdant, well-manicured field. The balloons, varying in size and shape, are tethered to the ground, demonstrating a sense of anticipation before their grand ascent.\n\nThe camera, positioned in the foreground, captures the balloons' slow, graceful ascent, following their trajectory from the ground upward. The scene is bathed in soft, warm sunlight, casting gentle shadows and highlighting the balloons' rich colors. In the distance, majestic desert mountains rise against the clear sky, adding depth and a sense of vastness to the scene.",
+    "image_path": "data/sampled_200/a group of hot air balloons flying over a field.jpg"
+  },
+  {
+    "filename": "a group of hot air balloons flying over a valley.jpg",
+    "original_prompt": "a group of hot air balloons flying over a valley",
+    "refined_prompt": "Title: \"A Dreamy Sunset Balloon Safari\"\n\nIn a serene landscape, a group of vibrant hot air balloons, each adorned with unique patterns and colors, ascends into the sky. The camera captures the scene from a low angle, following the balloons as they gracefully float away, creating a sense of wonder and adventure. The sun sets, casting a warm glow on the balloons and painting the sky in hues of orange, pink, and purple. The valley below is dotted with houses, trees, and roads, adding depth and context to the scene. As the balloons ascend higher, the perspective widens, revealing more of the valley and the expansive sky. The entire scene is bathed in a soft, golden light, enhancing the dreamy atmosphere of the hot air balloon safari.",
+    "image_path": "data/sampled_200/a group of hot air balloons flying over a valley.jpg"
+  },
+  {
+    "filename": "a group of jellyfish swimming in an aquarium.jpg",
+    "original_prompt": "a group of jellyfish swimming in an aquarium",
+    "refined_prompt": "The scene unfolds in a vibrant, underwater aquarium. The main subject is a group of six jellyfish, their bodies a mix of translucent white and deep blue. They are in various stages of movement, creating a dynamic sense of life. The camera follows one jellyfish, moving closer to capture its texture and the flow of its tentacles. The lighting is a blend of natural and artificial sources, with the aquarium's lights illuminating the jellyfish from below and ambient light filtering in from the top. The background is a dark, deep blue, suggesting the vastness of the ocean.",
+    "image_path": "data/sampled_200/a group of jellyfish swimming in an aquarium.jpg"
+  },
+  {
+    "filename": "a group of people in orange jumpsuits running along a river.jpg",
+    "original_prompt": "a group of people in orange jumpsuits running along a river",
+    "refined_prompt": "Create a cinematic scene featuring a group of five individuals, dressed in vibrant orange jumpsuits, running along a riverbank. The camera should be positioned to capture the dynamic motion of the runners, with a focus on the central figure. The camera should track the runners from a distance, maintaining a steady pace as they move, creating a sense of motion.\n\nThe background should be a serene river under a soft, golden sunset, with lush trees lining the opposite bank. The lighting should be warm and ambient, casting a gentle glow on the runners and reflecting off the water, enhancing the overall atmosphere of the scene. The image should convey a sense of freedom, adventure, and camaraderie among the group.",
+    "image_path": "data/sampled_200/a group of people in orange jumpsuits running along a river.jpg"
+  },
+  {
+    "filename": "a group of people riding bikes down a street.jpg",
+    "original_prompt": "a group of people riding bikes down a street",
+    "refined_prompt": "In the image, a group of people are seen riding bicycles down a busy street. The main subject, a man in the foreground, is captured in the act of maneuvering his bike. His focused expression and the sweat on his brow suggest he is pedaling with effort. The camera follows him closely, moving along the street, capturing the rhythm of the ride. The background reveals a bustling cityscape with various vehicles, including a truck and a car, adding to the dynamic nature of the scene. The street is lined with buildings, and the scene is set during the day under bright, natural light. The overall composition of the image conveys a sense of motion and urban life.",
+    "image_path": "data/sampled_200/a group of people riding bikes down a street.jpg"
+  },
+  {
+    "filename": "a hot-air balloon flying over a desert landscape.jpg",
+    "original_prompt": "a hot-air balloon flying over a desert landscape",
+    "refined_prompt": "In this cinematic scene, a hot-air balloon, painted in a striking combination of gold and silver hues, floats gracefully against the backdrop of a desert landscape. The balloon, positioned in the center of the frame, commands attention with its vibrant colors. Below, a rocky cliff rises, providing a stark contrast to the soft, sandy terrain that stretches out around it. The camera is tilted slightly downwards, as if inviting the viewer to look up at the balloon. The lighting is warm and golden, enhancing the overall sense of adventure and tranquility. The scene is bathed in the soft glow of the balloon's lanterns, which add a touch of magic to the otherwise rugged landscape.",
+    "image_path": "data/sampled_200/a hot-air balloon flying over a desert landscape.jpg"
+  },
+  {
+    "filename": "a house with snow on the ground.jpg",
+    "original_prompt": "a house with snow on the ground",
+    "refined_prompt": "In this image, a cozy two-story house with a green facade and white trim is nestled amidst a snowy landscape. The front door is invitingly decorated with a wreath, and the staircase leading to it is covered in a thick blanket of snow. Snow-covered shrubs and trees frame the house, creating a serene winter scene. The camera should start with a wide shot of the house, then slowly zoom in on the front door, pausing on the wreath to emphasize the festive atmosphere. As the camera continues its zoom, it should pan up to the top of the house, highlighting the snow-covered roof and chimney. The lighting should be soft and warm, enhancing the comforting ambiance of the scene. The background should be a gentle blur, with the focus remaining on the house and its details.",
+    "image_path": "data/sampled_200/a house with snow on the ground.jpg"
+  },
+  {
+    "filename": "a kettle is sitting on top of a campfire.jpg",
+    "original_prompt": "a kettle is sitting on top of a campfire",
+    "refined_prompt": "Create a dynamic scene where a campfire, bathed in the warm glow of orange and yellow hues, is the central focus. A kettle, with a shiny metallic finish, sits atop the fire, its handle pointing towards the sky. The kettle appears to be filled with water, ready for boiling. The camera captures a close-up shot of the kettle and the fire, emphasizing the heat and the anticipation of the water's boil. In the background, a rustic wooden fence and trees can be seen, adding to the outdoor ambiance. The camera should be positioned on a low angle, looking up at the kettle and the fire, making the viewer feel as if they are sitting right there, about to enjoy a warm beverage.",
+    "image_path": "data/sampled_200/a kettle is sitting on top of a campfire.jpg"
+  },
+  {
+    "filename": "a lake surrounded by mountains and flowers.jpg",
+    "original_prompt": "a lake surrounded by mountains and flowers",
+    "refined_prompt": "Title: \"Reflections of Serenity: A Lake's Haven Amidst Nature's Grandeur\"\n\nDescription:\n\"Create a breathtaking time-lapse video of a tranquil lake nestled in a mountainous landscape. The sun should rise from the left, casting a warm, golden light on the serene water, and gradually illuminating the majestic mountains. The camera should start from a distance, gradually approaching the lake, offering a wide view of the surrounding terrain. As the sun reaches its peak, the sky should be bathed in a clear blue hue.\n\nDuring the day, the camera should focus on the lake, capturing the gentle ripples of the water and the reflection of the sky on its surface. The foreground should feature a close-up of a flowering bush, its vibrant blossoms adding a touch of color to the scene.",
+    "image_path": "data/sampled_200/a lake surrounded by mountains and flowers.jpg"
+  },
+  {
+    "filename": "a large bonfire is burning in the night sky.jpg",
+    "original_prompt": "a large bonfire is burning in the night sky",
+    "refined_prompt": "Create a cinematic scene where a large bonfire burns brightly in the night sky. The main subject is a person, positioned on the left side of the frame, engrossed in tending to the fire. Their silhouette is illuminated against the dark sky, indicating their role as a caretaker. The camera should be positioned on the right side of the frame, moving towards the flames, capturing the warm glow and the fiery dance of the flames. The background should be a dark, star-filled sky, enhancing the feeling of a late-night outdoor setting. The lighting should be dramatic, with the flames providing a stark contrast to the darkness, and the silhouette of the person subtly lit to maintain a sense of mystery.",
+    "image_path": "data/sampled_200/a large bonfire is burning in the night sky.jpg"
+  },
+  {
+    "filename": "a large cargo ship sailing in the water.jpg",
+    "original_prompt": "a large cargo ship sailing in the water",
+    "refined_prompt": "A large cargo ship, \"Chilean Island,\" is captured in motion on a vast, blue ocean at sunset. The ship is sailing towards the right side of the frame, leaving a trail of gentle ripples in its wake. The camera follows the ship, moving slightly ahead, with a focus on the bow as it cuts through the water. The sky is painted with warm hues of orange and pink, creating a serene and picturesque backdrop. In the distance, industrial structures can be seen, suggesting the ship is approaching a harbor. The overall atmosphere is one of tranquility and the grandeur of maritime exploration.",
+    "image_path": "data/sampled_200/a large cargo ship sailing in the water.jpg"
+  },
+  {
+    "filename": "a large crowd of people walking in a shopping mall.jpg",
+    "original_prompt": "a large crowd of people walking in a shopping mall",
+    "refined_prompt": "The scene unfolds in a grand, multi-story shopping mall, bathed in natural light filtering through an expansive glass ceiling. From a high angle, we see the bustling crowd of shoppers moving through the atrium. The camera follows a young woman in a yellow dress, who is casually striding towards the right, her handbag swinging gently. The atrium is adorned with architectural details that add a touch of elegance to the modern shopping environment. The overall atmosphere is one of leisure and commerce, with the crowd adding a dynamic element to the otherwise static architecture.",
+    "image_path": "data/sampled_200/a large crowd of people walking in a shopping mall.jpg"
+  },
+  {
+    "filename": "a large flock of birds flying in the sky.jpg",
+    "original_prompt": "a large flock of birds flying in the sky",
+    "refined_prompt": "In a vast expanse of gray, a flock of black birds, silhouetted against the overcast sky, take flight in an organized chaos. The camera, positioned in the foreground, follows the lead bird, tilting upwards to capture the birds' ascent. The motion of the flock is captured in a long, fluid shot, with the birds blurring as they fly, creating a sense of motion and dynamism. The lighting is diffused, casting soft shadows and maintaining the monochromatic palette of the scene. The backdrop is a uniform gray, providing a stark contrast to the dark silhouettes of the birds, emphasizing their flight.",
+    "image_path": "data/sampled_200/a large flock of birds flying in the sky.jpg"
+  },
+  {
+    "filename": "a large waterfall in the middle of a building.jpg",
+    "original_prompt": "a large waterfall in the middle of a building",
+    "refined_prompt": "The image captures a unique blend of nature and architecture, featuring a large waterfall cascading from the ceiling of a building. The waterfall, a spectacular white curtain of water, is the central focus of the image. It's positioned in the center, creating a sense of awe and wonder. The camera should be placed at an angle that captures the full height of the waterfall, moving upwards to emphasize its grandeur. The background should be a blend of lush greenery and natural light, suggesting the waterfall is located within a lush forest or a nature reserve. The lighting should be soft and diffused, creating a serene and inviting atmosphere, while the surrounding foliage should be richly detailed to highlight the contrast between the man-made structure and the natural environment.",
+    "image_path": "data/sampled_200/a large waterfall in the middle of a building.jpg"
+  },
+  {
+    "filename": "a large waterfall in the middle of a lush green hillside.jpg",
+    "original_prompt": "a large waterfall in the middle of a lush green hillside",
+    "refined_prompt": "\"Create a cinematic video of a large waterfall cascading down a lush green hillside. The main subject is a person standing at the base of the waterfall, gazing up in awe. The camera should be positioned to capture the dynamic movement of the waterfall, with a slow pan upwards to reveal its height. The lighting should highlight the vibrant green of the hillside and the misty spray of the waterfall, giving the scene a serene and majestic atmosphere. The person's position at the base of the waterfall suggests a sense of scale and the grandeur of nature. The background should be filled with the verdant landscape, providing a sense of depth and vastness to the scene.",
+    "image_path": "data/sampled_200/a large waterfall in the middle of a lush green hillside.jpg"
+  },
+  {
+    "filename": "a large wave crashes into a lighthouse on a stormy day.jpg",
+    "original_prompt": "a large wave crashes into a lighthouse on a stormy day",
+    "refined_prompt": "A powerful storm descends upon a coastal town, with dark clouds looming overhead. A large wave, full of raw energy and chaos, breaks with a deafening roar onto the shore. The lighthouse, standing tall and steadfast, takes a direct hit from the wave. The camera, positioned on a moving platform, follows the lighthouse, capturing the moment as the wave crashes into it. The lighthouse, bathed in a dramatic light, seems to be in the midst of the storm. The camera shakes and tilts, mimicking the turbulence of the sea. The background is filled with the tumultuous waves, reflecting the raw power of the storm. The entire scene is a captivating display of nature's fury, encapsulating the essence of a stormy day.",
+    "image_path": "data/sampled_200/a large wave crashes into a lighthouse on a stormy day.jpg"
+  },
+  {
+    "filename": "a large wave crashes into a lighthouse.jpg",
+    "original_prompt": "a large wave crashes into a lighthouse",
+    "refined_prompt": "In the image, a powerful wave, a mix of deep pink and purple hues, is seen crashing against a lighthouse. The wave is the central focus, dominating the frame with its immense size and force. The lighthouse, a traditional structure with a red roof and a white base, stands resilient amidst the chaos. The camera angle is from a low angle, making the wave appear larger and more threatening. The lighting is dramatic, with the colors of the wave contrasting sharply against the darker background. The wave's movement creates a sense of motion and urgency. The background is minimalistic, with the sky serving as a simple backdrop that allows the viewer to concentrate on the action at the forefront.",
+    "image_path": "data/sampled_200/a large wave crashes into a lighthouse.jpg"
+  },
+  {
+    "filename": "a light house on the edge of the water.jpg",
+    "original_prompt": "a light house on the edge of the water",
+    "refined_prompt": "In this cinematic scene, the main subject is a majestic light house standing at the edge of a vast, choppy ocean. The light house, painted in hues of gray and white, stands tall against the backdrop of a cloudy sky. Its red roof contrasts with the surrounding landscape, drawing the viewer's attention to its solitary presence. The camera begins in a low angle shot, emphasizing the grandeur of the light house as it rises above the ocean's surface. As the camera moves towards the right, it captures the light house's intricate architectural details and the rhythmic motion of the waves. The lighting is dramatic, with the sky's overcast conditions casting a soft, diffused light on the scene. The overall composition creates a sense of isolation and timelessness, evoking a sense of wonder and adventure.",
+    "image_path": "data/sampled_200/a light house on the edge of the water.jpg"
+  },
+  {
+    "filename": "a lion is roaring in the wild.jpg",
+    "original_prompt": "a lion is roaring in the wild",
+    "refined_prompt": "In the image, a majestic lion is captured in a moment of raw, unbridled power. The lion, with its mane standing on end, is roaring with its mouth wide open, emitting a deafening roar that echoes across the grassy plain. The camera is positioned from a low angle, looking up at the lion, which adds to the sense of awe and power. The lion is the central focus of the image, and the background is a simple, unobtrusive grassy plain. The lighting is natural and diffused, enhancing the wild and natural ambiance of the scene. The overall effect is a cinematic portrayal of a lion's roar, capturing the raw power and majesty of the animal in its natural habitat.",
+    "image_path": "data/sampled_200/a lion is roaring in the wild.jpg"
+  },
+  {
+    "filename": "a lioness yawning in a field.jpg",
+    "original_prompt": "a lioness yawning in a field",
+    "refined_prompt": "A majestic lioness, her coat a blend of rich golden hues, stands in a grassy field, her mouth wide open in a yawn. The camera, positioned on the right side, follows her from a distance, capturing the graceful curve of her neck and the playful twitch of her ears. The lioness's eyes are closed, and her mouth is slightly open, revealing a hint of her sharp teeth. The background is a soft blur of the grassy field, providing a serene backdrop to the lioness's moment of tranquility.",
+    "image_path": "data/sampled_200/a lioness yawning in a field.jpg"
+  },
+  {
+    "filename": "a little crab scurried on the sandy beach.jpg",
+    "original_prompt": "a little crab scurried on the sandy beach",
+    "refined_prompt": "In this captivating scene, a small crab with vibrant orange-brown shell and claws is the main subject, as it scurries along the sandy beach. The crab's legs are in motion, indicating its rapid movement. The camera should follow the crab's path, moving from the left side of the image to the right, capturing the crab's journey across the beach. The background should be a warm, sandy color, enhancing the beach atmosphere. The lighting should be natural, with soft shadows cast by the crab and the sand, highlighting the textures of the beach and the crab's intricate shell. The overall composition should evoke a sense of tranquility and curiosity, as the viewer follows the crab's movement and explores the beach's natural beauty.",
+    "image_path": "data/sampled_200/a little crab scurried on the sandy beach.jpg"
+  },
+  {
+    "filename": "a living room with a couch, table, and a window.jpg",
+    "original_prompt": "a living room with a couch, table, and a window",
+    "refined_prompt": "In this living room, a dimly lit scene unfolds. The main focus is a cozy, dark-toned couch, positioned in the center of the frame. A small wooden table sits in front of it, adding a touch of warmth to the room. On the left side of the image, a window allows a soft light to seep in, casting gentle shadows around the room. A glimpse of a person can be seen on the right side, adding a sense of life to the space. The camera should move slowly and smoothly, capturing the quiet ambiance of the room, the play of light and shadow, and the subtle details that make this living room feel lived-in and inviting.",
+    "image_path": "data/sampled_200/a living room with a couch, table, and a window.jpg"
+  },
+  {
+    "filename": "a man and a boy sitting on a beach near the ocean.jpg",
+    "original_prompt": "a man and a boy sitting on a beach near the ocean",
+    "refined_prompt": "In this image, a man and a boy are captured in a moment of tranquility on a sandy beach. The man, dressed in a blue striped shirt and khaki shorts, is seated and appears to be engaging with the boy, who is standing and wearing a red shirt and khaki shorts. The camera captures them from a low angle, emphasizing their connection with the vast ocean that stretches out behind them. The sunlight reflects off the water, casting a warm glow over the scene. In the distance, a large ship can be seen, adding a touch of human presence to this serene landscape. The overall atmosphere is one of peaceful companionship between the two figures, set against the backdrop of nature's grandeur.",
+    "image_path": "data/sampled_200/a man and a boy sitting on a beach near the ocean.jpg"
+  },
+  {
+    "filename": "a man holding a baby in his arms.jpg",
+    "original_prompt": "a man holding a baby in his arms",
+    "refined_prompt": "In this image, a man with curly black hair is seen tenderly holding a baby girl with his left arm, cradling her close to his chest. The man is dressed in a casual gray tank top, and the baby is adorned in a vibrant pink and white outfit. The camera is positioned at a close angle, capturing the man's face and the baby's face in a heartwarming close-up. The background is a serene park setting with trees, benches, and a playground, providing a peaceful backdrop to this intimate moment. The lighting is soft and warm, highlighting the subjects and creating a gentle atmosphere.",
+    "image_path": "data/sampled_200/a man holding a baby in his arms.jpg"
+  },
+  {
+    "filename": "a man in a hat sitting in front of a brick oven.jpg",
+    "original_prompt": "a man in a hat sitting in front of a brick oven",
+    "refined_prompt": "In a rustic pottery workshop, a man in a straw hat sits on a brick ledge, his right hand resting on his knee. His gaze is directed towards the camera, exuding a sense of warmth and craftsmanship. The brick oven behind him, filled with countless clay pots, radiates a cozy glow, hinting at the art of pottery that takes place within its walls. The camera should be positioned at the man's eye level, capturing his smiling face and the oven in the background. The lighting should emphasize the natural colors of the workshop and the man's attire, creating a vibrant and inviting atmosphere.",
+    "image_path": "data/sampled_200/a man in a hat sitting in front of a brick oven.jpg"
+  },
+  {
+    "filename": "a man in a mask is walking through a crowd of people.jpg",
+    "original_prompt": "a man in a mask is walking through a crowd of people",
+    "refined_prompt": "In the image, a man in a vibrant mask with red, yellow, and green details is the main subject, walking through a crowd of people. The crowd is composed of individuals with backpacks, suggesting a casual, urban setting. The man in the mask is in motion, captured mid-stride, with his head turned to the side, looking over his shoulder, giving the impression of being aware of his surroundings. The camera follows a low angle shot, looking up at the man, emphasizing his mask and the reactions of the crowd. The background is filled with smoke, giving the impression of a fire or an event in progress. The lighting is dim, with a mix of natural and artificial light sources casting shadows and highlighting the man's mask and the crowd. The overall tone of the image is dramatic, with a sense of intensity and intrigue.",
+    "image_path": "data/sampled_200/a man in a mask is walking through a crowd of people.jpg"
+  },
+  {
+    "filename": "a man in a mexican outfit holding an acoustic guitar.jpg",
+    "original_prompt": "a man in a mexican outfit holding an acoustic guitar",
+    "refined_prompt": "In the image, a man in a traditional Mexican outfit, complete with a sombrero, poncho, and serape, stands in the foreground. He is holding a wooden acoustic guitar and strums it with a smile on his face, as if he is about to perform a song. The camera is positioned slightly above and to the side of the man, capturing the depth of his outfit and the texture of the guitar. The background features a rustic setting with a wooden table, potted plants, and a bench, adding to the warm and inviting ambiance. The lighting is soft and natural, highlighting the subject's features and the rich colors of his attire and the guitar. The scene is framed in a way that suggests a sense of anticipation for a musical performance.",
+    "image_path": "data/sampled_200/a man in a mexican outfit holding an acoustic guitar.jpg"
+  },
+  {
+    "filename": "a man in a small boat fishing in the ocean.jpg",
+    "original_prompt": "a man in a small boat fishing in the ocean",
+    "refined_prompt": "In this cinematic scene, a man in a small, green boat is seen fishing in the vast expanse of the ocean. The man, dressed in a blue hat and shirt, is positioned centrally in the boat, his focus intent on the water as he casts his fishing line. The boat is adorned with a small wooden outboard motor, adding to the rustic charm of the scene.\n\nThe camera is positioned low, looking up at the man, creating a sense of scale and depth. The ocean, painted in shades of gray, serves as the backdrop, its vastness accentuated by the man's solitary figure in the foreground. The lighting is soft, diffused by the overcast sky, casting a gentle glow on the scene. The overall mood is serene and peaceful, capturing a quiet moment of solitude and tranquility.",
+    "image_path": "data/sampled_200/a man in a small boat fishing in the ocean.jpg"
+  },
+  {
+    "filename": "a man is running on a dirt road.jpg",
+    "original_prompt": "a man is running on a dirt road",
+    "refined_prompt": "In the image, a man is captured in the midst of a powerful sprint down a dirt road. The camera is positioned in the foreground, following the man's trail of dust and adding a sense of motion to the scene. The man, dressed in a white t-shirt and black shorts, is in full stride, his body leaning forward as he pushes himself towards the horizon. The road stretches out behind him, disappearing into the distance, while the surrounding landscape is a mix of verdant fields and bushes. The sun casts a warm glow over the scene, highlighting the man's silhouette and the textured surface of the dirt road. The overall atmosphere is one of intense physical exertion, set against a serene natural backdrop.",
+    "image_path": "data/sampled_200/a man is running on a dirt road.jpg"
+  },
+  {
+    "filename": "a man riding a mountain bike on top of a rocky hill.jpg",
+    "original_prompt": "a man riding a mountain bike on top of a rocky hill",
+    "refined_prompt": "In the image, a man is seen riding a red mountain bike on top of a rocky hill, overlooking a breathtaking landscape. He is wearing a white t-shirt and has a backpack, suggesting he might be on a long-distance journey or adventure. The camera follows the cyclist from a low angle, emphasizing the height of the hill and the sense of accomplishment in conquering it. The lighting is natural, with the sunlight casting long shadows and creating a dramatic atmosphere. The background features a vast expanse of the landscape, with rolling hills and distant mountains, adding to the sense of adventure and freedom. The image captures the essence of outdoor exploration and the thrill of mountain biking.",
+    "image_path": "data/sampled_200/a man riding a mountain bike on top of a rocky hill.jpg"
+  },
+  {
+    "filename": "a man sitting in the driver_s seat of a car wearing sunglasses.jpg",
+    "original_prompt": "a man sitting in the driver_s seat of a car wearing sunglasses",
+    "refined_prompt": "In this image, the main subject is a man sitting in the driver's seat of a vintage car, exuding a sense of cool confidence. He is dressed in a sharp suit and sunglasses, which adds to his stylish and mysterious persona. The camera is positioned at a low angle, emphasizing the man's presence and making him appear larger than life. The car's interior is dimly lit, with the focus on the man's face and the steering wheel. The window blinds are slightly raised, allowing a hint of the outside world to filter in. The background is blurred, keeping the focus on the man and the car. The overall color palette is muted, with a warm tone dominating the image, creating an atmosphere of relaxed luxury.",
+    "image_path": "data/sampled_200/a man sitting in the driver_s seat of a car wearing sunglasses.jpg"
+  },
+  {
+    "filename": "a man sitting on steps playing an acoustic guitar.jpg",
+    "original_prompt": "a man sitting on steps playing an acoustic guitar",
+    "refined_prompt": "A young man with curly hair is seated on a worn, yellow cement staircase, strumming a sunburst orange acoustic guitar with a black pickguard. He's wearing a blue t-shirt and black pants, along with red and white sneakers. The camera should be positioned low to the ground, capturing his hands and the guitar strings in close-up. The focus should be on the musician, with a shallow depth of field blurring the background. The lighting should be natural, with the sun shining on the guitar and the man's face, creating a warm, inviting atmosphere. The background should be blurred, emphasizing the steps and the musician, with hints of greenery suggesting an urban park or garden setting.",
+    "image_path": "data/sampled_200/a man sitting on steps playing an acoustic guitar.jpg"
+  },
+  {
+    "filename": "a man sitting on the ground playing a musical instrument.jpg",
+    "original_prompt": "a man sitting on the ground playing a musical instrument",
+    "refined_prompt": "A cinematic scene captures a man in traditional Indian attire, seated on a dirt floor with a vibrant, colorful backdrop of a religious temple. He plays a flute, exuding a sense of spirituality and cultural richness. The camera is positioned on the ground, following the musician's hands and the flute as it moves in and out of the frame, creating a sense of motion and rhythm. The lighting is natural and diffused, highlighting the subject's attire and the intricate details of the temple in the background. The overall atmosphere is one of serenity and cultural authenticity.",
+    "image_path": "data/sampled_200/a man sitting on the ground playing a musical instrument.jpg"
+  },
+  {
+    "filename": "a man standing on a boat with a net.jpg",
+    "original_prompt": "a man standing on a boat with a net",
+    "refined_prompt": "A man stands poised on a traditional wooden boat, his gaze fixed ahead. He holds a large, intricately woven net, ready to cast. The boat is adorned with a pointed front, a signature design element of such vessels. The man is dressed in a traditional conical hat and a long-sleeved shirt, reflecting the cultural context of the scene. The camera captures the man from a low angle, emphasizing his stature and the net he holds. The background is a serene expanse of water, with subtle hints of mist and distant landmarks, adding a sense of tranquility to the scene. The lighting is soft and diffused, enhancing the overall mood and atmosphere.",
+    "image_path": "data/sampled_200/a man standing on a boat with a net.jpg"
+  },
+  {
+    "filename": "a man standing on top of a sand dune in the desert.jpg",
+    "original_prompt": "a man standing on top of a sand dune in the desert",
+    "refined_prompt": "In the image, a young man in a blue shirt and pink shorts is standing on the crest of a sand dune in a vast desert landscape. He is facing away from the viewer, with his back to the camera. The dune is covered in a light beige sand, and the man's shadow is cast to the left. The background is a vast expanse of flat, undulating sand dunes under a pale blue sky. The lighting is soft, with warm hues dominating the scene. The camera should be positioned at the man's feet, following him as he walks down the dune. The camera should pan left, showing the dune's undulating surface and the man's journey across it. The focus should be on the man's form and the texture of the sand, with the vastness of the desert serving as a contrasting backdrop.",
+    "image_path": "data/sampled_200/a man standing on top of a sand dune in the desert.jpg"
+  },
+  {
+    "filename": "a modern living room with wood floors and a tv.jpg",
+    "original_prompt": "a modern living room with wood floors and a tv",
+    "refined_prompt": "\"A cinematic living room scene with a modern twist. The main subject, a beige sofa, is positioned in the center of the room, facing a large, flat-screen TV that is mounted on the wall. The sofa is adorned with two decorative cushions and a cozy throw blanket. The room's wooden floors add warmth to the space. The camera starts with a wide shot, panning across the room to reveal a large window with blinds partially open, allowing soft, natural light to fill the room. As the camera moves closer to the sofa, it captures the details of the room's modern decor, including a sleek bookshelf and a tasteful potted plant. The lighting is soft and ambient, highlighting the texture of the wooden floors and the plush fabric of the sofa.",
+    "image_path": "data/sampled_200/a modern living room with wood floors and a tv.jpg"
+  },
+  {
+    "filename": "a monochromatic video capturing a cat_s gaze into the camera.jpg",
+    "original_prompt": "a monochromatic video capturing a cat_s gaze into the camera",
+    "refined_prompt": "Create a monochromatic video of a cat's gaze into the camera, with a focus on its curious and intense eyes. The cat, with a mix of black and gray fur, is perched on a shelf or table, looking directly at the camera. The camera should be positioned at the cat's eye level, capturing its gaze as it stares into the lens. The background is blurred, but it gives the impression of a cozy, indoor setting, possibly a room with a window or a door. The lighting should be soft, with a slight shadow cast over the cat's face, highlighting the texture of its fur and the sparkle in its eyes. The overall atmosphere should be calm and engaging, inviting viewers to connect with the cat's intriguing expression.",
+    "image_path": "data/sampled_200/a monochromatic video capturing a cat_s gaze into the camera.jpg"
+  },
+  {
+    "filename": "a motorcycle driving down a road.jpg",
+    "original_prompt": "a motorcycle driving down a road",
+    "refined_prompt": "Create a dynamic, high-speed video of a motorcycle journey through a lush, tree-lined road. The motorcycle, with its rider in a protective helmet, is captured in motion, leaning into a turn with a sense of urgency. The camera should follow the motorcycle, creating a blurred effect to emphasize speed, while maintaining focus on the road ahead. The rider's hands grip the handlebars firmly, and the motorcycle's headlight pierces the twilight, casting long shadows and highlighting the vibrant greenery of the trees. The background is filled with a blurred canopy of leaves, emphasizing the sense of movement and the enveloping nature of the ride.",
+    "image_path": "data/sampled_200/a motorcycle driving down a road.jpg"
+  },
+  {
+    "filename": "a mountain covered in snow with evergreen trees.jpg",
+    "original_prompt": "a mountain covered in snow with evergreen trees",
+    "refined_prompt": "In the midst of a snow-covered mountain landscape, a lone evergreen tree stands as the central figure, its branches heavy with snow. The camera, positioned from a low angle, follows the tree's path as it gracefully sways in the quiet solitude. The lighting is soft and diffused, casting a gentle glow on the snow-covered trees and the surrounding mountains, enhancing the serene and majestic atmosphere. The camera's movement should be fluid, mirroring the natural grace of the tree, and should gradually ascend to reveal the full expanse of the mountain, with other trees dotting the landscape. The background should be a vast expanse of snow-covered mountains under a clear sky, creating a sense of isolation and tranquility.",
+    "image_path": "data/sampled_200/a mountain covered in snow with evergreen trees.jpg"
+  },
+  {
+    "filename": "a mountain range with a sky background.jpg",
+    "original_prompt": "a mountain range with a sky background",
+    "refined_prompt": "In this cinematic scene, a solitary figure, adorned in a vibrant red jacket, ascends the steep, rocky cliff face of a majestic mountain range. The camera follows the adventurer from a low angle, creating a sense of scale and grandeur. As the climber progresses, the camera pulls back, revealing the expansive sky in the background. The sun casts a warm, golden glow on the scene, highlighting the rugged, rocky texture of the cliff face. The vast sky forms a serene backdrop, accentuating the adventurous spirit of the individual and the breathtaking natural beauty of the mountain range.",
+    "image_path": "data/sampled_200/a mountain range with a sky background.jpg"
+  },
+  {
+    "filename": "a mountain range with snow on the ground.jpg",
+    "original_prompt": "a mountain range with snow on the ground",
+    "refined_prompt": "In the vast expanse of a snow-capped mountain range, a lone hiker embarks on an adventurous journey. The camera, positioned high above, follows the hiker's trek down the mountain trail, capturing the grandeur of the landscape and the solitude of the hiker. The lighting is subdued, highlighting the white of the snow and the red of the mountains, creating a striking contrast. The camera pans down the trail, leading the viewer's eye towards the hiker, who is seen making their way along the trail. The scene is one of tranquility and isolation, as the hiker navigates the challenges of the mountain terrain.",
+    "image_path": "data/sampled_200/a mountain range with snow on the ground.jpg"
+  },
+  {
+    "filename": "a mountain with snow on it.jpg",
+    "original_prompt": "a mountain with snow on it",
+    "refined_prompt": "In the majestic expanse of a clear blue sky, a solitary mountain, blanketed in pristine white snow, stands as a testament to the grandeur of nature. The mountain, the central focus of this image, is captured from a low angle, emphasizing its imposing height and the vastness of the sky that surrounds it. The camera pans upwards, following the mountain's contours, culminating in a high shot that showcases the peak. The sun casts a warm glow on the snow-covered surface, illuminating the mountain's texture and creating a sense of tranquility. The image is a harmonious blend of the mountain's raw beauty and the serene atmosphere, capturing a moment of quiet solitude in nature's embrace.",
+    "image_path": "data/sampled_200/a mountain with snow on it.jpg"
+  },
+  {
+    "filename": "a pagoda sits on top of a mountain in japan.jpg",
+    "original_prompt": "a pagoda sits on top of a mountain in japan",
+    "refined_prompt": "The image presents a tranquil scene of a pagoda perched atop a mountain in Japan. The main subject is a red and black pagoda, standing tall and majestic against the backdrop of a clear blue sky. The pagoda is nestled amidst lush green trees and bathed in the soft glow of the sun, which casts a warm light on the scene. The camera movement should be subtle, capturing the pagoda from a low angle, giving a sense of its towering presence. The background should be a beautiful, panoramic view of the Japanese landscape, including the mountain's peak and the city in the distance, all under a clear blue sky. The overall tone of the image should be serene and peaceful, evoking the spiritual and cultural significance of the pagoda in Japan.",
+    "image_path": "data/sampled_200/a pagoda sits on top of a mountain in japan.jpg"
+  },
+  {
+    "filename": "a painting of a cloudy sky next to an easel.jpg",
+    "original_prompt": "a painting of a cloudy sky next to an easel",
+    "refined_prompt": "In the image, we see an artist's workspace where the main subject is an easel with a painting of a cloudy sky. The easel is positioned in the center of the image, with the painting showcasing a beautiful blend of white and gray clouds. On the right side of the image, there is a metal bucket filled with paintbrushes, adding to the artistic ambiance. The artist's tools, including a paintbrush, are resting on a small white shelf next to the bucket. The background features a window with a white frame, allowing natural light to illuminate the scene. The artist's handbag is placed on the floor next to the easel, perhaps holding their sketchbook or other art supplies. The camera should focus on the easel and painting, capturing the artist's tools and the overall atmosphere of the workspace.",
+    "image_path": "data/sampled_200/a painting of a cloudy sky next to an easel.jpg"
+  },
+  {
+    "filename": "a panda bear is eating a piece of bamboo.jpg",
+    "original_prompt": "a panda bear is eating a piece of bamboo",
+    "refined_prompt": "Create a cinematic scene with a close-up of a panda bear, a mix of black and white fur, biting into a piece of bamboo. The bear's mouth is open wide, revealing its sharp teeth, and its paws are holding the bamboo firmly. The background is a lush, green forest filled with trees and plants. The camera should be positioned low, looking up at the panda, capturing the full height of the bear and the bamboo. The lighting should be natural and warm, enhancing the serene and peaceful atmosphere of the forest. The scene should convey a sense of tranquility and harmony with nature.",
+    "image_path": "data/sampled_200/a panda bear is eating a piece of bamboo.jpg"
+  },
+  {
+    "filename": "a person holding a sparkler in front of a sunset.jpg",
+    "original_prompt": "a person holding a sparkler in front of a sunset",
+    "refined_prompt": "In this cinematic scene, a person stands against a vibrant, pink-orange sunset sky, their silhouette illuminated by the warm glow of the setting sun. They hold a sparkler, which they extend upwards, creating a dramatic arc of light that captures the viewer's attention. The camera follows the sparkler, panning upwards to capture the height of the arc, while the person's hand and arm are in focus, adding a sense of movement and dynamism to the scene. The background is filled with the rich, saturated colors of the sunset, creating a beautiful contrast with the sparkler's bright light.",
+    "image_path": "data/sampled_200/a person holding a sparkler in front of a sunset.jpg"
+  },
+  {
+    "filename": "a person holding chopsticks over a bowl of food.jpg",
+    "original_prompt": "a person holding chopsticks over a bowl of food",
+    "refined_prompt": "The scene opens with a close-up shot of a person's hand, poised to pick up a piece of food with chopsticks. The hand, dressed in a sleek black glove, holds the chopsticks delicately, ready to dive into the vibrant and colorful meal presented in a large, round bowl. The bowl is filled with an assortment of ingredients, including a variety of vegetables and a succulent piece of meat, all bathed in a rich and savory sauce. The food items are arranged meticulously, creating a visually appealing contrast of colors and textures.\n\nAs the hand reaches towards the bowl, the camera smoothly pans out to reveal the entire dining table, set with a pristine white tablecloth and adorned with other bowls and plates, suggesting a meal shared among friends or family.",
+    "image_path": "data/sampled_200/a person holding chopsticks over a bowl of food.jpg"
+  },
+  {
+    "filename": "a person is cooking eggs on an outdoor grill.jpg",
+    "original_prompt": "a person is cooking eggs on an outdoor grill",
+    "refined_prompt": "In the image, a chef in a professional kitchen is meticulously preparing a dish of eggs on a large outdoor grill. The chef's hands, adorned with a pristine white glove, are captured in the act of carefully placing a sunny-side-up egg on the grill, ensuring the yolk is just right. The camera captures the chef's focused expression and the gentle sizzle of the egg as it cooks. The background is a blurred, inviting kitchen scene with warm, ambient lighting that accentuates the colors and textures of the chef's outfit and the grill. The camera's movement should follow the chef's hands as they perform their artistry, capturing the anticipation of the moment the egg is fully cooked and ready to be served.",
+    "image_path": "data/sampled_200/a person is cooking eggs on an outdoor grill.jpg"
+  },
+  {
+    "filename": "a person is cooking food in a wok on a stove.jpg",
+    "original_prompt": "a person is cooking food in a wok on a stove",
+    "refined_prompt": "The image depicts a chef meticulously stirring a wok full of sizzling noodles on a vibrant stove. The wok is positioned on the right side of the frame, with the chef's left hand skillfully maneuvering the spatula. The stove, filled with an intense, bright yellow-orange flame, dominates the left side of the image. The background is a blurred kitchen setting, with a hint of a dining table and other cooking essentials, suggesting a professional cooking environment. The camera follows the chef's actions, capturing the dynamic movement of the wok and the chef's focused expression. The overall scene conveys a sense of warmth, energy, and culinary expertise.",
+    "image_path": "data/sampled_200/a person is cooking food in a wok on a stove.jpg"
+  },
+  {
+    "filename": "a person is cooking meat on a grill with flames.jpg",
+    "original_prompt": "a person is cooking meat on a grill with flames",
+    "refined_prompt": "The image showcases a scene of culinary delight, featuring a person meticulously grilling meat on a barbecue. The main subject is in the process of flipping the meat, a technique known to enhance the flavor of the dish. The grill, positioned in the center of the frame, is the main source of light, casting an intense glow on the sizzling meat. The person's focus and the sizzling meat in the center of the image are the focal points of the scene. The background is intentionally blurred, emphasizing the action in the foreground and drawing attention to the main subject's actions. The camera should be positioned at an angle to capture the person's hands, the grill, and the sizzling meat, while also allowing the viewer to see the flames and smoke, creating a sense of depth and warmth.",
+    "image_path": "data/sampled_200/a person is cooking meat on a grill with flames.jpg"
+  },
+  {
+    "filename": "a person is holding up a burger with his hands.jpg",
+    "original_prompt": "a person is holding up a burger with his hands",
+    "refined_prompt": "A close-up shot captures a person in the midst of a mouthwatering culinary experience, savoring a burger with their hands. The focus is on the main subject's hands, which are gently holding the burger, the fingers delicately balancing the sandwich. The camera angle is slightly elevated, creating an intimate perspective that highlights the texture and color of the burger and the anticipation on the person's face. The background is a blurred, indistinct space, ensuring that the viewer's attention remains solely on the mouthwatering burger and the person's enjoyment of it. The lighting is soft and warm, enhancing the inviting atmosphere of the scene.",
+    "image_path": "data/sampled_200/a person is holding up a burger with his hands.jpg"
+  },
+  {
+    "filename": "a person riding a dirt bike.jpg",
+    "original_prompt": "a person riding a dirt bike",
+    "refined_prompt": "In the image, a professional dirt bike racer is captured in the midst of an intense ride on a rugged dirt track. The rider, clad in a vibrant orange and black suit with the number 50, is leaning sharply to the right, demonstrating their skill and control over the powerful motorcycle. The camera follows the rider's dynamic movement, emphasizing the speed and agility of the sport. The track is surrounded by a lush green forest, adding a sense of adventure and wilderness to the scene. The lighting is natural and bright, highlighting the rider and the motorcycle as they navigate the challenging terrain. The overall atmosphere is one of thrilling action and the raw power of off-road racing.",
+    "image_path": "data/sampled_200/a person riding a dirt bike.jpg"
+  },
+  {
+    "filename": "a person riding a horse in a polo match.jpg",
+    "original_prompt": "a person riding a horse in a polo match",
+    "refined_prompt": "In the image, a skilled polo player is seen in the midst of an intense match. The rider, dressed in a vibrant polo outfit, is astride a powerful brown horse, both in full gallop across a lush green field. The rider's posture is poised and focused, with the mallet held high and ready to strike. The camera captures the dynamic motion of the horse and rider, following their path from the foreground into the distance, where the field extends into a blurred background. The image is illuminated by natural sunlight filtering through the canopy of trees, casting long shadows and highlighting the texture of the grass. The overall scene is one of action and anticipation, perfectly encapsulating the spirit of polo.",
+    "image_path": "data/sampled_200/a person riding a horse in a polo match.jpg"
+  },
+  {
+    "filename": "a person riding a wave on a surfboard.jpg",
+    "original_prompt": "a person riding a wave on a surfboard",
+    "refined_prompt": "Create a dynamic, high-resolution video of a surfer riding a massive, blue-green wave. The surfer, clad in a black wetsuit, skillfully maneuvers their surfboard on the crest of the wave. The camera follows the surfer's journey from the shore, moving in a diagonal trajectory that captures the surfer's daring stance and the sheer power of the wave. The lighting should be bright and natural, with the sun shining off the wave's surface, casting a dramatic glow on the surfer. The background should be a clear, unobstructed view of the vast ocean, emphasizing the isolation and grandeur of the surfing experience.",
+    "image_path": "data/sampled_200/a person riding a wave on a surfboard.jpg"
+  },
+  {
+    "filename": "a plant with water droplets on it.jpg",
+    "original_prompt": "a plant with water droplets on it",
+    "refined_prompt": "In a serene, dusty garden, a lone plant sprouts, its green leaves reaching for the sunlight. The camera, a silent observer, captures the plant's life-giving water droplets as they fall, creating a mesmerizing dance of light and shadow. The garden, a canvas of earth tones, is punctuated by the contrasting green of the plant. The camera, crouching low, follows the droplets' journey, moving from the top left to the bottom right of the frame. The lighting is soft and diffused, casting gentle shadows and highlighting the droplets' delicate transparency. This cinematic image, a blend of stillness and motion, encapsulates the beauty of life's simple moments.",
+    "image_path": "data/sampled_200/a plant with water droplets on it.jpg"
+  },
+  {
+    "filename": "a pot is sitting on top of a campfire.jpg",
+    "original_prompt": "a pot is sitting on top of a campfire",
+    "refined_prompt": "In a serene wilderness, a pot of vibrant red hue sits atop a lively campfire, casting a warm glow on the surrounding area. The pot, a symbol of culinary adventure, is placed on a tripod, which is positioned in the center of the frame. The camera should be set to follow a path that encircles the pot, capturing the fire's radiant light and the pot's changing reflections. The background should be a blur of the campfire's flames, emphasizing the pot's prominence. The image should be a beautifully composed, cinematic snapshot of an outdoor cooking scene, with the viewer's eye drawn to the pot and the flames, inviting them to imagine the delicious food being cooked in this rustic setting.",
+    "image_path": "data/sampled_200/a pot is sitting on top of a campfire.jpg"
+  },
+  {
+    "filename": "a purple and yellow abstract painting with a black background.jpg",
+    "original_prompt": "a purple and yellow abstract painting with a black background",
+    "refined_prompt": "The scene opens on a close-up of a brush, poised to paint a vibrant abstract art piece. The brush is filled with a rich blend of purple and yellow, capturing the essence of a stormy sky or a lively dance of colors. The artist's hand, holding the brush, is in the bottom left corner, ready to bring the abstract creation to life. The background is a stark black, which contrasts with the colors, making them pop even more. The camera will move in a fluid motion, following the brush strokes as they dance across the canvas, creating a sense of movement and energy. The lighting will be soft, highlighting the texture of the brush strokes and the interplay of purple and yellow.",
+    "image_path": "data/sampled_200/a purple and yellow abstract painting with a black background.jpg"
+  },
+  {
+    "filename": "a red and white tram traveling down a snowy street.jpg",
+    "original_prompt": "a red and white tram traveling down a snowy street",
+    "refined_prompt": "In a wintry cityscape, a red and white tram, numbered 4832, makes its way down a snowy street. The tram, with its lights on, cuts a path through the fresh snowfall. The camera follows the tram, capturing the dynamic motion of the vehicle and the surrounding environment. The street is lined with illuminated storefronts, their windows glowing in the soft, snow-kissed light. The sky overhead is a blanket of clouds, adding to the serene, yet chilly atmosphere. The overall scene is a harmonious blend of urban life and winter beauty, with the tram serving as the main subject in this cinematic snapshot.",
+    "image_path": "data/sampled_200/a red and white tram traveling down a snowy street.jpg"
+  },
+  {
+    "filename": "a red bus driving down a snowy street at night.jpg",
+    "original_prompt": "a red bus driving down a snowy street at night",
+    "refined_prompt": "In the image, a red bus is captured in motion, driving down a snowy city street at night. The bus, the main subject, is in the foreground, with its headlights piercing the darkness. The camera follows the bus, maintaining a close perspective to emphasize the vehicle's size and importance. The background is a cityscape of tall buildings, their windows glowing like distant stars. The snow-covered streets reflect the bus's headlights, adding a layer of texture to the scene. The scene is framed by a traffic light, further emphasizing the urban setting. The overall atmosphere is one of solitude and quiet, with the bus appearing as the only vehicle in motion amidst the stillness of the snowy city at night.",
+    "image_path": "data/sampled_200/a red bus driving down a snowy street at night.jpg"
+  },
+  {
+    "filename": "a red double decker bus driving down a street.jpg",
+    "original_prompt": "a red double decker bus driving down a street",
+    "refined_prompt": "In this cinematic scene, a vibrant red double decker bus is the central focus, driving down a bustling street in a city. The bus is captured in motion, with the camera following it from a low angle, creating a sense of speed and dynamism. The lighting is natural and bright, highlighting the bus and its surroundings. In the background, iconic landmarks such as Big Ben and the London Bridge can be seen, adding a sense of place and context to the scene. The overall composition of the image suggests a typical day in London, with the bus as the symbol of the city's vibrant life and public transportation.",
+    "image_path": "data/sampled_200/a red double decker bus driving down a street.jpg"
+  },
+  {
+    "filename": "a red panda eating bamboo in a zoo.jpg",
+    "original_prompt": "a red panda eating bamboo in a zoo",
+    "refined_prompt": "\"Create a cinematic scene featuring a red panda in a zoo, engaging in the natural behavior of eating bamboo. The panda is the main subject, with a close-up shot capturing its mouth as it bites into the bamboo. The camera should move from a side angle, following the panda's head as it turns to consume the green leaves. The lighting should emphasize the red and black fur of the panda against the lush green background. The overall atmosphere should convey a sense of calm and tranquility, showcasing the beauty and serenity of this unique animal in its natural habitat.",
+    "image_path": "data/sampled_200/a red panda eating bamboo in a zoo.jpg"
+  },
+  {
+    "filename": "a reflection of a city with buildings in the water.jpg",
+    "original_prompt": "a reflection of a city with buildings in the water",
+    "refined_prompt": "Create a scene where a lively cityscape is captured in a tranquil pond, reflecting its vibrant buildings and colorful skyline. The camera starts at a low angle, looking up towards the sky, which is a clear, brilliant blue, dotted with fluffy white clouds. The buildings, a mix of red and yellow, are reflected perfectly in the water, creating a mirror image that amplifies the city's bustling energy. The camera smoothly glides across the water's surface, maintaining a steady focus on the buildings, while the foreground blurs subtly, adding depth to the scene. The lighting is bright, with the sun shining directly on the buildings, casting long shadows and enhancing the colors of the architecture. The overall mood is serene and picturesque, as if inviting the viewer to immerse themselves in the beauty of this urban oasis.",
+    "image_path": "data/sampled_200/a reflection of a city with buildings in the water.jpg"
+  },
+  {
+    "filename": "a room filled with books and teddy bears.jpg",
+    "original_prompt": "a room filled with books and teddy bears",
+    "refined_prompt": "Create a scene where a young child, dressed in a cozy teddy bear onesie, is immersed in a world of endless possibilities. The child, the main subject, is standing amidst a room filled with bookshelves, each one a tower of knowledge and adventure. The child is in the process of organizing the books, their tiny hands reaching for a specific book with a sense of curiosity and wonder. The camera should focus on the child, capturing their actions from a low angle, emphasizing their size and the grand scale of the bookshelves. The room is dimly lit, creating a warm and inviting atmosphere, with strategically placed spotlights highlighting the books and the child. In the background, a large window allows natural light to flood in, illuminating the room and casting a soft glow on the child and the bookshelves.",
+    "image_path": "data/sampled_200/a room filled with books and teddy bears.jpg"
+  },
+  {
+    "filename": "a room with a lot of pictures on the walls.jpg",
+    "original_prompt": "a room with a lot of pictures on the walls",
+    "refined_prompt": "In this image, a sophisticated dining room with a vintage ambiance is captured. The room is characterized by dark walls adorned with a myriad of framed pictures and paintings, creating an artistic and eclectic atmosphere. The centerpiece of the room is a large arched window draped with a soft white curtain, allowing natural light to filter in and illuminate the space.\n\nThe camera's perspective is a high angle, providing a comprehensive view of the room's layout and the arrangement of the furniture. The chairs, a mix of vibrant yellow and dark gray, are strategically placed around the room, inviting guests to sit and converse. The dining tables, also in gray and yellow, are set for a meal, ready to host a gathering.",
+    "image_path": "data/sampled_200/a room with a lot of pictures on the walls.jpg"
+  },
+  {
+    "filename": "a sailboat is drifting on the ocean.jpg",
+    "original_prompt": "a sailboat is drifting on the ocean",
+    "refined_prompt": "A lone sailboat is gently drifting on the vast expanse of the deep blue ocean under a clear sky with a few scattered clouds. The sailboat, a small but sturdy vessel, is powered by a single white sail billowing in the wind. The camera captures the boat from a distance, allowing for a sense of solitude and tranquility. As the boat moves through the water, the camera follows it, creating a sense of motion and direction. The lighting is soft and natural, highlighting the boat's reflection on the water's surface and the intricate details of the sail. The background is a beautiful blend of the ocean's vastness and the sky's serene beauty, creating a sense of peace and solitude.",
+    "image_path": "data/sampled_200/a sailboat is drifting on the ocean.jpg"
+  },
+  {
+    "filename": "a sandy beach with a wooden pier in the water.jpg",
+    "original_prompt": "a sandy beach with a wooden pier in the water",
+    "refined_prompt": "Create a captivating scene of a serene beach landscape. The main subject is a wooden pier extending into the water, its structure subtly blending with the natural surroundings. The pier is flanked by tall, golden grass that sways gently in the sea breeze. The camera should be positioned high above the scene, providing a sweeping view of the pier and the beach. As the camera pans down, the focus should shift to the pier itself, capturing its length and the calm water it guides through. The sun casts a warm glow on the scene, illuminating the pier and the sandy beach, creating a peaceful and inviting atmosphere.",
+    "image_path": "data/sampled_200/a sandy beach with a wooden pier in the water.jpg"
+  },
+  {
+    "filename": "a sandy beach with palm trees on the shore.jpg",
+    "original_prompt": "a sandy beach with palm trees on the shore",
+    "refined_prompt": "Create a cinematic scene of a tranquil beach under a sunny sky. The main subject is a person, standing on the left side of the sandy beach, facing towards the right. They are dressed in casual beach attire and appear to be contemplating the vast ocean. The camera should start with a wide shot, panning from the person to the horizon, capturing the vastness of the ocean and the sky. As the camera moves closer, it should focus on the person's face, showing their relaxed expression. The sunlight should be bright but not harsh, casting soft shadows and highlighting the person's silhouette against the light sand. The palm trees in the background should sway gently, adding a sense of movement to the scene. The overall atmosphere should be serene and peaceful, conveying a sense of relaxation and tranquility.",
+    "image_path": "data/sampled_200/a sandy beach with palm trees on the shore.jpg"
+  },
+  {
+    "filename": "a sea anemone on a coral reef.jpg",
+    "original_prompt": "a sea anemone on a coral reef",
+    "refined_prompt": "The image showcases a vibrant, green sea anemone with a striking red mouth, perched atop a coral reef. The anemone, with its intricate, striped body and long tentacles, is the main focus of the image. The camera should start by capturing the anemone from a distance, gradually approaching to reveal more details of its texture and structure. As the camera gets closer, the anemone's tentacles should be seen in motion, creating a sense of dynamic movement. The background should be filled with the rich biodiversity of the coral reef, featuring various colors of coral and other marine creatures. The lighting should be bright, casting a warm glow on the anemone and highlighting its colors, while also illuminating the surrounding coral and water. The overall scene should evoke a sense of exploration and discovery, capturing the beauty and complexity of marine life.",
+    "image_path": "data/sampled_200/a sea anemone on a coral reef.jpg"
+  },
+  {
+    "filename": "a sea turtle swimming in the ocean under the water.jpg",
+    "original_prompt": "a sea turtle swimming in the ocean under the water",
+    "refined_prompt": "In the depths of the vibrant ocean, a sea turtle, adorned with a pattern of brown and white, gracefully swims. The turtle, the sole focus of this image, is captured in a dynamic swimming motion, its body angled towards the right, as if it's heading towards the horizon. The camera, positioned below the water's surface, follows the turtle's movement, creating a sense of immersion. The lighting is soft and diffused, mimicking the natural light filtering through the water, enhancing the underwater ambiance. The background is a lively tableau of colorful coral formations, adding a sense of depth and complexity to the scene. This image encapsulates a moment of serene beauty in the underwater world.",
+    "image_path": "data/sampled_200/a sea turtle swimming in the ocean under the water.jpg"
+  },
+  {
+    "filename": "a small bird sits on a moss covered branch.jpg",
+    "original_prompt": "a small bird sits on a moss covered branch",
+    "refined_prompt": "In the image, a small, vibrant bird with a mix of orange and brown feathers is perched on a branch covered in moss. The bird is facing the camera, its head tilted slightly to the side, as if curiously observing its surroundings. The camera should be positioned at a slight angle, capturing the bird in profile. The background is filled with lush green foliage, providing a natural, serene environment. The lighting should be soft and diffused, highlighting the bird's colors and the textures of the moss. The overall scene should be shot with a shallow depth of field to keep the bird in sharp focus while slightly blurring the background, creating a cinematic feel.",
+    "image_path": "data/sampled_200/a small bird sits on a moss covered branch.jpg"
+  },
+  {
+    "filename": "a snake sitting on the ground next to a bowl.jpg",
+    "original_prompt": "a snake sitting on the ground next to a bowl",
+    "refined_prompt": "A snake, its scales a mix of black and white, coils gracefully on a dirt ground next to a small, round clay bowl. The snake, the main subject, is facing towards the right side of the frame, its body partially hidden by the bowl. The camera, positioned in the foreground on the left side, follows the snake's movements, capturing its actions in a close-up shot. The lighting is natural and diffused, casting soft shadows and highlighting the snake's texture. The background, though blurred, hints at a rural setting with wooden structures in the distance. The overall scene is one of serene interaction between the snake and its surroundings.",
+    "image_path": "data/sampled_200/a snake sitting on the ground next to a bowl.jpg"
+  },
+  {
+    "filename": "a snow covered street.jpg",
+    "original_prompt": "a snow covered street",
+    "refined_prompt": "In a quaint, quiet city street, blanketed in a light dusting of snow, a lone, black car stands out amidst the parked vehicles. The car is parked in front of a charming two-story brick building, its dark color contrasting with the lighter hues of the snow and brick. The car's door is slightly ajar, revealing a glimpse of the interior. The camera pans along the row of parked cars, capturing the serene stillness of the scene. The snow-covered ground glistens under the soft, diffused light of the overcast sky. As the camera reaches the end of the street, the car in the foreground comes into focus, while the distant brick building fades into the background, creating a sense of depth and perspective.",
+    "image_path": "data/sampled_200/a snow covered street.jpg"
+  },
+  {
+    "filename": "a snow man holding a lantern in the snow.jpg",
+    "original_prompt": "a snow man holding a lantern in the snow",
+    "refined_prompt": "In a serene, snowy landscape, the main focus is a delightful snowman standing tall, his face lit up with a warm smile. He holds a lantern in his left hand, casting a gentle glow that illuminates his features. The snowman is adorned with a vibrant red hat and a cozy white coat, giving him a friendly and welcoming appearance. The camera is positioned slightly above and to the left of the snowman, following his gaze into the distance, creating a sense of depth and perspective. The background is a soft blur of falling snowflakes, enhancing the wintry atmosphere. The scene is bathed in a warm, inviting light, emphasizing the snowman's welcoming presence amidst the snowy landscape.",
+    "image_path": "data/sampled_200/a snow man holding a lantern in the snow.jpg"
+  },
+  {
+    "filename": "a snowman wearing a santa hat and scarf.jpg",
+    "original_prompt": "a snowman wearing a santa hat and scarf",
+    "refined_prompt": "In this captivating scene, a joyful snowman, adorned in a vibrant red Santa hat and a cozy green scarf, stands tall against the backdrop of a snow-covered landscape. The camera captures the snowman from a low angle, emphasizing its height and the festive attire. The lighting is soft and diffused, casting a warm glow on the snowman, enhancing its cheerful expression. As the camera pans upwards, it reveals a serene winter wonderland, with the snowman standing as the main focus amidst the white snowy expanse.",
+    "image_path": "data/sampled_200/a snowman wearing a santa hat and scarf.jpg"
+  },
+  {
+    "filename": "a space shuttle taking off into the sky.jpg",
+    "original_prompt": "a space shuttle taking off into the sky",
+    "refined_prompt": "In this cinematic image, the main focus is a space shuttle launching into the sky. The shuttle, with its sleek design and vibrant orange flame, is captured in the midst of its powerful ascent. The camera is positioned at a low angle, following the shuttle's trajectory as it rises from the launchpad. The lighting is dramatic, with the shuttle casting a long shadow and the flame illuminating the surrounding area. The background features a clear blue sky, punctuated by the subtle presence of clouds, providing a stark contrast to the industrial foreground of the launchpad. The overall composition of the image captures the awe-inspiring power and precision of space exploration.",
+    "image_path": "data/sampled_200/a space shuttle taking off into the sky.jpg"
+  },
+  {
+    "filename": "a stack of pancakes covered in syrup and fruit.jpg",
+    "original_prompt": "a stack of pancakes covered in syrup and fruit",
+    "refined_prompt": "In the image, a delectable stack of pancakes is the main focus, presented on a pristine white plate. The pancakes are generously covered in a rich, dark syrup, and garnished with fresh, juicy strawberries and a sprig of mint. The plate is positioned on a wooden table, adding a rustic charm to the scene. The camera zooms in on the pancakes, highlighting the textures and colors. The lighting is soft and warm, enhancing the inviting look of the dish. In the background, a blurred scene of a cozy kitchen setting can be seen, adding to the overall ambiance of a home-cooked meal.",
+    "image_path": "data/sampled_200/a stack of pancakes covered in syrup and fruit.jpg"
+  },
+  {
+    "filename": "a statue of a lion is sitting on a pedestal.jpg",
+    "original_prompt": "a statue of a lion is sitting on a pedestal",
+    "refined_prompt": "The image captures a scene of a majestic lion statue, crafted in a realistic style, seated on a pedestal. The lion is positioned in the center of the frame, its gaze directed towards the left, as if it's watching something off-screen. The statue is illuminated from the front, casting a dramatic shadow on the pedestal, emphasizing its size and presence. The pedestal is set against a backdrop of a stone wall, which adds to the ancient and timeless atmosphere. The camera movement should be slow and steady, with a close-up shot of the lion's face and chest, and then a pan to the side to include the entire statue. The lighting should be soft and diffused, creating a serene and peaceful mood.",
+    "image_path": "data/sampled_200/a statue of a lion is sitting on a pedestal.jpg"
+  },
+  {
+    "filename": "a steam train traveling through the woods.jpg",
+    "original_prompt": "a steam train traveling through the woods",
+    "refined_prompt": "A black steam locomotive, bearing the number 9727-2, is captured in motion, traveling from left to right through a dense forest. The train's vibrant red front car stands out against the darker green of the surrounding trees. The camera is positioned on the right side of the track, following the train's path as it moves away from the viewer. The lighting is natural and diffused, casting soft shadows and highlighting the texture of the locomotive and the lush foliage. The steam from the train is visible, adding a dynamic element to the scene.",
+    "image_path": "data/sampled_200/a steam train traveling through the woods.jpg"
+  },
+  {
+    "filename": "a table and chairs in a room with sunlight coming through the window.jpg",
+    "original_prompt": "a table and chairs in a room with sunlight coming through the window",
+    "refined_prompt": "Create a cinematic scene with a warm and inviting atmosphere. The main subject is a wooden table and four matching chairs, placed in a cozy room with sunlight streaming through a window. The table and chairs are arranged in a welcoming setup, with the table slightly tilted towards the viewer. A single plant in a terracotta pot is placed on the window sill, adding a touch of greenery to the scene. The camera should move around the table and chairs, capturing the light reflecting off the wooden surface and the soft shadows cast by the chairs. The lighting should highlight the textures and colors of the wood and the chairs, while also creating a soft glow around the edges of the frame. The background should remain simple and uncluttered, allowing the viewer to focus on the table and chairs.",
+    "image_path": "data/sampled_200/a table and chairs in a room with sunlight coming through the window.jpg"
+  },
+  {
+    "filename": "a teddy bear sitting on a moss covered ground.jpg",
+    "original_prompt": "a teddy bear sitting on a moss covered ground",
+    "refined_prompt": "In the image, a teddy bear with a leafy crown sits peacefully on a moss-covered ground, surrounded by fallen leaves. The camera is positioned at a low angle, looking up at the bear, emphasizing its size and the natural beauty of its environment. The lighting is soft, with a gentle gradient of warm to cool tones, creating a serene and inviting atmosphere. In the background, the blurred outlines of trees and foliage provide a sense of depth and a connection to the natural world. The teddy bear's actions are minimal - it appears to be sitting calmly, perhaps observing the world around it. The overall composition of the image suggests a story of solitude and harmony with nature.",
+    "image_path": "data/sampled_200/a teddy bear sitting on a moss covered ground.jpg"
+  },
+  {
+    "filename": "a tiger walking on a dirt path in the woods.jpg",
+    "original_prompt": "a tiger walking on a dirt path in the woods",
+    "refined_prompt": "The image captures a majestic tiger striding confidently along a dirt path in a lush, verdant forest. The tiger's fur is a striking mix of dark and light stripes, with its mouth slightly open as if it's in the midst of a roar or purr. The camera should be positioned behind the tiger, following its path as it moves deeper into the forest. The lighting should be natural, with the sun filtering through the dense canopy overhead casting long shadows and highlighting the tiger's muscular physique. The background should be filled with towering trees and foliage, with the path winding through the undergrowth, creating a sense of depth and immersion in the tiger's natural habitat.",
+    "image_path": "data/sampled_200/a tiger walking on a dirt path in the woods.jpg"
+  },
+  {
+    "filename": "a tiger walking through a wooded area.jpg",
+    "original_prompt": "a tiger walking through a wooded area",
+    "refined_prompt": "In the image, a majestic tiger is captured in mid-stride, traversing a verdant forest. The camera follows the tiger's powerful movement, from its confident stride through the tall grass and undergrowth. The tiger's eyes are focused, conveying its awareness of its surroundings. The background is a lush tapestry of trees and foliage, creating a sense of depth and vastness. The lighting is natural and diffused, highlighting the tiger's muscular form and the vibrant greenery of the forest. The overall composition of the image is dynamic and engaging, showcasing the beauty and grace of the tiger in its natural habitat.",
+    "image_path": "data/sampled_200/a tiger walking through a wooded area.jpg"
+  },
+  {
+    "filename": "a toad is sitting on top of some moss.jpg",
+    "original_prompt": "a toad is sitting on top of some moss",
+    "refined_prompt": "The image showcases a toad sitting atop a bed of moss, exuding an air of tranquility and natural beauty. The toad, with its dark brown hue and striking red eyes, is the central figure in this composition. The camera is positioned low and slightly to the left, emphasizing the toad's presence and drawing the viewer's attention to its vibrant eyes. The lighting is soft and diffused, casting gentle shadows and highlighting the texture of the moss and the toad's skin. The background is a blurred greenery, suggesting a dense forest or a garden, adding depth and context to the scene. The overall atmosphere is one of serene coexistence with nature.",
+    "image_path": "data/sampled_200/a toad is sitting on top of some moss.jpg"
+  },
+  {
+    "filename": "a train traveling down tracks through the woods with leaves on the ground.jpg",
+    "original_prompt": "a train traveling down tracks through the woods with leaves on the ground",
+    "refined_prompt": "In a serene autumnal landscape, a train is captured in motion, traveling along a curving set of tracks that cut through the heart of a woodland. The train, a vibrant mix of red and green, is moving away from the viewer, creating a sense of depth and perspective. The camera follows the train's journey, with a smooth pan that begins with the train on the left side of the frame and ends with it on the right, giving a sense of movement. The background is a symphony of fall colors, with trees adorned in hues of orange and yellow. The sky above is a clear, crisp blue, with soft, natural lighting that bathes the scene in warm, inviting tones. This image is a beautiful representation of a peaceful autumn day, with the train journeying through the changing seasons.",
+    "image_path": "data/sampled_200/a train traveling down tracks through the woods with leaves on the ground.jpg"
+  },
+  {
+    "filename": "a very large waterfall in the middle of the day.jpg",
+    "original_prompt": "a very large waterfall in the middle of the day",
+    "refined_prompt": "In the image, a majestic waterfall cascades down a cliff face, its waters creating a hazy mist that shrouds the lower portions of the falls. The scene is set in the middle of the day, with the sun positioned in the upper right corner, casting a warm glow on the waterfall and the surrounding area. The camera is positioned in the lower left corner, looking up towards the waterfall, with a slow, smooth zoom that captures the height and power of the falls. The mist from the waterfall creates a dreamy, ethereal atmosphere, adding a sense of mystery and awe to the scene.",
+    "image_path": "data/sampled_200/a very large waterfall in the middle of the day.jpg"
+  },
+  {
+    "filename": "a view of a star trail in the night sky.jpg",
+    "original_prompt": "a view of a star trail in the night sky",
+    "refined_prompt": "Create a captivating night-sky scene with a focus on the dynamic motion of a star trail. The main subject is a camera, which follows a slow, graceful arc across the sky, capturing the mesmerizing movement of stars. The camera's path should mimic the flight of a bird soaring through the celestial expanse. The lighting should be dim, with the stars appearing as white dots of light, their colors varying from blue to yellow, creating a sense of depth and distance. The background should be a deep, star-filled night sky, punctuated by the occasional streak of a shooting star. The overall atmosphere should evoke a sense of wonder and the vastness of the universe.",
+    "image_path": "data/sampled_200/a view of a star trail in the night sky.jpg"
+  },
+  {
+    "filename": "a view of a waterfall from a distance.jpg",
+    "original_prompt": "a view of a waterfall from a distance",
+    "refined_prompt": "The image captures a breathtaking view of a waterfall from a distance. The main subject is a majestic cascade of water, its powerful rush creating a misty veil that shrouds the lower part of the waterfall. The camera, positioned at a high angle, slowly zooms in on the waterfall, tracking its path from the foreground to the background. The lens flare adds a cinematic touch to the scene, enhancing the overall visual impact. The lighting is natural and dynamic, with the sunlight creating a dappled effect on the waterfall, highlighting the different layers and intensifying the misty effect. The background is a dense forest, with trees and foliage filling the space, providing a sense of depth and immersion. The overall composition and visual elements work together to create a captivating, high-definition video experience.",
+    "image_path": "data/sampled_200/a view of a waterfall from a distance.jpg"
+  },
+  {
+    "filename": "a visually captivating abstract video, rich in color, set against a dramatic black background.jpg",
+    "original_prompt": "a visually captivating abstract video, rich in color, set against a dramatic black background",
+    "refined_prompt": "Create a visually captivating abstract video with rich, vibrant colors set against a dramatic black background. The main subject is a large, organic blob with an intricate pattern of black holes and swirls, reminiscent of a galaxy or nebula. The blob is in constant motion, flowing and shifting, with its colors deepening and expanding. The camera should be a dynamic, close-up shot, capturing the blob's texture and movement. The lighting should be dramatic and moody, with the blob's colors bleeding into the darkness, creating a sense of depth and mystery. The background should be black with subtle hints of the blob's colors seeping through, adding to the sense of otherworldliness.",
+    "image_path": "data/sampled_200/a visually captivating abstract video, rich in color, set against a dramatic black background.jpg"
+  },
+  {
+    "filename": "a warthog is walking in the grass.jpg",
+    "original_prompt": "a warthog is walking in the grass",
+    "refined_prompt": "In the image, a single warthog is captured in motion, walking away from the camera through a verdant field. The warthog, with its distinctive large tusks and a brown coat, is the main subject of the image. The camera follows the warthog's path, moving from a close-up on the animal's face to a wide shot of the surroundings. The lighting is natural and soft, casting gentle shadows on the grass and highlighting the warthog's texture. The background consists of a few trees standing tall in the distance, providing a sense of depth and openness to the scene. The overall atmosphere is serene and peaceful, with the warthog appearing as the only sign of life in this tranquil environment.",
+    "image_path": "data/sampled_200/a warthog is walking in the grass.jpg"
+  },
+  {
+    "filename": "a waterfall is shown in the middle of a lush green hillside.jpg",
+    "original_prompt": "a waterfall is shown in the middle of a lush green hillside",
+    "refined_prompt": "The image portrays a breathtaking scene of a majestic waterfall cascading down a lush green hillside. The camera should be positioned at a low angle, capturing the waterfall's full height and the surrounding verdant landscape. The sunlight should be shining brightly, casting a warm glow on the waterfall and highlighting the vibrant green of the hillside. The camera should move from the base of the waterfall, following its path down the hillside, and then up towards the top, showcasing the waterfall's grandeur. The lighting should gradually change from the warm sunlight at the bottom to the cooler shadows as the camera ascends the hillside, creating a sense of depth and perspective. The overall atmosphere should be serene and awe-inspiring, conveying the raw beauty and power of nature.",
+    "image_path": "data/sampled_200/a waterfall is shown in the middle of a lush green hillside.jpg"
+  },
+  {
+    "filename": "a white and blue airplane flying in the sky.jpg",
+    "original_prompt": "a white and blue airplane flying in the sky",
+    "refined_prompt": "In the image, a white and blue airplane is captured in mid-flight against a backdrop of a clear blue sky. The airplane, a modern commercial jet, is positioned in the center of the frame, ascending slightly with its nose pointing upwards. The camera follows the airplane, tracking its path from left to right across the image, providing a sense of motion and direction. The sunlight illuminates the airplane, casting a warm glow on its blue and white exterior, while also highlighting the clouds in the sky. Below, a lush green landscape stretches out, featuring white houses and buildings nestled amidst the foliage, adding a touch of serenity to the scene. The overall composition conveys a sense of tranquility and the marvel of human engineering.",
+    "image_path": "data/sampled_200/a white and blue airplane flying in the sky.jpg"
+  },
+  {
+    "filename": "a white car is swiftly driving on a dirt road near a bush, kicking up dust.jpg",
+    "original_prompt": "a white car is swiftly driving on a dirt road near a bush, kicking up dust",
+    "refined_prompt": "In the image, a sleek white BMW car is captured in mid-motion, swiftly driving on a dirt road with a dusty backdrop. The camera follows the car from a low angle, emphasizing the vehicle's speed and agility. The sun casts a warm, golden glow on the scene, illuminating the car and creating a sense of dynamic energy. As the car accelerates, the dust kicked up by its wheels adds a sense of movement and speed. The background features a lush, green bush, contrasting with the dirt road and emphasizing the car's path. The overall composition of the image conveys a sense of adventure and freedom, perfectly capturing the essence of a thrilling car drive.",
+    "image_path": "data/sampled_200/a white car is swiftly driving on a dirt road near a bush, kicking up dust.jpg"
+  },
+  {
+    "filename": "a woman carrying a bundle of plants over their head.jpg",
+    "original_prompt": "a woman carrying a bundle of plants over their head",
+    "refined_prompt": "In the heart of a vibrant jungle, a woman in a traditional conical hat embarks on a journey. She strides confidently through the lush greenery, her path mirrored in the still water around her. Carrying a bundle of plants balanced on her head, she leads the viewer through the verdant landscape. The camera follows her, capturing the rhythmic sway of her steps and the play of light and shadow on her face and the plants. The scene is a symphony of nature, with the woman at its center, guiding the viewer through the beauty of the jungle.",
+    "image_path": "data/sampled_200/a woman carrying a bundle of plants over their head.jpg"
+  },
+  {
+    "filename": "a woman in a colorful shirt is cooking food.jpg",
+    "original_prompt": "a woman in a colorful shirt is cooking food",
+    "refined_prompt": "In this image, we see a woman in a vibrant, colorful shirt, who is engrossed in the art of cooking. She is seated at a rustic wooden table, with a traditional clay pot in front of her. The table is adorned with a variety of ingredients, suggesting a rich and flavorful meal is being prepared. The woman is using a wooden spoon, gently stirring the contents of the pot, which is placed on a fire, indicating a traditional cooking method. The scene is illuminated by the warm glow of the fire, casting an inviting ambiance. The background reveals a stone wall, adding to the rustic charm of the setting. The camera should focus on the woman's actions, capturing the intricate details of her cooking process and the inviting aroma of the food.",
+    "image_path": "data/sampled_200/a woman in a colorful shirt is cooking food.jpg"
+  },
+  {
+    "filename": "a woman in a kimono holding an umbrella.jpg",
+    "original_prompt": "a woman in a kimono holding an umbrella",
+    "refined_prompt": "In this image, a young woman in a traditional Japanese kimono is seen kneeling down next to a small stream. She holds an open, vibrant purple umbrella that provides a pop of color against the natural backdrop. The camera is positioned to capture the woman from a low angle, emphasizing her attire and the tranquil scene around her. The lighting is soft and warm, highlighting the details of her kimono and the misty atmosphere of the forest. The background features a lush green forest with trees and rocks, adding depth and a sense of serenity to the image.",
+    "image_path": "data/sampled_200/a woman in a kimono holding an umbrella.jpg"
+  },
+  {
+    "filename": "a woman in a white dress jumping in the air in a field of pink flowers.jpg",
+    "original_prompt": "a woman in a white dress jumping in the air in a field of pink flowers",
+    "refined_prompt": "The scene is set in a vast, open field blanketed in soft pink flowers. A woman, dressed in a pristine white dress, is captured mid-jump, her body suspended in a dynamic pose. The camera follows her trajectory, panning from her feet to her arms and then to her head, creating a sense of motion and freedom. The sun casts a warm, diffused light on the scene, enhancing the pastel colors of the flowers and the woman's dress. The background is a blurred expanse of the field, emphasizing the sense of space and openness.",
+    "image_path": "data/sampled_200/a woman in a white dress jumping in the air in a field of pink flowers.jpg"
+  },
+  {
+    "filename": "a woman is making bread in an oven.jpg",
+    "original_prompt": "a woman is making bread in an oven",
+    "refined_prompt": "In this cinematic prompt, a woman is captured in the act of baking bread in an oven. She is standing at the center of the image, her focus intent on the bread. Her hands are busy with the dough, shaping it into a round loaf. The oven, filled with the warm glow of the bread, is positioned to her right, with the light casting a golden hue on the bread. The camera is set to a low angle, looking up at the woman, emphasizing her central role in the scene. The background is a simple, rustic setting with stone walls and a stone floor, adding to the authenticity of the bread-making process. The image captures the essence of the craft, the woman's dedication, and the art of bread making.",
+    "image_path": "data/sampled_200/a woman is making bread in an oven.jpg"
+  },
+  {
+    "filename": "a woman walking down a sidewalk with a bag.jpg",
+    "original_prompt": "a woman walking down a sidewalk with a bag",
+    "refined_prompt": "In the image, a woman is captured in a moment of quiet contemplation while walking down a sidewalk. She carries a large black shoulder bag, her pace is slow and deliberate, suggesting she is lost in thought or perhaps returning from a long day. The camera follows her from a distance, keeping her in the frame while moving forward. The sidewalk she walks on is lined with trees, their leaves rustling softly in the breeze, providing a serene backdrop to her solitary journey. The lighting is soft and diffused, casting gentle shadows and enhancing the overall mood of the scene. The composition of the shot, the woman's actions, and the ambient setting all contribute to a sense of tranquility and introspection.",
+    "image_path": "data/sampled_200/a woman walking down a sidewalk with a bag.jpg"
+  },
+  {
+    "filename": "a woman wearing a hijab reading a book on the beach.jpg",
+    "original_prompt": "a woman wearing a hijab reading a book on the beach",
+    "refined_prompt": "In this cinematic scene, a woman in a hijab is the central figure, seated on a blanket on a sandy beach. She is deeply engrossed in reading a large, golden-colored book, which she holds with both hands. The sun is setting, casting a warm, golden glow over the scene, creating a serene atmosphere. The camera should capture her from a slightly elevated angle, moving in close for a detailed shot of her face and the book. The background should be a blur of the beach and ocean, emphasizing her peaceful reading moment.",
+    "image_path": "data/sampled_200/a woman wearing a hijab reading a book on the beach.jpg"
+  },
+  {
+    "filename": "a woman wearing a shawl in front of a mountain.jpg",
+    "original_prompt": "a woman wearing a shawl in front of a mountain",
+    "refined_prompt": "In the image, a young woman is standing in a verdant, hilly landscape, surrounded by lush greenery and majestic mountains. She is dressed in a vibrant red shawl, which she holds up with both hands, as if shielding herself from the sun or drawing attention to herself. Her gaze is directed towards the camera, creating a sense of connection with the viewer. The camera should be positioned at a slight angle from the subject, following her movements and capturing the dynamic interaction between her and her surroundings. The lighting should be natural and soft, highlighting the woman's features and the colors of her shawl against the greenery and mountains in the background. The overall scene is one of tranquility and connection with nature, with a focus on the woman's expression and the intricate details of her clothing.",
+    "image_path": "data/sampled_200/a woman wearing a shawl in front of a mountain.jpg"
+  },
+  {
+    "filename": "a woman with afro hair is smiling while wearing earphones.jpg",
+    "original_prompt": "a woman with afro hair is smiling while wearing earphones",
+    "refined_prompt": "A young woman with vibrant afro hair is the central figure in this image. She is captured in a moment of joy, her smile radiating positivity as she walks down a city street. She is wearing white earphones, suggesting she might be listening to music or an audiobook. The camera is positioned slightly behind and to the right of her, creating a dynamic sense of movement as she strolls past a blurred backdrop of urban architecture. The lighting is soft, indicating a sunny day, with the sunlight filtering through the buildings, casting a warm glow on her face. The overall scene is a blend of urban life and personal expression, encapsulating the essence of modern city living.",
+    "image_path": "data/sampled_200/a woman with afro hair is smiling while wearing earphones.jpg"
+  },
+  {
+    "filename": "a woman with long black hair is posing for a picture.jpg",
+    "original_prompt": "a woman with long black hair is posing for a picture",
+    "refined_prompt": "In the image, a woman with long black hair is captured in a moment of quiet contemplation. She stands in a serene setting, her back to the camera, her gaze directed off to the side. Her attire is casual yet elegant, with a brown top and a beige scarf draped around her shoulders. The background is a blur of a brick wall, suggesting a rustic or urban setting. The lighting is soft and natural, highlighting the woman's features and the texture of her hair. The camera pans away from her, following her line of sight, creating a sense of depth and perspective.",
+    "image_path": "data/sampled_200/a woman with long black hair is posing for a picture.jpg"
+  },
+  {
+    "filename": "a yellow and white jellyfish is floating in the ocean.jpg",
+    "original_prompt": "a yellow and white jellyfish is floating in the ocean",
+    "refined_prompt": "In this captivating underwater scene, a large, vibrant yellow and white jellyfish is the star of the show. The jellyfish, with its delicate tendrils trailing behind, is gracefully drifting through the ocean's depths. The camera, positioned at a slight angle, follows the jellyfish, capturing its graceful movements and the mesmerizing patterns on its body. The background is a deep blue, creating a stark contrast with the jellyfish's colors, and is filled with other smaller jellyfish, adding to the sense of a bustling underwater ecosystem. The lighting is soft and diffused, emulating the natural light found in deep ocean waters, enhancing the overall serene and ethereal atmosphere of the scene.",
+    "image_path": "data/sampled_200/a yellow and white jellyfish is floating in the ocean.jpg"
+  },
+  {
+    "filename": "a yellow toy car parked on a rock near the water.jpg",
+    "original_prompt": "a yellow toy car parked on a rock near the water",
+    "refined_prompt": "In the image, a vibrant yellow toy car, reminiscent of a classic Volkswagen Beetle, is parked on a rock near the water. The car is positioned on the left side of the image, facing towards the right, as if ready to embark on an adventure. The rocky terrain provides a stark contrast to the smooth, glossy surface of the car. The background features a serene waterfront, with boats gently bobbing on the water and a city skyline subtly visible in the distance, adding depth and context to the scene. The camera should be set up to capture the car in a three-quarter angle shot, emphasizing its unique design and the tranquil setting. The lighting should be soft and diffused, highlighting the car's vibrant color and the textures of the rock and water.",
+    "image_path": "data/sampled_200/a yellow toy car parked on a rock near the water.jpg"
+  },
+  {
+    "filename": "a yellow water lily is floating in a pond.jpg",
+    "original_prompt": "a yellow water lily is floating in a pond",
+    "refined_prompt": "In this image, a single, vibrant yellow water lily blooms in a pond, its bright petals contrasting with the surrounding greenery. The camera, positioned low and slightly to the left, captures the lily in profile, its reflection mirrored in the water's surface. The sun casts a warm, soft glow on the lily, highlighting its delicate texture and deepening its colors. The background is a blur of greenery, with hints of blue sky peeking through the leaves, creating a serene and natural atmosphere. The camera follows the lily as it sways gently, adding a sense of movement and life to the scene.",
+    "image_path": "data/sampled_200/a yellow water lily is floating in a pond.jpg"
+  },
+  {
+    "filename": "a young boy is jumping in the mud.jpg",
+    "original_prompt": "a young boy is jumping in the mud",
+    "refined_prompt": "In this image, a young boy is the central focus, leaping energetically into a puddle of mud on a dirt road. He is captured mid-jump with a joyful expression on his face, his arms stretched out as he embraces the moment. The camera follows the boy's dynamic movement, creating a sense of motion and joy. The lighting is natural and soft, highlighting the muddy splash around him and adding to the overall atmosphere of playful abandon. In the background, the landscape is lush and green, with trees and grass providing a serene backdrop to this lively scene. The image encapsulates a moment of pure childhood delight and freedom.",
+    "image_path": "data/sampled_200/a young boy is jumping in the mud.jpg"
+  },
+  {
+    "filename": "a young boy leaning on a wooden pole.jpg",
+    "original_prompt": "a young boy leaning on a wooden pole",
+    "refined_prompt": "In the image, a young boy is captured in a moment of intense concentration, leaning against a wooden pole. The camera is positioned at a low angle, emphasizing the boy's focused expression and the texture of the pole. The lighting is soft and diffused, casting a warm glow on the boy's face and the surrounding area. The background is blurred, drawing the viewer's attention to the boy and the pole. The scene is set in an outdoor area with lush trees and a clear sky, suggesting a peaceful, natural environment.",
+    "image_path": "data/sampled_200/a young boy leaning on a wooden pole.jpg"
+  },
+  {
+    "filename": "a young boy standing in a field with horses in the background.jpg",
+    "original_prompt": "a young boy standing in a field with horses in the background",
+    "refined_prompt": "In the image, a young boy with dark hair and a sweatshirt emblazoned with the number 76 stands in a field, exuding a sense of curiosity and innocence. He is facing the camera, his gaze meeting ours, creating an intimate connection. The field, bathed in soft, natural light, is dotted with horses grazing peacefully in the background. The camera should be positioned at a low angle, looking up at the boy, to emphasize his stature and the vastness of the field. The lighting should be warm and diffused, enhancing the pastoral mood and casting soft shadows on the boy's face. The overall composition should evoke a sense of tranquility and the simple joys of childhood.",
+    "image_path": "data/sampled_200/a young boy standing in a field with horses in the background.jpg"
+  },
+  {
+    "filename": "an aerial view of a body of water and a beach.jpg",
+    "original_prompt": "an aerial view of a body of water and a beach",
+    "refined_prompt": "An aerial drone shot captures the dynamic interplay between the sandy beach and the crashing waves. The camera soars above the shoreline, following the curvature of the water's edge as it meets the land. The sun casts a warm glow on the sand, highlighting the ripples of the waves and the playful patterns of the ocean's white foam. The drone's motion is fluid, mirroring the rhythmic ebb and flow of the waves. The image is a testament to the beauty and power of nature, with the viewer's perspective offering a unique vantage point to appreciate the vastness and tranquility of the beach and ocean.",
+    "image_path": "data/sampled_200/an aerial view of a body of water and a beach.jpg"
+  },
+  {
+    "filename": "an aerial view of a busy city with a bridge in the background.jpg",
+    "original_prompt": "an aerial view of a busy city with a bridge in the background",
+    "refined_prompt": "\"An aerial drone shot captures a bustling cityscape during the golden hour. The camera glides over a crowded bridge, filled with cars and boats, as it transitions from day to night. The bridge is nestled between towering skyscrapers that stretch towards the horizon, their windows reflecting the warm, soft light. The camera's path follows the bridge, moving from the foreground towards the background, creating a sense of depth and perspective. The city's lights begin to twinkle as the sun sets, casting long shadows and adding to the cinematic atmosphere.",
+    "image_path": "data/sampled_200/an aerial view of a busy city with a bridge in the background.jpg"
+  },
+  {
+    "filename": "an aerial view of a curvy road in the middle of a forest.jpg",
+    "original_prompt": "an aerial view of a curvy road in the middle of a forest",
+    "refined_prompt": "Create a scene with a cinematic quality, featuring an aerial perspective of a winding road in the heart of a forest. The camera should follow a car in motion, traveling around a bend on the right side of the road, emphasizing the road's curvy nature. The car's headlights and taillights should be visible, casting a warm glow through the dense forest. The forest should be lush with various shades of green and brown, and the trees should have vibrant autumnal colors. The lighting should be natural, with the sun shining through the canopy of the trees, creating dappled light and shadows on the road. The overall atmosphere should be serene and slightly mysterious, capturing the viewer's attention with the combination of the moving car and the still forest.",
+    "image_path": "data/sampled_200/an aerial view of a curvy road in the middle of a forest.jpg"
+  },
+  {
+    "filename": "an aerial view of a futuristic building on a cliff overlooking a body of water.jpg",
+    "original_prompt": "an aerial view of a futuristic building on a cliff overlooking a body of water",
+    "refined_prompt": "In the image, the main subject is a futuristic building with an aerial view, perched on a cliff overlooking a serene body of water. The building's architectural design is unique, featuring an orange spiral walkway that leads up to the entrance, inviting exploration. As the camera glides over the scene, we see a few people scattered around the building, their figures small in comparison to the grand structure. The building's white dome contrasts sharply with the vibrant orange of the spiral walkway, creating a visually striking focal point. The background is a picturesque waterfront, with boats gently bobbing on the calm surface of the water, enhancing the overall tranquility of the scene. The image exudes a sense of wonder and the allure of modern architecture amidst natural beauty.",
+    "image_path": "data/sampled_200/an aerial view of a futuristic building on a cliff overlooking a body of water.jpg"
+  },
+  {
+    "filename": "an aerial view of a rocky beach in indonesia.jpg",
+    "original_prompt": "an aerial view of a rocky beach in indonesia",
+    "refined_prompt": "The image presents an awe-inspiring aerial view of a rocky beach in Indonesia, teeming with life and natural beauty. From a high vantage point, the camera captures the unique geological formations of the beach, where the sand meets the water, creating a captivating contrast. The water is a deep blue, its surface disturbed by the gentle waves that lap against the shore. The rocky outcrops are adorned with vibrant green moss, adding a touch of color to the rugged landscape. The overall atmosphere is serene and majestic, with the vast expanse of the ocean serving as the backdrop. The camera's movement should be fluid, following the curvature of the beach and the rhythm of the waves, as if the viewer is soaring above the landscape, experiencing the tranquility of this Indonesian paradise.",
+    "image_path": "data/sampled_200/an aerial view of a rocky beach in indonesia.jpg"
+  },
+  {
+    "filename": "an aerial view of a snowy road in a forest.jpg",
+    "original_prompt": "an aerial view of a snowy road in a forest",
+    "refined_prompt": "Title: \"Frozen Pathways: An Aerial View of a Snowy Road in the Forest\"\n\nDescription:\nIn the given image, we see a serene winter scene of a snow-covered road, nestled amidst a dense forest. The road, acting as the main subject, cuts through the heart of the image, leading the viewer's eye towards the horizon. The sky, a canvas of overcast clouds, blankets the scene in a soft, diffused light. \n\nAs we descend from an aerial perspective, we find ourselves at the center of the road. The forest, a mix of coniferous and deciduous trees, stands tall on either side. The snow, though white, exhibits a variety of shades and textures, indicating different depths and layers.",
+    "image_path": "data/sampled_200/an aerial view of a snowy road in a forest.jpg"
+  },
+  {
+    "filename": "an airplane is flying through the sky at sunset.jpg",
+    "original_prompt": "an airplane is flying through the sky at sunset",
+    "refined_prompt": "As the sun dips below the horizon, casting a warm glow across the sky, a Qatar airplane embarks on its journey, ascending into the twilight. The airplane, painted in hues of white and blue, is captured mid-flight, moving from the foreground into the distance, emphasizing its upward trajectory. The camera follows the plane from a slightly elevated angle, creating a sense of motion and progress. The sunset serves as the backdrop, its soft, warm colors contrasting with the sleek, modern lines of the airplane.",
+    "image_path": "data/sampled_200/an airplane is flying through the sky at sunset.jpg"
+  },
+  {
+    "filename": "an alligator is covered in green plants in the water.jpg",
+    "original_prompt": "an alligator is covered in green plants in the water",
+    "refined_prompt": "In the image, a large alligator is the central focus, its body partially submerged in a water body. The alligator's skin is covered in vibrant green plants, giving it a lush and serene appearance. The camera should capture a close-up shot of the alligator's face, emphasizing the contrast between the greenery and the reptile's natural skin color. The alligator's eyes should be visible, conveying a sense of calm and tranquility. The background should be a blurred water body, with hints of greenery and foliage adding to the natural ambiance. The overall scene should evoke a sense of peace and harmony with nature.",
+    "image_path": "data/sampled_200/an alligator is covered in green plants in the water.jpg"
+  },
+  {
+    "filename": "an eagle is flying over a mountain with trees in the background.jpg",
+    "original_prompt": "an eagle is flying over a mountain with trees in the background",
+    "refined_prompt": "In the image, a majestic eagle, its brown wings spread wide, is captured in mid-flight over a dense forest of trees. The eagle, the focal point of the image, is soaring from the left side to the right, with its gaze directed towards the right, as if it's scanning its surroundings for prey. The camera should be positioned at a low angle, following the eagle's flight path, emphasizing the bird's powerful wings and the vastness of the forest below. The scene should be bathed in natural light, highlighting the eagle's feathers and the lush greenery of the trees. The overall composition creates a sense of freedom and awe, capturing the raw beauty of nature.",
+    "image_path": "data/sampled_200/an eagle is flying over a mountain with trees in the background.jpg"
+  },
+  {
+    "filename": "an elephant walking through a forest.jpg",
+    "original_prompt": "an elephant walking through a forest",
+    "refined_prompt": "A majestic elephant strides confidently through a mystical forest, its trunk extended forward as if reaching for something unseen. The elephant's skin glistens with moisture, reflecting the soft, diffused light filtering through the canopy overhead. The camera follows the elephant, moving slightly ahead and to the side, capturing the graceful sway of its massive form against the dense backdrop of towering trees and foliage. The lighting is a blend of natural sunlight filtering through the canopy and the warm glow of what appears to be a rising or setting sun, casting long shadows and highlighting the textures of the elephant's skin and the surrounding foliage. The overall atmosphere is one of tranquility and awe, as if inviting the viewer to step into this enchanting world and share in the majesty of the elephant's journey.",
+    "image_path": "data/sampled_200/an elephant walking through a forest.jpg"
+  },
+  {
+    "filename": "an indian police officer talking to an old woman.jpg",
+    "original_prompt": "an indian police officer talking to an old woman",
+    "refined_prompt": "In the image, a young Indian police officer in a beige uniform stands on the left side, extending a friendly hand towards an elderly woman in a pink scarf and a traditional hat. The officer's face is lit up with a warm smile, reflecting a positive interaction. The woman, standing on the right, smiles back, seemingly appreciative of the officer's approach. The scene is set on a rainy day, as indicated by the wet ground and the soft, diffused lighting. The background features a tree and a car, adding depth to the scene. The camera should move from a close-up of the officer's face and the woman's face to a wider shot capturing the entire interaction, highlighting the connection between the two characters amidst the urban setting.",
+    "image_path": "data/sampled_200/an indian police officer talking to an old woman.jpg"
+  },
+  {
+    "filename": "an old man standing in the middle of a field holding a bunch of plants.jpg",
+    "original_prompt": "an old man standing in the middle of a field holding a bunch of plants",
+    "refined_prompt": "The scene is set in a vibrant green field, where an elderly man stands as the central figure. He is dressed in a white robe and holds a bunch of plants in his hands, examining them with a gentle smile on his face. The camera moves from a low angle, looking up at the man, emphasizing his tall stature and the plants he holds. The sun casts a warm, soft light on the scene, highlighting the greenery and the man's white robe. The background features a rustic stone wall and buildings, adding to the rural charm of the image. The overall atmosphere is serene and peaceful, capturing a moment of tranquility in nature.",
+    "image_path": "data/sampled_200/an old man standing in the middle of a field holding a bunch of plants.jpg"
+  },
+  {
+    "filename": "an old rusty car sits in the middle of a field.jpg",
+    "original_prompt": "an old rusty car sits in the middle of a field",
+    "refined_prompt": "In the heart of a vast, barren field, a rusted old car sits as the protagonist of this cinematic scene. The car, with its peeling paint and chipped metal, is a testament to time, its once vibrant colors now faded to a weathered orange-brown. The camera, positioned low to the ground, follows the car's path, moving towards it as if drawn by an unseen force. The car's journey is a solitary one, the empty field stretching out to meet the horizon in the distance. The lighting is natural and diffused, casting long shadows and adding depth to the scene. The overall mood is one of solitude and decay, a silent narrative of time's relentless march.",
+    "image_path": "data/sampled_200/an old rusty car sits in the middle of a field.jpg"
+  },
+  {
+    "filename": "an older man playing a saxophone on the street.jpg",
+    "original_prompt": "an older man playing a saxophone on the street",
+    "refined_prompt": "In this image, we see a seasoned saxophonist, distinguished by his gray hair and glasses, performing on a bustling city street. He is dressed in a crisp white shirt, and his saxophone is held with a passionate intensity. The camera should be positioned in close-up, capturing the musician's focused expression and the vibrant motion of his fingers on the instrument. The background should be a dynamic urban scene, with people walking by, blurred to emphasize the main subject. The lighting should be natural and warm, highlighting the musician's face and the saxophone, while casting soft shadows that accentuate the depth and texture of the scene.",
+    "image_path": "data/sampled_200/an older man playing a saxophone on the street.jpg"
+  },
+  {
+    "filename": "an older woman is drinking a bottle of water.jpg",
+    "original_prompt": "an older woman is drinking a bottle of water",
+    "refined_prompt": "Create a cinematic scene where an older woman, wearing a cozy gray hoodie, sits on a grassy hill overlooking a tranquil lake. She is captured in the midst of a drink, holding a white plastic bottle of water to her lips with both hands, as if she's enjoying a moment of peaceful solitude. The camera should be positioned low, following her downward gaze, giving the viewer a sense of being in her shoes. The background is a blur of the serene lake and the gentle slope of the hill, with soft, natural lighting that suggests it's either early morning or late afternoon. The overall atmosphere should evoke a sense of calm and relaxation, with the woman's actions being the focal point of the scene.",
+    "image_path": "data/sampled_200/an older woman is drinking a bottle of water.jpg"
+  },
+  {
+    "filename": "an older woman sitting in front of an old building.jpg",
+    "original_prompt": "an older woman sitting in front of an old building",
+    "refined_prompt": "In this image, the focus is on an older woman, her back to the camera, as she sits alone on a bench in front of an old building. The woman is dressed in a blue patterned shirt and her gaze is directed off to the side, suggesting a sense of contemplation or introspection. The camera should be positioned at a slight angle, capturing the woman's profile as she looks away, and panning the camera slowly to follow her line of sight. The lighting should be soft and warm, with the ambient light from the old building's windows casting gentle shadows and highlighting the textures of her clothing and the weathered facade behind her. The overall atmosphere is one of quiet solitude, evoking a sense of timelessness and the passage of life.",
+    "image_path": "data/sampled_200/an older woman sitting in front of an old building.jpg"
+  },
+  {
+    "filename": "an orange mushroom sitting on top of a tree stump in the woods.jpg",
+    "original_prompt": "an orange mushroom sitting on top of a tree stump in the woods",
+    "refined_prompt": "In a dense forest, an orange mushroom stands out, sitting atop a sturdy tree stump. The camera, a lone observer, slowly approaches the mushroom, its perspective moving from the left to the right of the frame. The camera's lighting casts a warm glow on the mushroom, enhancing its vibrant color against the darker background. The surrounding trees, though blurred, create a sense of depth and a natural, untouched environment. The mushroom, the stump, and the camera's path all converge in the center of the image, creating a harmonious composition that captures the essence of the forest's tranquility.",
+    "image_path": "data/sampled_200/an orange mushroom sitting on top of a tree stump in the woods.jpg"
+  },
+  {
+    "filename": "an outdoor dining area surrounded by plants and a brick walkway.jpg",
+    "original_prompt": "an outdoor dining area surrounded by plants and a brick walkway",
+    "refined_prompt": "Create a cinematic scene of an outdoor dining area bathed in natural light. The camera captures the main subject, a woman, seated at a table adorned with a blue tablecloth. She is in the process of setting down a plate of food, with a warm smile on her face. The camera follows her movement from the table, panning over the brick walkway that meanders through the area, leading the viewer's eye towards a potted plant. The camera then moves closer to the plant, capturing its vibrant green leaves and the water fountain beyond. The scene is set on a sunny day, with the sunlight casting a soft glow over the brick walkway and illuminating the dining area. The overall atmosphere is serene and inviting, capturing the essence of an outdoor dining experience in a lush garden setting.",
+    "image_path": "data/sampled_200/an outdoor dining area surrounded by plants and a brick walkway.jpg"
+  },
+  {
+    "filename": "cars are driving down a street lined with tall trees.jpg",
+    "original_prompt": "cars are driving down a street lined with tall trees",
+    "refined_prompt": "A dynamic city street scene unfolds as the camera pans from a parked blue Renault Clio on the left side to a white BMW 5-Series in motion on the right side. The camera captures the motion of the BMW, which is passing by the Renault, while the other vehicles on the street maintain their positions. The street is lined with tall trees on both sides, casting dappled light on the asphalt and creating a canopy of green overhead. Pedestrians can be seen walking on the sidewalk, adding life to the scene. The camera should follow the BMW's path, capturing the speed and flow of the city traffic, while the Renault remains stationary, serving as a contrasting stillness amidst the urban hustle.",
+    "image_path": "data/sampled_200/cars are driving down a street lined with tall trees.jpg"
+  },
+  {
+    "filename": "cars parked on the side of the road during a snowstorm.jpg",
+    "original_prompt": "cars parked on the side of the road during a snowstorm",
+    "refined_prompt": "In a bustling city during a heavy snowstorm, the nighttime ambiance is alive with the quietude of snow-covered streets. The main subject is a car, its body buried under a thick layer of pristine white snow, parked on the side of the road. The car's headlights pierce the darkness, casting a warm glow on the surrounding area. The camera, positioned on the sidewalk, tracks the car's movement as it begins to slide forward, its tires digging into the snow. The lights from the car and nearby buildings cast a stark contrast against the dark sky. The camera follows the car, creating a sense of anticipation as it navigates the slippery road. In the background, a solitary figure, bundled up against the cold, walks by, adding a touch of life to the otherwise still scene.",
+    "image_path": "data/sampled_200/cars parked on the side of the road during a snowstorm.jpg"
+  },
+  {
+    "filename": "fireworks in the night sky over a city.jpg",
+    "original_prompt": "fireworks in the night sky over a city",
+    "refined_prompt": "In the heart of the city, a grand fireworks display unfolds, illuminating the night sky with a dazzling array of colors. The camera captures a dynamic perspective, moving swiftly through the sky, with the fireworks growing larger and more vivid in the foreground. The city lights twinkle in the background, casting a warm glow that contrasts with the cool hues of the fireworks. The camera pans and tilts, following the trajectory of the fireworks, creating a sense of motion and excitement. The night sky is filled with fireworks of varying shapes, sizes, and colors, creating a visually stunning spectacle that leaves a lasting impression.",
+    "image_path": "data/sampled_200/fireworks in the night sky over a city.jpg"
+  },
+  {
+    "filename": "metal balls are suspended in the air.jpg",
+    "original_prompt": "metal balls are suspended in the air",
+    "refined_prompt": "In the given image, a group of nine metal balls, suspended in mid-air, is the main subject. The balls are evenly spaced, creating a harmonious balance. The camera captures this scene from a high angle, offering a dynamic perspective of the balls as they hang. The lighting is soft and diffused, casting gentle shadows and highlighting the metallic sheen of the balls. The background is a simple, solid gray, which serves to highlight the balls and the suspension lines. The overall composition is minimalist, with the focus solely on the balls' motion and the interplay of light and shadow.",
+    "image_path": "data/sampled_200/metal balls are suspended in the air.jpg"
+  },
+  {
+    "filename": "pink water lilies in a pond with leaves.jpg",
+    "original_prompt": "pink water lilies in a pond with leaves",
+    "refined_prompt": "In this cinematic scene, the main focus is a tranquil pond teeming with pink water lilies. The lilies, their petals a vibrant pink, float gently on the water's surface, their delicate reflections mirroring their beauty in the calm waters below. The camera, positioned at the edge of the pond, glides over the lilies, capturing their soft blooms in close-up. The camera movement is slow and fluid, as if it's dancing with the lilies. The lighting is soft and natural, enhancing the colors and textures of the scene. The background is a blurred, serene landscape of trees and foliage, providing a sense of depth and seclusion. The overall mood is one of peace and tranquility, inviting viewers to lose themselves in the beauty of nature.",
+    "image_path": "data/sampled_200/pink water lilies in a pond with leaves.jpg"
+  },
+  {
+    "filename": "pink water lilies in a pond.jpg",
+    "original_prompt": "pink water lilies in a pond",
+    "refined_prompt": "In this scene, a tranquil pond teems with life, reflecting the serene beauty of nature. The main subject is a group of pink water lilies, their vibrant petals contrasting with the deep blue of the water. The camera moves gracefully around the pond, capturing the lilies from a low angle, which adds a sense of depth and grandeur to the scene. The lighting is soft and natural, enhancing the pink hues of the lilies and casting gentle reflections on the water's surface. The background is a soothing mix of verdant foliage and subtle ripples on the water, creating a peaceful and inviting atmosphere. This image encapsulates the essence of a perfect day spent in the company of nature.",
+    "image_path": "data/sampled_200/pink water lilies in a pond.jpg"
+  },
+  {
+    "filename": "reeds blowing in the wind against a cloudy sky.jpg",
+    "original_prompt": "reeds blowing in the wind against a cloudy sky",
+    "refined_prompt": "A cinematic scene unfolds with a focus on a field of tall reeds swaying gently in the breeze against a dramatic sky. The camera, positioned low to the ground, follows the reeds from left to right, capturing their rhythmic movement as they bend and sway under the wind. The reeds are silhouetted against a backdrop of clouds, casting long shadows and adding depth to the scene. The sun peeks through the clouds, casting a warm, golden light that illuminates the reeds and creates a serene, almost magical atmosphere.",
+    "image_path": "data/sampled_200/reeds blowing in the wind against a cloudy sky.jpg"
+  },
+  {
+    "filename": "the cars on the street are waiting for the traffic lights.jpg",
+    "original_prompt": "the cars on the street are waiting for the traffic lights",
+    "refined_prompt": "In the bustling cityscape of a rainy night, a yellow taxi cab, adorned with a vibrant red roof, is the star of the scene. It's positioned in the middle of the street, patiently waiting at a red traffic light. The taxi is a beacon of warmth amidst the cool, glistening city lights. The camera follows the taxi, capturing its journey through the intersection. The background is a blur of city buildings, illuminated by a myriad of colorful lights that reflect off the wet pavement. The scene encapsulates the hustle and bustle of city life, the anticipation of the traffic lights, and the glow of the city's lights.",
+    "image_path": "data/sampled_200/the cars on the street are waiting for the traffic lights.jpg"
+  },
+  {
+    "filename": "the otter is standing in the water.jpg",
+    "original_prompt": "the otter is standing in the water",
+    "refined_prompt": "In the image, the otter, a small, brown animal with a thick coat, is standing in a shallow, murky water body. The otter is engaged in the action of eating something, possibly a fish, as it holds it in its mouth. The camera is positioned at a low angle, looking up at the otter, creating a sense of perspective and depth. The lighting is dim, casting soft shadows and adding to the realism of the scene. The background features a rough, tree-like structure, suggesting that this encounter is taking place in a natural, outdoor setting. The otter's focused gaze and the fish in its mouth hint at the predatory nature of the scene.",
+    "image_path": "data/sampled_200/the otter is standing in the water.jpg"
+  },
+  {
+    "filename": "the pyramids of giza, egypt.jpg",
+    "original_prompt": "the pyramids of giza, egypt",
+    "refined_prompt": "In this image, the iconic pyramids of Giza, Egypt, stand majestically against the backdrop of a clear blue sky. The camera captures a group of people on horseback, journeying towards the pyramids. The riders, dressed in traditional Egyptian attire, are positioned in the foreground, drawing the viewer's eye towards the pyramids. The camera follows a dynamic track, moving from a low angle up to a high angle, emphasizing the grandeur of the pyramids and the adventurous spirit of the riders. The lighting is natural and bright, with the sun casting long shadows and highlighting the texture of the sand and the stone of the pyramids. The overall scene is a blend of adventure, history, and the awe-inspiring beauty of Egypt's ancient landmarks.",
+    "image_path": "data/sampled_200/the pyramids of giza, egypt.jpg"
+  },
+  {
+    "filename": "the red Alfa sports car is speeding down the road.jpg",
+    "original_prompt": "the red Alfa sports car is speeding down the road",
+    "refined_prompt": "Create a dynamic, high-speed chase scene with the red Alfa sports car as the main subject. The car is captured in motion, traveling down a winding road surrounded by lush green trees. The camera follows the car's trajectory, creating a sense of movement and speed. The lighting should be bright and natural, highlighting the car's vibrant red color against the greenery of the forest. The background should blur slightly to emphasize the focus on the car and its speed, while still providing a sense of depth and location.",
+    "image_path": "data/sampled_200/the red Alfa sports car is speeding down the road.jpg"
+  },
+  {
+    "filename": "the sun is shining through the trees near a waterfall.jpg",
+    "original_prompt": "the sun is shining through the trees near a waterfall",
+    "refined_prompt": "\"Create a captivating cinematic scene where the sun is shining through a dense canopy of lush, green trees, casting a warm, dappled light on a tranquil waterfall. The viewer's perspective is from the water's edge, looking upwards towards the cascading water, with the sun's rays creating a dramatic interplay of light and shadow. The camera should track the path of the sun, moving from the left side of the frame, across the waterfall, and onto the right, capturing the dynamic interplay of light and water as it falls. The background is a verdant, misty forest, with the mist softly blurring the details, adding to the overall serene and mystical atmosphere of the scene.",
+    "image_path": "data/sampled_200/the sun is shining through the trees near a waterfall.jpg"
+  },
+  {
+    "filename": "tokyo skyline at night.jpg",
+    "original_prompt": "tokyo skyline at night",
+    "refined_prompt": "In this cinematic prompt, the scene opens with a time-lapse shot capturing the gradual descent of a large, illuminated Ferris wheel, symbolizing the iconic Tokyo Tower. The Ferris wheel's vibrant lights contrast with the night sky, drawing the viewer's attention. As the Ferris wheel nears the ground, the camera pans downwards, following its path, and the lights begin to blur, creating a sense of motion. The camera then moves in for a close-up shot of the Ferris wheel, emphasizing its grandeur and capturing the details of its lights. The rest of the night cityscape is bathed in the warm glow of the Ferris wheel and other city lights, creating a captivating and dynamic image of Tokyo at night.",
+    "image_path": "data/sampled_200/tokyo skyline at night.jpg"
+  },
+  {
+    "filename": "two cars that have been involved in a violent collision.jpg",
+    "original_prompt": "two cars that have been involved in a violent collision",
+    "refined_prompt": "A high-speed, high-impact collision between two cars, one red and one yellow, is captured in a single, dramatic shot. The camera is positioned on the left side of the frame, with the red car in the foreground and the yellow car in the background. Both cars are in mid-air, their bodies crumpled and disfigured, indicating a forceful impact. The cars' exteriors are a blur of motion, emphasizing the speed of the collision. The lighting is bright and intense, with the colors of the cars contrasting sharply against the backdrop. The background is a blurred, nondescript area, focusing attention on the central action. The entire scene is a powerful depiction of a violent car accident, conveying the speed, force, and chaos of the moment.",
+    "image_path": "data/sampled_200/two cars that have been involved in a violent collision.jpg"
+  },
+  {
+    "filename": "two men in white clothing standing next to each other.jpg",
+    "original_prompt": "two men in white clothing standing next to each other",
+    "refined_prompt": "In this black and white image, we see a cinematic scene featuring two men in white clothing standing next to each other. The camera is positioned at a low angle, looking up at the men, which emphasizes their importance in the frame. The men are engaged in a conversation, with one leaning in towards the other. The lighting is dramatic, with shadows cast on the wall behind them, adding a sense of depth and mystery to the scene. The overall atmosphere is one of solemnity and quiet intensity, capturing a moment of connection between the two men.",
+    "image_path": "data/sampled_200/two men in white clothing standing next to each other.jpg"
+  },
+  {
+    "filename": "two men riding bikes down a road near a forest.jpg",
+    "original_prompt": "two men riding bikes down a road near a forest",
+    "refined_prompt": "In the image, two men are captured in the midst of an intense bike ride down a road adjacent to a serene forest. The main subject, positioned centrally, is pedaling forward with a sense of urgency, his body leaning into the curve of the road. The second subject is slightly behind, maintaining a safe distance, both of them dressed in athletic attire and helmets, emphasizing the seriousness of their ride. The camera follows the action closely, maintaining a low angle that tracks their movements and the changing scenery. The forest, filled with lush green trees, appears in the background, adding a sense of tranquility and beauty to the scene. The lighting is soft and natural, casting a warm glow on the subjects and the road ahead. The overall atmosphere is one of adventure and harmony with nature.",
+    "image_path": "data/sampled_200/two men riding bikes down a road near a forest.jpg"
+  },
+  {
+    "filename": "two people in a canoe on a lake with mountains in the background.jpg",
+    "original_prompt": "two people in a canoe on a lake with mountains in the background",
+    "refined_prompt": "In this image, a serene scene unfolds on a lake, with two people in a canoe gliding across its surface. The canoe, positioned in the lower third of the image, is moving towards the right, and the two individuals are facing away from the camera, paddling in harmony with nature. The lake is nestled amidst a lush, mountainous landscape, with trees and cliffs forming a picturesque backdrop. The sky overhead is filled with clouds, casting a soft, diffused light over the entire scene. The camera should be positioned to follow the canoe, capturing the people's journey from a distance, while maintaining the grandeur of the natural surroundings. The scene should be captured in a realistic style with a focus on the interplay of light and shadow, and the subtle ripples of the water.",
+    "image_path": "data/sampled_200/two people in a canoe on a lake with mountains in the background.jpg"
+  },
+  {
+    "filename": "two people performing a sword fight in front of a forest.jpg",
+    "original_prompt": "two people performing a sword fight in front of a forest",
+    "refined_prompt": "The image captures a dynamic scene of two individuals engaged in a sword fight, standing in front of a misty forest. The main subject, a person on the right, is dressed in traditional attire and is actively swinging a sword, their stance exuding intensity and focus. On the left, another figure is also wielding a sword, mirroring the other's movements. The camera should be positioned at an angle that captures the full extent of the scene, with a shallow depth of field that highlights the subjects against the misty backdrop. The lighting should be soft and diffused, casting a gentle glow on the figures and enhancing the misty atmosphere. The forest, although obscured by the mist, should convey a sense of mystery and the unknown, adding to the overall dramatic effect of the scene.",
+    "image_path": "data/sampled_200/two people performing a sword fight in front of a forest.jpg"
+  },
+  {
+    "filename": "two sheep grazing in the grass next to a wooden bridge.jpg",
+    "original_prompt": "two sheep grazing in the grass next to a wooden bridge",
+    "refined_prompt": "A pastoral scene unfolds as two white sheep, their woolly coats gleaming in the sunlight, graze peacefully on a lush, green hillside. The camera pans slowly, following the sheep as they move, capturing the tranquil rhythm of their grazing. The wooden bridge in the background, a rustic touch, adds depth to the scene. The sun casts a warm, inviting light, highlighting the verdant field and the sheep's woolly fur. This serene moment is a snapshot of rural life, a testament to the simple beauty of nature.",
+    "image_path": "data/sampled_200/two sheep grazing in the grass next to a wooden bridge.jpg"
+  },
+  {
+    "filename": "two tall cacti in the middle of the desert.jpg",
+    "original_prompt": "two tall cacti in the middle of the desert",
+    "refined_prompt": "In the vast expanse of the desert, two towering cacti stand as sentinels against the relentless sun. The camera, positioned low to the ground, tracks their majestic forms as they sway in the breeze. The camera movement is a slow, sweeping arc, highlighting the cacti's grandeur against the barren landscape. The lighting is a mix of soft, diffused sunlight filtering through the hazy sky, casting long shadows and adding depth to the scene. The background is a blur of sand dunes and sparse vegetation, emphasizing the solitude of the cacti in their arid domain.",
+    "image_path": "data/sampled_200/two tall cacti in the middle of the desert.jpg"
+  },
+  {
+    "filename": "two women carrying bowls on their heads.jpg",
+    "original_prompt": "two women carrying bowls on their heads",
+    "refined_prompt": "The image portrays two women in a vibrant outdoor setting, each carrying a large teal bowl on their head as they walk. The camera follows the women from a distance, capturing their graceful movements and the bowls they carry. The women are adorned in traditional attire, adding a sense of cultural richness to the scene. The lighting is natural and bright, highlighting the colorful bowls and the greenery of the surroundings. The background features lush trees and a verdant field, enhancing the overall warmth and tranquility of the image. This cinematic prompt suggests a slow-paced, dynamic scene where the viewer can appreciate the women's skill in balancing the bowls on their heads and the beauty of their traditional clothing and environment.",
+    "image_path": "data/sampled_200/two women carrying bowls on their heads.jpg"
+  },
+  {
+    "filename": "two women eating pizza at a restaurant.jpg",
+    "original_prompt": "two women eating pizza at a restaurant",
+    "refined_prompt": "Create a lively scene with two women seated at a restaurant table, indulging in pizza. The woman on the left, with curly hair, is seen with a bright smile, holding up a slice of pizza, ready to take a bite. The woman on the right, with blonde hair, has her hand on her mouth, savoring her slice. The table is adorned with a wine glass and a plate of pizza, with the pizza slices garnished with fresh basil. The camera should be positioned to capture the women's joyful expressions and the delectable pizza. The restaurant's warm ambiance is evident with soft lighting and wooden elements. The background features other patrons, adding to the bustling atmosphere of the restaurant.",
+    "image_path": "data/sampled_200/two women eating pizza at a restaurant.jpg"
+  }
+]
