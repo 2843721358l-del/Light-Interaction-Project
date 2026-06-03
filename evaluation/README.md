@@ -11,7 +11,7 @@ data/
   sampled_200/
 
 scripts/
-  generate_fixed_prompts.py
+  batch_video_generation.py
   evaluate_psnr_ssim_lpips.py
   evaluate_vbench_batch.py
 ```
@@ -38,13 +38,13 @@ the repository.
 
 ## Batch Video Generation
 
-Use `scripts/generate_fixed_prompts.py` to generate videos for all fixed prompts.
+Use `scripts/batch_video_generation.py` to generate videos for all fixed prompts.
 The script supports multiple camera-action groups and dynamic GPU scheduling.
 
 Example:
 
 ```bash
-python evaluation/scripts/generate_fixed_prompts.py \
+python evaluation/scripts/batch_video_generation.py \
   --prompt-json evaluation/data/refined_prompts_llava16.json \
   --hy-worldplay-root /path/to/patched/HY-WorldPlay \
   --model-path /path/to/HunyuanVideo-1.5 \
