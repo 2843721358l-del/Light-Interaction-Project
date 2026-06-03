@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*.log
+*.csv
+*.mp4
+*.png
+*.pdf
+outputs/
+debug_data/
+experiment_data/
+checkpoints/
+*.safetensors
