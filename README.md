@@ -30,7 +30,7 @@ v0.2:
   Matrix-Game-3.0 acceleration patch
 
 v0.3:
-  evaluation scripts for video quality, latency, and peak memory
+  evaluation scripts for video quality
 ```
 
 This repository focuses on reproducing the main quantitative results of the paper, including inference latency, peak memory, and video quality metrics. Intermediate debugging utilities, private development logs, generated videos, and model weights are not included.
@@ -62,7 +62,7 @@ matrix-game/
   Status: planned.
 
 evaluation/
-  Video quality, latency, and peak-memory evaluation scripts.
+  Video quality.
   Status: planned.
 ```
 
