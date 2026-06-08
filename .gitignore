@@ -8,6 +8,7 @@ __pycache__/
 *.jpeg
 !evaluation/data/sampled_200/*.jpg
 !evaluation/data/sampled_200/*.jpeg
+!asset/*.png
 *.pdf
 *.npy
 *.npz
