@@ -3,14 +3,12 @@
 <h4 align="center">Training-Free Inference Acceleration for Interactive Video World Models</h4>
 
 <h3 align="center">
-<a href="https://arxiv.org/abs/2605.31158"><b>📄 Paper</b></a> | <a href="https://github.com/lujiacheng/Light-Interaction-Project"><b>💻 GitHub</b></a> | <a href="https://arxiv.org/abs/2605.31158"><b>🌐 Project Page</b></a>
+<a href="https://arxiv.org/abs/2605.31158"><b>📄 Paper</b></a> | <a href="https://2843721358l-del.github.io/Light-Interaction-Project/"><b>🌐 Project Page</b></a>
 </h3>
 
 <p align="center">
   <a href="https://arxiv.org/abs/2605.31158"><img src="https://img.shields.io/static/v1?label=arXiv&message=2605.31158&color=b31b1b&logo=arxiv"></a> &ensp;
-  <a href="https://github.com/lujiacheng/Light-Interaction-Project"><img src="https://img.shields.io/static/v1?label=Code&message=GitHub&color=black&logo=github"></a> &ensp;
-  <a href="LICENSE"><img src="https://img.shields.io/static/v1?label=License&message=Apache%202.0&color=green"></a> &ensp;
-  <img src="https://img.shields.io/static/v1?label=Platform&message=Linux&color=blue&logo=linux">
+  <a href="LICENSE"><img src="https://img.shields.io/static/v1?label=License&message=Apache%202.0&color=green"></a>
 </p>
 
 **Light Interaction** is a training-free inference acceleration framework for interactive video world models. It accelerates autoregressive interactive video generation without model retraining by combining **Adaptive Context Management**, **Denoising Cache Acceleration**, and **Hardware-Software Co-designed 3D Sparse Attention**. On a single A100 GPU, Light Interaction achieves up to **2.59× speedup** on HY-WorldPlay and **1.61× speedup** on Matrix-Game-3.0, while maintaining competitive visual quality with **24.81 PSNR** against the original model.
