@@ -1,6 +1,6 @@
-<p align="center">
-  <img src="asset/teaser.png" width="90%" alt="Light Interaction Teaser"/>
-</p>
+<h1 align="center">Light Interaction</h1>
+
+<h4 align="center">Training-Free Inference Acceleration for Interactive Video World Models</h4>
 
 <h3 align="center">
 <a href="https://arxiv.org/abs/2605.31158"><b>📄 Paper</b></a> | <a href="https://github.com/lujiacheng/Light-Interaction-Project"><b>💻 GitHub</b></a> | <a href="https://arxiv.org/abs/2605.31158"><b>🌐 Project Page</b></a>
@@ -115,15 +115,6 @@ bash run.sh
 | Only 3D Sparse Attn. | 153.69 | 1.49× | 25.53 | 18.27 | 0.8208 | 76.57 |
 | **Full Light Interaction** | **88.24** | **2.59×** | **24.81** | **18.85** | **0.8220** | **54.66** |
 
-### Leave-One-Out Ablation (HY-WorldPlay, Fixed Subset)
-
-| Variant | Latency↓ (s) | Speedup↑ | PSNR↑ | Self-Comp. PSNR↑ | VBench↑ | Mem.↓ (GB) |
-|:---|---:|---:|---:|---:|---:|---:|
-| w/o 3D Sparse Attn. | 110.04 | 2.08× | 26.77 | 19.99 | 0.8285 | 54.66 |
-| w/o KV Cache Mgmt. | 133.19 | 1.72× | 25.43 | 18.58 | 0.8329 | 76.57 |
-| w/o Denoising Cache | 111.28 | 2.05× | 25.02 | 19.27 | 0.8314 | 54.66 |
-| **Full Light Interaction** | **88.24** | **2.59×** | **24.72** | **18.51** | **0.8295** | **54.66** |
-
 ## 🎛️ Acceleration Presets
 
 The HY-WorldPlay patch exposes five presets for reproduction and ablation studies:
@@ -180,10 +171,6 @@ This project builds upon and thanks the following open-source projects:
 - [TeaCache](https://github.com/LiewFeng/TeaCache) — Denoising cache baseline
 
 We thank the authors and contributors of these projects for releasing their code, models, and tools to the community.
-
-## 🌟 Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=lujiacheng/Light-Interaction-Project&type=Date)](https://www.star-history.com/#lujiacheng/Light-Interaction-Project&Date)
 
 ## 📖 BibTeX
 
