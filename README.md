@@ -81,25 +81,115 @@ bash run.sh
 
 ### HY-WorldPlay (480P, Image-to-Video)
 
-| Method | vs. Original | | | Self-Comparison | | | VBench↑ | Latency↓ (s) | Speedup↑ | Mem.↓ (GB) |
-|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| | **PSNR↑** | **SSIM↑** | **LPIPS↓** | **PSNR↑** | **SSIM↑** | **LPIPS↓** | | | | |
-| Original | – | – | – | 18.60 | 0.5678 | 0.2051 | 0.8190 | 228.60 | 1.00× | 76.57 |
-| SVG | 19.48 | 0.6028 | 0.2209 | 17.75 | 0.5299 | 0.2187 | 0.8082 | 247.65 | 0.92× | 77.86 |
-| BSA | 15.94 | 0.4639 | 0.3755 | 15.44 | 0.4205 | 0.3720 | 0.7943 | 474.57 | 0.48× | 75.03 |
-| TeaCache | 20.90 | 0.6588 | 0.1892 | 18.86 | 0.5743 | 0.2054 | 0.8150 | 203.25 | 1.12× | 76.64 |
-| **Ours** | **24.81** | **0.6500** | **0.1788** | **18.85** | **0.5854** | **0.1963** | **0.8220** | **88.24** | **2.59×** | **54.66** |
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2" align="center">Method</th>
+      <th colspan="3" align="center">vs. Original</th>
+      <th colspan="3" align="center">Self-Comparison</th>
+      <th rowspan="2" align="center">VBench↑</th>
+      <th rowspan="2" align="center">Latency↓ (s)</th>
+      <th rowspan="2" align="center">Speedup↑</th>
+      <th rowspan="2" align="center">Mem.↓ (GB)</th>
+    </tr>
+    <tr>
+      <th align="center">PSNR↑</th>
+      <th align="center">SSIM↑</th>
+      <th align="center">LPIPS↓</th>
+      <th align="center">PSNR↑</th>
+      <th align="center">SSIM↑</th>
+      <th align="center">LPIPS↓</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center">Original</td>
+      <td align="center">–</td><td align="center">–</td><td align="center">–</td>
+      <td align="center">18.60</td><td align="center">0.5678</td><td align="center">0.2051</td>
+      <td align="center">0.8190</td><td align="center">228.60</td><td align="center">1.00×</td><td align="center">76.57</td>
+    </tr>
+    <tr>
+      <td align="center">SVG</td>
+      <td align="center">19.48</td><td align="center">0.6028</td><td align="center">0.2209</td>
+      <td align="center">17.75</td><td align="center">0.5299</td><td align="center">0.2187</td>
+      <td align="center">0.8082</td><td align="center">247.65</td><td align="center">0.92×</td><td align="center">77.86</td>
+    </tr>
+    <tr>
+      <td align="center">BSA</td>
+      <td align="center">15.94</td><td align="center">0.4639</td><td align="center">0.3755</td>
+      <td align="center">15.44</td><td align="center">0.4205</td><td align="center">0.3720</td>
+      <td align="center">0.7943</td><td align="center">474.57</td><td align="center">0.48×</td><td align="center">75.03</td>
+    </tr>
+    <tr>
+      <td align="center">TeaCache</td>
+      <td align="center">20.90</td><td align="center">0.6588</td><td align="center">0.1892</td>
+      <td align="center">18.86</td><td align="center">0.5743</td><td align="center">0.2054</td>
+      <td align="center">0.8150</td><td align="center">203.25</td><td align="center">1.12×</td><td align="center">76.64</td>
+    </tr>
+    <tr>
+      <td align="center"><b>Ours</b></td>
+      <td align="center"><b>24.81</b></td><td align="center"><b>0.6500</b></td><td align="center"><b>0.1788</b></td>
+      <td align="center"><b>18.85</b></td><td align="center"><b>0.5854</b></td><td align="center"><b>0.1963</b></td>
+      <td align="center"><b>0.8220</b></td><td align="center"><b>88.24</b></td><td align="center"><b>2.59×</b></td><td align="center"><b>54.66</b></td>
+    </tr>
+  </tbody>
+</table>
 
 ### Matrix-Game-3.0 (720P, Image-to-Video)
 
-| Method | vs. Original | | | Self-Comparison | | | VBench↑ | Latency↓ (s) | Speedup↑ | Mem.↓ (GB) |
-|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| | **PSNR↑** | **SSIM↑** | **LPIPS↓** | **PSNR↑** | **SSIM↑** | **LPIPS↓** | | | | |
-| Original | – | – | – | 15.49 | 0.4685 | 0.4048 | 0.7432 | 59.70 | 1.00× | 35.04 |
-| SVG | 12.98 | 0.4170 | 0.5587 | 14.48 | 0.4949 | 0.4406 | 0.7511 | 96.16 | 0.62× | 35.02 |
-| BSA | 13.34 | 0.4228 | 0.5795 | 16.66 | 0.5326 | 0.4094 | 0.7336 | 63.26 | 0.94× | 35.03 |
-| TeaCache | 19.03 | 0.5619 | 0.3818 | 18.84 | 0.5765 | 0.3602 | 0.7146 | 41.49 | 1.44× | 35.32 |
-| **Ours** | **17.76** | **0.5306** | **0.3692** | **14.63** | **0.4570** | **0.4424** | **0.7350** | **37.07** | **1.61×** | **35.04** |
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2" align="center">Method</th>
+      <th colspan="3" align="center">vs. Original</th>
+      <th colspan="3" align="center">Self-Comparison</th>
+      <th rowspan="2" align="center">VBench↑</th>
+      <th rowspan="2" align="center">Latency↓ (s)</th>
+      <th rowspan="2" align="center">Speedup↑</th>
+      <th rowspan="2" align="center">Mem.↓ (GB)</th>
+    </tr>
+    <tr>
+      <th align="center">PSNR↑</th>
+      <th align="center">SSIM↑</th>
+      <th align="center">LPIPS↓</th>
+      <th align="center">PSNR↑</th>
+      <th align="center">SSIM↑</th>
+      <th align="center">LPIPS↓</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center">Original</td>
+      <td align="center">–</td><td align="center">–</td><td align="center">–</td>
+      <td align="center">15.49</td><td align="center">0.4685</td><td align="center">0.4048</td>
+      <td align="center">0.7432</td><td align="center">59.70</td><td align="center">1.00×</td><td align="center">35.04</td>
+    </tr>
+    <tr>
+      <td align="center">SVG</td>
+      <td align="center">12.98</td><td align="center">0.4170</td><td align="center">0.5587</td>
+      <td align="center">14.48</td><td align="center">0.4949</td><td align="center">0.4406</td>
+      <td align="center">0.7511</td><td align="center">96.16</td><td align="center">0.62×</td><td align="center">35.02</td>
+    </tr>
+    <tr>
+      <td align="center">BSA</td>
+      <td align="center">13.34</td><td align="center">0.4228</td><td align="center">0.5795</td>
+      <td align="center">16.66</td><td align="center">0.5326</td><td align="center">0.4094</td>
+      <td align="center">0.7336</td><td align="center">63.26</td><td align="center">0.94×</td><td align="center">35.03</td>
+    </tr>
+    <tr>
+      <td align="center">TeaCache</td>
+      <td align="center">19.03</td><td align="center">0.5619</td><td align="center">0.3818</td>
+      <td align="center">18.84</td><td align="center">0.5765</td><td align="center">0.3602</td>
+      <td align="center">0.7146</td><td align="center">41.49</td><td align="center">1.44×</td><td align="center">35.32</td>
+    </tr>
+    <tr>
+      <td align="center"><b>Ours</b></td>
+      <td align="center"><b>17.76</b></td><td align="center"><b>0.5306</b></td><td align="center"><b>0.3692</b></td>
+      <td align="center"><b>14.63</b></td><td align="center"><b>0.4570</b></td><td align="center"><b>0.4424</b></td>
+      <td align="center"><b>0.7350</b></td><td align="center"><b>37.07</b></td><td align="center"><b>1.61×</b></td><td align="center"><b>35.04</b></td>
+    </tr>
+  </tbody>
+</table>
 
 > **vs. Original** compares each method with the original full-computation model. **Self-Comparison** compares frame pairs with similar camera poses within the same revisiting trajectory to evaluate consistency.
 
