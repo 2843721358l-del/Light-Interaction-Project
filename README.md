@@ -49,15 +49,9 @@ We introduce **Light Interaction**, a training-free inference acceleration frame
 
 Follow these steps to deploy Light Interaction on HY-WorldPlay. For detailed documentation on each step, click through to the corresponding sub-README.
 
-### Step 1 — Obtain Upstream Resources
+### Step 1 — Setup Upstream HY-WorldPlay
 
-First, clone the upstream HY-WorldPlay repository and download the required model checkpoints:
-
-| Resource | Link | Purpose |
-|:---|:---|:---|
-| HY-WorldPlay | `git clone https://github.com/Tencent-Hunyuan/HY-WorldPlay.git` | Base interactive video generation framework |
-| HunyuanVideo-1.5 | [🤗 HuggingFace](https://huggingface.co/tencent/HunyuanVideo-1.5) | Video foundation model (~15 GB) |
-| AR Distilled Action Model | [🤗 HuggingFace](https://huggingface.co/tencent/HY-WorldPlay) | Trajectory-conditioned distilled checkpoint (~10 GB) |
+Follow the official [HY-WorldPlay](https://github.com/Tencent-Hunyuan/HY-WorldPlay) instructions to clone the repository and download model checkpoints. Make sure you can run the original model successfully before proceeding.
 
 ### Step 2 — Apply the Light Interaction Patch
 
