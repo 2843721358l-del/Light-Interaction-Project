@@ -1004,7 +1004,7 @@ index 624848f..081a942 100644
          encoder_hidden_states = encoder_hidden_states.to(query.dtype)
          hidden_states = torch.cat([hidden_states, encoder_hidden_states], dim=1)
 diff --git a/hyvideo/models/transformers/worldplay_1_5_transformer.py b/hyvideo/models/transformers/worldplay_1_5_transformer.py
-index e7b18b6..a534a47 100644
+index e7b18b6..7045aa2 100644
 --- a/hyvideo/models/transformers/worldplay_1_5_transformer.py
 +++ b/hyvideo/models/transformers/worldplay_1_5_transformer.py
 @@ -26,17 +26,8 @@ from diffusers.configuration_utils import ConfigMixin, register_to_config
@@ -2049,12 +2049,16 @@ index e7b18b6..a534a47 100644
  
          img = x = hidden_states
          t = timestep
-@@ -1337,17 +1141,15 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
+@@ -1337,17 +1141,19 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
              oh // self.patch_size[1],
              ow // self.patch_size[2],
          )
 -        self.attn_param["thw"] = [tt, th, tw]
 +        self.attn_param['thw'] = [tt, th, tw]
++        infer_state = get_infer_state()
++        infer_state.latent_shape = (th, tw)
++        infer_state = get_infer_state()
++        infer_state.latent_shape = (th, tw)
          rope_temporal_size = rope_temporal_size // self.patch_size[0]
          if freqs_cos is None and freqs_sin is None:
 -            freqs_cos, freqs_sin = self.get_rotary_pos_embed(
@@ -2071,7 +2075,7 @@ index e7b18b6..a534a47 100644
  
          img = self.img_in(img)
  
-@@ -1360,31 +1162,29 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
+@@ -1360,31 +1166,29 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
  
          # boardcast to match the sequence length of video latents
          vec = repeat(vec, "(B T) C->B (T H W) C", B=img.shape[0], H=th, W=tw)
@@ -2109,7 +2113,7 @@ index e7b18b6..a534a47 100644
  
          freqs_cis = (freqs_cos, freqs_sin) if freqs_cos is not None else None
  
-@@ -1407,10 +1207,35 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
+@@ -1407,10 +1211,35 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
                  cache_vision=cache_vision,
              )
              if cache_vision:
@@ -2147,7 +2151,7 @@ index e7b18b6..a534a47 100644
              return _kv_cache_new
  
          # Final Layer
-@@ -1420,6 +1245,35 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
+@@ -1420,6 +1249,35 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
          img = self.unpatchify(img, tt, th, tw)
          assert return_dict is False, "return_dict is not supported."
          features_list = None
@@ -2183,16 +2187,20 @@ index e7b18b6..a534a47 100644
          return (img, features_list)
  
      def forward_bi(
-@@ -1458,7 +1312,7 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
+@@ -1458,7 +1316,11 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
              oh // self.patch_size[1],
              ow // self.patch_size[2],
          )
 -        self.attn_param["thw"] = [tt, th, tw]
 +        self.attn_param['thw'] = [tt, th, tw]
++        infer_state = get_infer_state()
++        infer_state.latent_shape = (th, tw)
++        infer_state = get_infer_state()
++        infer_state.latent_shape = (th, tw)
          if freqs_cos is None and freqs_sin is None:
              freqs_cos, freqs_sin = self.get_rotary_pos_embed((tt, th, tw))
  
-@@ -1480,13 +1334,13 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
+@@ -1480,13 +1342,13 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
              vec = vec + self.time_r_in(timestep_r)
  
          if action is not None:
@@ -2209,7 +2217,7 @@ index e7b18b6..a534a47 100644
  
          # sequence parallel
          parallel_dims = get_parallel_state()
-@@ -1496,20 +1350,18 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
+@@ -1496,20 +1358,18 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
              sp_rank = parallel_dims.sp_rank
              if img.shape[1] % sp_size != 0:
                  n_token = img.shape[1]
@@ -2233,7 +2241,7 @@ index e7b18b6..a534a47 100644
  
          txt, text_mask, vec_txt = self.get_text_and_mask(
              encoder_attention_mask,
-@@ -1517,7 +1369,7 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
+@@ -1517,7 +1377,7 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
              timestep_txt,
              extra_kwargs,
              vision_states,
@@ -2242,7 +2250,7 @@ index e7b18b6..a534a47 100644
          )
  
          freqs_cis = (freqs_cos, freqs_sin) if freqs_cos is not None else None
-@@ -1525,13 +1377,13 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
+@@ -1525,13 +1385,13 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
          # Pass through double-stream blocks
          for index, block in enumerate(self.double_blocks):
              force_full_attn = (
@@ -2263,7 +2271,7 @@ index e7b18b6..a534a47 100644
              )
              self.attn_param["layer-name"] = f"double_block_{index + 1}"
              if viewmats is not None:
-@@ -1577,11 +1429,11 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
+@@ -1577,11 +1437,11 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
          return (img, features_list)
  
      def forward(
@@ -4583,7 +4591,7 @@ index 1121027..3c41ad9 100644
 +        return final_selected_frames, candidate_similarities
      return final_selected_frames
 diff --git a/run.sh b/run.sh
-index de80815..c33c7ff 100644
+index de80815..35a617b 100644
 --- a/run.sh
 +++ b/run.sh
 @@ -11,19 +11,19 @@ IMAGE_PATH=./assets/img/test.png # Now we only provide the i2v model, so the pat
@@ -4618,7 +4626,7 @@ index de80815..c33c7ff 100644
    --action_ckpt $AR_DISTILL_ACTION_MODEL_PATH \
    --few_step true \
    --num_inference_steps 4 \
-+  --acceleration_preset all \
++  --acceleration_preset sparse \
    --model_type 'ar' \
    --use_vae_parallel false \
    --use_sageattn false \
