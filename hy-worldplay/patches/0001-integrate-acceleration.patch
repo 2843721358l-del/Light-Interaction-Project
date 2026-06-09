@@ -340,7 +340,7 @@ index b55a2a1..7be419c 100644
 -    return int(os.environ.get("RANK", "0"))
 +    return int(os.environ.get('RANK', '0'))
 diff --git a/hyvideo/generate.py b/hyvideo/generate.py
-index 402f27f..564c147 100644
+index 402f27f..93c4f11 100644
 --- a/hyvideo/generate.py
 +++ b/hyvideo/generate.py
 @@ -34,6 +34,7 @@ from hyvideo.pipelines.worldplay_video_pipeline import HunyuanVideo_1_5_Pipeline
@@ -363,7 +363,15 @@ index 402f27f..564c147 100644
      extra_kwargs = {}
      if task == "i2v":
          extra_kwargs["reference_image"] = args.image_path
-@@ -1054,7 +1060,16 @@ def main():
+@@ -746,6 +752,7 @@ def generate_video(args):
+         extra_kwargs["reference_image"] = args.image_path
+ 
+     out = pipe(
++        acceleration_config=acceleration_config,
+         enable_sr=enable_sr,
+         prompt=args.prompt,
+         aspect_ratio=args.aspect_ratio,
+@@ -1054,7 +1061,16 @@ def main():
          "Use --transformer_resident_ar_rollout or --transformer_resident_ar_rollout true to enable.",
      )
  
