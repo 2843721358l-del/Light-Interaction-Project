@@ -1,6 +1,6 @@
-<h1 align="center">Light Interaction</h1>
-
-<h4 align="center">Training-Free Inference Acceleration for Interactive Video World Models</h4>
+<p align="center">
+  <img src="asset/logo.png" width="55%" alt="Light Interaction"/>
+</p>
 
 <h3 align="center">
 <a href="https://arxiv.org/abs/2605.31158"><b>📄 Paper</b></a> | <a href="https://2843721358l-del.github.io/Light-Interaction-Project/"><b>🌐 Project Page</b></a>
