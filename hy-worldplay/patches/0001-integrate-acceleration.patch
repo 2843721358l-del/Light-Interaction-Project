@@ -4571,10 +4571,10 @@ index 1121027..3c41ad9 100644
 +        return final_selected_frames, candidate_similarities
      return final_selected_frames
 diff --git a/run.sh b/run.sh
-index de80815..dde48fd 100644
+index de80815..c33c7ff 100644
 --- a/run.sh
 +++ b/run.sh
-@@ -11,11 +11,11 @@ IMAGE_PATH=./assets/img/test.png # Now we only provide the i2v model, so the pat
+@@ -11,19 +11,19 @@ IMAGE_PATH=./assets/img/test.png # Now we only provide the i2v model, so the pat
  SEED=1
  ASPECT_RATIO=16:9
  RESOLUTION=480p # Now we only provide the 480p model
@@ -4583,15 +4583,17 @@ index de80815..dde48fd 100644
 -AR_ACTION_MODEL_PATH=         # Path to our HY-World 1.5 autoregressive checkpoints
 -BI_ACTION_MODEL_PATH=         # Path to our HY-World 1.5 bidirectional checkpoints
 -AR_DISTILL_ACTION_MODEL_PATH= # Path to our HY-World 1.5 autoregressive distilled checkpoints
+-POSE='w-31'                   # Camera trajectory: pose string (e.g., 'w-31' means generating [1 + 31] latents) or JSON file path
+-NUM_FRAMES=125
 +OUTPUT_PATH=${HY_OUTPUT_PATH:-./outputs/}
 +MODEL_PATH=${HY_MODEL_PATH:-}                                     # Path to pretrained hunyuanvideo-1.5 model
 +AR_ACTION_MODEL_PATH=${HY_AR_ACTION_MODEL_PATH:-}                 # Path to HY-WorldPlay autoregressive checkpoint
 +BI_ACTION_MODEL_PATH=${HY_BI_ACTION_MODEL_PATH:-}                 # Path to HY-WorldPlay bidirectional checkpoint
 +AR_DISTILL_ACTION_MODEL_PATH=${HY_AR_DISTILL_ACTION_MODEL_PATH:-} # Path to HY-WorldPlay autoregressive distilled checkpoint
- POSE='w-31'                   # Camera trajectory: pose string (e.g., 'w-31' means generating [1 + 31] latents) or JSON file path
- NUM_FRAMES=125
++POSE='left-31, right-32'
++NUM_FRAMES=253
  WIDTH=832
-@@ -23,7 +23,7 @@ HEIGHT=480
+ HEIGHT=480
  
  # Configuration for faster inference
  # The maximum number recommended is 8.
@@ -4600,7 +4602,7 @@ index de80815..dde48fd 100644
  
  # Configuration for better quality
  REWRITE=false   # Enable prompt rewriting. Please ensure rewrite vLLM server is deployed and configured.
-@@ -81,6 +81,7 @@ torchrun --nproc_per_node=$N_INFERENCE_GPU hyvideo/generate.py \
+@@ -81,8 +81,11 @@ torchrun --nproc_per_node=$N_INFERENCE_GPU hyvideo/generate.py \
    --action_ckpt $AR_DISTILL_ACTION_MODEL_PATH \
    --few_step true \
    --num_inference_steps 4 \
@@ -4608,3 +4610,8 @@ index de80815..dde48fd 100644
    --model_type 'ar' \
    --use_vae_parallel false \
    --use_sageattn false \
+   --use_fp8_gemm false \
+-  --transformer_resident_ar_rollout true
++  --transformer_resident_ar_rollout true \
++  --offloading false \
++  --group_offloading false
