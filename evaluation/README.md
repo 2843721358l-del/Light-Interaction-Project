@@ -1,47 +1,49 @@
-# Evaluation Utilities
+# 📊 Evaluation Utilities
 
-This directory contains the fixed-prompt sample set and clean evaluation scripts
-used for Light Interaction.
+<p align="center">
+  <a href="../README.md">← Back to Light Interaction</a>
+</p>
 
-The release includes:
+This directory contains the **fixed-prompt sample set** and **clean evaluation scripts** used for Light Interaction quantitative experiments.
+
+---
+
+## 📂 What Is Included
 
 ```text
 data/
-  refined_prompts_llava16.json
-  sampled_200/
+  refined_prompts_llava16.json   # 200 image-text pairs with refined prompts
+  sampled_200/                   # 200 initial images
 
 scripts/
-  batch_video_generation.py
-  evaluate_psnr_ssim_lpips.py
-  evaluate_vbench_batch.py
+  batch_video_generation.py      # Batch generation across prompts & action groups
+  evaluate_psnr_ssim_lpips.py    # PSNR / SSIM / LPIPS evaluation
+  evaluate_vbench_batch.py       # VBench multi-dimension evaluation
 ```
 
-Generated videos, benchmark outputs, logs, and intermediate debug files are not
-included.
+> [!NOTE]
+> Generated videos, benchmark outputs, logs, and intermediate debug files are **not** included in this release.
 
-## Sample Set
+---
 
-`data/sampled_200/` contains 200 initial images. Each item corresponds to one
-entry in `data/refined_prompts_llava16.json`.
+## 🖼️ Sample Set
+
+`data/sampled_200/` contains 200 initial images from VBench. Each item corresponds to one entry in `data/refined_prompts_llava16.json`.
 
 Each JSON entry contains:
 
-```text
-filename
-original_prompt
-refined_prompt
-image_path
-```
+| Field | Description |
+|:---|:---|
+| `filename` | Image filename |
+| `original_prompt` | Original VBench prompt |
+| `refined_prompt` | LLaVA-1.6 refined prompt for richer I2V generation |
+| `image_path` | Repository-relative path (portable) |
 
-`image_path` uses a repository-relative path so the sample set can be moved with
-the repository.
+---
 
-## Batch Video Generation
+## 🎬 Batch Video Generation
 
-Use `scripts/batch_video_generation.py` to generate videos for all fixed prompts.
-The script supports multiple camera-action groups and dynamic GPU scheduling.
-
-Example:
+Use `scripts/batch_video_generation.py` to generate videos for all fixed prompts. The script supports multiple camera-action groups and dynamic GPU scheduling.
 
 ```bash
 python evaluation/scripts/batch_video_generation.py \
@@ -55,7 +57,7 @@ python evaluation/scripts/batch_video_generation.py \
   --acceleration-preset all
 ```
 
-The default action groups are:
+Default action groups:
 
 ```text
 left_right=left-5, right-5.5
@@ -64,24 +66,15 @@ forward_backward=w-5, s-5.5
 
 Custom action groups can be passed with `--actions name=pose`.
 
-## PSNR / SSIM / LPIPS
+---
 
-Use `scripts/evaluate_psnr_ssim_lpips.py` for pixel and perceptual quality
-metrics. The script supports two evaluation modes.
+## 📐 PSNR / SSIM / LPIPS
 
-### Mutual Evaluation
+Use `scripts/evaluate_psnr_ssim_lpips.py` for pixel and perceptual quality metrics. The script supports two evaluation modes.
 
-Mutual evaluation compares a test method against a reference method. For each
-reference frame, the script searches a local temporal window in the test video
-and chooses the closest frame before computing:
+### Mutual Evaluation (vs. Original)
 
-```text
-PSNR
-SSIM
-LPIPS
-```
-
-Example:
+Compares a test method against a reference method. For each reference frame, the script searches a local temporal window in the test video and chooses the closest frame before computing PSNR, SSIM, and LPIPS.
 
 ```bash
 python evaluation/scripts/evaluate_psnr_ssim_lpips.py \
@@ -95,12 +88,7 @@ python evaluation/scripts/evaluate_psnr_ssim_lpips.py \
 
 ### Self Consistency
 
-Self evaluation measures return-trajectory consistency. For a forward-then-back
-or left-then-right camera trajectory, frames from the first half should match
-frames from the second half after the camera returns. The script searches around
-the theoretically aligned return frame and computes PSNR, SSIM, and LPIPS.
-
-Example:
+Measures return-trajectory consistency. For a forward-then-back or left-then-right camera trajectory, frames from the first half should match frames from the second half after the camera returns.
 
 ```bash
 python evaluation/scripts/evaluate_psnr_ssim_lpips.py \
@@ -114,36 +102,13 @@ python evaluation/scripts/evaluate_psnr_ssim_lpips.py \
 
 ### Why Window Search?
 
-Interactive video models may produce small temporal phase shifts even when the
-visual content is consistent. A strict frame-index comparison can unfairly
-penalize a method for minor timing offsets. Window search aligns each query
-frame to the best nearby candidate frame before computing image quality metrics.
-This gives a more stable estimate of visual consistency under camera motion.
+Interactive video models may produce small temporal phase shifts even when the visual content is consistent. A strict frame-index comparison can unfairly penalize a method for minor timing offsets. Window search aligns each query frame to the best nearby candidate frame before computing image quality metrics, giving a more stable estimate of visual consistency under camera motion.
 
-## VBench
+---
 
-Use `scripts/evaluate_vbench_batch.py` to run selected VBench dimensions on the
-generated videos.
+## 🏷️ VBench
 
-Default dimensions:
-
-```text
-subject_consistency
-background_consistency
-motion_smoothness
-aesthetic_quality
-imaging_quality
-```
-
-These dimensions were selected because they cover the main quality concerns for
-interactive world-model videos:
-
-- subject and background consistency measure identity and scene preservation;
-- motion smoothness measures temporal stability;
-- aesthetic quality measures visual appeal;
-- imaging quality measures low-level visual fidelity.
-
-Example:
+Use `scripts/evaluate_vbench_batch.py` to run selected VBench dimensions on the generated videos.
 
 ```bash
 python evaluation/scripts/evaluate_vbench_batch.py \
@@ -152,17 +117,27 @@ python evaluation/scripts/evaluate_vbench_batch.py \
   --output-csv evaluation_results/vbench_left_right.csv
 ```
 
-Run VBench in an environment where VBench and its model dependencies are
-installed.
+Default evaluation dimensions:
 
-## Output Files
+| Dimension | What it measures |
+|:---|:---|
+| `subject_consistency` | Identity preservation across frames |
+| `background_consistency` | Scene preservation across frames |
+| `motion_smoothness` | Temporal stability |
+| `aesthetic_quality` | Visual appeal |
+| `imaging_quality` | Low-level visual fidelity |
 
-The scripts write CSV summaries such as:
+> [!TIP]
+> Run VBench in an environment where VBench and its model dependencies are installed.
+
+---
+
+## 📋 Output Files
+
+The scripts write CSV summaries with per-video scores and an average row:
 
 ```text
 left_right_mutual_metrics.csv
 left_right_self_metrics.csv
 vbench_left_right.csv
 ```
-
-Each CSV contains per-video scores and an average row.

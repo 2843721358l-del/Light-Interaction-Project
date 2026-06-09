@@ -19,7 +19,7 @@
 
 ## 🔥 News
 
-- 🔥 [2026/06] 🚀 **Light Interaction code & paper are released!** Training-free inference acceleration for HY-WorldPlay and Matrix-Game-3.0. [[Paper]](https://arxiv.org/abs/2605.31158) | [[GitHub]](https://github.com/lujiacheng/Light-Interaction-Project)
+- 🔥 [2026/06] 🚀 **Light Interaction code & paper are released!** Training-free inference acceleration for HY-WorldPlay and Matrix-Game-3.0. [[Paper]](https://arxiv.org/abs/2605.31158)
 - 🔥 [2026/06] 📄 **Paper** is on ArXiv! Check out the details at [arXiv:2605.31158](https://arxiv.org/abs/2605.31158).
 
 <details>
@@ -45,18 +45,35 @@ We introduce **Light Interaction**, a training-free inference acceleration frame
 
 **In summary**, Light Interaction is a **training-free, plug-and-play** acceleration framework that can be applied on top of existing interactive video world models. It requires **no model retraining** and achieves significant speedup with competitive visual quality.
 
-## 🚀 Quick Start
+## 🚀 Deployment Guide
+
+Follow these steps to deploy Light Interaction on HY-WorldPlay. For detailed documentation on each step, click through to the corresponding sub-README.
+
+### Step 1 — Obtain Upstream Resources
+
+First, clone the upstream HY-WorldPlay repository and download the required model checkpoints:
+
+| Resource | Link | Purpose |
+|:---|:---|:---|
+| HY-WorldPlay | `git clone https://github.com/Tencent-Hunyuan/HY-WorldPlay.git` | Base interactive video generation framework |
+| HunyuanVideo-1.5 | [🤗 HuggingFace](https://huggingface.co/tencent/HunyuanVideo-1.5) | Video foundation model (~15 GB) |
+| AR Distilled Action Model | [🤗 HuggingFace](https://huggingface.co/tencent/HY-WorldPlay) | Trajectory-conditioned distilled checkpoint (~10 GB) |
+
+### Step 2 — Apply the Light Interaction Patch
+
+Apply our acceleration modules and integration patch onto the upstream HY-WorldPlay checkout:
 
 ```bash
-# Clone the upstream HY-WorldPlay repository
-git clone https://github.com/Tencent-Hunyuan/HY-WorldPlay.git
-
-# Clone Light Interaction and apply the acceleration patch
-git clone https://github.com/lujiacheng/Light-Interaction-Project.git
+git clone https://github.com/2843721358l-del/Light-Interaction-Project.git
 cd Light-Interaction-Project/hy-worldplay
 bash scripts/apply_patch.sh /path/to/HY-WorldPlay
+```
 
-# Configure model paths and run
+> 📖 See [hy-worldplay/README.md](hy-worldplay/README.md) for the full list of patched files, Triton kernel details, and diagnostic options.
+
+### Step 3 — Configure Model Paths & Run
+
+```bash
 cd /path/to/HY-WorldPlay
 export HY_MODEL_PATH=/path/to/HunyuanVideo-1.5
 export HY_AR_DISTILL_ACTION_MODEL_PATH=/path/to/HY-WorldPlay/ar_distilled_action_model/diffusion_pytorch_model.safetensors
@@ -64,16 +81,43 @@ bash run.sh
 ```
 
 > [!TIP]
-> The patched `run.sh` supports five acceleration presets: `off`, `context`, `sparse`, `cache`, `all`. The default preset `all` enables all three acceleration components.
+> The default preset `all` enables all three acceleration components: **context management + 3D sparse attention + denoising cache**. Use `--acceleration_preset off|context|sparse|cache|all` to switch. See [Presets Guide](hy-worldplay/README.md#-presets) for details.
 
-## 📚 Getting Started
+### Step 4 — (Optional) Run Evaluation Benchmarks
 
-- [Installation & Patch Application](hy-worldplay/README.md)
-- [Acceleration Presets Guide](hy-worldplay/README.md#presets)
-- [Latency & Memory Reporting](hy-worldplay/README.md#latency-reporting)
-- [Sparse Attention Backend](hy-worldplay/README.md#triton-autotuning)
-- [Evaluation Scripts](evaluation/README.md)
-- [Upstream Resources (HY-WorldPlay, HunyuanVideo-1.5)](hy-worldplay/README.md#upstream-resources)
+Generate videos in batch and compute quality metrics:
+
+```bash
+# Batch generation
+python evaluation/scripts/batch_video_generation.py \
+  --prompt-json evaluation/data/refined_prompts_llava16.json \
+  --hy-worldplay-root /path/to/patched/HY-WorldPlay \
+  --model-path /path/to/HunyuanVideo-1.5 \
+  --action-ckpt /path/to/ar_distilled_action_model/diffusion_pytorch_model.safetensors \
+  --output-root outputs/fixed_prompt \
+  --allowed-gpus 0,1,2,3 \
+  --acceleration-preset all
+
+# PSNR / SSIM / LPIPS
+python evaluation/scripts/evaluate_psnr_ssim_lpips.py \
+  --run-mutual --ref-dir outputs/baseline --test-dir outputs/light_interaction \
+  --output-dir evaluation_results --tag left_right --mutual-window 30
+
+# VBench
+python evaluation/scripts/evaluate_vbench_batch.py \
+  --prompt-json evaluation/data/refined_prompts_llava16.json \
+  --video-dir outputs/light_interaction/left_right \
+  --output-csv evaluation_results/vbench_left_right.csv
+```
+
+> 📖 See [evaluation/README.md](evaluation/README.md) for mutual vs. self-comparison modes, window search explanation, and VBench dimension details.
+
+### 📚 Documentation Map
+
+| Document | Contents |
+|:---|:---|
+| [hy-worldplay/README.md](hy-worldplay/README.md) | Patch structure, apply instructions, presets, latency reporting, Triton autotuning, diagnostics |
+| [evaluation/README.md](evaluation/README.md) | Sample set, batch generation, PSNR/SSIM/LPIPS mutual & self evaluation, VBench |
 
 ## 📊 Performance
 
