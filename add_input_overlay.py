@@ -151,45 +151,23 @@ def create_overlay(highlight_key=None):
     highlight_key: None → 全部暗色; 'W' → W 高亮; 'S' → S 高亮
     返回 RGBA PIL Image
     """
-    # 计算整体尺寸
-    # WASD 十字区域
-    wasd_w = KEY_SIZE * 3 + KEY_GAP * 2  # A + gap + S + gap + D (但 S 在中间列)
-    wasd_h = KEY_SIZE * 2 + KEY_GAP       # W + gap + S
+    # 计算 WASD 十字区域尺寸
+    wasd_w = KEY_SIZE * 3 + KEY_GAP * 2
+    wasd_h = KEY_SIZE * 2 + KEY_GAP
 
-    # 实际上 WASD 是 3 列 2 行，但 W 在第 2 列第 1 行，A/S/D 在第 1/2/3 列第 2 行
-    # 需要宽度: KEY_SIZE * 3 + KEY_GAP * 2 (A, S-gap-D)
-    # 需要高度: KEY_SIZE * 2 + KEY_GAP (W, gap, S 行)
-
-    # 摇杆部分
-    joy_w = JOYSTICK_RADIUS * 2 + 8  # 摇杆宽度 + 箭头空间
-    joy_h = JOYSTICK_RADIUS * 2 + 8
-
-    # 总尺寸: WASD + 间距 + 摇杆
-    total_w = wasd_w + JOYSTICK_GAP + joy_w + OVERLAY_MARGIN_X * 2
-    total_h = max(wasd_h, joy_h) + OVERLAY_MARGIN_BOTTOM * 2
+    total_w = wasd_w + OVERLAY_MARGIN_X * 2
+    total_h = wasd_h + OVERLAY_MARGIN_BOTTOM * 2
 
     img = Image.new("RGBA", (total_w, total_h), (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
 
-    # ── 半透明背景 ──
-    bg_margin = 8
-    draw_rounded_rect(
-        draw,
-        (bg_margin, bg_margin, total_w - bg_margin, total_h - bg_margin),
-        radius=10,
-        fill=COLOR_BG,
-        outline=(60, 60, 60, 100),
-        width=1,
-    )
+    # ── WASD 按键布局（无背景框）──
+    wasd_origin_x = OVERLAY_MARGIN_X
+    wasd_origin_y = OVERLAY_MARGIN_BOTTOM
 
-    # ── WASD 按键布局 ──
-    wasd_origin_x = OVERLAY_MARGIN_X + bg_margin
-    wasd_origin_y = OVERLAY_MARGIN_BOTTOM + bg_margin
-
-    # 按键中心坐标（相对 overlay 左上角）
+    # 按键中心坐标
     key_cx = wasd_origin_x + KEY_SIZE // 2
     key_cy = wasd_origin_y + KEY_SIZE // 2
-    half = KEY_SIZE // 2
 
     # W: 中上
     w_cx = key_cx + KEY_SIZE + KEY_GAP
@@ -208,23 +186,6 @@ def create_overlay(highlight_key=None):
     draw_key(draw, a_cx, a_cy, KEY_SIZE, "A", highlight_key == "A")
     draw_key(draw, s_cx, s_cy, KEY_SIZE, "S", highlight_key == "S")
     draw_key(draw, d_cx, d_cy, KEY_SIZE, "D", highlight_key == "D")
-
-    # ── 摇杆 ──
-    joy_cx = d_cx + KEY_SIZE // 2 + JOYSTICK_GAP + JOYSTICK_RADIUS + 4
-    joy_cy = (wasd_origin_y + wasd_h) // 2 + bg_margin // 2
-
-    draw_joystick(draw, joy_cx, joy_cy, JOYSTICK_RADIUS, JOYSTICK_INNER)
-
-    # 摇杆方向箭头（放在摇杆外围四边）
-    arrow_size = 7
-    arrow_dist = JOYSTICK_RADIUS + 6
-    arrow_color = COLOR_ARROW_HL if highlight_key else COLOR_ARROW_DIM
-    for direction, angle in [("up", 90), ("down", 270), ("left", 180), ("right", 0)]:
-        import math
-        rad = math.radians(angle)
-        ax = joy_cx + arrow_dist * math.cos(rad)
-        ay = joy_cy - arrow_dist * math.sin(rad)
-        draw_arrow(draw, ax, ay, direction, arrow_size, arrow_color)
 
     return img
 
