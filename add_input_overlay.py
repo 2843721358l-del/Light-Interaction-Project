@@ -269,15 +269,18 @@ def process_video(video_name):
 def main():
     print("=" * 60)
     print("  视频操作指示器叠加工具")
-    print("  WASD 键盘 + 摇杆 → 视频左下角")
+    print("  WASD 键盘 → 视频左下角")
     print("  前 5s: W 高亮 | 后 5s: S 高亮")
     print("=" * 60)
 
-    # 先预览一张叠加图，方便确认效果
-    preview_path = os.path.join(ASSETS_DIR, "_overlay_preview.png")
-    create_overlay(highlight_key="W").save(preview_path)
-    print(f"\n📷 叠加图预览已保存: {preview_path}")
-    create_overlay(highlight_key="S").save(os.path.join(ASSETS_DIR, "_overlay_preview_s.png"))
+    # 从 git 恢复干净原始视频，避免重复叠加
+    print("\n🔄 从 git 恢复原始干净视频...")
+    video_paths = [os.path.join("static", "assets", v) for v in VIDEOS]
+    subprocess.run(
+        ["git", "-C", BASE_DIR, "checkout", "HEAD", "--"] + video_paths,
+        capture_output=True,
+    )
+    print("   ✓ 已恢复")
 
     for video in VIDEOS:
         input_path = os.path.join(ASSETS_DIR, video)
@@ -286,7 +289,7 @@ def main():
             continue
         process_video(video)
 
-    print(f"\n✅ 完成！处理后的视频在 {ASSETS_DIR}/overlay_*.mp4")
+    print(f"\n✅ 完成！请手动替换: mv {ASSETS_DIR}/overlay_*.mp4 {ASSETS_DIR}/")
 
 
 if __name__ == "__main__":
