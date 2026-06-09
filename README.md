@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="asset/logo.png" width="55%" alt="Light Interaction"/>
+  <img src="asset/logo.png" width="75%" alt="Light Interaction"/>
 </p>
 
 <h3 align="center">
