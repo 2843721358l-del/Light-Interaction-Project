@@ -340,7 +340,7 @@ index b55a2a1..7be419c 100644
 -    return int(os.environ.get("RANK", "0"))
 +    return int(os.environ.get('RANK', '0'))
 diff --git a/hyvideo/generate.py b/hyvideo/generate.py
-index 402f27f..87c9bc1 100644
+index 402f27f..564c147 100644
 --- a/hyvideo/generate.py
 +++ b/hyvideo/generate.py
 @@ -34,6 +34,7 @@ from hyvideo.pipelines.worldplay_video_pipeline import HunyuanVideo_1_5_Pipeline
@@ -351,7 +351,19 @@ index 402f27f..87c9bc1 100644
  
  parallel_dims = initialize_parallel_state(sp=int(os.environ.get("WORLD_SIZE", "1")))
  torch.cuda.set_device(int(os.environ.get("LOCAL_RANK", "0")))
-@@ -1054,7 +1055,16 @@ def main():
+@@ -729,6 +730,11 @@ def generate_video(args):
+         action_ckpt=args.action_ckpt,
+     )
+ 
++
++    # Override acceleration config from CLI (pipeline __init__ defaults to "all")
++    acceleration_config = WorldPlayAccelerationConfig.from_preset(args.acceleration_preset)
++    pipe.acceleration_config = acceleration_config
++    pipe.transformer.attn_param.update(acceleration_config.to_attn_param())
+     extra_kwargs = {}
+     if task == "i2v":
+         extra_kwargs["reference_image"] = args.image_path
+@@ -1054,7 +1060,16 @@ def main():
          "Use --transformer_resident_ar_rollout or --transformer_resident_ar_rollout true to enable.",
      )
  
