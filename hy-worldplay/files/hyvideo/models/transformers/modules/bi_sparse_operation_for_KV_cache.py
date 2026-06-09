@@ -1,7 +1,18 @@
-# Copyright (c) 2026 Jiacheng Lu and contributors.
-# Licensed under the repository LICENSE.
+# Copyright 2026 Jiacheng Lu and contributors
 #
-# This file is part of Light Interaction.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# SPDX-License-Identifier: Apache-2.0
 
 import torch
 import torch.nn.functional as F
@@ -222,6 +233,24 @@ if HAS_TRITON:
 # Sparse index generation
 # ==============================================================================
 def generate_prefill_indices(q_in, k_in, text_len, grid_thw, params, device):
+    """Build block-sparse indices for the bidirectional prefill phase.
+
+    Similar to the AR decode path, but adds a spatio-temporal neighbour bias
+    (Manhattan distance ≤ 1) so that blocks adjacent to the query block are
+    always retained.  This preserves local structure during KV-cache
+    construction.
+
+    Args:
+        q_in: Query pool  ``(B, H, Nq, D)`` or tiled ``(B, H, Nq_blk, Bs, D)``.
+        k_in: Key pool    ``(B, H, Nk, D)`` or tiled.
+        text_len: Text token count (offsets visual indices).
+        grid_thw: Grid ``(T_chunks, H_blks, W_blks)``.
+        params: Dict with ``tile_size``, ``topk_ratio``, ``sim_metric``.
+        device: Output device.
+
+    Returns:
+        Tuple ``(final_indices, final_counts)``.
+    """
     if q_in.dim() == 5:
         q_pool = q_in.mean(dim=-2)
         BLOCK_SIZE = q_in.shape[-2]
@@ -285,6 +314,24 @@ def generate_prefill_indices(q_in, k_in, text_len, grid_thw, params, device):
 # Prefill sparse attention entry point
 # ==============================================================================
 def run_sparse_prefill_attention(q, k_txt, v_txt, k_vis, v_vis, block_idx, latent_hw, sparse_params):
+    """Execute a single bidirectional (prefill) sparse-attention forward pass.
+
+    The first three chunks always run dense (warm-up heuristic).  After that,
+    Triton-fused tiling and sparse-index generation are applied; if Triton is
+    unavailable the call falls back to full SDPA.
+
+    Args:
+        q: Query ``(B, H, Nq, D)``.
+        k_txt, v_txt: Text KV  ``(B, H, N_txt, D)``.
+        k_vis, v_vis: Visual KV ``(B, H, N_vis, D)``.
+        block_idx: Current chunk index.
+        latent_hw: ``(H_lat, W_lat)`` of the latent grid.
+        sparse_params: Dict with ``tile_size``, ``topk_ratio``,
+            ``recent_protect``, ``sim_metric``.
+
+    Returns:
+        Attention output ``(B, H, Nq, D)``.
+    """
     infer_state = get_infer_state()
     current_global_chunk = getattr(infer_state, "current_chunk_index", 0)
 
@@ -294,7 +341,14 @@ def run_sparse_prefill_attention(q, k_txt, v_txt, k_vis, v_vis, block_idx, laten
     text_len = k_txt.shape[2]
     vis_len_k = k_vis.shape[2]
     
-    if current_global_chunk < 3 or not HAS_TRITON or (vis_len_q % (LATENT_H * LATENT_W) != 0):
+    # Dense fallback: early warm-up chunks, missing Triton, or non-uniform
+    # latent shape (cannot tile cleanly).
+    need_dense = (
+        current_global_chunk < 3
+        or not HAS_TRITON
+        or (vis_len_q % (LATENT_H * LATENT_W) != 0)
+    )
+    if need_dense:
         return F.scaled_dot_product_attention(
             q, 
             torch.cat([k_txt, k_vis], dim=2), 

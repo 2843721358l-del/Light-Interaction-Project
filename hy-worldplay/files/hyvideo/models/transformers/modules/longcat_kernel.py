@@ -156,9 +156,24 @@ def _attn_fwd_bsa_align(
 
 
 def longcat_flash_attn(q, k, v, block_indices, block_counts, sm_scale=None, logical_block_size=128):
-    """
+    """Triton-based block-sparse flash attention.
+
     Args:
-        logical_block_size: logical sparse block size used when indices were generated.
+        q: Query  ``(B, H, Q_len, D)`` (contiguous).
+        k: Key    ``(B, H, K_len, D)`` (contiguous).
+        v: Value  ``(B, H, K_len, D)`` (contiguous).
+        block_indices: Sparse block indices ``(B, H, Nq_blk, K_blk)`` int32.
+        block_counts:  Number of valid blocks per query ``(B, H, Nq_blk)`` int32.
+        sm_scale: Scaling factor (default ``1/sqrt(D)``).
+        logical_block_size: Sparse block size used during index generation
+            (must evenly divide *K_len*).
+
+    Returns:
+        Attention output ``(B, H, Q_len, D)``.
+
+    Raises:
+        AssertionError: If *K_len* is not divisible by *logical_block_size*
+            or if any block index is out of bounds.
     """
     q = q.contiguous()
     k = k.contiguous()

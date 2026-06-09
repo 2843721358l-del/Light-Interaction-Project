@@ -1,7 +1,18 @@
-# Copyright (c) 2026 Jiacheng Lu and contributors.
-# Licensed under the repository LICENSE.
+# Copyright 2026 Jiacheng Lu and contributors
 #
-# This file is part of Light Interaction.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# SPDX-License-Identifier: Apache-2.0
 
 import torch
 import torch.nn.functional as F
@@ -222,6 +233,27 @@ if HAS_TRITON:
 # Indexing (Logic)
 # ==============================================================================
 def fast_generate_indices(q_pool, k_pool, text_len, grid_thw_q, grid_thw_k, params, device):
+    """Build block-sparse attention indices for the autoregressive decode path.
+
+    Computes block-level similarity between query and key pools, protects
+    the most recent visual blocks from pruning, and selects the top-k
+    historical blocks.  Text blocks are always prepended (never pruned).
+
+    Args:
+        q_pool: Pooled query features  ``(B, H, Nq_blk, D)``.
+        k_pool: Pooled key features    ``(B, H, Nk_blk, D)``.
+        text_len: Number of text tokens (used to offset visual block indices).
+        grid_thw_q: Query grid ``(T_chunks, H_blks, W_blks)``.
+        grid_thw_k: Key grid   ``(T_chunks, H_blks, W_blks)``.
+        params: Dict with keys ``tile_size``, ``sim_metric``,
+            ``recent_protect``, ``topk_ratio``.
+        device: Target device for output tensors.
+
+    Returns:
+        Tuple of ``(final_indices, final_counts)`` where *final_indices* is
+        ``(B, H, Nq_blk, K)`` int32 and *final_counts* gives the number of
+        selected blocks per query block.
+    """
     tt, th, tw = params['tile_size']
     BLOCK_SIZE = tt * th * tw
     b, h, nq, d = q_pool.shape
@@ -267,6 +299,25 @@ def fast_generate_indices(q_pool, k_pool, text_len, grid_thw_q, grid_thw_k, para
 # Main Pipeline
 # ==============================================================================
 def run_sparse_attention(q, k_txt, v_txt, k_vis, v_vis, block_idx, latent_hw, sparse_params):
+    """Execute a single autoregressive sparse-attention forward pass.
+
+    When Triton is available, tiles Q/K/V into 3D blocks, generates a
+    block-sparse index, and runs the fused LongCat-style attention kernel.
+    Otherwise, falls back to full SDPA.
+
+    Args:
+        q: Query tensor ``(B, H, Nq, D)``.
+        k_txt, v_txt: Text KV  ``(B, H, N_txt, D)``.
+        k_vis, v_vis: Visual KV ``(B, H, N_vis, D)``.
+        block_idx: Current chunk index (informational, used for early-chunk
+            dense gating at the caller level).
+        latent_hw: ``(H_lat, W_lat)`` of the latent grid.
+        sparse_params: Dict with keys ``tile_size``, ``topk_ratio``,
+            ``recent_protect``, ``sim_metric``.
+
+    Returns:
+        Attention output ``(B, H, Nq, D)``.
+    """
     LATENT_H, LATENT_W = latent_hw
     
     text_len = k_txt.shape[2]
