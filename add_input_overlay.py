@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-为所有演示视频左下角添加 WASD 键盘 + 摇杆操作指示器。
-前 5 秒: W 键高亮（镜头前进）
-后 5 秒: S 键高亮（镜头后退）
+为所有演示视频左下角添加 WASD 键盘操作指示器。
+HY-WorldPlay (beach): 前 5s W 高亮, 5s 起 S 高亮
+Matrix-Game (castle): 前 10.5s W 高亮, 10.5s 起 S 高亮
 """
 
 import os
@@ -25,6 +25,16 @@ VIDEOS = [
     "castle_accelerated.mp4",
 ]
 
+# 每个视频 W→S 切换时间（秒）
+# HY-WorldPlay (beach): 前 5s W, 5s 起 S
+# Matrix-Game (castle): 前 10.5s W, 10.5s 起 S
+SWITCH_TIME = {
+    "beach_original.mp4": 5,
+    "beach_accelerated.mp4": 5,
+    "castle_original.mp4": 10.5,
+    "castle_accelerated.mp4": 10.5,
+}
+
 # ── 视觉设计参数 ───────────────────────────────────────────
 # 视频分辨率: 832×480
 # 叠加位置: 左下角
@@ -32,9 +42,9 @@ OVERLAY_MARGIN_X = 18       # 距左边距离
 OVERLAY_MARGIN_BOTTOM = 18  # 距底部距离
 
 # WASD 按键区域
-KEY_SIZE = 38               # 每个按键大小
-KEY_GAP = 5                 # 按键间距
-KEY_RADIUS = 6              # 圆角
+KEY_SIZE = 55               # 每个按键大小
+KEY_GAP = 7                 # 按键间距
+KEY_RADIUS = 9              # 圆角
 
 # 摇杆区域
 JOYSTICK_RADIUS = 32        # 摇杆外圈半径
@@ -55,7 +65,7 @@ COLOR_JOY_DOT = (130, 130, 130, 200)          # 摇杆中心点
 COLOR_ARROW_DIM = (90, 90, 90, 160)           # 箭头暗色
 COLOR_ARROW_HL = (166, 219, 90, 180)          # 箭头高亮
 
-FONT_SIZE = 14
+FONT_SIZE = 22
 FONT_SIZE_SMALL = 10
 
 # ── 辅助函数 ────────────────────────────────────────────────
@@ -213,34 +223,30 @@ def process_video(video_name):
     output_path = os.path.join(ASSETS_DIR, f"overlay_{video_name}")
     tmp_dir = tempfile.mkdtemp()
 
+    switch = SWITCH_TIME.get(video_name, 5)
+
     try:
         duration = get_video_duration(input_path)
-        print(f"  处理: {video_name} (时长: {duration:.2f}s)")
+        print(f"  处理: {video_name} (时长: {duration:.2f}s, W→S 切换: {switch}s)")
 
-        # 生成三张叠加图
-        base_path = os.path.join(tmp_dir, "base.png")
+        # 生成两张叠加图（W 高亮 / S 高亮），始终层不需要
         w_path = os.path.join(tmp_dir, "w_highlight.png")
         s_path = os.path.join(tmp_dir, "s_highlight.png")
 
-        create_overlay(highlight_key=None).save(base_path)
         create_overlay(highlight_key="W").save(w_path)
         create_overlay(highlight_key="S").save(s_path)
 
-        # ffmpeg 合成命令
-        # 三层叠加: base (始终) + W高亮 (t<5) + S高亮 (t>duration-5)
-        # 叠加位置: 左下角 x=0, y=H-overlay_h
+        # ffmpeg 合成: W高亮 t<switch, S高亮 t>=switch
         overlay_y = f"H-overlay_h-0"
 
         filter_complex = (
-            f"[0][1]overlay=0:{overlay_y}[tmp1];"
-            f"[tmp1][2]overlay=0:{overlay_y}:enable='between(t,0,5)'[tmp2];"
-            f"[tmp2][3]overlay=0:{overlay_y}:enable='gte(t,{duration-5})'"
+            f"[0][1]overlay=0:{overlay_y}:enable='lt(t,{switch})'[tmp1];"
+            f"[tmp1][2]overlay=0:{overlay_y}:enable='gte(t,{switch})'"
         )
 
         cmd = [
             FFMPEG,
             "-i", input_path,
-            "-i", base_path,
             "-i", w_path,
             "-i", s_path,
             "-filter_complex", filter_complex,
