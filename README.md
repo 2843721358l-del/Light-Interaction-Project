@@ -71,11 +71,13 @@ bash scripts/apply_patch.sh /path/to/HY-WorldPlay
 cd /path/to/HY-WorldPlay
 export HY_MODEL_PATH=/path/to/HunyuanVideo-1.5
 export HY_AR_DISTILL_ACTION_MODEL_PATH=/path/to/HY-WorldPlay/ar_distilled_action_model/diffusion_pytorch_model.safetensors
+# Optional: single-GPU inference (default uses 8 GPUs)
+export HY_N_INFERENCE_GPU=1
 bash run.sh
 ```
 
 > [!TIP]
-> The default preset `all` enables all three acceleration components: **context management + 3D sparse attention + denoising cache**. Use `--acceleration_preset off|context|sparse|cache|all` to switch. See [Presets Guide](hy-worldplay/README.md#-presets) for details.
+> The default preset `all` enables all three acceleration components: **context management + 3D sparse attention + denoising cache**. To switch presets, edit the `--acceleration_preset` line in `run.sh` to `off`, `context`, `sparse`, `cache`, or `all`. See [Presets Guide](hy-worldplay/README.md#-presets) for details.
 
 ### Step 4 — (Optional) Run Evaluation Benchmarks
 
