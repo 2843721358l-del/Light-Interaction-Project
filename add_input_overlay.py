@@ -172,10 +172,14 @@ def process_video(video_name):
             f"[tmp1][2]overlay=0:{overlay_y}:enable='gte(t,{switch})'"
         )
 
+        # 城堡视频分辨率高，用更高压缩率
+        crf = "24" if "beach" in video_name else "30"
+
         cmd = [
             FFMPEG, "-i", input_path, "-i", w_path, "-i", s_path,
             "-filter_complex", filter_complex,
-            "-c:v", "libx264", "-preset", "medium", "-crf", "18",
+            "-c:v", "libx264", "-preset", "medium", "-crf", crf,
+            "-movflags", "+faststart",
             "-c:a", "copy", "-y", output_path,
         ]
         result = subprocess.run(cmd, capture_output=True, text=True)
