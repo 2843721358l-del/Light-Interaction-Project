@@ -279,11 +279,11 @@ def main():
     print("  前 5s: W 高亮 | 后 5s: S 高亮")
     print("=" * 60)
 
-    # 从 git 恢复干净原始视频，避免重复叠加
+    # 从 git 初始提交恢复干净原始视频，避免重复叠加
     print("\n🔄 从 git 恢复原始干净视频...")
     video_paths = [os.path.join("static", "assets", v) for v in VIDEOS]
     subprocess.run(
-        ["git", "-C", BASE_DIR, "checkout", "HEAD", "--"] + video_paths,
+        ["git", "-C", BASE_DIR, "checkout", "508c639", "--"] + video_paths,
         capture_output=True,
     )
     print("   ✓ 已恢复")
