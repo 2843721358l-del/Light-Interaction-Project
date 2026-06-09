@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 720" role="img" aria-labelledby="title desc">
+  <title id="title">Light Interaction logo</title>
+  <desc id="desc">A vector redraw of the Light Interaction project logo with a dark L mark, green light blade, orbital arcs, pixel particles, and italic wordmark.</desc>
+  <defs>
+    <linearGradient id="inkGrad" x1="130" y1="120" x2="370" y2="560" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#111922"/>
+      <stop offset="0.45" stop-color="#243039"/>
+      <stop offset="1" stop-color="#05080b"/>
+    </linearGradient>
+    <linearGradient id="greenBlade" x1="360" y1="168" x2="440" y2="565" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#9aff10"/>
+      <stop offset="0.4" stop-color="#70df05"/>
+      <stop offset="1" stop-color="#2e9a05"/>
+    </linearGradient>
+    <linearGradient id="orbitGrad" x1="90" y1="620" x2="745" y2="45" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1d8600"/>
+      <stop offset="0.36" stop-color="#62df05"/>
+      <stop offset="0.72" stop-color="#67c80d"/>
+      <stop offset="1" stop-color="#2d9900"/>
+    </linearGradient>
+    <linearGradient id="wordInk" x1="755" y1="300" x2="1135" y2="456" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#10151b"/>
+      <stop offset="0.55" stop-color="#2c353c"/>
+      <stop offset="1" stop-color="#080b0f"/>
+    </linearGradient>
+    <linearGradient id="wordGreen" x1="1170" y1="287" x2="2020" y2="452" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7cdb08"/>
+      <stop offset="0.5" stop-color="#4fb900"/>
+      <stop offset="1" stop-color="#2d8c00"/>
+    </linearGradient>
+    <radialGradient id="flareCore" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="0.16" stop-color="#f8ffe5"/>
+      <stop offset="0.42" stop-color="#baff45"/>
+      <stop offset="1" stop-color="#55d900" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="12" flood-color="#0b1114" flood-opacity="0.22"/>
+    </filter>
+    <filter id="greenGlow" x="-120%" y="-120%" width="340%" height="340%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.43 0 0 0 0 1 0 0 0 0 0 0 0 0 .8 0" result="glow"/>
+      <feMerge>
+        <feMergeNode in="glow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="beamGlow" x="-10%" y="-500%" width="120%" height="1100%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <style>
+      .word {
+        font-family: "Arial Black", "Arial", "Helvetica Neue", sans-serif;
+        font-weight: 900;
+        font-style: italic;
+        letter-spacing: -8px;
+      }
+    </style>
+  </defs>
+
+  <rect width="2048" height="720" fill="#fff"/>
+  <g opacity="0.48">
+    <ellipse cx="630" cy="312" rx="590" ry="250" fill="#f6f6f6"/>
+    <ellipse cx="1570" cy="350" rx="500" ry="185" fill="#f8f8f8"/>
+  </g>
+
+  <g filter="url(#softShadow)">
+    <path fill="url(#inkGrad)" d="M246 168c8-25 25-42 50-52l34-14c22-9 30-1 23 24L271 512h117c17 0 23 8 18 23l-14 46c-5 15-16 22-33 22H165c-22 0-29-11-21-32l102-403Z"/>
+    <path fill="url(#greenBlade)" d="M424 214c7-20 22-37 43-49l58-34c18-10 28-3 23 17L488 474c-3 17-12 30-28 39l-108 63 55-307c4-22 10-41 17-55Z"/>
+  </g>
+
+  <g fill="#a7a7a7" opacity="0.78">
+    <path d="M31 530h28l-8 30H23z"/>
+    <path d="M96 505h38l-11 41H84z"/>
+    <path d="M69 574h43l-12 43H57z"/>
+    <path d="M141 556h31l-9 34h-31z"/>
+    <path d="M187 609h21l-7 25h-22z"/>
+  </g>
+
+  <g fill="#121820" filter="url(#softShadow)">
+    <path d="M669 132h34l-8 44h-36z"/>
+    <path d="M640 196h37l-8 45h-39z"/>
+    <path d="M599 254h34l-8 41h-36z"/>
+    <path d="M563 197h29l-7 34h-30z"/>
+  </g>
+  <g fill="#66d80b" filter="url(#greenGlow)">
+    <path d="M743 100h38l-8 41h-40z"/>
+    <path d="M727 159h30l-6 34h-32z"/>
+    <path d="M704 214h24l-5 29h-25z"/>
+    <path d="M573 189h29l-7 34h-30z"/>
+  </g>
+
+  <g fill="none" stroke="url(#orbitGrad)" stroke-linecap="round">
+    <path d="M96 632C186 738 527 557 657 322c82-148 66-262-26-292" stroke-width="9"/>
+    <path d="M360 96C526 0 689 8 730 72" stroke-width="6" stroke-dasharray="9 16" opacity="0.78"/>
+    <path d="M319 656c181 10 307-62 342-162" stroke-width="5" stroke-dasharray="8 17" opacity="0.78"/>
+  </g>
+  <g fill="url(#orbitGrad)" filter="url(#greenGlow)">
+    <circle cx="249" cy="650" r="13"/>
+    <circle cx="515" cy="629" r="12"/>
+    <circle cx="640" cy="468" r="10"/>
+    <circle cx="568" cy="34" r="12"/>
+  </g>
+
+  <path d="M0 375H472" stroke="#89ff1c" stroke-width="6" stroke-linecap="round" filter="url(#beamGlow)"/>
+  <path d="M0 377H2048" stroke="#79ff11" stroke-width="2" opacity="0.75" filter="url(#beamGlow)"/>
+  <g transform="translate(458 359)" filter="url(#greenGlow)">
+    <circle r="42" fill="url(#flareCore)"/>
+    <path fill="#fff" d="M0-76 10-18 72-46 20-8 83 0 20 8 72 46 10 18 0 76-10 18-72 46-20 8-83 0-20-8-72-46-10-18z"/>
+    <circle r="12" fill="#fff"/>
+  </g>
+
+  <g transform="skewX(-12)">
+    <text x="820" y="430" class="word" font-size="138" fill="url(#wordInk)">Light</text>
+    <text x="1190" y="430" class="word" font-size="138" fill="url(#wordGreen)">Interaction</text>
+  </g>
+</svg>
