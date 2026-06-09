@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
 为所有演示视频左下角添加 WASD 键盘操作指示器。
+按键大小按视频高度比例计算，确保网页展示时大小一致。
 HY-WorldPlay (beach): 前 5s W 高亮, 5s 起 S 高亮
 Matrix-Game (castle): 前 10.5s W 高亮, 10.5s 起 S 高亮
 """
@@ -26,8 +27,6 @@ VIDEOS = [
 ]
 
 # 每个视频 W→S 切换时间（秒）
-# HY-WorldPlay (beach): 前 5s W, 5s 起 S
-# Matrix-Game (castle): 前 10.5s W, 10.5s 起 S
 SWITCH_TIME = {
     "beach_original.mp4": 5,
     "beach_accelerated.mp4": 5,
@@ -35,43 +34,25 @@ SWITCH_TIME = {
     "castle_accelerated.mp4": 10.5,
 }
 
-# ── 视觉设计参数 ───────────────────────────────────────────
-# 视频分辨率: 832×480
-# 叠加位置: 左下角
-OVERLAY_MARGIN_X = 18       # 距左边距离
-OVERLAY_MARGIN_BOTTOM = 18  # 距底部距离
+# ── 比例参数（均相对 KEY_SIZE）───────────────────────────
+KEY_HEIGHT_RATIO = 0.11     # 按键大小 = 视频高度 × 该比例
+GAP_RATIO = 0.13            # 间距比例
+RADIUS_RATIO = 0.16         # 圆角比例
+FONT_RATIO = 0.38           # 字号比例
+MARGIN_RATIO = 0.35         # 边距比例
 
-# WASD 按键区域
-KEY_SIZE = 55               # 每个按键大小
-KEY_GAP = 7                 # 按键间距
-KEY_RADIUS = 9              # 圆角
+# ── 颜色 ─────────────────────────────────────────────────
+COLOR_KEY_DIM = (80, 80, 80, 200)
+COLOR_KEY_HIGHLIGHT = (118, 185, 0, 240)        # 页面 accent #76b900
+COLOR_KEY_BORDER = (120, 120, 120, 180)
+COLOR_KEY_BORDER_HL = (166, 219, 90, 255)
+COLOR_LABEL_DIM = (200, 200, 200, 220)
+COLOR_LABEL_HL = (255, 255, 255, 255)
 
-# 摇杆区域
-JOYSTICK_RADIUS = 32        # 摇杆外圈半径
-JOYSTICK_INNER = 12          # 摇杆内圈（拇指）半径
-JOYSTICK_GAP = 18           # WASD 和摇杆间距
 
-# 颜色
-COLOR_BG = (0, 0, 0, 160)          # 背景底色
-COLOR_KEY_DIM = (80, 80, 80, 200)  # 未激活按键
-COLOR_KEY_HIGHLIGHT = (118, 185, 0, 240)  # 激活按键 (页面 accent #76b900)
-COLOR_KEY_BORDER = (120, 120, 120, 180)     # 按键边框
-COLOR_KEY_BORDER_HL = (166, 219, 90, 255)   # 激活按键边框
-COLOR_LABEL_DIM = (200, 200, 200, 220)       # 文字暗色
-COLOR_LABEL_HL = (255, 255, 255, 255)         # 文字亮色
-COLOR_JOY_BG = (30, 30, 30, 180)             # 摇杆背景
-COLOR_JOY_BORDER = (100, 100, 100, 160)       # 摇杆边框
-COLOR_JOY_DOT = (130, 130, 130, 200)          # 摇杆中心点
-COLOR_ARROW_DIM = (90, 90, 90, 160)           # 箭头暗色
-COLOR_ARROW_HL = (166, 219, 90, 180)          # 箭头高亮
-
-FONT_SIZE = 22
-FONT_SIZE_SMALL = 10
-
-# ── 辅助函数 ────────────────────────────────────────────────
+# ── 辅助函数 ─────────────────────────────────────────────
 
 def get_font(size):
-    """尝试获取合适的字体"""
     font_paths = [
         "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
         "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
@@ -85,140 +66,79 @@ def get_font(size):
     return ImageFont.load_default()
 
 
-def draw_rounded_rect(draw, xy, radius, fill, outline=None, width=1):
-    """绘制圆角矩形"""
-    x0, y0, x1, y1 = xy
-    draw.rounded_rectangle(xy, radius=radius, fill=fill, outline=outline, width=width)
+def get_video_info(video_path):
+    """获取视频时长和分辨率"""
+    cmd = [FFMPEG, "-i", video_path, "-f", "null", "-"]
+    result = subprocess.run(cmd, capture_output=True, text=True)
+    duration = None
+    width = height = None
+    for line in result.stderr.split("\n"):
+        if "Duration" in line:
+            time_str = line.split("Duration:")[1].split(",")[0].strip()
+            h, m, s = time_str.split(":")
+            duration = float(h) * 3600 + float(m) * 60 + float(s)
+        if "Stream" in line and "Video" in line:
+            # 提取分辨率: 832x480
+            import re
+            m = re.search(r'(\d{2,})x(\d{2,})', line)
+            if m:
+                width, height = int(m.group(1)), int(m.group(2))
+    if duration is None:
+        raise ValueError(f"无法获取视频时长: {video_path}")
+    return duration, width, height
 
 
-def draw_key(draw, cx, cy, key_size, label, is_highlighted):
-    """绘制单个按键，返回中心坐标"""
-    half = key_size // 2
-    x0, y0 = cx - half, cy - half
-    x1, y1 = cx + half, cy + half
-    fill = COLOR_KEY_HIGHLIGHT if is_highlighted else COLOR_KEY_DIM
-    border = COLOR_KEY_BORDER_HL if is_highlighted else COLOR_KEY_BORDER
-    label_color = COLOR_LABEL_HL if is_highlighted else COLOR_LABEL_DIM
-    draw_rounded_rect(draw, (x0, y0, x1, y1), KEY_RADIUS, fill, border, 2)
+def create_overlay(key_size, key_gap, key_radius, font_size, margin, highlight_key=None):
+    """创建 WASD 叠加图，所有尺寸参数化"""
+    wasd_w = key_size * 3 + key_gap * 2
+    wasd_h = key_size * 2 + key_gap
 
-    font = get_font(FONT_SIZE)
-    bbox = draw.textbbox((0, 0), label, font=font)
-    tw, th = bbox[2] - bbox[0], bbox[3] - bbox[1]
-    draw.text((cx - tw // 2, cy - th // 2 - 1), label, fill=label_color, font=font)
-
-
-def draw_joystick(draw, cx, cy, radius, inner_radius):
-    """绘制摇杆（游戏手柄拇指摇杆）"""
-    # 外圈
-    draw.ellipse(
-        (cx - radius, cy - radius, cx + radius, cy + radius),
-        fill=COLOR_JOY_BG,
-        outline=COLOR_JOY_BORDER,
-        width=2,
-    )
-    # 内圈（拇指位置）
-    draw.ellipse(
-        (cx - inner_radius, cy - inner_radius, cx + inner_radius, cy + inner_radius),
-        fill=COLOR_JOY_DOT,
-        outline=None,
-    )
-    # 十字指示线
-    cross_len = radius - 6
-    inner_gap = inner_radius + 3
-    for angle in [0, 90, 180, 270]:
-        import math
-        rad = math.radians(angle)
-        x1 = cx + inner_gap * math.cos(rad)
-        y1 = cy - inner_gap * math.sin(rad)
-        x2 = cx + cross_len * math.cos(rad)
-        y2 = cy - cross_len * math.sin(rad)
-        draw.line((x1, y1, x2, y2), fill=COLOR_ARROW_DIM, width=2)
-    # 外圈边框
-    out_r = radius + 1
-    draw.arc((cx - out_r, cy - out_r, cx + out_r, cy + out_r), 0, 360,
-             fill=COLOR_JOY_BORDER, width=2)
-
-
-def draw_arrow(draw, cx, cy, direction, size, color):
-    """绘制方向箭头三角形"""
-    s = size
-    if direction == "up":
-        pts = [(cx, cy - s), (cx - s * 0.7, cy + s * 0.5), (cx + s * 0.7, cy + s * 0.5)]
-    elif direction == "down":
-        pts = [(cx, cy + s), (cx - s * 0.7, cy - s * 0.5), (cx + s * 0.7, cy - s * 0.5)]
-    elif direction == "left":
-        pts = [(cx - s, cy), (cx + s * 0.5, cy - s * 0.7), (cx + s * 0.5, cy + s * 0.7)]
-    elif direction == "right":
-        pts = [(cx + s, cy), (cx - s * 0.5, cy - s * 0.7), (cx - s * 0.5, cy + s * 0.7)]
-    else:
-        return
-    draw.polygon(pts, fill=color)
-
-
-def create_overlay(highlight_key=None):
-    """
-    创建操作指示器叠加图。
-    highlight_key: None → 全部暗色; 'W' → W 高亮; 'S' → S 高亮
-    返回 RGBA PIL Image
-    """
-    # 计算 WASD 十字区域尺寸
-    wasd_w = KEY_SIZE * 3 + KEY_GAP * 2
-    wasd_h = KEY_SIZE * 2 + KEY_GAP
-
-    total_w = wasd_w + OVERLAY_MARGIN_X * 2
-    total_h = wasd_h + OVERLAY_MARGIN_BOTTOM * 2
+    total_w = wasd_w + margin * 2
+    total_h = wasd_h + margin * 2
 
     img = Image.new("RGBA", (total_w, total_h), (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
 
-    # ── WASD 按键布局（无背景框）──
-    wasd_origin_x = OVERLAY_MARGIN_X
-    wasd_origin_y = OVERLAY_MARGIN_BOTTOM
+    # ── WASD 按键布局 ──
+    ox = margin
+    oy = margin
 
-    # 按键中心坐标
-    key_cx = wasd_origin_x + KEY_SIZE // 2
-    key_cy = wasd_origin_y + KEY_SIZE // 2
+    kc = ox + key_size // 2
+    kr = key_cy = oy + key_size // 2
 
-    # W: 中上
-    w_cx = key_cx + KEY_SIZE + KEY_GAP
-    w_cy = key_cy
-    # A: 左下
-    a_cx = key_cx
-    a_cy = key_cy + KEY_SIZE + KEY_GAP
-    # S: 中下
+    w_cx = kc + key_size + key_gap
+    w_cy = kr
+    a_cx = kc
+    a_cy = kr + key_size + key_gap
     s_cx = w_cx
     s_cy = a_cy
-    # D: 右下
-    d_cx = key_cx + (KEY_SIZE + KEY_GAP) * 2
+    d_cx = kc + (key_size + key_gap) * 2
     d_cy = a_cy
 
-    draw_key(draw, w_cx, w_cy, KEY_SIZE, "W", highlight_key == "W")
-    draw_key(draw, a_cx, a_cy, KEY_SIZE, "A", highlight_key == "A")
-    draw_key(draw, s_cx, s_cy, KEY_SIZE, "S", highlight_key == "S")
-    draw_key(draw, d_cx, d_cy, KEY_SIZE, "D", highlight_key == "D")
+    font = get_font(font_size)
+    for cx, cy, label, hl in [
+        (w_cx, w_cy, "W", highlight_key == "W"),
+        (a_cx, a_cy, "A", highlight_key == "A"),
+        (s_cx, s_cy, "S", highlight_key == "S"),
+        (d_cx, d_cy, "D", highlight_key == "D"),
+    ]:
+        half = key_size // 2
+        fill = COLOR_KEY_HIGHLIGHT if hl else COLOR_KEY_DIM
+        border = COLOR_KEY_BORDER_HL if hl else COLOR_KEY_BORDER
+        label_color = COLOR_LABEL_HL if hl else COLOR_LABEL_DIM
+        draw.rounded_rectangle(
+            (cx - half, cy - half, cx + half, cy + half),
+            radius=key_radius, fill=fill, outline=border, width=2,
+        )
+        bbox = draw.textbbox((0, 0), label, font=font)
+        tw, th = bbox[2] - bbox[0], bbox[3] - bbox[1]
+        draw.text((cx - tw // 2, cy - th // 2 - 1), label, fill=label_color, font=font)
 
     return img
 
 
-def get_video_duration(video_path):
-    """获取视频时长（秒）"""
-    cmd = [
-        FFMPEG, "-i", video_path,
-        "-f", "null", "-"
-    ]
-    result = subprocess.run(cmd, capture_output=True, text=True)
-    # 从 stderr 中解析 Duration
-    for line in result.stderr.split("\n"):
-        if "Duration" in line:
-            # Duration: 00:03:48.60
-            time_str = line.split("Duration:")[1].split(",")[0].strip()
-            h, m, s = time_str.split(":")
-            return float(h) * 3600 + float(m) * 60 + float(s)
-    raise ValueError(f"无法获取视频时长: {video_path}")
-
-
 def process_video(video_name):
-    """处理单个视频：生成叠加层并用 ffmpeg 合成"""
+    """处理单个视频"""
     input_path = os.path.join(ASSETS_DIR, video_name)
     output_path = os.path.join(ASSETS_DIR, f"overlay_{video_name}")
     tmp_dir = tempfile.mkdtemp()
@@ -226,48 +146,47 @@ def process_video(video_name):
     switch = SWITCH_TIME.get(video_name, 5)
 
     try:
-        duration = get_video_duration(input_path)
-        print(f"  处理: {video_name} (时长: {duration:.2f}s, W→S 切换: {switch}s)")
+        duration, width, height = get_video_info(input_path)
 
-        # 生成两张叠加图（W 高亮 / S 高亮），始终层不需要
+        # 按视频高度计算所有尺寸
+        ks = round(height * KEY_HEIGHT_RATIO)
+        kg = round(ks * GAP_RATIO)
+        kr = round(ks * RADIUS_RATIO)
+        fs = round(ks * FONT_RATIO)
+        mg = round(ks * MARGIN_RATIO)
+
+        print(f"  处理: {video_name}")
+        print(f"    分辨率: {width}x{height}, 时长: {duration:.1f}s, W→S: {switch}s")
+        print(f"    按键: {ks}px, 字体: {fs}px")
+
         w_path = os.path.join(tmp_dir, "w_highlight.png")
         s_path = os.path.join(tmp_dir, "s_highlight.png")
 
-        create_overlay(highlight_key="W").save(w_path)
-        create_overlay(highlight_key="S").save(s_path)
+        create_overlay(ks, kg, kr, fs, mg, highlight_key="W").save(w_path)
+        create_overlay(ks, kg, kr, fs, mg, highlight_key="S").save(s_path)
 
-        # ffmpeg 合成: W高亮 t<switch, S高亮 t>=switch
-        overlay_y = f"H-overlay_h-0"
-
+        # ffmpeg 合成
+        overlay_y = "H-overlay_h-0"
         filter_complex = (
             f"[0][1]overlay=0:{overlay_y}:enable='lt(t,{switch})'[tmp1];"
             f"[tmp1][2]overlay=0:{overlay_y}:enable='gte(t,{switch})'"
         )
 
         cmd = [
-            FFMPEG,
-            "-i", input_path,
-            "-i", w_path,
-            "-i", s_path,
+            FFMPEG, "-i", input_path, "-i", w_path, "-i", s_path,
             "-filter_complex", filter_complex,
-            "-c:v", "libx264",
-            "-preset", "medium",
-            "-crf", "18",
-            "-c:a", "copy",
-            "-y",
-            output_path,
+            "-c:v", "libx264", "-preset", "medium", "-crf", "18",
+            "-c:a", "copy", "-y", output_path,
         ]
-
         result = subprocess.run(cmd, capture_output=True, text=True)
         if result.returncode != 0:
             print(f"  ✗ FFmpeg 失败:\n{result.stderr[-500:]}")
             return False
 
-        print(f"  ✓ 输出: {output_path}")
+        print(f"  ✓ 完成")
         return True
 
     finally:
-        # 清理临时文件
         import shutil
         shutil.rmtree(tmp_dir, ignore_errors=True)
 
@@ -275,11 +194,11 @@ def process_video(video_name):
 def main():
     print("=" * 60)
     print("  视频操作指示器叠加工具")
-    print("  WASD 键盘 → 视频左下角")
-    print("  前 5s: W 高亮 | 后 5s: S 高亮")
+    print("  WASD 按键 → 视频左下角")
+    print(f"  按键大小 = 视频高度 × {KEY_HEIGHT_RATIO}")
     print("=" * 60)
 
-    # 从 git 初始提交恢复干净原始视频，避免重复叠加
+    # 从 git 初始提交恢复干净原始视频
     print("\n🔄 从 git 恢复原始干净视频...")
     video_paths = [os.path.join("static", "assets", v) for v in VIDEOS]
     subprocess.run(
@@ -291,11 +210,13 @@ def main():
     for video in VIDEOS:
         input_path = os.path.join(ASSETS_DIR, video)
         if not os.path.exists(input_path):
-            print(f"  ⚠ 跳过不存在的文件: {input_path}")
+            print(f"  ⚠ 跳过: {input_path}")
             continue
         process_video(video)
 
-    print(f"\n✅ 完成！请手动替换: mv {ASSETS_DIR}/overlay_*.mp4 {ASSETS_DIR}/")
+    print(f"\n✅ 完成！替换命令:")
+    for v in VIDEOS:
+        print(f"   mv {ASSETS_DIR}/overlay_{v} {ASSETS_DIR}/{v}")
 
 
 if __name__ == "__main__":
