@@ -110,6 +110,14 @@ Interactive video models may produce small temporal phase shifts even when the v
 
 Use `scripts/evaluate_vbench_batch.py` to run selected VBench dimensions on the generated videos.
 
+> [!IMPORTANT]
+> VBench requires a dedicated conda environment (e.g. ``vbench_env``) with its own dependencies installed.
+> If you encounter ``libnvshmem_host.so.3: cannot open shared object file``, add the nvshmem library path:
+> ```bash
+> export LD_LIBRARY_PATH=/path/to/nvidia/nvshmem/lib:$LD_LIBRARY_PATH
+> ```
+> The nvshmem library ships with the ``nvidia-nvshmem`` PyPI package inside some PyTorch environments.
+
 ```bash
 python evaluation/scripts/evaluate_vbench_batch.py \
   --prompt-json evaluation/data/refined_prompts_llava16.json \
