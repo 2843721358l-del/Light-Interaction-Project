@@ -339,6 +339,35 @@ index b55a2a1..7be419c 100644
  def get_rank():
 -    return int(os.environ.get("RANK", "0"))
 +    return int(os.environ.get('RANK', '0'))
+diff --git a/hyvideo/generate.py b/hyvideo/generate.py
+index 402f27f..87c9bc1 100644
+--- a/hyvideo/generate.py
++++ b/hyvideo/generate.py
+@@ -34,6 +34,7 @@ from hyvideo.pipelines.worldplay_video_pipeline import HunyuanVideo_1_5_Pipeline
+ from hyvideo.commons.parallel_states import initialize_parallel_state
+ from hyvideo.commons.infer_state import initialize_infer_state
+ from hyvideo.generate_custom_trajectory import generate_camera_trajectory_local
++from worldplay_acceleration_config import WorldPlayAccelerationConfig
+ 
+ parallel_dims = initialize_parallel_state(sp=int(os.environ.get("WORLD_SIZE", "1")))
+ torch.cuda.set_device(int(os.environ.get("LOCAL_RANK", "0")))
+@@ -1054,7 +1055,16 @@ def main():
+         "Use --transformer_resident_ar_rollout or --transformer_resident_ar_rollout true to enable.",
+     )
+ 
++    parser.add_argument(
++        "--acceleration_preset",
++        type=str,
++        default="all",
++        choices=["off", "context", "sparse", "cache", "all"],
++        help="Acceleration preset for Light Interaction (default: all).",
++    )
++
+     args = parser.parse_args()
++    acceleration_config = WorldPlayAccelerationConfig.from_preset(args.acceleration_preset).apply_overrides(enable_l1_diagnostics=getattr(args, "enable_l1_diagnostics", None))
+ 
+     assert args.image_path is not None
+ 
 diff --git a/hyvideo/models/transformers/modules/attention.py b/hyvideo/models/transformers/modules/attention.py
 index 624848f..081a942 100644
 --- a/hyvideo/models/transformers/modules/attention.py
