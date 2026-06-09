@@ -19,8 +19,8 @@
 
 ## 🔥 News
 
-- 🔥 [2026/06] 🚀 **Light Interaction code & paper are released!** Training-free inference acceleration for HY-WorldPlay and Matrix-Game-3.0. [[Paper]](https://arxiv.org/abs/2605.31158)
-- 🔥 [2026/06] 📄 **Paper** is on ArXiv! Check out the details at [arXiv:2605.31158](https://arxiv.org/abs/2605.31158).
+- 🔥 [2026/06] 🚀 **Light Interaction code released!** Training-free inference acceleration for HY-WorldPlay and Matrix-Game-3.0.
+- 🔥 [2026/05] 📄 **Paper** is on ArXiv! Check out the details at [arXiv:2605.31158](https://arxiv.org/abs/2605.31158).
 
 <details>
   <summary>Click to show all updates</summary>
