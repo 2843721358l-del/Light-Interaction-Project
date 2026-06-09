@@ -1,7 +1,8 @@
-diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_main/hyvideo/commons/__init__.py hywp_patch_stage_rel/hyvideo/commons/__init__.py
---- hywp_official_main/hyvideo/commons/__init__.py	2026-06-02 23:05:40.765847072 +0800
-+++ hywp_patch_stage_rel/hyvideo/commons/__init__.py	2026-06-02 23:07:41.252443897 +0800
-@@ -21,10 +21,8 @@
+diff --git a/hyvideo/commons/__init__.py b/hyvideo/commons/__init__.py
+index b55a2a1..7be419c 100644
+--- a/hyvideo/commons/__init__.py
++++ b/hyvideo/commons/__init__.py
+@@ -21,10 +21,8 @@ from contextlib import contextmanager
  from torch import nn
  import collections.abc
  
@@ -12,7 +13,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
      def parse(x):
          if isinstance(x, collections.abc.Iterable) and not isinstance(x, str):
              x = tuple(x)
-@@ -32,10 +30,8 @@
+@@ -32,10 +30,8 @@ def _ntuple(n):
                  x = tuple(repeat(x[0], n))
              return x
          return tuple(repeat(x, n))
@@ -23,7 +24,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  # Convenience functions for common tuple sizes
  to_1tuple = _ntuple(1)
  to_2tuple = _ntuple(2)
-@@ -43,200 +39,181 @@
+@@ -43,200 +39,181 @@ to_3tuple = _ntuple(3)
  to_4tuple = _ntuple(4)
  
  PRECISION_TO_TYPE = {
@@ -41,96 +42,87 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
 -        "guidance_scale": 6.0,
 -        "embedded_guidance_scale": None,
 -        "flow_shift": 5.0,
--    },
--    "480p_i2v": {
--        "guidance_scale": 6.0,
--        "embedded_guidance_scale": None,
--        "flow_shift": 5.0,
--    },
--    "720p_t2v": {
--        "guidance_scale": 6.0,
--        "embedded_guidance_scale": None,
--        "flow_shift": 9.0,
--    },
--    "720p_i2v": {
--        "guidance_scale": 6.0,
--        "embedded_guidance_scale": None,
--        "flow_shift": 7.0,
--    },
--    "480p_t2v_distilled": {
--        "guidance_scale": 1.0,
--        "embedded_guidance_scale": None,
--        "flow_shift": 5.0,
--    },
--    "480p_i2v_distilled": {
--        "guidance_scale": 1.0,
--        "embedded_guidance_scale": None,
--        "flow_shift": 5.0,
--    },
--    "720p_t2v_distilled": {
--        "guidance_scale": 1.0,
--        "embedded_guidance_scale": None,
--        "flow_shift": 9.0,
--    },
--    "720p_i2v_distilled": {
--        "guidance_scale": 1.0,
--        "embedded_guidance_scale": None,
--        "flow_shift": 7.0,
--    },
--    "720p_t2v_distilled_sparse": {
--        "guidance_scale": 1.0,
--        "embedded_guidance_scale": None,
--        "flow_shift": 7.0,
--    },
--    "720p_i2v_distilled_sparse": {
--        "guidance_scale": 1.0,
--        "embedded_guidance_scale": None,
--        "flow_shift": 9.0,
 +    '480p_t2v': {
 +        'guidance_scale': 6.0,
 +        'embedded_guidance_scale': None,
 +        'flow_shift': 5.0,
-+    },
+     },
+-    "480p_i2v": {
+-        "guidance_scale": 6.0,
+-        "embedded_guidance_scale": None,
+-        "flow_shift": 5.0,
 +    '480p_i2v': {
 +        'guidance_scale': 6.0,
 +        'embedded_guidance_scale': None,
 +        'flow_shift': 5.0,
-+    },
+     },
+-    "720p_t2v": {
+-        "guidance_scale": 6.0,
+-        "embedded_guidance_scale": None,
+-        "flow_shift": 9.0,
 +    '720p_t2v': {
 +        'guidance_scale': 6.0,
 +        'embedded_guidance_scale': None,
 +        'flow_shift': 9.0,
-+    },
+     },
+-    "720p_i2v": {
+-        "guidance_scale": 6.0,
+-        "embedded_guidance_scale": None,
+-        "flow_shift": 7.0,
 +    '720p_i2v': {
 +        'guidance_scale': 6.0,
 +        'embedded_guidance_scale': None,
 +        'flow_shift': 7.0,
-+    },
+     },
+-    "480p_t2v_distilled": {
+-        "guidance_scale": 1.0,
+-        "embedded_guidance_scale": None,
+-        "flow_shift": 5.0,
 +    '480p_t2v_distilled': {
 +        'guidance_scale': 1.0,
 +        'embedded_guidance_scale': None,
 +        'flow_shift': 5.0,
-+    },
+     },
+-    "480p_i2v_distilled": {
+-        "guidance_scale": 1.0,
+-        "embedded_guidance_scale": None,
+-        "flow_shift": 5.0,
 +    '480p_i2v_distilled': {
 +        'guidance_scale': 1.0,
 +        'embedded_guidance_scale': None,
 +        'flow_shift': 5.0,
-+    },
+     },
+-    "720p_t2v_distilled": {
+-        "guidance_scale": 1.0,
+-        "embedded_guidance_scale": None,
+-        "flow_shift": 9.0,
 +    '720p_t2v_distilled': {
 +        'guidance_scale': 1.0,
 +        'embedded_guidance_scale': None,
 +        'flow_shift': 9.0,
-+    },
+     },
+-    "720p_i2v_distilled": {
+-        "guidance_scale": 1.0,
+-        "embedded_guidance_scale": None,
+-        "flow_shift": 7.0,
 +    '720p_i2v_distilled': {
 +        'guidance_scale': 1.0,
 +        'embedded_guidance_scale': None,
 +        'flow_shift': 7.0,
-+    },
+     },
+-    "720p_t2v_distilled_sparse": {
+-        "guidance_scale": 1.0,
+-        "embedded_guidance_scale": None,
+-        "flow_shift": 7.0,
 +    '720p_t2v_distilled_sparse': {
 +        'guidance_scale': 1.0,
 +        'embedded_guidance_scale': None,
 +        'flow_shift': 7.0,
-+    },
+     },
+-    "720p_i2v_distilled_sparse": {
+-        "guidance_scale": 1.0,
+-        "embedded_guidance_scale": None,
+-        "flow_shift": 9.0,
 +    '720p_i2v_distilled_sparse': {
 +        'guidance_scale': 1.0,
 +        'embedded_guidance_scale': None,
@@ -146,20 +138,19 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
 -        "guidance_scale": 1.0,
 -        "embedded_guidance_scale": None,
 -        "num_inference_steps": 6,
--    },
--    "1080p_sr_distilled": {
--        "flow_shift": 2.0,
--        "base_resolution": "720p",
--        "guidance_scale": 1.0,
--        "embedded_guidance_scale": None,
--        "num_inference_steps": 8,
 +    '720p_sr_distilled': {
 +        'flow_shift': 2.0,
 +        'base_resolution': '480p',
 +        'guidance_scale': 1.0,
 +        'embedded_guidance_scale': None,
 +        'num_inference_steps': 6,
-+    },
+     },
+-    "1080p_sr_distilled": {
+-        "flow_shift": 2.0,
+-        "base_resolution": "720p",
+-        "guidance_scale": 1.0,
+-        "embedded_guidance_scale": None,
+-        "num_inference_steps": 8,
 +    '1080p_sr_distilled': {
 +        'flow_shift': 2.0,
 +        'base_resolution': '720p',
@@ -324,7 +315,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
      if enabled:
          if isinstance(models, nn.Module):
              models = [models]
-@@ -247,20 +224,18 @@
+@@ -247,20 +224,18 @@ def auto_offload_model(models, device, enabled=True):
      if enabled:
          for model in models:
              if model is not None:
@@ -348,1181 +339,11 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  def get_rank():
 -    return int(os.environ.get("RANK", "0"))
 +    return int(os.environ.get('RANK', '0'))
-diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_main/hyvideo/generate.py hywp_patch_stage_rel/hyvideo/generate.py
---- hywp_official_main/hyvideo/generate.py	2026-06-02 23:05:40.414845247 +0800
-+++ hywp_patch_stage_rel/hyvideo/generate.py	2026-06-02 23:39:19.758715205 +0800
-@@ -15,9 +15,10 @@
- # See the License for the specific language governing permissions and limitations under the License.
- 
- import os
--
--if "PYTORCH_CUDA_ALLOC_CONF" not in os.environ:
--    os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
-+import sys
-+import time
-+if 'PYTORCH_CUDA_ALLOC_CONF' not in os.environ:
-+    os.environ['PYTORCH_CUDA_ALLOC_CONF'] = 'expandable_segments:True'
- 
- import loguru
- import torch
-@@ -31,32 +32,52 @@
- from moviepy.editor import VideoFileClip, VideoClip
- 
- from hyvideo.pipelines.worldplay_video_pipeline import HunyuanVideo_1_5_Pipeline
-+from worldplay_acceleration_config import WorldPlayAccelerationConfig
- from hyvideo.commons.parallel_states import initialize_parallel_state
- from hyvideo.commons.infer_state import initialize_infer_state
- from hyvideo.generate_custom_trajectory import generate_camera_trajectory_local
- 
--parallel_dims = initialize_parallel_state(sp=int(os.environ.get("WORLD_SIZE", "1")))
--torch.cuda.set_device(int(os.environ.get("LOCAL_RANK", "0")))
-+parallel_dims = initialize_parallel_state(sp=int(os.environ.get('WORLD_SIZE', '1')))
-+torch.cuda.set_device(int(os.environ.get('LOCAL_RANK', '0')))
- 
- mapping = {
--    (0, 0, 0, 0): 0,
--    (1, 0, 0, 0): 1,
--    (0, 1, 0, 0): 2,
--    (0, 0, 1, 0): 3,
--    (0, 0, 0, 1): 4,
--    (1, 0, 1, 0): 5,
--    (1, 0, 0, 1): 6,
--    (0, 1, 1, 0): 7,
--    (0, 1, 0, 1): 8,
--}
--
-+            (0,0,0,0): 0,
-+            (1,0,0,0): 1,
-+            (0,1,0,0): 2,
-+            (0,0,1,0): 3,
-+            (0,0,0,1): 4,
-+            (1,0,1,0): 5,
-+            (1,0,0,1): 6,
-+            (0,1,1,0): 7,
-+            (0,1,0,1): 8,
-+        }
-+
-+
-+def generate_l1_rel_table(infer_state):
-+    import pandas as pd
-+
-+    logs = getattr(infer_state, 'step_diff_logs', [])
-+    if not logs:
-+        print("No L1 diagnostic records were collected.")
-+        return None
-+
-+    df = pd.DataFrame(logs)
-+    df = df[['chunk_idx', 'step', 'l1_rel']]
-+    pivot_table = df.pivot(index='step', columns='chunk_idx', values='l1_rel')
-+    pivot_table.columns = [f"Chunk_{int(c)}" for c in pivot_table.columns]
-+    pivot_table.index.name = "Step"
-+
-+    output_path = "relative_l1_distance.csv"
-+    pivot_table.to_csv(output_path)
-+    print(f"L1 diagnostics saved to: {output_path}")
-+    
-+    return pivot_table
- 
- def one_hot_to_one_dimension(one_hot):
-     y = torch.tensor([mapping[tuple(row.tolist())] for row in one_hot])
-     return y
- 
--
--def parse_pose_string(pose_string):
-+def parse_pose_string(pose_string, fps=6):
-     """
-     Parse pose string to motions list.
-     Format: "w-3, right-0.5, d-4"
-@@ -68,31 +89,30 @@
-     - down: pitch down rotation
-     - left: yaw left rotation
-     - right: yaw right rotation
--    - number after dash: duration in latents
-+    - number after dash: duration in seconds
- 
-     Args:
-         pose_string: str, comma-separated pose commands
-+        fps: int, frames per second (default 24)
- 
-     Returns:
-         list of dict: motions for generate_camera_trajectory_local
-     """
--    # Movement amount per frame
-+    # Movement amount per frame.
-     forward_speed = 0.08  # units per frame
-     yaw_speed = np.deg2rad(3)  # radians per frame
-     pitch_speed = np.deg2rad(3)  # radians per frame
- 
-     motions = []
--    commands = [cmd.strip() for cmd in pose_string.split(",")]
-+    commands = [cmd.strip() for cmd in pose_string.split(',')]
- 
-     for cmd in commands:
-         if not cmd:
-             continue
- 
--        parts = cmd.split("-")
-+        parts = cmd.split('-')
-         if len(parts) != 2:
--            raise ValueError(
--                f"Invalid pose command: {cmd}. Expected format: 'action-duration'"
--            )
-+            raise ValueError(f"Invalid pose command: {cmd}. Expected format: 'action-duration'")
- 
-         action = parts[0].strip()
-         try:
-@@ -100,49 +120,46 @@
-         except ValueError:
-             raise ValueError(f"Invalid duration in command: {cmd}")
- 
--        num_frames = int(duration)
-+        num_frames = int(duration * fps)
- 
-         # Parse action and create motion dict
--        if action == "w":
-+        if action == 'w':
-             # Forward
-             for _ in range(num_frames):
-                 motions.append({"forward": forward_speed})
--        elif action == "s":
-+        elif action == 's':
-             # Backward
-             for _ in range(num_frames):
-                 motions.append({"forward": -forward_speed})
--        elif action == "a":
-+        elif action == 'a':
-             # Left
-             for _ in range(num_frames):
-                 motions.append({"right": -forward_speed})
--        elif action == "d":
-+        elif action == 'd':
-             # Right
-             for _ in range(num_frames):
-                 motions.append({"right": forward_speed})
--        elif action == "up":
-+        elif action == 'up':
-             # Pitch up
-             for _ in range(num_frames):
-                 motions.append({"pitch": pitch_speed})
--        elif action == "down":
-+        elif action == 'down':
-             # Pitch down
-             for _ in range(num_frames):
-                 motions.append({"pitch": -pitch_speed})
--        elif action == "left":
-+        elif action == 'left':
-             # Yaw left
-             for _ in range(num_frames):
-                 motions.append({"yaw": -yaw_speed})
--        elif action == "right":
-+        elif action == 'right':
-             # Yaw right
-             for _ in range(num_frames):
-                 motions.append({"yaw": yaw_speed})
-         else:
--            raise ValueError(
--                f"Unknown action: {action}. Supported actions: w, s, a, d, up, down, left, right"
--            )
-+            raise ValueError(f"Unknown action: {action}. Supported actions: w, s, a, d, up, down, left, right")
- 
-     return motions
- 
--
- def pose_string_to_json(pose_string):
-     """
-     Convert pose string to pose JSON format.
-@@ -160,7 +177,7 @@
-     intrinsic = [
-         [969.6969696969696, 0.0, 960.0],
-         [0.0, 969.6969696969696, 540.0],
--        [0.0, 0.0, 1.0],
-+        [0.0, 0.0, 1.0]
-     ]
- 
-     pose_json = {}
-@@ -169,8 +186,7 @@
- 
-     return pose_json
- 
--
--def pose_to_input(pose_data, latent_num, tps=False):
-+def pose_to_input(pose_data, latent_chunk_num, tps=False):
-     """
-     Convert pose data to input tensors.
- 
-@@ -179,7 +195,7 @@
-             - If str ending with '.json': path to JSON file
-             - If str: pose string (e.g., "w-3, right-0.5, d-4")
-             - If dict: pose JSON data
--        latent_num: int, number of latents
-+        latent_chunk_num: int, number of latent chunks
-         tps: bool, third person mode
- 
-     Returns:
-@@ -187,29 +203,21 @@
-     """
-     # Handle different input types
-     if isinstance(pose_data, str):
--        if pose_data.endswith(".json"):
-+        if pose_data.endswith('.json'):
-             # Load from JSON file
--            pose_json = json.load(open(pose_data, "r"))
-+            pose_json = json.load(open(pose_data, 'r'))
-         else:
-             # Parse pose string
-             pose_json = pose_string_to_json(pose_data)
-     elif isinstance(pose_data, dict):
-         pose_json = pose_data
-     else:
--        raise ValueError(
--            f"Invalid pose_data type: {type(pose_data)}. Expected str or dict."
--        )
-+        raise ValueError(f"Invalid pose_data type: {type(pose_data)}. Expected str or dict.")
- 
-     pose_keys = list(pose_json.keys())
--    latent_num_from_pose = len(pose_keys)
--    assert latent_num_from_pose == latent_num, (
--        f"pose corresponds to {latent_num_from_pose * 4 - 3} frames, num_frames "
--        f"must be set to {latent_num_from_pose * 4 - 3} to ensure alignment."
--    )
--
-     intrinsic_list = []
-     w2c_list = []
--    for i in range(latent_num):
-+    for i in range(latent_chunk_num):
-         t_key = pose_keys[i]
-         c2w = np.array(pose_json[t_key]["extrinsic"])
-         w2c = np.linalg.inv(c2w)
-@@ -238,22 +246,18 @@
-         move_norms = np.linalg.norm(move_dirs)
-         if move_norms > move_norm_valid:  # threshold for movement
-             move_norm_dirs = move_dirs / move_norms
--            angles_rad = np.arccos(move_norm_dirs.clip(-1.0, 1.0))
-+            angles_rad = np.arccos(move_norm_dirs.clip(-1.0, 1.0))  
-             trans_angles_deg = angles_rad * (180.0 / torch.pi)  # convert to degrees
-         else:
-             trans_angles_deg = torch.zeros(3)
- 
-         R_rel = relative_c2w[i, :3, :3]
-         r = R.from_matrix(R_rel)
--        rot_angles_deg = r.as_euler("xyz", degrees=True)
-+        rot_angles_deg = r.as_euler('xyz', degrees=True)
- 
-         # Determine movement and rotation actions
-         if move_norms > move_norm_valid:  # threshold for movement
--            if (not tps) or (
--                tps == True
--                and abs(rot_angles_deg[1]) < 5e-2
--                and abs(rot_angles_deg[0]) < 5e-2
--            ):
-+            if (not tps) or (tps == True and abs(rot_angles_deg[1]) < 5e-2 and abs(rot_angles_deg[0]) < 5e-2):
-                 if trans_angles_deg[2] < 60:
-                     trans_one_hot[i, 0] = 1  # forward
-                 elif trans_angles_deg[2] > 120:
-@@ -280,23 +284,20 @@
-     rotate_one_label = one_hot_to_one_dimension(rotate_one_hot)
-     action_one_label = trans_one_label * 9 + rotate_one_label
- 
--    return torch.as_tensor(w2c_list), torch.as_tensor(intrinsic_list), action_one_label
--
-+    return torch.tensor(w2c_list), torch.tensor(intrinsic_list), action_one_label
- 
- def save_video(video, path):
-     if video.ndim == 5:
-         assert video.shape[0] == 1
-         video = video[0]
-     vid = (video * 255).clamp(0, 255).to(torch.uint8)
--    vid = einops.rearrange(vid, "c f h w -> f h w c")
-+    vid = einops.rearrange(vid, 'c f h w -> f h w c')
-     imageio.mimwrite(path, vid, fps=24)
- 
--
- def rank0_log(message, level):
--    if int(os.environ.get("RANK", "0")) == 0:
-+    if int(os.environ.get('RANK', '0')) == 0:
-         loguru.logger.log(level, message)
- 
--
- def str_to_bool(value):
-     """Convert string to boolean, supporting true/false, 1/0, yes/no.
-     If value is None (when flag is provided without value), returns True."""
-@@ -306,98 +307,81 @@
-         return value
-     if isinstance(value, str):
-         value = value.lower().strip()
--        if value in ("true", "1", "yes", "on"):
-+        if value in ('true', '1', 'yes', 'on'):
-             return True
--        elif value in ("false", "0", "no", "off"):
-+        elif value in ('false', '0', 'no', 'off'):
-             return False
-     raise argparse.ArgumentTypeError(f"Boolean value expected, got: {value}")
- 
--
- def camera_center_normalization(w2c):
-     c2w = np.linalg.inv(w2c)
-     C0_inv = np.linalg.inv(c2w[0])
-     c2w_aligned = np.array([C0_inv @ C for C in c2w])
-     return np.linalg.inv(c2w_aligned)
- 
--
--def parse_pose_string_to_actions(pose_string, fps=24):
-+def parse_pose_string_to_actions(pose_string, fps=6):
-     """
--    Parse pose string to frame-level action timeline.
--
--    Format: pose string uses latent counts, where:
--    - 1 latent = 4 frames
--    - Special rule: first frame of entire video is extra (frame 0)
--    - Example: "w-4,d-4" means:
--      - w-4: forward for frames 0-16 (17 frames total: 1 extra + 4*4)
--      - d-4: right for frames 17-32 (16 frames total: 4*4)
-+    Parse pose string to action timeline with durations.
- 
-     Args:
--        pose_string: str, comma-separated pose commands (e.g., "w-4,d-4")
--        fps: int, frames per second for video (default: 24)
-+        pose_string: str, comma-separated pose commands (e.g., "w-3, right-0.5, d-4")
-+        fps: int, frames per second
- 
-     Returns:
--        list of dict with frame_idx and actions for each frame
-+        list of dict: Each dict contains {"second": int, "actions": {"forward": 0/1/-1, "left": 0/1/-1, "yaw": 0/1/-1, "pitch": 0/1/-1}}
-     """
--    commands = [cmd.strip() for cmd in pose_string.split(",")]
-+    actions_timeline = []
-+    commands = [cmd.strip() for cmd in pose_string.split(',')]
- 
--    # Build frame-level actions list
--    frame_actions = []
--    is_first_command = True
-+    current_second = 0
- 
-     for cmd in commands:
-         if not cmd:
-             continue
- 
--        parts = cmd.split("-")
-+        parts = cmd.split('-')
-         if len(parts) != 2:
--            raise ValueError(
--                f"Invalid pose command: {cmd}. Expected format: 'action-duration'"
--            )
-+            raise ValueError(f"Invalid pose command: {cmd}. Expected format: 'action-duration'")
- 
-         action = parts[0].strip()
-         try:
--            num_latents = int(parts[1].strip())
-+            duration = float(parts[1].strip())
-         except ValueError:
-             raise ValueError(f"Invalid duration in command: {cmd}")
- 
--        # Convert latents to frames
--        # First command gets 1 extra frame (the special frame 0)
--        # Formula: first command = 1 + num_latents * 4, others = num_latents * 4
--        if is_first_command:
--            num_frames = 1 + num_latents * 4
--            is_first_command = False
--        else:
--            num_frames = num_latents * 4
-+        num_seconds = int(np.ceil(duration))
- 
-         # Map action to action values
-         action_values = {"forward": 0, "left": 0, "yaw": 0, "pitch": 0}
- 
--        if action == "w":
-+        if action == 'w':
-             action_values["forward"] = 1
--        elif action == "s":
-+        elif action == 's':
-             action_values["forward"] = -1
--        elif action == "a":
-+        elif action == 'a':
-             action_values["left"] = 1
--        elif action == "d":
-+        elif action == 'd':
-             action_values["left"] = -1
--        elif action == "up":
-+        elif action == 'up':
-             action_values["pitch"] = 1
--        elif action == "down":
-+        elif action == 'down':
-             action_values["pitch"] = -1
--        elif action == "left":
-+        elif action == 'left':
-             action_values["yaw"] = -1
--        elif action == "right":
-+        elif action == 'right':
-             action_values["yaw"] = 1
-         else:
-             raise ValueError(f"Unknown action: {action}")
- 
--        # Add frame-level actions
--        for _ in range(num_frames):
--            frame_actions.append(action_values.copy())
--
--    # Return frame-level timeline (each entry represents one frame)
--    return frame_actions
-+        # Add this action for its duration
-+        for _ in range(num_seconds):
-+            actions_timeline.append({
-+                "second": current_second,
-+                "actions": action_values.copy()
-+            })
-+            current_second += 1
- 
-+    return actions_timeline
- 
- def draw_rounded_rectangle(draw, xy, radius, fill=None, outline=None, width=1):
-     """Draw a rounded rectangle."""
-@@ -405,18 +389,10 @@
-     diameter = radius * 2
- 
-     # Draw four corners (circles)
--    draw.ellipse(
--        [x1, y1, x1 + diameter, y1 + diameter], fill=fill, outline=outline, width=width
--    )
--    draw.ellipse(
--        [x2 - diameter, y1, x2, y1 + diameter], fill=fill, outline=outline, width=width
--    )
--    draw.ellipse(
--        [x1, y2 - diameter, x1 + diameter, y2], fill=fill, outline=outline, width=width
--    )
--    draw.ellipse(
--        [x2 - diameter, y2 - diameter, x2, y2], fill=fill, outline=outline, width=width
--    )
-+    draw.ellipse([x1, y1, x1 + diameter, y1 + diameter], fill=fill, outline=outline, width=width)
-+    draw.ellipse([x2 - diameter, y1, x2, y1 + diameter], fill=fill, outline=outline, width=width)
-+    draw.ellipse([x1, y2 - diameter, x1 + diameter, y2], fill=fill, outline=outline, width=width)
-+    draw.ellipse([x2 - diameter, y2 - diameter, x2, y2], fill=fill, outline=outline, width=width)
- 
-     # Draw two rectangles to fill the middle
-     draw.rectangle([x1 + radius, y1, x2 - radius, y2], fill=fill)
-@@ -431,13 +407,12 @@
-         draw.line([x1, y1 + radius, x1, y2 - radius], fill=outline, width=width)
-         draw.line([x2, y1 + radius, x2, y2 - radius], fill=outline, width=width)
- 
--
- def create_wasd_keyboard(actions, key_size=70, key_spacing=6, corner_radius=14):
-     """Create WASD keyboard overlay."""
-     keyboard_width = 3 * key_size + 2 * key_spacing
-     keyboard_height = 2 * key_size + key_spacing
- 
--    img = Image.new("RGBA", (keyboard_width, keyboard_height), (0, 0, 0, 0))
-+    img = Image.new('RGBA', (keyboard_width, keyboard_height), (0, 0, 0, 0))
-     draw = ImageDraw.Draw(img)
- 
-     bg_normal = (0, 0, 0, 128)
-@@ -446,25 +421,16 @@
-     font_size = 28
- 
-     try:
--        font = ImageFont.truetype(
--            "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", font_size
--        )
-+        font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", font_size)
-     except (IOError, OSError):
-         try:
--            font = ImageFont.truetype(
--                "/usr/share/fonts/TTF/DejaVuSans-Bold.ttf", font_size
--            )
-+            font = ImageFont.truetype("/usr/share/fonts/TTF/DejaVuSans-Bold.ttf", font_size)
-         except (IOError, OSError):
-             font = ImageFont.load_default()
- 
-     def draw_key(x, y, label, is_active):
-         bg_color = bg_active if is_active else bg_normal
--        draw_rounded_rectangle(
--            draw,
--            [x, y, x + key_size, y + key_size],
--            radius=corner_radius,
--            fill=bg_color,
--        )
-+        draw_rounded_rectangle(draw, [x, y, x + key_size, y + key_size], radius=corner_radius, fill=bg_color)
-         bbox = draw.textbbox((0, 0), label, font=font)
-         text_width = bbox[2] - bbox[0]
-         text_height = bbox[3] - bbox[1]
-@@ -494,13 +460,12 @@
- 
-     return img
- 
--
- def create_arrow_keyboard(actions, key_size=70, key_spacing=6, corner_radius=14):
-     """Create arrow keys keyboard overlay with triangle symbols."""
-     keyboard_width = 3 * key_size + 2 * key_spacing
-     keyboard_height = 2 * key_size + key_spacing
- 
--    img = Image.new("RGBA", (keyboard_width, keyboard_height), (0, 0, 0, 0))
-+    img = Image.new('RGBA', (keyboard_width, keyboard_height), (0, 0, 0, 0))
-     draw = ImageDraw.Draw(img)
- 
-     bg_normal = (0, 0, 0, 128)
-@@ -509,39 +474,18 @@
- 
-     def draw_key_with_triangle(x, y, direction, is_active):
-         bg_color = bg_active if is_active else bg_normal
--        draw_rounded_rectangle(
--            draw,
--            [x, y, x + key_size, y + key_size],
--            radius=corner_radius,
--            fill=bg_color,
--        )
-+        draw_rounded_rectangle(draw, [x, y, x + key_size, y + key_size], radius=corner_radius, fill=bg_color)
-         cx = x + key_size // 2
-         cy = y + key_size // 2
-         size = key_size // 8
-         if direction == "up":
--            points = [
--                (cx, cy - size),
--                (cx - size, cy + size // 2),
--                (cx + size, cy + size // 2),
--            ]
-+            points = [(cx, cy - size), (cx - size, cy + size // 2), (cx + size, cy + size // 2)]
-         elif direction == "down":
--            points = [
--                (cx, cy + size),
--                (cx - size, cy - size // 2),
--                (cx + size, cy - size // 2),
--            ]
-+            points = [(cx, cy + size), (cx - size, cy - size // 2), (cx + size, cy - size // 2)]
-         elif direction == "left":
--            points = [
--                (cx - size, cy),
--                (cx + size // 2, cy - size),
--                (cx + size // 2, cy + size),
--            ]
-+            points = [(cx - size, cy), (cx + size // 2, cy - size), (cx + size // 2, cy + size)]
-         elif direction == "right":
--            points = [
--                (cx + size, cy),
--                (cx - size // 2, cy - size),
--                (cx - size // 2, cy + size),
--            ]
-+            points = [(cx + size, cy), (cx - size // 2, cy - size), (cx - size // 2, cy + size)]
-         draw.polygon(points, fill=text_color)
- 
-     yaw_val = actions.get("yaw", 0)
-@@ -566,7 +510,6 @@
- 
-     return img
- 
--
- def blend_overlay(base_frame, overlay, position):
-     """Blend an RGBA overlay onto a RGB frame."""
-     x, y = position
-@@ -591,26 +534,17 @@
-     overlay_rgb = overlay_array[:, :, :3].astype(np.float32)
-     overlay_alpha = overlay_array[:, :, 3:4].astype(np.float32) / 255.0
- 
--    base_region = base_frame[y : y + oh, x : x + ow].astype(np.float32)
-+    base_region = base_frame[y:y+oh, x:x+ow].astype(np.float32)
- 
--    blended = (overlay_rgb * overlay_alpha + base_region * (1 - overlay_alpha)).astype(
--        np.uint8
--    )
-+    blended = (overlay_rgb * overlay_alpha + base_region * (1 - overlay_alpha)).astype(np.uint8)
- 
-     result = base_frame.copy()
--    result[y : y + oh, x : x + ow] = blended
-+    result[y:y+oh, x:x+ow] = blended
- 
-     return result
- 
--
- def add_keyboard_overlay_to_video(video_path, output_path, actions_timeline):
--    """Add keyboard overlay to an existing video.
--
--    Args:
--        video_path: path to input video
--        output_path: path to output video
--        actions_timeline: list of action dicts, one per frame
--    """
-+    """Add keyboard overlay to an existing video."""
-     try:
-         video = VideoFileClip(video_path)
-         width, height = video.size
-@@ -632,10 +566,9 @@
-         arrow_cache = {}
- 
-         def get_actions_at_time(t):
--            # Convert time to frame index
--            frame_idx = int(t * fps)
--            if 0 <= frame_idx < len(actions_timeline):
--                return actions_timeline[frame_idx]
-+            second_idx = int(t)
-+            if 0 <= second_idx < len(actions_timeline):
-+                return actions_timeline[second_idx]["actions"]
-             return {"forward": 0, "left": 0, "yaw": 0, "pitch": 0}
- 
-         def make_frame(t):
-@@ -653,15 +586,11 @@
-             arrow_key = (sign(actions.get("yaw", 0)), sign(actions.get("pitch", 0)))
- 
-             if wasd_key not in wasd_cache:
--                wasd_cache[wasd_key] = create_wasd_keyboard(
--                    actions, key_size, key_spacing, corner_radius
--                )
-+                wasd_cache[wasd_key] = create_wasd_keyboard(actions, key_size, key_spacing, corner_radius)
-             wasd_img = wasd_cache[wasd_key]
- 
-             if arrow_key not in arrow_cache:
--                arrow_cache[arrow_key] = create_arrow_keyboard(
--                    actions, key_size, key_spacing, corner_radius
--                )
-+                arrow_cache[arrow_key] = create_arrow_keyboard(actions, key_size, key_spacing, corner_radius)
-             arrow_img = arrow_cache[arrow_key]
- 
-             frame = blend_overlay(frame, wasd_img, wasd_pos)
-@@ -677,11 +606,11 @@
- 
-         output_clip.write_videofile(
-             output_path,
--            codec="libx264",
--            audio_codec="aac",
--            temp_audiofile="temp-audio.m4a",
-+            codec='libx264',
-+            audio_codec='aac',
-+            temp_audiofile='temp-audio.m4a',
-             remove_temp=True,
--            logger=None,
-+            logger=None
-         )
- 
-         video.close()
-@@ -691,33 +620,45 @@
- 
-     except Exception as e:
-         import traceback
--
-         print(f"Error adding keyboard overlay: {e}")
-         traceback.print_exc()
-         return False
- 
--
- def generate_video(args):
--    assert (
--        (args.video_length - 1) // 4 + 1
--    ) % 4 == 0, "number of latents must be divisible by 4"
-+    assert ((args.video_length - 1) // 4 + 1) % 4 == 0, "number of latents must be divisible by 4"
-     initialize_infer_state(args)
- 
--    task = "i2v" if args.image_path else "t2v"
-+    from hyvideo.commons.infer_state import get_infer_state
-+    
-+    if args.width is not None and args.height is not None:
-+        w, h = args.width, args.height
-+    else:
-+        if args.resolution == '720p':
-+            w, h = 1280, 720
-+        else:
-+            w, h = 832, 480
-+            
-+    latent_h = h // 16
-+    latent_w = w // 16
-+    
-+    get_infer_state().latent_shape = (latent_h, latent_w)
- 
-+    task = 'i2v' if args.image_path else 't2v'
-+    
-     enable_sr = args.sr
--
-+    
-     # Build transformer_version based on flags
--    transformer_version = f"{args.resolution}_{task}"
-+    transformer_version = f'{args.resolution}_{task}'
-     assert transformer_version == "480p_i2v"
- 
--    if args.dtype == "bf16":
-+    if args.dtype == 'bf16':
-         transformer_dtype = torch.bfloat16
--    elif args.dtype == "fp32":
-+    elif args.dtype == 'fp32':
-         transformer_dtype = torch.float32
-     else:
-         raise ValueError(f"Unsupported dtype: {args.dtype}. Must be 'bf16' or 'fp32'")
--
-+    
-+    
-     pipe = HunyuanVideo_1_5_Pipeline.create_pipeline(
-         pretrained_model_name_or_path=args.model_path,
-         transformer_version=transformer_version,
-@@ -729,21 +670,26 @@
-         action_ckpt=args.action_ckpt,
-     )
- 
-+    # from salience_analyzer import WorldPlaySalienceAnalyzer
-+    # analyzer = WorldPlaySalienceAnalyzer()
-+    # analyzer.attach(pipe.transformer)
-+
-+    if int(os.environ.get('RANK', '0')) == 0:
-+        torch.cuda.synchronize()
-+        pure_inference_start = time.perf_counter()
-+
-     extra_kwargs = {}
--    if task == "i2v":
--        extra_kwargs["reference_image"] = args.image_path
-+    if task == 'i2v':
-+        extra_kwargs['reference_image'] = args.image_path
- 
-     enable_rewrite = args.rewrite
-     if not args.rewrite:
--        rank0_log(
--            "Warning: Prompt rewriting is disabled. This may affect the quality of generated videos.",
--            "WARNING",
--        )
-+        rank0_log("Warning: Prompt rewriting is disabled. This may affect the quality of generated videos.", "WARNING")
- 
-     viewmats, Ks, action = pose_to_input(args.pose, (args.video_length - 1) // 4 + 1)
- 
--    if task == "i2v":
--        extra_kwargs["reference_image"] = args.image_path
-+    if task == 'i2v':
-+        extra_kwargs['reference_image'] = args.image_path
- 
-     out = pipe(
-         enable_sr=enable_sr,
-@@ -765,12 +711,26 @@
-         model_type=args.model_type,
-         user_height=args.height,
-         user_width=args.width,
--        transformer_resident_ar_rollout=args.transformer_resident_ar_rollout,
-+        acceleration_config=WorldPlayAccelerationConfig.from_preset(args.acceleration_preset).apply_overrides(
-+            enable_sparse_attention=args.enable_sparse_attention,
-+            enable_prefill_sparse=args.enable_prefill_sparse,
-+            enable_decode_sparse=args.enable_decode_sparse,
-+            context_mode=args.context_mode,
-+            context_memory_frames=args.context_memory_frames,
-+            context_temporal_size=args.context_temporal_size,
-+            enable_spatial_context_filter=args.enable_spatial_context_filter,
-+            spatial_similarity_threshold=args.spatial_similarity_threshold,
-+            enable_denoise_cache=args.enable_denoise_cache,
-+            enable_l1_diagnostics=args.enable_l1_diagnostics,
-+        ),
-         **extra_kwargs,
-     )
- 
-+    # analyzer.report()
-+    # analyzer.remove_hooks()
-+
-     # save video
--    if int(os.environ.get("RANK", "0")) == 0:
-+    if int(os.environ.get('RANK', '0')) == 0:
-         output_path = args.output_path
-         os.makedirs(output_path, exist_ok=True)
- 
-@@ -781,7 +741,7 @@
-         video_to_process = None
-         final_video_path = None
- 
--        if enable_sr and hasattr(out, "sr_videos"):
-+        if enable_sr and hasattr(out, 'sr_videos'):
-             save_video(out.sr_videos, save_video_sr_path)
-             print(f"Saved SR video to: {save_video_sr_path}")
-             video_to_process = save_video_sr_path
-@@ -797,11 +757,7 @@
-             final_video_path = save_video_path
- 
-         # Add keyboard overlay if --with-ui is enabled and pose is a string
--        if (
--            args.with_ui
--            and isinstance(args.pose, str)
--            and not args.pose.endswith(".json")
--        ):
-+        if args.with_ui and isinstance(args.pose, str) and not args.pose.endswith('.json'):
-             print(f"Adding keyboard overlay to video...")
-             try:
-                 actions_timeline = parse_pose_string_to_actions(args.pose)
-@@ -809,9 +765,7 @@
-                 # Create temporary output path for video with UI
-                 video_with_ui_path = os.path.join(output_path, "gen_with_ui_temp.mp4")
- 
--                if add_keyboard_overlay_to_video(
--                    video_to_process, video_with_ui_path, actions_timeline
--                ):
-+                if add_keyboard_overlay_to_video(video_to_process, video_with_ui_path, actions_timeline):
-                     # Replace original video with UI version
-                     os.replace(video_with_ui_path, final_video_path)
-                     print(f"Successfully added keyboard overlay to: {final_video_path}")
-@@ -822,244 +776,209 @@
-             except Exception as e:
-                 print(f"Error processing keyboard overlay: {e}")
-                 import traceback
--
-                 traceback.print_exc()
-+        torch.cuda.synchronize()
-+        pure_inference_end = time.perf_counter()
-+        print(f"[Pure E2E Inference] total_time={pure_inference_end - pure_inference_start:.2f}s\n")
-+
-+        if args.enable_l1_diagnostics:
-+            infer_state = get_infer_state()
-+            generate_l1_rel_table(infer_state)
-+
- 
- 
- def main():
--    parser = argparse.ArgumentParser(
--        description="Generate video using HunyuanWorld-1.5"
--    )
-+    parser = argparse.ArgumentParser(description='Generate video using HunyuanWorld-1.5')
- 
-+    parser.add_argument("--pose", type=str,
-+                        default="./assets/pose/test_forward_32_latents.json",
-+                        help="Path to pose JSON file or pose string (e.g., 'w-3, right-0.5, d-4')")
-     parser.add_argument(
--        "--pose",
--        type=str,
--        default="./assets/pose/test_forward_32_latents.json",
--        help="Path to pose JSON file or pose string (e.g., 'w-3, right-0.5, d-4')",
-+        '--prompt', type=str, required=True,
-+        help='Text prompt for video generation'
-     )
-     parser.add_argument(
--        "--prompt", type=str, required=True, help="Text prompt for video generation"
-+        '--negative_prompt', type=str, default='',
-+        help='Negative prompt for video generation (default: empty string)'
-     )
-     parser.add_argument(
--        "--negative_prompt",
--        type=str,
--        default="",
--        help="Negative prompt for video generation (default: empty string)",
-+        '--resolution', type=str, required=True, choices=['480p', '720p'],
-+        help='Video resolution (480p or 720p)'
-     )
-     parser.add_argument(
--        "--resolution",
--        type=str,
--        required=True,
--        choices=["480p", "720p"],
--        help="Video resolution (480p or 720p)",
-+        '--model_path', type=str, required=True,
-+        help='Path to pretrained model'
-     )
-     parser.add_argument(
--        "--model_path", type=str, required=True, help="Path to pretrained model"
-+        '--action_ckpt', type=str, required=True,
-+        help='Path to pretrained action model'
-     )
-     parser.add_argument(
--        "--action_ckpt", type=str, required=True, help="Path to pretrained action model"
-+        '--aspect_ratio', type=str, default='16:9',
-+        help='Aspect ratio (default: 16:9)'
-     )
-     parser.add_argument(
--        "--aspect_ratio", type=str, default="16:9", help="Aspect ratio (default: 16:9)"
-+        '--num_inference_steps', type=int, default=50,
-+        help='Number of inference steps (default: 50)'
-     )
-     parser.add_argument(
--        "--num_inference_steps",
--        type=int,
--        default=50,
--        help="Number of inference steps (default: 50)",
-+        '--video_length', type=int, default=127,
-+        help='Number of frames to generate (default: 127)'
-     )
-     parser.add_argument(
--        "--video_length",
--        type=int,
--        default=127,
--        help="Number of frames to generate (default: 127)",
-+        '--sr', type=str_to_bool, nargs='?', const=True, default=True,
-+        help='Enable super resolution (default: true). '
-+             'Use --sr or --sr true/1 to enable, --sr false/0 to disable'
-     )
-     parser.add_argument(
--        "--sr",
--        type=str_to_bool,
--        nargs="?",
--        const=True,
--        default=True,
--        help="Enable super resolution (default: true). "
--        "Use --sr or --sr true/1 to enable, --sr false/0 to disable",
-+        '--save_pre_sr_video', type=str_to_bool, nargs='?', const=True, default=False,
-+        help='Save original video before super resolution (default: false). '
-+             'Use --save_pre_sr_video or --save_pre_sr_video true/1 to enable, '
-+             '--save_pre_sr_video false/0 to disable'
-     )
-     parser.add_argument(
--        "--save_pre_sr_video",
--        type=str_to_bool,
--        nargs="?",
--        const=True,
--        default=False,
--        help="Save original video before super resolution (default: false). "
--        "Use --save_pre_sr_video or --save_pre_sr_video true/1 to enable, "
--        "--save_pre_sr_video false/0 to disable",
-+        '--rewrite', type=str_to_bool, nargs='?', const=True, default=False,
-+        help='Enable prompt rewriting (default: true). '
-+             'Use --rewrite or --rewrite true/1 to enable, --rewrite false/0 to disable'
-     )
-     parser.add_argument(
--        "--rewrite",
--        type=str_to_bool,
--        nargs="?",
--        const=True,
--        default=False,
--        help="Enable prompt rewriting (default: true). "
--        "Use --rewrite or --rewrite true/1 to enable, --rewrite false/0 to disable",
-+        '--offloading', type=str_to_bool, nargs='?', const=True, default=True,
-+        help='Enable offloading (default: true). '
-+             'Use --offloading or --offloading true/1 to enable, '
-+             '--offloading false/0 to disable'
-     )
-     parser.add_argument(
--        "--offloading",
--        type=str_to_bool,
--        nargs="?",
--        const=True,
--        default=True,
--        help="Enable offloading (default: true). "
--        "Use --offloading or --offloading true/1 to enable, "
--        "--offloading false/0 to disable",
-+        '--group_offloading', type=str_to_bool, nargs='?', const=True, default=None,
-+        help='Enable group offloading (default: None, automatically enabled if offloading is enabled). '
-+             'Use --group_offloading or --group_offloading true/1 to enable, '
-+             '--group_offloading false/0 to disable'
-     )
-     parser.add_argument(
--        "--group_offloading",
--        type=str_to_bool,
--        nargs="?",
--        const=True,
--        default=None,
--        help="Enable group offloading (default: None, automatically enabled if offloading is enabled). "
--        "Use --group_offloading or --group_offloading true/1 to enable, "
--        "--group_offloading false/0 to disable",
-+        '--dtype', type=str, default='bf16', choices=['bf16', 'fp32'],
-+        help='Data type for transformer (default: bf16). '
-+             'bf16: faster, lower memory; fp32: better quality, slower, higher memory'
-     )
-     parser.add_argument(
--        "--dtype",
--        type=str,
--        default="bf16",
--        choices=["bf16", "fp32"],
--        help="Data type for transformer (default: bf16). "
--        "bf16: faster, lower memory; fp32: better quality, slower, higher memory",
-+        '--seed', type=int, default=123,
-+        help='Random seed (default: 123)'
-     )
-     parser.add_argument(
--        "--seed", type=int, default=123, help="Random seed (default: 123)"
-+        '--image_path', type=str, default=None,
-+        help='Path to reference image for i2v (if provided, uses i2v mode)'
-     )
-     parser.add_argument(
--        "--image_path",
--        type=str,
--        default=None,
--        help="Path to reference image for i2v (if provided, uses i2v mode)",
-+        '--output_path', type=str, default=None,
-+        help='Output file path for generated video (if not provided, saves to ./outputs/output.mp4)'
-     )
-     parser.add_argument(
--        "--output_path",
--        type=str,
--        default=None,
--        help="Output file path for generated video (if not provided, saves to ./outputs/output.mp4)",
-+        '--enable_torch_compile', type=str_to_bool, nargs='?', const=True, default=False,
-+        help='Enable torch compile for transformer (default: false). '
-+             'Use --enable_torch_compile or --enable_torch_compile true/1 to enable, '
-+             '--enable_torch_compile false/0 to disable'
-     )
-     parser.add_argument(
--        "--enable_torch_compile",
--        type=str_to_bool,
--        nargs="?",
--        const=True,
--        default=False,
--        help="Enable torch compile for transformer (default: false). "
--        "Use --enable_torch_compile or --enable_torch_compile true/1 to enable, "
--        "--enable_torch_compile false/0 to disable",
-+        '--few_step', type=str_to_bool, nargs='?', const=False, default=False,
-+        help='Enable super resolution (default: true). '
-+             'Use --few_step or --few_step true/1 to enable, --few_step false/0 to disable'
-     )
-     parser.add_argument(
--        "--few_step",
--        type=str_to_bool,
--        nargs="?",
--        const=False,
--        default=False,
--        help="Enable super resolution (default: true). "
--        "Use --few_step or --few_step true/1 to enable, --few_step false/0 to disable",
-+        '--model_type', type=str, required=True, choices=['bi', 'ar'],
-+        help='inference bidirectional or autoregressive model. '
-     )
-     parser.add_argument(
--        "--model_type",
--        type=str,
--        required=True,
--        choices=["bi", "ar"],
--        help="inference bidirectional or autoregressive model. ",
-+        '--height', type=int, default=None,
-+        help='height for generation (recommended to set as 480)'
-     )
-     parser.add_argument(
--        "--height",
--        type=int,
--        default=None,
--        help="height for generation (recommended to set as 480)",
-+        '--width', type=int, default=None,
-+        help='width for generation (recommended to set as 832)'
-     )
-     parser.add_argument(
--        "--width",
--        type=int,
--        default=None,
--        help="width for generation (recommended to set as 832)",
-+        '--with-ui', type=str_to_bool, nargs='?', const=True, default=False,
-+        help='Add keyboard overlay to generated video (default: false). '
-+             'Only works with pose string input, not JSON files. '
-+             'Use --with-ui or --with-ui true/1 to enable, --with-ui false/0 to disable'
-     )
-     parser.add_argument(
--        "--with-ui",
--        type=str_to_bool,
--        nargs="?",
--        const=True,
--        default=False,
--        help="Add keyboard overlay to generated video (default: false). "
--        "Only works with pose string input, not JSON files. "
--        "Use --with-ui or --with-ui true/1 to enable, --with-ui false/0 to disable",
-+        '--acceleration_preset', type=str, default='all',
-+        choices=['off', 'context', 'sparse', 'cache', 'all'],
-+        help='Inference acceleration preset for ablations: off, context, sparse, cache, or all.'
-+    )
-+    parser.add_argument(
-+        '--enable_sparse_attention', type=str_to_bool, nargs='?', const=True, default=None,
-+        help='Override sparse attention switch from the selected preset.'
-+    )
-+    parser.add_argument(
-+        '--enable_prefill_sparse', type=str_to_bool, nargs='?', const=True, default=None,
-+        help='Override sparse attention during KV-cache recompute.'
-     )
--
-     parser.add_argument(
--        "--use_sageattn",
--        type=str_to_bool,
--        nargs="?",
--        const=True,
--        default=False,
--        help="Enable sageattn (default: false). "
--        "Use --use_sageattn or --use_sageattn true/1 to enable, "
--        "--use_sageattn false/0 to disable",
-+        '--enable_decode_sparse', type=str_to_bool, nargs='?', const=True, default=None,
-+        help='Override sparse attention during denoising decode.'
-     )
-     parser.add_argument(
--        "--sage_blocks_range",
--        type=str,
--        default="0-53",
--        help="Sageattn blocks range (e.g., 0-5 or 0,1,2,3,4,5)",
-+        '--context_mode', type=str, default=None, choices=['none', 'temporal', 'spatial_temporal'],
-+        help='Override context selection mode from the selected preset.'
-     )
-     parser.add_argument(
--        "--use_vae_parallel",
--        type=str_to_bool,
--        nargs="?",
--        const=True,
--        default=False,
--        help="Enable vae parallel (default: false). "
--        "Use --use_vae_parallel or --use_vae_parallel true/1 to enable, "
--        "--use_vae_parallel false/0 to disable",
-+        '--context_memory_frames', type=int, default=None,
-+        help='Override the number of candidate history frames.'
-     )
--    # fp8 gemm related
-     parser.add_argument(
--        "--use_fp8_gemm",
--        type=str_to_bool,
--        nargs="?",
--        const=True,
--        default=False,
--        help="Enable fp8 gemm for transformer (default: false). "
--        "Use --use_fp8_gemm or --use_fp8_gemm true/1 to enable, "
--        "--use_fp8_gemm false/0 to disable",
-+        '--context_temporal_size', type=int, default=None,
-+        help='Override temporal context size selected per query window.'
-     )
-     parser.add_argument(
--        "--quant_type",
--        type=str,
--        default="fp8-per-block",
--        help="Quantization type for fp8 gemm (e.g., fp8-per-tensor-weight-only, fp8-per-tensor, fp8-per-block)",
-+        '--enable_spatial_context_filter', type=str_to_bool, nargs='?', const=True, default=None,
-+        help='Override spatial FOV context filtering from the selected preset.'
-     )
-     parser.add_argument(
--        "--include_patterns",
--        type=str,
--        default="double_blocks",
--        help="Include patterns for fp8 gemm (default: double_blocks)",
-+        '--spatial_similarity_threshold', type=float, default=None,
-+        help='Override spatial/FOV similarity threshold.'
-     )
-     parser.add_argument(
--        "--transformer_resident_ar_rollout",
--        type=str_to_bool,
--        nargs="?",
--        const=True,
--        default=False,
--        help="Keep transformer on GPU for entire AR rollout instead of per-chunk offloading (default: false). "
--        "Reduces inference time without increasing peak VRAM. Only affects AR model_type with offloading enabled. "
--        "Use --transformer_resident_ar_rollout or --transformer_resident_ar_rollout true to enable.",
-+        '--enable_denoise_cache', type=str_to_bool, nargs='?', const=True, default=None,
-+        help='Override denoise cache/FOV reuse from the selected preset.'
-+    )
-+    parser.add_argument(
-+        '--enable_l1_diagnostics', type=str_to_bool, nargs='?', const=True, default=None,
-+        help='Enable optional relative-L1 diagnostics between denoising steps.'
-+    )
-+    parser.add_argument(
-+        '--use_vae_parallel', type=str_to_bool, nargs='?', const=True, default=None,
-+        help='Accepted for compatibility with upstream run.sh; not used by this patch.'
-+    )
-+    parser.add_argument(
-+        '--use_sageattn', type=str_to_bool, nargs='?', const=True, default=None,
-+        help='Accepted for compatibility with upstream run.sh; not used by this patch.'
-+    )
-+    parser.add_argument(
-+        '--sage_blocks_range', type=str, default='0-53',
-+        help='Accepted for compatibility with upstream infer_state; not used by this patch.'
-+    )
-+    parser.add_argument(
-+        '--use_fp8_gemm', type=str_to_bool, nargs='?', const=True, default=None,
-+        help='Accepted for compatibility with upstream run.sh; not used by this patch.'
-+    )
-+    parser.add_argument(
-+        '--quant_type', type=str, default='fp8-per-block',
-+        help='Accepted for compatibility with upstream infer_state; not used by this patch.'
-+    )
-+    parser.add_argument(
-+        '--include_patterns', type=str, default='double_blocks',
-+        help='Accepted for compatibility with upstream infer_state; not used by this patch.'
-+    )
-+    parser.add_argument(
-+        '--transformer_resident_ar_rollout', type=str_to_bool, nargs='?', const=True, default=None,
-+        help='Accepted for compatibility with upstream run.sh; not used by this patch.'
-     )
- 
-     args = parser.parse_args()
--
-+    
-     assert args.image_path is not None
- 
-     generate_video(args)
- 
- 
--if __name__ == "__main__":
-+if __name__ == '__main__':
-     main()
-diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_main/hyvideo/models/transformers/modules/attention.py hywp_patch_stage_rel/hyvideo/models/transformers/modules/attention.py
---- hywp_official_main/hyvideo/models/transformers/modules/attention.py	2026-06-02 23:05:42.707857159 +0800
-+++ hywp_patch_stage_rel/hyvideo/models/transformers/modules/attention.py	2026-06-02 23:07:41.275444005 +0800
-@@ -20,6 +20,7 @@
+diff --git a/hyvideo/models/transformers/modules/attention.py b/hyvideo/models/transformers/modules/attention.py
+index 624848f..081a942 100644
+--- a/hyvideo/models/transformers/modules/attention.py
++++ b/hyvideo/models/transformers/modules/attention.py
+@@ -20,6 +20,7 @@ from typing import Optional
  from loguru import logger
  import numpy as np
  import torch.nn.functional as F
@@ -1530,7 +351,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  from einops import repeat
  
  from hyvideo.commons.parallel_states import get_parallel_state
-@@ -45,7 +46,10 @@
+@@ -45,7 +46,10 @@ except Exception:
  
  from hyvideo.models.transformers.modules.ssta_attention import ssta_3d_attention
  from hyvideo.commons.infer_state import get_infer_state
@@ -1542,7 +363,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
  @torch.compiler.disable
  def attention(
-@@ -72,41 +76,35 @@
+@@ -72,41 +76,35 @@ def attention(
      Returns:
          Output tensor after attention of shape [B, L, H*D]
      """
@@ -1601,7 +422,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          # transpose back
          x = x.transpose(1, 2)  # B * L * H * D
          b, s, h, d = x.shape
-@@ -117,28 +115,20 @@
+@@ -117,28 +115,20 @@ def attention(
          qkv = torch.stack([q, k, v], dim=2)
          if attn_mask is not None and attn_mask.dtype != torch.bool:
              attn_mask = attn_mask.bool()
@@ -1639,7 +460,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
      encoder_query = q
      encoder_key = k
      encoder_value = v
-@@ -152,10 +142,11 @@
+@@ -152,10 +142,11 @@ def sequence_parallel_attention_txt(
          sp_rank = parallel_dims.sp_rank
  
      if enable_sp:
@@ -1653,7 +474,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
          encoder_query = shrink_head(encoder_query, dim=2)
          encoder_key = shrink_head(encoder_key, dim=2)
-@@ -166,35 +157,29 @@
+@@ -166,35 +157,29 @@ def sequence_parallel_attention_txt(
      encoder_value = encoder_value.transpose(1, 2)
      t_kv = {}
      if cache_txt:
@@ -1701,7 +522,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          encoder_hidden_states = encoder_hidden_states.to(q.dtype)
  
      b, s, a, d = encoder_hidden_states.shape
-@@ -202,128 +187,147 @@
+@@ -202,128 +187,147 @@ def sequence_parallel_attention_txt(
  
      return encoder_hidden_states, t_kv
  
@@ -1803,10 +624,11 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
 -    encoder_value = kv_cache[block_idx]["v_txt"]
 -    encoder_key = repeat(encoder_key, "B H S D->(B R) H S D", R=2)
 -    encoder_value = repeat(encoder_value, "B H S D->(B R) H S D", R=2)
-+    query = query.transpose(1, 2); key = key.transpose(1, 2); value = value.transpose(1, 2)
- 
+-
 -    key = torch.cat([encoder_key, key], dim=2)
 -    value = torch.cat([encoder_value, value], dim=2)
++    query = query.transpose(1, 2); key = key.transpose(1, 2); value = value.transpose(1, 2)
+ 
 +    if not cache_vision and kv_cache[block_idx]['k_vision'] is not None:
 +        k_vis = torch.cat([kv_cache[block_idx]['k_vision'], key], dim=2)
 +        v_vis = torch.cat([kv_cache[block_idx]['v_vision'], value], dim=2)
@@ -1818,7 +640,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
 +        R = query.shape[0] // k_txt.shape[0]
 +        k_txt = repeat(k_txt, 'B H S D->(B R) H S D', R=R)
 +        v_txt = repeat(v_txt, 'B H S D->(B R) H S D', R=R)
- 
++
 +    hidden_states = None
      infer_state = get_infer_state()
 -    enable_sageattn = (
@@ -1947,7 +769,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
      assert attn_mode is not None
      query, encoder_query = q
      key, encoder_key = k
-@@ -336,7 +340,7 @@
+@@ -336,7 +340,7 @@ def sequence_parallel_attention(
          sp_group = parallel_dims.sp_group
          sp_size = parallel_dims.sp
          sp_rank = parallel_dims.sp_rank
@@ -1956,7 +778,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
      if enable_sp:
          # batch_size, seq_len, attn_heads, head_dim
          query = all_to_all_4D(query, sp_group, scatter_dim=2, gather_dim=1)
-@@ -345,7 +349,9 @@
+@@ -345,7 +349,9 @@ def sequence_parallel_attention(
  
          def shrink_head(encoder_state, dim):
              local_heads = encoder_state.shape[dim] // sp_size
@@ -1967,7 +789,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
          encoder_query = shrink_head(encoder_query, dim=2)
          encoder_key = shrink_head(encoder_key, dim=2)
-@@ -355,16 +361,13 @@
+@@ -355,16 +361,13 @@ def sequence_parallel_attention(
      encoder_sequence_length = encoder_query.size(1)
  
      attn_mode = maybe_fallback_attn_mode(attn_mode, get_infer_state(), block_idx)
@@ -1986,7 +808,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
      elif attn_mode == "torch":
          query = torch.cat([query, encoder_query], dim=1)
          key = torch.cat([key, encoder_key], dim=1)
-@@ -375,32 +378,30 @@
+@@ -375,32 +378,30 @@ def sequence_parallel_attention(
              attn_mask = None
  
          if attn_mask is not None:
@@ -2034,7 +856,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          # transpose back
          hidden_states = hidden_states.transpose(1, 2)
  
-@@ -416,12 +417,10 @@
+@@ -416,12 +417,10 @@ def sequence_parallel_attention(
          value = torch.cat([encoder_value, value], dim=1)
  
          # prepare causal mask for chunk-wise attention
@@ -2049,7 +871,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          causal_mask[:, :text_seq_length] = 1  # no attention for the rest
          for i in range(chunk_num):
              start_i = text_seq_length + i * chunk_seq_length
-@@ -440,18 +439,14 @@
+@@ -440,18 +439,14 @@ def sequence_parallel_attention(
          key = key.transpose(1, 2)
          value = value.transpose(1, 2)
  
@@ -2071,7 +893,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          hidden_states = torch.cat([hidden_states, encoder_hidden_states], dim=1)
  
      elif attn_mode == "flash2":
-@@ -462,10 +457,8 @@
+@@ -462,10 +457,8 @@ def sequence_parallel_attention(
          qkv = torch.stack([query, key, value], dim=2)
  
          attn_mask = F.pad(text_mask, (sequence_length, 0), value=True)
@@ -2084,7 +906,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
      elif attn_mode == "flash3":
          query = torch.cat([query, encoder_query], dim=1)
          key = torch.cat([key, encoder_key], dim=1)
-@@ -473,9 +466,7 @@
+@@ -473,9 +466,7 @@ def sequence_parallel_attention(
          # B, S, 3, H, D
          qkv = torch.stack([query, key, value], dim=2)
          attn_mask = F.pad(text_mask, (sequence_length, 0), value=True)
@@ -2095,7 +917,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
      elif attn_mode == "flex-block-attn":
          sparse_type = attn_param["attn_sparse_type"]  # sta/block_attn/ssta
-@@ -504,15 +495,13 @@
+@@ -504,15 +495,13 @@ def sequence_parallel_attention(
              elif block_size == 16:
                  tile_size = (1, 4, 4)
              else:
@@ -2113,7 +935,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
              ssta_topk = ssta_topk // 2
  
          # Concatenate and permute query, key, value to (B, H, S, D)
-@@ -546,18 +535,17 @@
+@@ -546,18 +535,17 @@ def sequence_parallel_attention(
          hidden_states = hidden_states.permute(0, 2, 1, 3)
  
      else:
@@ -2140,10 +962,11 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          hidden_states = hidden_states.to(query.dtype)
          encoder_hidden_states = encoder_hidden_states.to(query.dtype)
          hidden_states = torch.cat([hidden_states, encoder_hidden_states], dim=1)
-diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_main/hyvideo/models/transformers/worldplay_1_5_transformer.py hywp_patch_stage_rel/hyvideo/models/transformers/worldplay_1_5_transformer.py
---- hywp_official_main/hyvideo/models/transformers/worldplay_1_5_transformer.py	2026-06-02 23:05:42.136854195 +0800
-+++ hywp_patch_stage_rel/hyvideo/models/transformers/worldplay_1_5_transformer.py	2026-06-02 23:07:41.264443953 +0800
-@@ -26,17 +26,8 @@
+diff --git a/hyvideo/models/transformers/worldplay_1_5_transformer.py b/hyvideo/models/transformers/worldplay_1_5_transformer.py
+index e7b18b6..a534a47 100644
+--- a/hyvideo/models/transformers/worldplay_1_5_transformer.py
++++ b/hyvideo/models/transformers/worldplay_1_5_transformer.py
+@@ -26,17 +26,8 @@ from diffusers.configuration_utils import ConfigMixin, register_to_config
  
  from .modules.activation_layers import get_activation_layer
  from .modules.norm_layers import get_norm_layer
@@ -2163,7 +986,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  from .modules.posemb_layers import apply_rotary_emb, get_nd_rotary_pos_embed
  from .modules.mlp_layers import MLP, MLPEmbedder, FinalLayer, LinearWarpforSingle
  from .modules.modulate_layers import ModulateDiT, modulate, apply_gate
-@@ -46,13 +37,15 @@
+@@ -46,13 +37,15 @@ from hyvideo.utils.communications import all_gather
  from hyvideo.utils.infer_utils import torch_compile_wrapper
  from hyvideo.models.text_encoders.byT5 import ByT5Mapper
  from hyvideo.commons.parallel_states import get_parallel_state
@@ -2182,7 +1005,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          "single_blocks" in n and str.isdigit(n.split(".")[-1])
      )
      return is_valid
-@@ -88,92 +81,46 @@
+@@ -88,92 +81,46 @@ class MMDoubleStreamBlock(nn.Module):
          mlp_hidden_dim = int(hidden_size * mlp_width_ratio)
  
          self.img_mod = ModulateDiT(
@@ -2295,7 +1118,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          )
  
          self.hybrid_seq_parallel_attn = None
-@@ -185,8 +132,9 @@
+@@ -185,8 +132,9 @@ class MMDoubleStreamBlock(nn.Module):
          self.deterministic = False
  
      # modulating module for txt embedding
@@ -2307,7 +1130,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          (
              txt_mod1_shift,
              txt_mod1_scale,
-@@ -197,9 +145,7 @@
+@@ -197,9 +145,7 @@ class MMDoubleStreamBlock(nn.Module):
          ) = self.txt_mod(vec_txt).chunk(6, dim=-1)
  
          txt_modulated = self.txt_norm1(txt)
@@ -2318,7 +1141,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          txt_q = self.txt_attn_q(txt_modulated)
          txt_k = self.txt_attn_k(txt_modulated)
          txt_v = self.txt_attn_v(txt_modulated)
-@@ -208,18 +154,12 @@
+@@ -208,18 +154,12 @@ class MMDoubleStreamBlock(nn.Module):
          txt_v = rearrange(txt_v, "B L (H D) -> B L H D", H=self.heads_num)
          txt_q = self.txt_attn_q_norm(txt_q).to(txt_v)
          txt_k = self.txt_attn_k_norm(txt_k).to(txt_v)
@@ -2341,7 +1164,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          (
              img_mod1_shift,
              img_mod1_scale,
-@@ -230,9 +170,7 @@
+@@ -230,9 +170,7 @@ class MMDoubleStreamBlock(nn.Module):
          ) = self.img_mod(vec).chunk(6, dim=-1)
  
          img_modulated = self.img_norm1(img)
@@ -2352,7 +1175,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
          img_q = self.img_attn_q(img_modulated)
          img_k = self.img_attn_k(img_modulated)
-@@ -242,39 +180,24 @@
+@@ -242,39 +180,24 @@ class MMDoubleStreamBlock(nn.Module):
          img_v = rearrange(img_v, "B L (H D) -> B L H D", H=self.heads_num)
          img_q = self.img_attn_q_norm(img_q).to(img_v)
          img_k = self.img_attn_k_norm(img_k).to(img_v)
@@ -2405,7 +1228,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          txt_attn, t_kv = sequence_parallel_attention_txt(
              (txt_q),
              (txt_k),
-@@ -291,41 +214,28 @@
+@@ -291,41 +214,28 @@ class MMDoubleStreamBlock(nn.Module):
  
          txt = txt + apply_gate(self.txt_attn_proj(txt_attn), gate=txt_mod1_gate)
          txt = txt + apply_gate(
@@ -2460,7 +1283,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          img_q_prope, img_k_prope, img_v_prope, apply_fn_o = prope_qkv(
              img_q.permute(0, 2, 1, 3),
              img_k.permute(0, 2, 1, 3),
-@@ -333,20 +243,14 @@
+@@ -333,20 +243,14 @@ class MMDoubleStreamBlock(nn.Module):
              viewmats=viewmats,
              Ks=Ks,
          )  # [batch, num_heads, seqlen, head_dim]
@@ -2485,7 +1308,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
              ), f"img_kk: {img_qq.shape}, img_q: {img_q.shape}, img_kk: {img_kk.shape}, img_k: {img_k.shape}"
              img_q, img_k = img_qq, img_kk
  
-@@ -357,25 +261,18 @@
+@@ -357,25 +261,18 @@ class MMDoubleStreamBlock(nn.Module):
              block_idx=block_idx,
              kv_cache=kv_cache,
              cache_vision=cache_vision,
@@ -2517,7 +1340,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
              ),
              gate=img_mod2_gate,
          )
-@@ -397,24 +294,9 @@
+@@ -397,24 +294,9 @@ class MMDoubleStreamBlock(nn.Module):
          viewmats: Optional[torch.Tensor] = None,
          Ks: Optional[torch.Tensor] = None,
      ) -> Tuple[torch.Tensor, torch.Tensor]:
@@ -2545,7 +1368,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
          # add camera pose through prope
          img_q_prope, img_k_prope, img_v_prope, apply_fn_o = prope_qkv(
-@@ -424,15 +306,9 @@
+@@ -424,15 +306,9 @@ class MMDoubleStreamBlock(nn.Module):
              viewmats=viewmats,
              Ks=Ks,
          )  # [batch, num_heads, seqlen, head_dim]
@@ -2564,7 +1387,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
          if freqs_cis is not None:
              img_qq, img_kk = apply_rotary_emb(img_q, img_k, freqs_cis, head_first=False)
-@@ -441,7 +317,7 @@
+@@ -441,7 +317,7 @@ class MMDoubleStreamBlock(nn.Module):
              ), f"img_kk: {img_qq.shape}, img_q: {img_q.shape}, img_kk: {img_kk.shape}, img_k: {img_k.shape}"
              img_q, img_k = img_qq, img_kk
  
@@ -2573,7 +1396,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          attn = parallel_attention(
              (img_q, txt_q),
              (img_k, txt_k),
-@@ -453,10 +329,7 @@
+@@ -453,10 +329,7 @@ class MMDoubleStreamBlock(nn.Module):
              attn_param=attn_param,
              block_idx=block_idx,
          )
@@ -2585,7 +1408,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
          attn_prope = parallel_attention(
              (img_q_prope, txt_q),
-@@ -469,79 +342,52 @@
+@@ -469,79 +342,52 @@ class MMDoubleStreamBlock(nn.Module):
              attn_param=attn_param,
              block_idx=block_idx,
          )
@@ -2687,7 +1510,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          attn = parallel_attention(
              (img_q, txt_q),
              (img_k, txt_k),
-@@ -554,28 +400,19 @@
+@@ -554,28 +400,19 @@ class MMDoubleStreamBlock(nn.Module):
              block_idx=block_idx,
          )
  
@@ -2719,7 +1542,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
              gate=txt_mod2_gate,
          )
  
-@@ -583,11 +420,11 @@
+@@ -583,11 +420,11 @@ class MMDoubleStreamBlock(nn.Module):
  
      @torch_compile_wrapper()
      def forward(
@@ -2736,7 +1559,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
      ):
          if bi_inference:
              return self.forward_bi(**kwargs)
-@@ -625,38 +462,25 @@
+@@ -625,38 +462,25 @@ class MMSingleStreamBlock(nn.Module):
          head_dim = hidden_size // heads_num
          mlp_hidden_dim = int(hidden_size * mlp_width_ratio)
          self.mlp_hidden_dim = mlp_hidden_dim
@@ -2781,7 +1604,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          self.hybrid_seq_parallel_attn = None
  
      def enable_deterministic(self):
-@@ -678,9 +502,7 @@
+@@ -678,9 +502,7 @@ class MMSingleStreamBlock(nn.Module):
      ) -> torch.Tensor:
          """Forward pass for the single stream block."""
          mod_shift, mod_scale, mod_gate = self.modulation(vec).chunk(3, dim=-1)
@@ -2792,7 +1615,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
          x_pre_norm = self.pre_norm(x)
          img_token, txt_token = x_pre_norm[:, :-txt_len, :], x_pre_norm[:, -txt_len:, :]
-@@ -696,7 +518,7 @@
+@@ -696,7 +518,7 @@ class MMSingleStreamBlock(nn.Module):
          q = rearrange(q, "B L (H D) -> B L H D", H=self.heads_num)
          k = rearrange(k, "B L (H D) -> B L H D", H=self.heads_num)
          v = rearrange(v, "B L (H D) -> B L H D", H=self.heads_num)
@@ -2801,7 +1624,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          mlp = self.linear1_mlp(x_mod)
  
          # Apply QK-Norm if needed.
-@@ -713,7 +535,7 @@
+@@ -713,7 +535,7 @@ class MMSingleStreamBlock(nn.Module):
          img_q, img_k = img_qq, img_kk
  
          if is_flash:
@@ -2810,7 +1633,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          else:
              attn_mode = self.attn_mode
          attn = parallel_attention(
-@@ -735,7 +557,6 @@
+@@ -735,7 +557,6 @@ class MMSingleStreamBlock(nn.Module):
  
          return x + gate_output
  
@@ -2818,7 +1641,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
      """
      HunyuanVideo Transformer backbone.
-@@ -832,7 +653,7 @@
+@@ -832,7 +653,7 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
                  out_dim=2048,
                  hidden_dim=2048,
                  out_dim1=hidden_size,
@@ -2827,7 +1650,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
              )
  
          if hidden_size % heads_num != 0:
-@@ -848,12 +669,9 @@
+@@ -848,12 +669,9 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
          self.heads_num = heads_num
  
          self.img_in = PatchEmbed(
@@ -2843,7 +1666,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          )
  
          # Vision projection
-@@ -892,9 +710,7 @@
+@@ -892,9 +710,7 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
          self.vector_in = (
              MLPEmbedder(
                  self.config.text_states_dim_2, self.hidden_size, **factory_kwargs
@@ -2854,7 +1677,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          )
          self.guidance_in = (
              TimestepEmbedder(
-@@ -905,13 +721,12 @@
+@@ -905,13 +721,12 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
          )
  
          self.time_r_in = (
@@ -2870,7 +1693,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          self.double_blocks = nn.ModuleList(
              [
                  MMDoubleStreamBlock(
-@@ -955,39 +770,35 @@
+@@ -955,39 +770,35 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
  
          # STA
          if attn_param is None:
@@ -2926,7 +1749,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
              # 0: text_encoder feature
              # 1: byt5 feature
              # 2: vision_encoder feature
-@@ -1000,12 +811,13 @@
+@@ -1000,12 +811,13 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
          load_key = "module"
          bare_model = "unknown"
  
@@ -2943,7 +1766,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
          if bare_model == "unknown" and ("ema" in state_dict or "module" in state_dict):
              bare_model = False
-@@ -1029,9 +841,7 @@
+@@ -1029,9 +841,7 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
              for key in result.unexpected_keys:
                  logger.info(f"[load.py] Unexpected key: {key}")
          if result.missing_keys or result.unexpected_keys:
@@ -2954,7 +1777,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
          return result
  
-@@ -1065,9 +875,7 @@
+@@ -1065,9 +875,7 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
          )
          return freqs_cos, freqs_sin
  
@@ -2965,7 +1788,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          if is_reorder:
              reorder_txt = []
              reorder_mask = []
-@@ -1081,34 +889,13 @@
+@@ -1081,34 +889,13 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
                      # When using block mask with approximate computation, set pad to zero to reduce error
                      pad_byt5 = torch.zeros_like(byt5_txt_i[~byt5_text_mask_i])
                      pad_text = torch.zeros_like(txt_i[~text_mask_i])
@@ -3006,7 +1829,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
                  reorder_txt.append(reorder_txt_i)
                  reorder_mask.append(reorder_mask_i)
-@@ -1117,15 +904,12 @@
+@@ -1117,15 +904,12 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
              reorder_mask = torch.stack(reorder_mask).to(dtype=torch.int64)
          else:
              reorder_txt = torch.concat([byt5_txt, txt], dim=1)
@@ -3023,7 +1846,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          self.action_in = TimestepEmbedder(
              self.hidden_size, get_activation_layer("silu")
          )
-@@ -1146,7 +930,7 @@
+@@ -1146,7 +930,7 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
                  block.hidden_size,
                  block.hidden_size,
                  bias=block.qkv_bias,
@@ -3032,7 +1855,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
              )
  
              # Zero-initialize the weights of this new projection layer.
-@@ -1164,7 +948,7 @@
+@@ -1164,7 +948,7 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
          timestep_txt,
          extra_kwargs,
          vision_states,
@@ -3041,7 +1864,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
      ):
          text_mask = encoder_attention_mask
          txt = text_states
-@@ -1177,18 +961,14 @@
+@@ -1177,18 +961,14 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
          if self.text_projection == "linear":
              txt = self.txt_in(txt)
          elif self.text_projection == "single_refiner":
@@ -3062,7 +1885,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
              )
              txt = txt + cond_emb
  
-@@ -1198,9 +978,7 @@
+@@ -1198,9 +978,7 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
              byt5_txt = self.byt5_in(byt5_text_states)
              if self.cond_type_embedding is not None:
                  cond_emb = self.cond_type_embedding(
@@ -3073,7 +1896,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
                  )
                  byt5_txt = byt5_txt + cond_emb
              txt, text_mask = self.reorder_txt_token(
-@@ -1227,8 +1005,7 @@
+@@ -1227,8 +1005,7 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
              # Ensure valid tokens precede padding tokens
              if self.cond_type_embedding is not None:
                  cond_emb = self.cond_type_embedding(
@@ -3083,7 +1906,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
                          extra_encoder_hidden_states[:, :, 0],
                          dtype=torch.long,
                          device=extra_encoder_hidden_states.device,
-@@ -1253,14 +1030,11 @@
+@@ -1253,14 +1030,11 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
          kv_cache: Optional[dict] = None,
          cache_txt: Optional[bool] = False,
      ) -> Union[torch.Tensor, Dict[str, torch.Tensor]]:
@@ -3099,7 +1922,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
          txt, text_mask, vec_txt = self.get_text_and_mask(
              encoder_attention_mask,
-@@ -1268,7 +1042,7 @@
+@@ -1268,7 +1042,7 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
              timestep_txt,
              extra_kwargs,
              vision_states,
@@ -3108,7 +1931,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          )
  
          # mask the txt tokens in advance for efficiency
-@@ -1282,7 +1056,7 @@
+@@ -1282,7 +1056,7 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
                  ar_vision_inference=False,
                  txt=txt,
                  vec_txt=vec_txt,
@@ -3117,7 +1940,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
                  attn_param=None,
                  is_flash=False,
                  block_idx=index,
-@@ -1291,8 +1065,8 @@
+@@ -1291,8 +1065,8 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
              )
  
              if cache_txt:
@@ -3128,7 +1951,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
          if cache_txt:
              return _kv_cache_new
-@@ -1316,18 +1090,48 @@
+@@ -1316,18 +1090,48 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
          rope_temporal_size=4,
          start_rope_start_idx=0,
      ) -> Union[torch.Tensor, Dict[str, torch.Tensor]]:
@@ -3185,7 +2008,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
          img = x = hidden_states
          t = timestep
-@@ -1337,17 +1141,15 @@
+@@ -1337,17 +1141,15 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
              oh // self.patch_size[1],
              ow // self.patch_size[2],
          )
@@ -3207,7 +2030,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
          img = self.img_in(img)
  
-@@ -1360,31 +1162,29 @@
+@@ -1360,31 +1162,29 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
  
          # boardcast to match the sequence length of video latents
          vec = repeat(vec, "(B T) C->B (T H W) C", B=img.shape[0], H=th, W=tw)
@@ -3245,7 +2068,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
          freqs_cis = (freqs_cos, freqs_sin) if freqs_cos is not None else None
  
-@@ -1407,10 +1207,35 @@
+@@ -1407,10 +1207,35 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
                  cache_vision=cache_vision,
              )
              if cache_vision:
@@ -3283,7 +2106,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
              return _kv_cache_new
  
          # Final Layer
-@@ -1420,6 +1245,35 @@
+@@ -1420,6 +1245,35 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
          img = self.unpatchify(img, tt, th, tw)
          assert return_dict is False, "return_dict is not supported."
          features_list = None
@@ -3319,7 +2142,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          return (img, features_list)
  
      def forward_bi(
-@@ -1458,7 +1312,7 @@
+@@ -1458,7 +1312,7 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
              oh // self.patch_size[1],
              ow // self.patch_size[2],
          )
@@ -3328,7 +2151,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          if freqs_cos is None and freqs_sin is None:
              freqs_cos, freqs_sin = self.get_rotary_pos_embed((tt, th, tw))
  
-@@ -1480,13 +1334,13 @@
+@@ -1480,13 +1334,13 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
              vec = vec + self.time_r_in(timestep_r)
  
          if action is not None:
@@ -3345,7 +2168,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
          # sequence parallel
          parallel_dims = get_parallel_state()
-@@ -1496,20 +1350,18 @@
+@@ -1496,20 +1350,18 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
              sp_rank = parallel_dims.sp_rank
              if img.shape[1] % sp_size != 0:
                  n_token = img.shape[1]
@@ -3369,7 +2192,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
          txt, text_mask, vec_txt = self.get_text_and_mask(
              encoder_attention_mask,
-@@ -1517,7 +1369,7 @@
+@@ -1517,7 +1369,7 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
              timestep_txt,
              extra_kwargs,
              vision_states,
@@ -3378,7 +2201,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          )
  
          freqs_cis = (freqs_cos, freqs_sin) if freqs_cos is not None else None
-@@ -1525,13 +1377,13 @@
+@@ -1525,13 +1377,13 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
          # Pass through double-stream blocks
          for index, block in enumerate(self.double_blocks):
              force_full_attn = (
@@ -3399,7 +2222,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
              )
              self.attn_param["layer-name"] = f"double_block_{index + 1}"
              if viewmats is not None:
-@@ -1577,11 +1429,11 @@
+@@ -1577,11 +1429,11 @@ class HunyuanVideo_1_5_DiffusionTransformer(ModelMixin, ConfigMixin):
          return (img, features_list)
  
      def forward(
@@ -3416,9 +2239,10 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
      ):
          if bi_inference:
              return self.forward_bi(**kwargs)
-diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_main/hyvideo/pipelines/worldplay_video_pipeline.py hywp_patch_stage_rel/hyvideo/pipelines/worldplay_video_pipeline.py
---- hywp_official_main/hyvideo/pipelines/worldplay_video_pipeline.py	2026-06-02 23:05:40.769847093 +0800
-+++ hywp_patch_stage_rel/hyvideo/pipelines/worldplay_video_pipeline.py	2026-06-02 23:37:04.259075339 +0800
+diff --git a/hyvideo/pipelines/worldplay_video_pipeline.py b/hyvideo/pipelines/worldplay_video_pipeline.py
+index 89a8ee9..b4dec54 100644
+--- a/hyvideo/pipelines/worldplay_video_pipeline.py
++++ b/hyvideo/pipelines/worldplay_video_pipeline.py
 @@ -14,13 +14,16 @@
  # of rights and permissions under this agreement.
  # See the License for the specific language governing permissions and limitations under the License.
@@ -3436,7 +2260,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
  import loguru
  
-@@ -52,20 +55,13 @@
+@@ -52,20 +55,13 @@ from hyvideo.commons import (
  )
  from hyvideo.commons.parallel_states import get_parallel_state
  
@@ -3459,7 +2283,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  from hyvideo.models.vision_encoder import VisionEncoder
  
  from hyvideo.schedulers.scheduling_flow_match_discrete import FlowMatchDiscreteScheduler
-@@ -79,17 +75,37 @@
+@@ -79,17 +75,37 @@ from hyvideo.utils.multitask_utils import (
      merge_tensor_by_mask,
  )
  from hyvideo.utils.retrieval_context import (
@@ -3500,7 +2324,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  @dataclass
  class HunyuanVideoPipelineOutput(BaseOutput):
      videos: Union[torch.Tensor, np.ndarray]
-@@ -164,6 +180,7 @@
+@@ -164,6 +180,7 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
              self.byt5_model = None
              self.byt5_tokenizer = None
  
@@ -3508,7 +2332,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          self.vae_scale_factor = 2 ** (len(self.vae.config.block_out_channels) - 1)
          self.image_processor = VaeImageProcessor(vae_scale_factor=self.vae_scale_factor)
          self.text_len = text_encoder.max_length
-@@ -173,6 +190,8 @@
+@@ -173,6 +190,8 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
          self.vae_autocast_enabled = True
          self.enable_offloading = enable_offloading
          self.execution_device = torch.device(execution_device)
@@ -3517,7 +2341,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
          if vision_encoder:
              self.register_modules(vision_encoder=vision_encoder)
-@@ -187,6 +206,7 @@
+@@ -187,6 +206,7 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
              "1080p": {"bucket_hw_base_size": 1440, "bucket_hw_bucket_stride": 16},
          }
  
@@ -3525,7 +2349,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
      @classmethod
      def _create_scheduler(cls, flow_shift):
          scheduler = FlowMatchDiscreteScheduler(
-@@ -226,30 +246,28 @@
+@@ -226,30 +246,28 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
                  )
                  byT5_google_path = "google/byt5-small"
  
@@ -3562,7 +2386,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
      def encode_prompt(
          self,
          prompt,
-@@ -310,9 +328,7 @@
+@@ -310,9 +328,7 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
              batch_size = prompt_embeds.shape[0]
  
          if prompt_embeds is None:
@@ -3573,7 +2397,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
              if clip_skip is None:
                  prompt_outputs = text_encoder.encode(
                      text_inputs, data_type=data_type, device=device
-@@ -389,48 +405,30 @@
+@@ -389,48 +405,30 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
              else:
                  uncond_tokens = negative_prompt
  
@@ -3631,7 +2455,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
          return (
              prompt_embeds,
-@@ -439,6 +437,7 @@
+@@ -439,6 +437,7 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
              negative_attention_mask,
          )
  
@@ -3639,7 +2463,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
      def prepare_extra_func_kwargs(self, func, kwargs):
          """
          Prepare extra keyword arguments for scheduler functions.
-@@ -454,6 +453,7 @@
+@@ -454,6 +453,7 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
                  extra_step_kwargs[k] = v
          return extra_step_kwargs
  
@@ -3647,7 +2471,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
      def prepare_latents(
          self,
          batch_size,
-@@ -611,7 +611,7 @@
+@@ -611,7 +611,7 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
          Returns:
              List[str]: List of extracted glyph texts (deduplicated if multiple).
          """
@@ -3656,7 +2480,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          matches = re.findall(pattern, prompt)
          result = [match[0] or match[1] for match in matches]
          result = list(dict.fromkeys(result)) if len(result) > 1 else result
-@@ -631,28 +631,24 @@
+@@ -631,28 +631,24 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
                  - byt5_mask: Attention mask tensor.
          """
          byt5_embeddings = torch.zeros((1, self.byt5_max_length, 1472), device=device)
@@ -3692,7 +2516,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          return byt5_embeddings, byt5_mask
  
      def _prepare_byt5_embeddings(self, prompts, device):
-@@ -671,7 +667,7 @@
+@@ -671,7 +667,7 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
          """
          if not self.config.glyph_byT5_v2:
              return {}
@@ -3701,7 +2525,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          if isinstance(prompts, str):
              prompt_list = [prompts]
          elif isinstance(prompts, list):
-@@ -696,18 +692,21 @@
+@@ -696,18 +692,21 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
  
          byt5_positive = torch.cat(positive_embeddings, dim=0)
          byt5_positive_mask = torch.cat(positive_masks, dim=0)
@@ -3726,7 +2550,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
      def extract_image_features(self, reference_image):
          """
-@@ -727,9 +726,7 @@
+@@ -727,9 +726,7 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
  
          return image_encoder_output
  
@@ -3737,7 +2561,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          """
          Prepare vision states for multitask training.
  
-@@ -744,39 +741,29 @@
+@@ -744,39 +741,29 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
          """
          if reference_image is None:
              vision_states = torch.zeros(
@@ -3745,17 +2569,16 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
 -                self.config.vision_num_semantic_tokens,
 -                self.config.vision_states_dim,
 -            ).to(latents.device)
--        else:
++                                    latents.shape[0], 
++                                    self.config.vision_num_semantic_tokens, 
++                                    self.config.vision_states_dim
++                                    ).to(latents.device)
+         else:
 -            reference_image = (
 -                np.array(reference_image)
 -                if isinstance(reference_image, Image.Image)
 -                else reference_image
 -            )
-+                                    latents.shape[0], 
-+                                    self.config.vision_num_semantic_tokens, 
-+                                    self.config.vision_states_dim
-+                                    ).to(latents.device)
-+        else:
 +            reference_image = np.array(reference_image) if isinstance(reference_image, Image.Image) else reference_image
              if len(reference_image.shape) == 4:
                  reference_image = reference_image[0]
@@ -3788,7 +2611,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          return vision_states
  
      def _prepare_cond_latents(self, task_type, cond_latents, latents, multitask_mask):
-@@ -796,31 +783,30 @@
+@@ -796,31 +783,30 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
          """
          latents_concat = None
          mask_concat = None
@@ -3837,7 +2660,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          return cond_latents
  
      def get_task_mask(self, task_type, latent_target_length):
-@@ -834,8 +820,10 @@
+@@ -834,8 +820,10 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
          return mask
  
      def get_closest_resolution_given_reference_image(
@@ -3850,7 +2673,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          """
          Get closest supported resolution for a reference image.
  
-@@ -855,15 +843,18 @@
+@@ -855,15 +843,18 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
              origin_size = (W, H)
          else:
              raise ValueError(
@@ -3876,7 +2699,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          """
          Get closest supported resolution for given original size and target resolution.
  
-@@ -874,33 +865,15 @@
+@@ -874,33 +865,15 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
          Returns:
              tuple[int, int]: (height, width) of closest supported resolution.
          """
@@ -3897,9 +2720,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
 -            960,
 -            1440,
 -        ], f"bucket_hw_base_size must be in [128, 256, 480, 512, 640, 720, 960, 1440], but got {bucket_hw_base_size}"
-+        bucket_hw_base_size = self.target_size_config[target_size]["bucket_hw_base_size"]
-+        bucket_hw_bucket_stride = self.target_size_config[target_size]["bucket_hw_bucket_stride"]
- 
+-
 -        crop_size_list = generate_crop_size_list(
 -            bucket_hw_base_size, bucket_hw_bucket_stride
 -        )
@@ -3909,6 +2730,9 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
 -        closest_size, closest_ratio = get_closest_ratio(
 -            origin_size[1], origin_size[0], aspect_ratios, crop_size_list
 -        )
++        bucket_hw_base_size = self.target_size_config[target_size]["bucket_hw_base_size"]
++        bucket_hw_bucket_stride = self.target_size_config[target_size]["bucket_hw_bucket_stride"]
++
 +        assert bucket_hw_base_size in [128, 256, 480, 512, 640, 720, 960, 1440], \
 +            f"bucket_hw_base_size must be in [128, 256, 480, 512, 640, 720, 960, 1440], but got {bucket_hw_base_size}"
 +
@@ -3918,7 +2742,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
          height = closest_size[0]
          width = closest_size[1]
-@@ -914,46 +887,32 @@
+@@ -914,46 +887,32 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
  
          elif task_type == "i2v":
              origin_size = reference_image.size
@@ -3983,7 +2807,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          return cond_latents
  
      @property
-@@ -974,10 +933,7 @@
+@@ -974,10 +933,7 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
          spatial_compression_ratio = self.vae_spatial_compression_ratio
          temporal_compression_ratio = self.vae_temporal_compression_ratio
          video_length = (video_length - 1) // temporal_compression_ratio + 1
@@ -3995,7 +2819,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
          assert height > 0 and width > 0 and video_length > 0, (
              f"Invalid dimensions - height: {height}, width: {width}, "
-@@ -991,12 +947,8 @@
+@@ -991,12 +947,8 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
          self._kv_cache_neg = []
          transformer_num_layers = len(self.transformer.double_blocks)
          for i in range(transformer_num_layers):
@@ -4010,7 +2834,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
      def ar_rollout(
          self,
-@@ -1012,296 +964,293 @@
+@@ -1012,296 +964,293 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
          Ks,
          action,
          device,
@@ -4042,6 +2866,14 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
 -            )
 +        accel_cfg = self.acceleration_config
 +        self.transformer.attn_param.update(accel_cfg.to_attn_param())
++
++        torch.cuda.reset_peak_memory_stats(device)
++        
++        perf_stats = {
++            "text_encoding": 0,
++            "global_peak_vram_gb": 0.0,
++            "chunks": []
++        }
  
 -    def _ar_rollout_inner(
 -        self,
@@ -4098,14 +2930,6 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
 -                extra_kwargs_neg = {
 -                    "byt5_text_states": extra_kwargs["byt5_text_states"][0, None, ...],
 -                    "byt5_text_mask": extra_kwargs["byt5_text_mask"][0, None, ...],
-+        torch.cuda.reset_peak_memory_stats(device)
-+        
-+        perf_stats = {
-+            "text_encoding": 0,
-+            "global_peak_vram_gb": 0.0,
-+            "chunks": []
-+        }
-+
 +        print("\n[Pipeline] Starting autoregressive rollout")
 +        print(
 +            "[Acceleration] "
@@ -4190,8 +3014,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
 -                current_frame_idx = (
 -                    chunk_i * self.chunk_latent_frames
 -                )  # the current frame index to generate
-+            chunk_stats = {}
- 
+-
 -                selected_frame_indices = []
 -                for chunk_start_idx in range(
 -                    current_frame_idx, current_frame_idx + self.chunk_latent_frames, 4
@@ -4215,21 +3038,56 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
 -                selected_frame_indices = [
 -                    x for x in selected_frame_indices if x not in to_remove
 -                ]
-+            infer_state = get_infer_state()
-+            infer_state.current_chunk_index = chunk_i
- 
+-
 -                context_latents = latents[:, :, selected_frame_indices]
 -                context_cond_latents_input = cond_latents[:, :, selected_frame_indices]
 -                context_latents_input = torch.concat(
 -                    [context_latents, context_cond_latents_input], dim=1
 -                )
++            chunk_stats = {}
++
++            infer_state = get_infer_state()
++            infer_state.current_chunk_index = chunk_i
++
 +            dynamic_steps = self.num_inference_steps
 +            infer_state.use_fov_cache = False
++
++            with CudaTimer(f"C1. History Selection (Chunk {chunk_i})", enable_print=False) as timer_c1:
++                if chunk_i > 0:
++                    current_frame_idx = chunk_i * self.chunk_latent_frames
++                    selected_frame_indices = []
++                    
++                    use_spatial_filter = accel_cfg.enable_spatial_context_filter
++                    spatial_threshold = accel_cfg.spatial_similarity_threshold
++                    memory_frames = accel_cfg.context_memory_frames
++                    temporal_size = accel_cfg.context_temporal_size
++
++                    max_score = 0.0
++                    
++                    for chunk_start_idx in range(current_frame_idx, current_frame_idx + self.chunk_latent_frames, 4):
++                        selected_history_frame_id, similarity_scores = select_aligned_memory_frames(
++                            viewmats[0].cpu().detach().numpy(),
++                            chunk_start_idx,
++                            memory_frames=memory_frames,
++                            temporal_context_size=temporal_size,
++                            pred_latent_size=accel_cfg.context_pred_latent_size,
++                            points_local=self.points_local,
++                            device=device,
++                            return_similarity_scores=True,
++                            spatial_threshold=spatial_threshold,
++                            enable_filtering=use_spatial_filter
++                        )
++                        selected_frame_indices += selected_history_frame_id
  
 -                context_viewmats = viewmats[:, selected_frame_indices].to(device)
 -                context_Ks = Ks[:, selected_frame_indices].to(device)
 -                context_action = action[:, selected_frame_indices].to(device)
--
++                        for s in similarity_scores or []:
++                            if isinstance(s, (tuple, list)):
++                                max_score = max(max_score, float(s[-1]))
++                            else:
++                                max_score = max(max_score, float(s))
+ 
 -                context_timestep = torch.full(
 -                    (len(selected_frame_indices),),
 -                    stabilization_level - 1,
@@ -4282,39 +3140,6 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
 -                            kv_cache=self._kv_cache_neg,
 -                            cache_vision=True,
 -                            rope_temporal_size=context_latents_input.shape[2],
-+            with CudaTimer(f"C1. History Selection (Chunk {chunk_i})", enable_print=False) as timer_c1:
-+                if chunk_i > 0:
-+                    current_frame_idx = chunk_i * self.chunk_latent_frames
-+                    selected_frame_indices = []
-+                    
-+                    use_spatial_filter = accel_cfg.enable_spatial_context_filter
-+                    spatial_threshold = accel_cfg.spatial_similarity_threshold
-+                    memory_frames = accel_cfg.context_memory_frames
-+                    temporal_size = accel_cfg.context_temporal_size
-+
-+                    max_score = 0.0
-+                    
-+                    for chunk_start_idx in range(current_frame_idx, current_frame_idx + self.chunk_latent_frames, 4):
-+                        selected_history_frame_id, similarity_scores = select_aligned_memory_frames(
-+                            viewmats[0].cpu().detach().numpy(),
-+                            chunk_start_idx,
-+                            memory_frames=memory_frames,
-+                            temporal_context_size=temporal_size,
-+                            pred_latent_size=accel_cfg.context_pred_latent_size,
-+                            points_local=self.points_local,
-+                            device=device,
-+                            return_similarity_scores=True,
-+                            spatial_threshold=spatial_threshold,
-+                            enable_filtering=use_spatial_filter
-+                        )
-+                        selected_frame_indices += selected_history_frame_id
-+
-+                        for s in similarity_scores or []:
-+                            if isinstance(s, (tuple, list)):
-+                                max_score = max(max_score, float(s[-1]))
-+                            else:
-+                                max_score = max(max_score, float(s))
-+
 +                    if accel_cfg.enable_denoise_cache and max_score >= accel_cfg.denoise_cache_similarity_threshold:
 +                        infer_state.use_fov_cache = True
 +                    else:
@@ -4392,28 +3217,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
              end_idx = chunk_i * self.chunk_latent_frames + self.chunk_latent_frames
 +            current_context_len = len(selected_frame_indices)
 +            chunk_stats['dit_core'] = 0.0
- 
--            with (
--                self.progress_bar(total=self.num_inference_steps) as progress_bar,
--                auto_offload_model(
--                    self.transformer,
--                    self.execution_device,
--                    enabled=self.enable_offloading,
--                ),
--            ):
--                for i, t in enumerate(timesteps):
--                    timestep_input = torch.full(
--                        (self.chunk_latent_frames,),
--                        t,
--                        device=device,
--                        dtype=timesteps.dtype,
--                    )
--                    latent_model_input = latents[:, :, start_idx:end_idx]
--                    cond_latents_input = cond_latents[:, :, start_idx:end_idx]
--
--                    viewmats_input = viewmats[:, start_idx:end_idx].to(device)
--                    Ks_input = Ks[:, start_idx:end_idx].to(device)
--                    action_input = action[:, start_idx:end_idx].to(device)
++
 +            with CudaTimer(f"C3. Denoising Loop (Chunk {chunk_i}, Steps: {dynamic_steps})", enable_print=False) as timer_c3:
 +                with self.progress_bar(total=dynamic_steps) as progress_bar, \
 +                    auto_offload_model(self.transformer, self.execution_device, enabled=self.enable_offloading):
@@ -4459,6 +3263,28 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
 +                                    )[0]
 +                                chunk_stats['dit_core'] += timer_dit_cfg.elapsed
  
+-            with (
+-                self.progress_bar(total=self.num_inference_steps) as progress_bar,
+-                auto_offload_model(
+-                    self.transformer,
+-                    self.execution_device,
+-                    enabled=self.enable_offloading,
+-                ),
+-            ):
+-                for i, t in enumerate(timesteps):
+-                    timestep_input = torch.full(
+-                        (self.chunk_latent_frames,),
+-                        t,
+-                        device=device,
+-                        dtype=timesteps.dtype,
+-                    )
+-                    latent_model_input = latents[:, :, start_idx:end_idx]
+-                    cond_latents_input = cond_latents[:, :, start_idx:end_idx]
+-
+-                    viewmats_input = viewmats[:, start_idx:end_idx].to(device)
+-                    Ks_input = Ks[:, start_idx:end_idx].to(device)
+-                    action_input = action[:, start_idx:end_idx].to(device)
+-
 -                    latents_concat = torch.concat(
 -                        [latent_model_input, cond_latents_input], dim=1
 -                    )
@@ -4561,7 +3387,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
      def bi_rollout(
          self,
          latents,
-@@ -1324,9 +1273,7 @@
+@@ -1324,9 +1273,7 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
                  current_frame_idx = chunk_i * self.chunk_latent_frames
  
                  selected_frame_indices = []
@@ -4572,7 +3398,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
                      selected_history_frame_id = select_aligned_memory_frames(
                          viewmats[0].cpu().detach().numpy(),
                          chunk_start_idx,
-@@ -1334,20 +1281,11 @@
+@@ -1334,20 +1281,11 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
                          temporal_context_size=12,
                          pred_latent_size=4,
                          points_local=self.points_local,
@@ -4597,7 +3423,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
                  context_latents = latents[:, :, selected_frame_indices]
                  context_w2c = viewmats[:, selected_frame_indices]
-@@ -1359,61 +1297,35 @@
+@@ -1359,61 +1297,35 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
              start_idx = chunk_i * self.chunk_latent_frames
              end_idx = chunk_i * self.chunk_latent_frames + self.chunk_latent_frames
  
@@ -4653,14 +3479,13 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
 -                        cond_latents_input = cond_latents[
 -                            :, :, : latent_model_input.shape[2]
 -                        ]
--
--                    viewmats_input = viewmats[:, start_idx:end_idx]
--                    Ks_input = Ks[:, start_idx:end_idx]
--                    action_input = action[:, start_idx:end_idx]
 +                        latents_model_now = latents[:, :, start_idx: end_idx]
 +                        latent_model_input = torch.cat([context_latents, latents_model_now], dim=2)
 +                        cond_latents_input = cond_latents[:, :, :latent_model_input.shape[2]]
-+
+ 
+-                    viewmats_input = viewmats[:, start_idx:end_idx]
+-                    Ks_input = Ks[:, start_idx:end_idx]
+-                    action_input = action[:, start_idx:end_idx]
 +                    viewmats_input = viewmats[:, start_idx: end_idx]
 +                    Ks_input = Ks[:, start_idx: end_idx]
 +                    action_input = action[:, start_idx: end_idx]
@@ -4677,7 +3502,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
                      if self.do_classifier_free_guidance:
                          latents_concat = torch.cat([latents_concat] * 2)
                      latents_concat = self.scheduler.scale_model_input(latents_concat, t)
-@@ -1421,23 +1333,11 @@
+@@ -1421,23 +1333,11 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
                      batch_size = latents_concat.shape[0]
                      t_expand_txt = t.repeat(batch_size)
                      t_expand = timestep_input.repeat(batch_size)
@@ -4705,7 +3530,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
                          output = self.transformer(
                              bi_inference=True,
                              ar_txt_inference=False,
-@@ -1462,9 +1362,7 @@
+@@ -1462,9 +1362,7 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
  
                      if self.do_classifier_free_guidance:
                          noise_pred_uncond, noise_pred_text = noise_pred.chunk(2)
@@ -4716,7 +3541,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
                      if self.do_classifier_free_guidance and self.guidance_rescale > 0.0:
                          noise_pred = rescale_noise_cfg(
-@@ -1473,18 +1371,12 @@
+@@ -1473,18 +1371,12 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
                              guidance_rescale=self.guidance_rescale,
                          )
  
@@ -4739,7 +3564,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
                          if progress_bar is not None:
                              progress_bar.update()
          return latents
-@@ -1517,8 +1409,22 @@
+@@ -1517,8 +1409,22 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
          model_type: str = "ar",
          user_height: Optional[int] = None,
          user_width: Optional[int] = None,
@@ -4762,7 +3587,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          r"""
          Generates a video (or videos) based on text (and optionally image) conditions.
  
-@@ -1526,15 +1432,15 @@
+@@ -1526,15 +1432,15 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
              prompt (`str` or `List[str]`):
                  Text prompt(s) to guide video generation.
              aspect_ratio (`str`):
@@ -4781,7 +3606,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
                  `guidance_scale > 1` enables classifier-free guidance.
              enable_sr (`bool`, *optional*, defaults to True):
                  Whether to apply super-resolution to the generated video.
-@@ -1551,10 +1457,10 @@
+@@ -1551,10 +1457,10 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
              embedded_guidance_scale (`float`, *optional*):
                  Additional control guidance scale, if supported.
              reference_image (PIL.Image or `str`, *optional*):
@@ -4794,7 +3619,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
                  Accepted values: `"pt"` for torch.Tensor or `"np"` for numpy.ndarray.
              return_dict (`bool`, *optional*, defaults to True):
                  Whether to return a [`HunyuanVideoPipelineOutput`] or a tuple.
-@@ -1573,18 +1479,25 @@
+@@ -1573,18 +1479,25 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
              pipe = HunyuanVideoPipeline.from_pretrained("your_model_dir")
              # Text-to-video
              video = pipe(
@@ -4825,7 +3650,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          num_videos_per_prompt = 1
          target_resolution = self.ideal_resolution
  
-@@ -1595,6 +1508,7 @@
+@@ -1595,6 +1508,7 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
          if flow_shift is None:
              flow_shift = self.config.flow_shift
  
@@ -4833,7 +3658,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          # enable few step inference
          if few_step:
              guidance_scale = 1.0
-@@ -1611,11 +1525,9 @@
+@@ -1611,11 +1525,9 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
          if reference_image is not None:
              task_type = "i2v"
              if isinstance(reference_image, str):
@@ -4847,7 +3672,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
              semantic_images_np = np.array(reference_image)
  
          else:
-@@ -1631,14 +1543,12 @@
+@@ -1631,14 +1543,12 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
                  except Exception as e:
                      loguru.logger.warning(f"Failed to rewrite prompt: {e}")
                      prompt = user_prompt
@@ -4864,7 +3689,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
                  prompt = obj_list[0]
  
          if self.ideal_task is not None and self.ideal_task != task_type:
-@@ -1661,47 +1571,32 @@
+@@ -1661,47 +1571,32 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
              generator = torch.Generator(device=self.execution_device).manual_seed(seed)
  
          if reference_image is not None:
@@ -4921,7 +3746,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          self._guidance_scale = guidance_scale
          self._guidance_rescale = kwargs.get("guidance_rescale", 0.0)
          self._clip_skip = kwargs.get("clip_skip", None)
-@@ -1716,58 +1611,32 @@
+@@ -1716,58 +1611,32 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
  
          if get_rank() == 0:
              print(
@@ -4999,7 +3824,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
                  ) = self.encode_prompt(
                      prompt,
                      device,
-@@ -1775,74 +1644,83 @@
+@@ -1775,74 +1644,83 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
                      self.do_classifier_free_guidance,
                      negative_prompt,
                      clip_skip=self.clip_skip,
@@ -5018,7 +3843,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
 -                self.byt5_model, self.execution_device, enabled=self.enable_offloading
 -            ):
 -                extra_kwargs = self._prepare_byt5_embeddings(prompt, device)
--
+ 
 -        if self.do_classifier_free_guidance:
 -            prompt_embeds = torch.cat([negative_prompt_embeds, prompt_embeds])
 -            if prompt_mask is not None:
@@ -5027,7 +3852,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
 -                prompt_embeds_2 = torch.cat([negative_prompt_embeds_2, prompt_embeds_2])
 -            if prompt_mask_2 is not None:
 -                prompt_mask_2 = torch.cat([negative_prompt_mask_2, prompt_mask_2])
- 
+-
 -        extra_set_timesteps_kwargs = self.prepare_extra_func_kwargs(
 -            self.scheduler.set_timesteps, {"n_tokens": n_tokens}
 -        )
@@ -5054,17 +3879,28 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
 +                negative_prompt_embeds_2 = None
 +                prompt_mask_2 = None
 +                negative_prompt_mask_2 = None
-+
-+            extra_kwargs = {}
-+            if self.config.glyph_byT5_v2:
-+                with auto_offload_model(self.byt5_model, self.execution_device, enabled=self.enable_offloading):
-+                    extra_kwargs = self._prepare_byt5_embeddings(prompt, device)
  
 -        timesteps, num_inference_steps = retrieve_timesteps(
 -            self.scheduler,
 -            num_inference_steps,
 -            device,
 -            **extra_set_timesteps_kwargs,
+-        )
++            extra_kwargs = {}
++            if self.config.glyph_byT5_v2:
++                with auto_offload_model(self.byt5_model, self.execution_device, enabled=self.enable_offloading):
++                    extra_kwargs = self._prepare_byt5_embeddings(prompt, device)
+ 
+-        num_channels_latents = self.transformer.config.in_channels
+-        latents = self.prepare_latents(
+-            batch_size * num_videos_per_prompt,
+-            num_channels_latents,
+-            latent_height,
+-            latent_width,
+-            latent_target_length,
+-            self.target_dtype,
+-            device,
+-            generator,
 -        )
 +            if self.do_classifier_free_guidance:
 +                prompt_embeds = torch.cat([negative_prompt_embeds, prompt_embeds])
@@ -5079,29 +3915,26 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
 +                self.scheduler.set_timesteps, {"n_tokens": n_tokens}
 +            )
  
--        num_channels_latents = self.transformer.config.in_channels
--        latents = self.prepare_latents(
--            batch_size * num_videos_per_prompt,
--            num_channels_latents,
--            latent_height,
--            latent_width,
--            latent_target_length,
--            self.target_dtype,
--            device,
--            generator,
--        )
-+            timesteps, num_inference_steps = retrieve_timesteps(
-+                self.scheduler,
-+                num_inference_steps,
-+                device,
-+                **extra_set_timesteps_kwargs,
-+            )
- 
 -        with auto_offload_model(
 -            self.vae, self.execution_device, enabled=self.enable_offloading
 -        ):
 -            image_cond = self.get_image_condition_latents(
 -                task_type, reference_image, height, width
++            timesteps, num_inference_steps = retrieve_timesteps(
++                self.scheduler,
++                num_inference_steps,
++                device,
++                **extra_set_timesteps_kwargs,
+             )
+ 
+-        cond_latents = self._prepare_cond_latents(
+-            task_type, image_cond, latents, multitask_mask
+-        )
+-        with auto_offload_model(
+-            self.vision_encoder, self.execution_device, enabled=self.enable_offloading
+-        ):
+-            vision_states = self._prepare_vision_states(
+-                semantic_images_np, target_resolution, latents, device
 +            num_channels_latents = self.transformer.config.in_channels
 +            latents = self.prepare_latents(
 +                batch_size * num_videos_per_prompt,
@@ -5114,34 +3947,26 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
 +                generator,
              )
  
--        cond_latents = self._prepare_cond_latents(
--            task_type, image_cond, latents, multitask_mask
+-        self.num_warmup_steps = (
+-            len(timesteps) - num_inference_steps * self.scheduler.order
 -        )
--        with auto_offload_model(
--            self.vision_encoder, self.execution_device, enabled=self.enable_offloading
--        ):
--            vision_states = self._prepare_vision_states(
--                semantic_images_np, target_resolution, latents, device
 +            with auto_offload_model(self.vae, self.execution_device, enabled=self.enable_offloading):
 +                image_cond = self.get_image_condition_latents(task_type, reference_image, height, width)
 +
 +            cond_latents = self._prepare_cond_latents(
 +                task_type, image_cond, latents, multitask_mask
-             )
++            )
 +            with auto_offload_model(self.vision_encoder, self.execution_device, enabled=self.enable_offloading):
 +                vision_states = self._prepare_vision_states(
 +                    semantic_images_np, target_resolution, latents, device
 +                )
 +        pipeline_stats["1_encoding"] = t_enc.elapsed
- 
--        self.num_warmup_steps = (
--            len(timesteps) - num_inference_steps * self.scheduler.order
--        )
++
 +        self.num_warmup_steps = len(timesteps) - num_inference_steps * self.scheduler.order
          self._num_timesteps = len(timesteps)
  
          latent_frames = latents.shape[2]
-@@ -1851,51 +1729,53 @@
+@@ -1851,51 +1729,53 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
          self.chunk_latent_frames = chunk_latent_frames
          self.num_inference_steps = num_inference_steps
  
@@ -5239,7 +4064,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
          if output_type == "latent":
              video_frames = latents
-@@ -1907,41 +1787,23 @@
+@@ -1907,41 +1787,23 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
                      f"Only support latents with shape (b, c, h, w) or (b, c, f, h, w), but got {latents.shape}."
                  )
  
@@ -5277,15 +4102,14 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
 -
 -                if video_frames is not None:
 -                    video_frames = (video_frames / 2 + 0.5).clamp(0, 1).cpu().float()
--
--            else:
--                video_frames = sr_out.videos
 +            with CudaTimer("Phase 4: VAE Decoding", enable_print=False) as t_vae:
 +                if return_pre_sr_video or not enable_sr:
 +                    with (torch.autocast(device_type="cuda", dtype=self.vae_dtype, enabled=self.vae_autocast_enabled),
 +                        auto_offload_model(self.vae, self.execution_device, enabled=self.enable_offloading)):
 +                        video_frames = self.vae.decode(latents, return_dict=False, generator=generator)[0]
-+
+ 
+-            else:
+-                video_frames = sr_out.videos
 +                    if video_frames is not None:
 +                        video_frames = (video_frames / 2 + 0.5).clamp(0, 1).cpu().float()
 +                        
@@ -5295,7 +4119,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
          # Offload all models
          self.maybe_free_model_hooks()
-@@ -1953,11 +1815,42 @@
+@@ -1953,11 +1815,42 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
              if enable_sr:
                  ret = (video_frames, sr_video_frames)
              return ret
@@ -5341,7 +4165,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          else:
              return HunyuanVideoPipelineOutput(videos=video_frames)
  
-@@ -1974,32 +1867,22 @@
+@@ -1974,32 +1867,22 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
          return self.transformer.config.use_meanflow
  
      @classmethod
@@ -5384,7 +4208,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
          return HunyuanVideo_1_5_SR_Pipeline(
              vae=self.vae,
-@@ -2014,27 +1897,17 @@
+@@ -2014,27 +1897,17 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
              byt5_tokenizer=self.byt5_tokenizer,
              byt5_max_length=self.byt5_max_length,
              prompt_format=self.prompt_format,
@@ -5417,7 +4241,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          # use snapshot download here to get it working from from_pretrained
          if not os.path.isdir(pretrained_model_name_or_path):
              if pretrained_model_name_or_path.count("/") > 1:
-@@ -2051,20 +1924,18 @@
+@@ -2051,20 +1924,18 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
  
          if enable_offloading:
              # Assuming the user does not have sufficient GPU memory, we initialize the models on CPU
@@ -5442,7 +4266,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          if transformer_version not in supported_transformer_version:
              raise ValueError(
                  f"Could not find {transformer_version} in {cached_folder}."
-@@ -2073,40 +1944,25 @@
+@@ -2073,40 +1944,25 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
  
          vae_inference_config = cls.get_vae_inference_config()
          transformer = HunyuanVideo_1_5_DiffusionTransformer.from_pretrained(
@@ -5488,7 +4312,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
          if force_sparse_attn:
              if not is_sparse_attn_supported():
-@@ -2114,31 +1970,27 @@
+@@ -2114,31 +1970,27 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
                      f"Current GPU is {torch.cuda.get_device_properties(0).name}, "
                      f"which does not support sparse attention."
                  )
@@ -5529,7 +4353,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
          if enable_group_offloading:
              assert enable_offloading
-@@ -2155,7 +2007,7 @@
+@@ -2155,7 +2007,7 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
              byt5_tokenizer=byt5_kwargs["byt5_tokenizer"],
              byt5_max_length=byt5_kwargs["byt5_max_length"],
              prompt_format=prompt_format,
@@ -5538,7 +4362,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
              vision_encoder=vision_encoder,
              enable_offloading=enable_offloading,
              **PIPELINE_CONFIGS[transformer_version],
-@@ -2164,17 +2016,17 @@
+@@ -2164,17 +2016,17 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
          if create_sr_pipeline:
              sr_version = TRANSFORMER_VERSION_TO_SR_VERSION[transformer_version]
              sr_pipeline = pipeline.create_sr_pipeline(
@@ -5561,7 +4385,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
      @staticmethod
      def get_vae_inference_config(memory_limitation=None):
          if memory_limitation is None:
-@@ -2188,27 +2040,24 @@
+@@ -2188,27 +2040,24 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
              sample_size = 256
              tile_overlap_factor = 0.25
              dtype = torch.float32
@@ -5596,7 +4420,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
              hidden_state_skip_layer=2,
              apply_final_norm=False,
              reproduce=False,
-@@ -2221,7 +2070,7 @@
+@@ -2221,7 +2070,7 @@ class HunyuanVideo_1_5_Pipeline(DiffusionPipeline):
  
      @classmethod
      def _load_vision_encoder(cls, pretrained_model_name_or_path, device):
@@ -5605,10 +4429,11 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
          if not os.path.exists(vision_encoder_path):
              msg = f"{vision_encoder_path} not found. Please refer to checkpoints-download.md."
              loguru.logger.error(msg)
-diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_main/hyvideo/utils/retrieval_context.py hywp_patch_stage_rel/hyvideo/utils/retrieval_context.py
---- hywp_official_main/hyvideo/utils/retrieval_context.py	2026-06-02 23:05:40.804847275 +0800
-+++ hywp_patch_stage_rel/hyvideo/utils/retrieval_context.py	2026-06-02 23:23:36.780441353 +0800
-@@ -223,7 +223,10 @@
+diff --git a/hyvideo/utils/retrieval_context.py b/hyvideo/utils/retrieval_context.py
+index 1121027..3c41ad9 100644
+--- a/hyvideo/utils/retrieval_context.py
++++ b/hyvideo/utils/retrieval_context.py
+@@ -223,7 +223,10 @@ def select_aligned_memory_frames(
      ang_weight: float = 1.0,
      device=None,
      points_local=None,
@@ -5620,7 +4445,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
      """
      Selects memory and context frames for a given frame based on a four-frame segment distance calculation.
  
-@@ -233,11 +236,17 @@
+@@ -233,11 +236,17 @@ def select_aligned_memory_frames(
      :param context_size: The total number of context frames to select.
      :param pos_weight: The weight applied to the spatial (position) distance component.
      :param ang_weight: The weight applied to the angular distance component.
@@ -5641,7 +4466,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
      num_total_frames = len(w2c_list)
      if current_frame_idx >= num_total_frames or current_frame_idx < 3:
-@@ -249,7 +258,7 @@
+@@ -249,7 +258,7 @@ def select_aligned_memory_frames(
      start_context_idx = max(0, current_frame_idx - temporal_context_size)
      context_frames_indices = list(range(start_context_idx, current_frame_idx))
  
@@ -5650,7 +4475,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
      query_clip_indices = list(
          range(
              current_frame_idx,
-@@ -269,11 +278,11 @@
+@@ -269,11 +278,11 @@ def select_aligned_memory_frames(
      memory_frames = memory_frames - temporal_context_size
  
      for hist_idx in historical_clip_indices:
@@ -5664,7 +4489,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
                  w2c_list[query_idx],
                  hist_w2c_1,
                  fov_h_deg=60.0,
-@@ -281,7 +290,7 @@
+@@ -281,7 +290,7 @@ def select_aligned_memory_frames(
                  device=device,
                  points_local=points_local,
              )
@@ -5673,7 +4498,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
                  w2c_list[query_idx],
                  hist_w2c_2,
                  fov_h_deg=60.0,
-@@ -289,21 +298,24 @@
+@@ -289,21 +298,24 @@ def select_aligned_memory_frames(
                  device=device,
                  points_local=points_local,
              )
@@ -5709,17 +4534,18 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
      # exclude the repeated frames
      selected_frames_set = set(context_frames_indices)
-@@ -311,4 +323,6 @@
+@@ -311,4 +323,6 @@ def select_aligned_memory_frames(
  
      final_selected_frames = sorted(list(selected_frames_set))
  
 +    if return_similarity_scores:
 +        return final_selected_frames, candidate_similarities
      return final_selected_frames
-diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_main/run.sh hywp_patch_stage_rel/run.sh
---- hywp_official_main/run.sh	2026-06-02 23:05:40.248844384 +0800
-+++ hywp_patch_stage_rel/run.sh	2026-06-02 23:36:02.618741532 +0800
-@@ -11,11 +11,11 @@
+diff --git a/run.sh b/run.sh
+index de80815..dde48fd 100644
+--- a/run.sh
++++ b/run.sh
+@@ -11,11 +11,11 @@ IMAGE_PATH=./assets/img/test.png # Now we only provide the i2v model, so the pat
  SEED=1
  ASPECT_RATIO=16:9
  RESOLUTION=480p # Now we only provide the 480p model
@@ -5736,7 +4562,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  POSE='w-31'                   # Camera trajectory: pose string (e.g., 'w-31' means generating [1 + 31] latents) or JSON file path
  NUM_FRAMES=125
  WIDTH=832
-@@ -23,7 +23,7 @@
+@@ -23,7 +23,7 @@ HEIGHT=480
  
  # Configuration for faster inference
  # The maximum number recommended is 8.
@@ -5745,7 +4571,7 @@ diff -ruN --exclude .git --exclude __pycache__ --exclude '*.pyc' hywp_official_m
  
  # Configuration for better quality
  REWRITE=false   # Enable prompt rewriting. Please ensure rewrite vLLM server is deployed and configured.
-@@ -81,6 +81,7 @@
+@@ -81,6 +81,7 @@ torchrun --nproc_per_node=$N_INFERENCE_GPU hyvideo/generate.py \
    --action_ckpt $AR_DISTILL_ACTION_MODEL_PATH \
    --few_step true \
    --num_inference_steps 4 \
