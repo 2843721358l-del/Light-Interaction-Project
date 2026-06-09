@@ -4599,7 +4599,7 @@ index 1121027..3c41ad9 100644
 +        return final_selected_frames, candidate_similarities
      return final_selected_frames
 diff --git a/run.sh b/run.sh
-index de80815..35a617b 100644
+index de80815..c33c7ff 100644
 --- a/run.sh
 +++ b/run.sh
 @@ -11,19 +11,19 @@ IMAGE_PATH=./assets/img/test.png # Now we only provide the i2v model, so the pat
@@ -4634,7 +4634,7 @@ index de80815..35a617b 100644
    --action_ckpt $AR_DISTILL_ACTION_MODEL_PATH \
    --few_step true \
    --num_inference_steps 4 \
-+  --acceleration_preset sparse \
++  --acceleration_preset all \
    --model_type 'ar' \
    --use_vae_parallel false \
    --use_sageattn false \
