@@ -1,22 +1,29 @@
-# HY-WorldPlay Acceleration Patch
+# 🔌 HY-WorldPlay Acceleration Patch
 
-This repository contains only our acceleration patch for HY-WorldPlay. It does
-not redistribute the original HY-WorldPlay repository, model codebase, or model
-weights. Users should first obtain the upstream project and checkpoints, then
-apply this patch on top.
+<p align="center">
+  <a href="../README.md">← Back to Light Interaction</a>
+</p>
 
-## Upstream Resources
+This directory contains the **Light Interaction acceleration patch** for [HY-WorldPlay](https://github.com/Tencent-Hunyuan/HY-WorldPlay). It does **not** redistribute the original HY-WorldPlay repository, model codebase, or model weights. Users must first obtain the upstream project and checkpoints, then apply this patch on top.
 
-- HY-WorldPlay GitHub: <https://github.com/Tencent-Hunyuan/HY-WorldPlay>
-- HY-WorldPlay checkpoints: <https://huggingface.co/tencent/HY-WorldPlay>
-- HunyuanVideo-1.5 checkpoints: <https://huggingface.co/tencent/HunyuanVideo-1.5>
+---
 
-Check and follow the upstream repositories' license terms before using or
-redistributing any upstream code or weights.
+## 📦 Upstream Resources
 
-## What Is Included
+| Resource | Link |
+|:---|:---|
+| HY-WorldPlay GitHub | <https://github.com/Tencent-Hunyuan/HY-WorldPlay> |
+| HY-WorldPlay checkpoints | <https://huggingface.co/tencent/HY-WorldPlay> |
+| HunyuanVideo-1.5 checkpoints | <https://huggingface.co/tencent/HunyuanVideo-1.5> |
 
-New files copied into the upstream checkout:
+> [!IMPORTANT]
+> Check and follow the upstream repositories' license terms before using or redistributing any upstream code or weights.
+
+---
+
+## 📂 What Is Included
+
+### New files copied into the upstream checkout
 
 ```text
 files/
@@ -26,7 +33,7 @@ files/
   hyvideo/models/transformers/modules/longcat_kernel.py
 ```
 
-Upstream files modified by the integration patch:
+### Upstream files modified by the integration patch
 
 ```text
 patches/
@@ -40,43 +47,42 @@ patches/
     hyvideo/models/transformers/modules/attention.py
 ```
 
-Helper script:
+### Helper script
 
 ```text
 scripts/
   apply_patch.sh
 ```
 
-The `files/` directory contains our standalone acceleration modules. The patch
-modifies the upstream pipeline, transformer, attention module, `generate.py`,
-`run.sh`, `hyvideo/commons/__init__.py`, and the context-selection helper so
-those modules are used by the original HY-WorldPlay runtime.
+The `files/` directory contains standalone acceleration modules. The patch modifies the upstream pipeline, transformer, attention module, `generate.py`, `run.sh`, `hyvideo/commons/__init__.py`, and the context-selection helper so those modules are integrated into the original HY-WorldPlay runtime.
 
-We keep large upstream files as a patch instead of redistributing full
-replacement copies, because those files are derived from the original
-HY-WorldPlay repository and may be subject to the upstream license.
+We keep large upstream files as a patch instead of redistributing full replacement copies, because those files are derived from the original HY-WorldPlay repository and may be subject to the upstream license.
 
-## Apply The Patch
+---
 
-Clone or download the upstream repository first:
+## 🚀 Apply The Patch
+
+**Step 1:** Clone the upstream repository:
 
 ```bash
 git clone https://github.com/Tencent-Hunyuan/HY-WorldPlay.git
 ```
 
-Then apply this patch repository to that checkout:
+**Step 2:** Apply this patch to the upstream checkout:
 
 ```bash
-cd HY-WorldPlay-Acceleration-Patch
+cd Light-Interaction-Project/hy-worldplay
 bash scripts/apply_patch.sh /path/to/HY-WorldPlay
 ```
 
-If the target tree has local edits, inspect them first. The script copies files
-from `files/` and then applies `patches/0001-integrate-acceleration.patch`.
+> [!NOTE]
+> If the target tree has local edits, inspect them first. The script copies files from `files/` and then applies `patches/0001-integrate-acceleration.patch`.
 
-## Run
+---
 
-After applying the patch and setting model paths in `run.sh`, run:
+## ▶️ Run
+
+**Step 3:** After applying the patch and setting model paths, run:
 
 ```bash
 cd /path/to/HY-WorldPlay
@@ -97,58 +103,50 @@ The default preset enables all acceleration components:
 --acceleration_preset all
 ```
 
-## Presets
+---
+
+## 🎛️ Presets
+
+| Preset | Components | Behavior |
+|:---|:---|:---|
+| `off` | None | Dense attention, upstream temporal context, no FOV filtering, no denoising cache |
+| `context` | Context Mgmt. | Temporal context reduction + spatial/FOV context filtering, dense attention, no denoising cache |
+| `sparse` | Sparse Attn. | Sparse attention in both AR denoising and KV-cache recomputation, upstream context, no denoising cache |
+| `cache` | Denoising Cache | Dense attention, upstream context, FOV-based denoising-step reuse |
+| `all` | All three | **Default.** Context management + 3D sparse attention + denoising cache acceleration |
+
+---
+
+## ⏱️ Latency Reporting
+
+The final inference log prints a compact `[Inference Summary]` table:
 
 ```text
-off:
-  disables all acceleration components.
-  Uses dense attention, the upstream temporal context setting, no FOV filtering,
-  and no denoising cache.
-
-context:
-  enables only context management.
-  Uses temporal context reduction plus spatial/FOV context filtering, while
-  keeping dense attention and disabling the denoising cache.
-
-sparse:
-  enables only soft-hard cooperative 3D sparse attention.
-  Applies sparse attention in both autoregressive denoising and KV-cache
-  recomputation, while keeping the upstream context setting and disabling the
-  denoising cache.
-
-cache:
-  enables only denoising cache acceleration.
-  Keeps dense attention and the upstream context setting, while enabling
-  FOV-based denoising-step reuse.
-
-all:
-  enables all three components.
-  This is the default setting: context management, 3D sparse attention, and
-  denoising cache acceleration are all enabled.
+============================================================
+[Inference Summary]
+============================================================
+ Prompt & Vision Encode    :    15.45 s
+ History Selection         :     1.29 s
+ KV Cache Recompute        :   206.89 s
+ Denoise Loop              :   217.26 s
+ DiT Core (KV + Denoise)   :   424.15 s
+ Transformer AR Rollout    :   443.99 s
+ VAE Pixel Decoding        :    34.89 s
+------------------------------------------------------------
+ Total End-to-End Time     :   494.39 s
+ Peak VRAM                 :    48.70 GB
+============================================================
 ```
 
-## Latency Reporting
-
-The final log prints one compact `[Inference Summary]` table. For paper-style
-latency reporting, use:
+For paper-style latency reporting, use:
 
 ```text
 DiT Core (KV + Denoise) = KV Cache Recompute + Denoise Loop
 ```
 
-The table reports:
+---
 
-```text
-KV Cache Recompute
-Denoise Loop
-DiT Core (KV + Denoise)
-Transformer AR Rollout
-VAE Pixel Decoding
-Total End-to-End Time
-Peak VRAM
-```
-
-## Triton Autotuning
+## ⚙️ Triton Autotuning
 
 The LongCat sparse-attention adapter is in:
 
@@ -162,10 +160,7 @@ The release keeps a single tested Triton config by default:
 triton.Config({}, num_stages=3, num_warps=8)
 ```
 
-If you add multiple entries to `configs_fwd_bsa_align`, Triton will benchmark
-the candidates and cache the fastest one. The first run can include autotune
-warmup overhead. For stable latency numbers, keep the single tested config or
-discard the first autotuned warmup run.
+If you add multiple entries to `configs_fwd_bsa_align`, Triton will benchmark the candidates and cache the fastest one. The first run may include autotune warmup overhead. For stable latency numbers, keep the single tested config or discard the first autotuned warmup run.
 
 To re-evaluate the autotune choice per shape:
 
@@ -173,17 +168,18 @@ To re-evaluate the autotune choice per shape:
 TRITON_REEVALUATE_KEY=1 bash run.sh
 ```
 
-## Diagnostics
+---
 
-Relative-L1 denoising diagnostics are disabled by default. Enable them only for
-development:
+## 🔧 Diagnostics
+
+Relative-L1 denoising diagnostics are disabled by default. Enable them only for development:
 
 ```bash
 --enable_l1_diagnostics true
 ```
 
-## Release Notes
+---
 
-This patch repository is intended to contain only our acceleration code and
-integration patch. It intentionally omits upstream assets, generated videos,
-logs, debug data, checkpoints, and benchmark outputs.
+## 📄 Release Notes
+
+This patch repository is intended to contain only our acceleration code and integration patch. It intentionally omits upstream assets, generated videos, logs, debug data, checkpoints, and benchmark outputs.
