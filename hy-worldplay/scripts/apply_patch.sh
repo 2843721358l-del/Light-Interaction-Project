@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
-# Copyright 2026 Jiacheng Lu and contributors
-# SPDX-License-Identifier: Apache-2.0
-#
+# Copyright (c) 2026 Jiacheng Lu and contributors.
+# Licensed under the MIT License.
+# See the LICENSE file in the repository root for details.
+
 # Apply the Light Interaction acceleration patch to a HY-WorldPlay checkout.
 #
 # Usage:
