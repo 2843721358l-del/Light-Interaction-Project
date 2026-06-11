@@ -261,7 +261,7 @@ The HY-WorldPlay patch exposes five presets for reproduction and ablation studie
 Light-Interaction-Project/
 ├── README.md                    # Project overview (this file)
 ├── NOTICE.md                    # Third-party notices
-├── LICENSE                      # Apache 2.0
+├── LICENSE                      # MIT License
 ├── asset/                       # Teaser and figures
 ├── hy-worldplay/                # HY-WorldPlay acceleration patch
 │   ├── README.md                # Detailed patch documentation
