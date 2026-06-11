@@ -8,7 +8,7 @@
 
 <p align="center">
   <a href="https://arxiv.org/abs/2605.31158"><img src="https://img.shields.io/static/v1?label=arXiv&message=2605.31158&color=b31b1b&logo=arxiv"></a> &ensp;
-  <a href="LICENSE"><img src="https://img.shields.io/static/v1?label=License&message=Apache%202.0&color=green"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/static/v1?label=License&message=MIT&color=green"></a>
 </p>
 
 **Light Interaction** is a training-free inference acceleration framework for interactive video world models. It accelerates autoregressive interactive video generation without model retraining by combining **Adaptive Context Management**, **Denoising Cache Acceleration**, and **Hardware-Software Co-designed 3D Sparse Attention**. On a single A100 GPU, Light Interaction achieves up to **2.59× speedup** on HY-WorldPlay and **1.61× speedup** on Matrix-Game-3.0, while maintaining competitive visual quality with **24.81 PSNR** against the original model.
@@ -19,7 +19,7 @@
 
 ## 🔥 News
 
-- 🔥 [2026/06] 🚀 **Light Interaction code released!** Training-free inference acceleration for HY-WorldPlay and Matrix-Game-3.0.
+- 🔥 [2026/06] 🚀 **Light Interaction code released!** HY-WorldPlay acceleration patch and evaluation utilities are available. Matrix-Game-3.0 integration is coming soon.
 - 🔥 [2026/05] 📄 **Paper** is on ArXiv! Check out the details at [arXiv:2605.31158](https://arxiv.org/abs/2605.31158).
 
 <details>
