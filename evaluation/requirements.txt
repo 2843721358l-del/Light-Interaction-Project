@@ -2,8 +2,11 @@
 # PyTorch environment. For a fresh conda environment, prefer:
 #   bash evaluation/scripts/setup_evaluation_env.sh
 numpy<2
+setuptools<81
 pandas
 tqdm
+requests
+huggingface-hub
 opencv-python-headless
 pillow
 scikit-image
