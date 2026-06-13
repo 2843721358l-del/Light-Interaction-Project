@@ -1,4 +1,4 @@
-# Evaluation
+# 📊 Evaluation Utilities
 
 This folder contains the fixed sample set and scripts used for Light Interaction quantitative evaluation.
 
@@ -16,7 +16,7 @@ evaluation/
 
 Generated videos, CSV files, logs, and debug files are not included.
 
-## Install Dependencies
+## 🛠️ Install Dependencies
 
 Use the same Python environment as the patched HY-WorldPlay runtime when generating videos.
 
@@ -26,7 +26,7 @@ pip install -r evaluation/requirements.txt
 
 VBench should usually be installed in its own environment because it pulls additional model and metric dependencies.
 
-## Dataset
+## 🖼️ Dataset
 
 `data/refined_prompts_llava16.json` contains 200 entries. Each entry has:
 
@@ -39,7 +39,7 @@ VBench should usually be installed in its own environment because it pulls addit
 
 `data/sampled_200/` contains the corresponding 200 initial images.
 
-## Batch Generation
+## 🎬 Batch Generation
 
 ```bash
 python evaluation/scripts/batch_video_generation.py \
@@ -61,7 +61,7 @@ forward_backward=w-5, s-5.5
 
 Use `--actions name=pose` to provide custom action groups. Existing non-empty output folders are skipped by default; pass `--no-skip-existing` to regenerate them.
 
-## PSNR / SSIM / LPIPS
+## 📐 PSNR / SSIM / LPIPS
 
 Mutual evaluation compares generated videos with a reference run:
 
@@ -89,7 +89,7 @@ python evaluation/scripts/evaluate_psnr_ssim_lpips.py \
 
 The scripts print missing-video and decode-failure counts so incomplete runs are visible.
 
-## VBench
+## 🏷️ VBench
 
 ```bash
 python evaluation/scripts/evaluate_vbench_batch.py \
@@ -112,7 +112,7 @@ If VBench reports `libnvshmem_host.so.3: cannot open shared object file`, add th
 export LD_LIBRARY_PATH=/path/to/nvidia/nvshmem/lib:$LD_LIBRARY_PATH
 ```
 
-## Outputs
+## 📋 Outputs
 
 Typical CSV outputs:
 

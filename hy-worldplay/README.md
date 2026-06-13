@@ -1,10 +1,10 @@
-# HY-WorldPlay Patch
+# 🔌 HY-WorldPlay Acceleration Patch
 
 This folder provides the Light Interaction patch for upstream [HY-WorldPlay](https://github.com/Tencent-Hunyuan/HY-WorldPlay).
 
 It does not include the original HY-WorldPlay source tree or any model checkpoints. Clone upstream HY-WorldPlay and download checkpoints from the official sources before applying this patch.
 
-## Contents
+## 📂 Contents
 
 ```text
 hy-worldplay/
@@ -22,7 +22,7 @@ hy-worldplay/
 
 `files/` contains new Light Interaction modules. `patches/0001-integrate-acceleration.patch` modifies upstream HY-WorldPlay entry points, pipeline code, transformer code, attention code, and context-selection logic.
 
-## Upstream Resources
+## 📦 Upstream Resources
 
 | Resource | Link |
 |:---|:---|
@@ -30,7 +30,7 @@ hy-worldplay/
 | HY-WorldPlay checkpoints | <https://huggingface.co/tencent/HY-WorldPlay> |
 | HunyuanVideo-1.5 checkpoints | <https://huggingface.co/tencent/HunyuanVideo-1.5> |
 
-## Apply Patch
+## 🚀 Apply Patch
 
 ```bash
 git clone https://github.com/Tencent-Hunyuan/HY-WorldPlay.git
@@ -43,7 +43,7 @@ The script checks that the target looks like a HY-WorldPlay checkout and runs `p
 
 If patching fails, check whether the upstream HY-WorldPlay files have changed. For reproducibility, record the upstream commit hash used in your experiments.
 
-## Run
+## ▶️ Run
 
 ```bash
 cd /path/to/HY-WorldPlay
@@ -55,7 +55,7 @@ export HY_N_INFERENCE_GPU=1
 bash run.sh
 ```
 
-## Presets
+## 🎛️ Presets
 
 The patched `run.sh` uses `--acceleration_preset all` by default.
 
@@ -69,7 +69,7 @@ The patched `run.sh` uses `--acceleration_preset all` by default.
 
 To switch presets, edit the `--acceleration_preset` argument in the patched `run.sh`.
 
-## Inference Log
+## ⏱️ Inference Log
 
 The patched pipeline prints an inference summary:
 
@@ -92,7 +92,7 @@ For paper-style timing, use:
 DiT Core (KV + Denoise) = KV Cache Recompute + Denoise Loop
 ```
 
-## Diagnostics
+## 🔧 Diagnostics
 
 Relative-L1 denoising diagnostics are disabled by default. Enable them only for development:
 
@@ -108,6 +108,6 @@ TRITON_REEVALUATE_KEY=1 bash run.sh
 
 The release keeps one tested Triton config by default to avoid first-run autotuning noise.
 
-## License Notes
+## 📄 License Notes
 
 This folder stores patch-style modifications instead of full upstream files. Upstream HY-WorldPlay files and model weights remain governed by their own licenses. `longcat_kernel.py` includes attribution for LongCat-Video-derived code; see [../NOTICE.md](../NOTICE.md).
