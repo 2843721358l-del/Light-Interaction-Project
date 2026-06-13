@@ -1,35 +1,48 @@
-# Light Interaction
+<h1 align="center">Light Interaction: Training-Free Inference Acceleration for Interactive Video World Models</h1>
 
-Training-free inference acceleration for interactive video world models.
+<h3 align="center">
+Training-free acceleration for autoregressive interactive video generation
+</h3>
 
 <p align="center">
-  <a href="https://arxiv.org/abs/2605.31158"><b>Paper</b></a> |
-  <a href="https://2843721358l-del.github.io/Light-Interaction-Project/"><b>Project Page</b></a>
+  <a href="https://arxiv.org/abs/2605.31158"><b>📄 Paper</b></a> |
+  <a href="https://2843721358l-del.github.io/Light-Interaction-Project/"><b>🌐 Project Page</b></a> |
+  <a href="hy-worldplay/README.md"><b>🔌 HY-WorldPlay Patch</b></a> |
+  <a href="evaluation/README.md"><b>📊 Evaluation</b></a>
 </p>
 
 <p align="center">
-  <a href="https://arxiv.org/abs/2605.31158"><img src="https://img.shields.io/static/v1?label=arXiv&message=2605.31158&color=b31b1b&logo=arxiv"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/static/v1?label=License&message=MIT&color=green"></a>
+  <a href="https://arxiv.org/abs/2605.31158"><img src="https://img.shields.io/static/v1?label=arXiv&message=2605.31158&color=b31b1b&logo=arxiv"></a> &ensp;
+  <a href="LICENSE"><img src="https://img.shields.io/static/v1?label=License&message=MIT&color=green"></a> &ensp;
+  <img src="https://img.shields.io/static/v1?label=Patch&message=HY-WorldPlay&color=blue"> &ensp;
+  <img src="https://img.shields.io/static/v1?label=Training&message=Free&color=orange">
 </p>
 
-Light Interaction accelerates autoregressive interactive video generation without model retraining. It combines:
+**Light Interaction** accelerates autoregressive interactive video generation without model retraining. It combines:
 
 - Adaptive context management
 - Denoising cache acceleration
 - Hardware-software co-designed 3D block sparse attention
 
-This repository currently releases the HY-WorldPlay integration patch and evaluation scripts. Matrix-Game-3.0 results are reported in the paper, but its integration patch is not included in this release.
+This repository currently releases the **HY-WorldPlay integration patch** and **evaluation scripts**. Matrix-Game-3.0 results are reported in the paper, but its integration patch is not included in this release.
 
 <p align="center">
   <img src="asset/teaser.png" width="90%" alt="Light Interaction overview"/>
 </p>
 
-## News
+## 🔥 News
 
-- 2026-06: HY-WorldPlay acceleration patch and evaluation utilities released.
-- 2026-05: Paper released on arXiv.
+- 🔥 [2026/06] HY-WorldPlay acceleration patch and evaluation utilities released.
+- 📄 [2026/05] Paper released on arXiv.
 
-## Released Components
+## 💡 Highlights
+
+- **Training-free**: no retraining or fine-tuning is required.
+- **Plug-in patch release**: applies to an upstream HY-WorldPlay checkout instead of redistributing upstream code.
+- **Preset-based ablations**: `off`, `context`, `sparse`, `cache`, and `all`.
+- **Reproducible evaluation**: fixed 200-prompt sample set with PSNR / SSIM / LPIPS and VBench helpers.
+
+## 📦 Released Components
 
 ```text
 Light-Interaction-Project/
@@ -40,9 +53,10 @@ Light-Interaction-Project/
 └── LICENSE
 ```
 
-The repository does not redistribute upstream source trees, checkpoints, generated videos, or benchmark outputs. Users must obtain HY-WorldPlay and model weights from the official upstream sources.
+> [!IMPORTANT]
+> This repository does not redistribute upstream source trees, checkpoints, generated videos, or benchmark outputs. Users must obtain HY-WorldPlay and model weights from the official upstream sources.
 
-## Requirements
+## 📋 Requirements
 
 Use a working HY-WorldPlay environment first. The patch assumes the upstream model can already run.
 
@@ -62,7 +76,7 @@ pip install -r evaluation/requirements.txt
 
 VBench evaluation requires a separate VBench environment; see [evaluation/README.md](evaluation/README.md).
 
-## Installation
+## 🚀 Quick Start
 
 ### 1. Clone Light Interaction
 
@@ -95,7 +109,7 @@ bash scripts/apply_patch.sh /path/to/HY-WorldPlay
 
 The script performs a patch dry run before copying files. If the upstream checkout has changed substantially, the patch may fail and should be inspected manually.
 
-## Run Inference
+## ▶️ Run Inference
 
 ```bash
 cd /path/to/HY-WorldPlay
@@ -121,7 +135,7 @@ The default preset is `all`, which enables all acceleration components. To repro
 
 More patch details are in [hy-worldplay/README.md](hy-worldplay/README.md).
 
-## Evaluation
+## 📊 Evaluation
 
 The evaluation folder contains 200 fixed prompts and 200 initial images.
 
@@ -160,7 +174,7 @@ python evaluation/scripts/evaluate_vbench_batch.py \
 
 More evaluation details are in [evaluation/README.md](evaluation/README.md).
 
-## Main Results
+## 🏆 Main Results
 
 HY-WorldPlay, 480P image-to-video, single A100:
 
@@ -174,7 +188,25 @@ HY-WorldPlay, 480P image-to-video, single A100:
 
 See the paper for full Matrix-Game-3.0 results, ablations, and metric definitions.
 
-## Reproducibility Notes
+## 📚 Documentation Map
+
+| Document | Contents |
+|:---|:---|
+| [hy-worldplay/README.md](hy-worldplay/README.md) | Patch structure, apply script, presets, timing log, diagnostics |
+| [evaluation/README.md](evaluation/README.md) | Sample set, batch generation, metrics, VBench |
+| [NOTICE.md](NOTICE.md) | Upstream scope, third-party attribution, license notes |
+
+## ✅ Release Status
+
+- [x] HY-WorldPlay acceleration patch
+- [x] 3D block sparse attention backend with Triton kernels
+- [x] Acceleration presets for reproduction and ablation
+- [x] Latency and peak-memory reporting
+- [x] Evaluation scripts and fixed 200-prompt sample set
+- [ ] Matrix-Game-3.0 acceleration patch
+- [ ] Additional upstream model support
+
+## 🧪 Reproducibility Notes
 
 For each experiment, record:
 
@@ -187,7 +219,7 @@ For each experiment, record:
 
 Generated videos, logs, CSV files, checkpoints, and debug dumps are intentionally ignored by git.
 
-## Citation
+## 📖 Citation
 
 ```bibtex
 @misc{lu2026lightinteractiontrainingfreeinference,
@@ -201,10 +233,10 @@ Generated videos, logs, CSV files, checkpoints, and debug dumps are intentionall
 }
 ```
 
-## Acknowledgements
+## 🤗 Acknowledgements
 
 This project builds on HY-WorldPlay, HunyuanVideo-1.5, LongCat-Video, Matrix-Game-3.0, VBench, Sparse VideoGen, and TeaCache. See [NOTICE.md](NOTICE.md) for license and attribution details.
 
-## License
+## 📄 License
 
 The Light Interaction patch code is released under the repository [MIT License](LICENSE). Upstream projects and model weights are governed by their own licenses and usage terms.
