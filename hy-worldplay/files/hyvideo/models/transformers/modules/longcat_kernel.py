@@ -172,7 +172,7 @@ def longcat_flash_attn(q, k, v, block_indices, block_counts, sm_scale=None, logi
         Attention output ``(B, H, Q_len, D)``.
 
     Raises:
-        AssertionError: If *K_len* is not divisible by *logical_block_size*
+        ValueError: If *K_len* is not divisible by *logical_block_size*
             or if any block index is out of bounds.
     """
     q = q.contiguous()
@@ -189,8 +189,10 @@ def longcat_flash_attn(q, k, v, block_indices, block_counts, sm_scale=None, logi
 
     BLOCK_N = logical_block_size 
     
-    assert K_len % BLOCK_N == 0, f"K Length ({K_len}) must be divisible by logical_block_size ({BLOCK_N})"
-    assert block_indices.max() < (K_len // BLOCK_N), "Sparse indices out of bounds!"
+    if K_len % BLOCK_N != 0:
+        raise ValueError(f"K Length ({K_len}) must be divisible by logical_block_size ({BLOCK_N})")
+    if block_indices.numel() and block_indices.max() >= (K_len // BLOCK_N):
+        raise ValueError("Sparse indices out of bounds.")
 
     # 3. Buffer
     o = torch.empty_like(q)

@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="asset/logo.png" width="75%" alt="Light Interaction"/>
-</p>
+<h1 align="center">Light Interaction: Training-Free Inference Acceleration for Interactive Video World Models</h1>
 
 <h3 align="center">
 <a href="https://arxiv.org/abs/2605.31158"><b>📄 Paper</b></a> | <a href="https://2843721358l-del.github.io/Light-Interaction-Project/"><b>🌐 Project Page</b></a>
@@ -11,7 +9,7 @@
   <a href="LICENSE"><img src="https://img.shields.io/static/v1?label=License&message=MIT&color=green"></a>
 </p>
 
-**Light Interaction** is a training-free inference acceleration framework for interactive video world models. It accelerates autoregressive interactive video generation without model retraining by combining **Adaptive Context Management**, **Denoising Cache Acceleration**, and **Hardware-Software Co-designed 3D Sparse Attention**. On a single A100 GPU, Light Interaction achieves up to **2.59× speedup** on HY-WorldPlay and **1.61× speedup** on Matrix-Game-3.0, while maintaining competitive visual quality with **24.81 PSNR** against the original model.
+**Light Interaction** is a training-free inference acceleration framework for interactive video world models. It accelerates autoregressive interactive video generation without model retraining by combining **Adaptive Context Management**, **Denoising Cache Acceleration**, and **Hardware-Software Co-designed 3D Sparse Attention**. In the paper, Light Interaction achieves up to **2.59× speedup** on HY-WorldPlay and **1.61× speedup** on Matrix-Game-3.0, while maintaining competitive visual quality with **24.81 PSNR** against the original HY-WorldPlay model. This repository currently releases the HY-WorldPlay acceleration patch and evaluation utilities; Matrix-Game-3.0 integration is planned for a future release.
 
 <p align="center" border-radius="10px">
   <img src="asset/teaser.png" width="90%" alt="teaser_page"/>
@@ -52,6 +50,9 @@ Follow these steps to deploy Light Interaction on HY-WorldPlay. For detailed doc
 ### Step 1 — Setup Upstream HY-WorldPlay
 
 Follow the official [HY-WorldPlay](https://github.com/Tencent-Hunyuan/HY-WorldPlay) instructions to clone the repository and download model checkpoints. Make sure you can run the original model successfully before proceeding.
+
+> [!NOTE]
+> The integration patch is version-sensitive. We recommend recording the upstream HY-WorldPlay commit, PyTorch / Triton / CUDA versions, and GPU type used for each reproduction run.
 
 ### Step 2 — Apply the Light Interaction Patch
 
@@ -107,6 +108,10 @@ python evaluation/scripts/evaluate_vbench_batch.py \
 ```
 
 > 📖 See [evaluation/README.md](evaluation/README.md) for mutual vs. self-comparison modes, window search explanation, and VBench dimension details.
+
+### Environment Notes
+
+The patch runs inside a working HY-WorldPlay environment. The evaluation scripts additionally require common Python packages including `opencv-python`, `lpips`, `torchmetrics`, `pandas`, `tqdm`, and optional `vbench` for VBench evaluation.
 
 ### 📚 Documentation Map
 
@@ -174,6 +179,9 @@ python evaluation/scripts/evaluate_vbench_batch.py \
 </table>
 
 ### Matrix-Game-3.0 (720P, Image-to-Video)
+
+> [!NOTE]
+> These are paper results. The Matrix-Game-3.0 acceleration patch is not included in the current code release.
 
 <table>
   <thead>
@@ -274,17 +282,16 @@ Light-Interaction-Project/
     └── scripts/                 # PSNR / SSIM / LPIPS / VBench scripts
 ```
 
-## ✅ To-Do List
+## ✅ Release Status
 
-- [✅] HY-WorldPlay acceleration patch (adaptive context mgmt. + 3D sparse attn. + denoising cache)
-- [✅] Hardware-software co-designed 3D block sparse attention with Triton fused kernels
-- [✅] Five acceleration presets for ablation studies
-- [✅] Latency and peak memory reporting infrastructure
-- [✅] Evaluation scripts (PSNR, SSIM, LPIPS, VBench)
-- [✅] Fixed 200-prompt evaluation set
+- [x] HY-WorldPlay acceleration patch (adaptive context mgmt. + 3D sparse attn. + denoising cache)
+- [x] Hardware-software co-designed 3D block sparse attention with Triton fused kernels
+- [x] Five acceleration presets for ablation studies
+- [x] Latency and peak memory reporting infrastructure
+- [x] Evaluation scripts (PSNR, SSIM, LPIPS, VBench)
+- [x] Fixed 200-prompt evaluation set
 - [ ] Matrix-Game-3.0 acceleration patch (integration patch under cleaning)
 - [ ] Additional upstream model support
-- [🚀] See you in the future
 
 ## 🤗 Acknowledgements
 

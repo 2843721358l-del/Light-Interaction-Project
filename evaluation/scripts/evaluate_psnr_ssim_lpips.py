@@ -172,6 +172,7 @@ def list_video_ids(video_dir):
 
 def write_results(rows, csv_path, id_key):
     if not rows:
+        print(f"[warn] no valid rows for {csv_path.name}; CSV was not written.")
         return
     df = pd.DataFrame(rows)
     avg = {id_key: "--- AVERAGE ---"}
@@ -195,28 +196,40 @@ def main():
         if not args.ref_dir:
             raise ValueError("--ref-dir is required for mutual evaluation.")
         rows = []
+        missing = 0
+        failed = 0
         for video_id in tqdm(list_video_ids(args.ref_dir), desc="Mutual evaluation"):
             ref_path = find_video(args.ref_dir, video_id)
             test_path = find_video(args.test_dir, video_id)
             if not ref_path or not test_path:
+                missing += 1
                 continue
             metrics = mutual_metrics(ref_path, test_path, loss_fn, device, args.mutual_window)
             if metrics:
                 rows.append({"Video_ID": video_id, "PSNR": metrics[0], "SSIM": metrics[1], "LPIPS": metrics[2]})
+            else:
+                failed += 1
             torch.cuda.empty_cache()
         write_results(rows, out_dir / f"{args.tag}_mutual_metrics.csv", "Video_ID")
+        print(f"[mutual] wrote {len(rows)} rows; missing videos: {missing}; decode/metric failures: {failed}")
 
     if args.run_self:
         rows = []
+        missing = 0
+        failed = 0
         for video_id in tqdm(list_video_ids(args.test_dir), desc="Self evaluation"):
             video_path = find_video(args.test_dir, video_id)
             if not video_path:
+                missing += 1
                 continue
             metrics = self_metrics(video_path, loss_fn, device, args.fps, args.one_way_sec, args.self_window)
             if metrics:
                 rows.append({"Video_ID": video_id, "PSNR": metrics[0], "SSIM": metrics[1], "LPIPS": metrics[2]})
+            else:
+                failed += 1
             torch.cuda.empty_cache()
         write_results(rows, out_dir / f"{args.tag}_self_metrics.csv", "Video_ID")
+        print(f"[self] wrote {len(rows)} rows; missing videos: {missing}; decode/metric failures: {failed}")
 
 
 if __name__ == "__main__":

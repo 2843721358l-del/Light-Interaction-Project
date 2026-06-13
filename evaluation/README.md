@@ -45,6 +45,8 @@ Each JSON entry contains:
 
 Use `scripts/batch_video_generation.py` to generate videos for all fixed prompts. The script supports multiple camera-action groups and dynamic GPU scheduling.
 
+Required packages include `opencv-python`, `lpips`, `torchmetrics`, `pandas`, and `tqdm`. VBench evaluation additionally requires `vbench` and its model dependencies.
+
 ```bash
 python evaluation/scripts/batch_video_generation.py \
   --prompt-json evaluation/data/refined_prompts_llava16.json \
@@ -65,6 +67,8 @@ forward_backward=w-5, s-5.5
 ```
 
 Custom action groups can be passed with `--actions name=pose`.
+
+By default, existing non-empty output folders are skipped. Pass `--no-skip-existing` to regenerate them.
 
 ---
 
@@ -149,3 +153,5 @@ left_right_mutual_metrics.csv
 left_right_self_metrics.csv
 vbench_left_right.csv
 ```
+
+If input videos are missing or cannot be decoded, the scripts report skipped items on stdout so incomplete runs are easier to diagnose.

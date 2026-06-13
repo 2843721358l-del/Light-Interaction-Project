@@ -307,12 +307,14 @@ def run_sparse_attention(q, k_txt, v_txt, k_vis, v_vis, block_idx, latent_hw, sp
         Attention output ``(B, H, Nq, D)``.
     """
     LATENT_H, LATENT_W = latent_hw
+    dense_k = torch.cat([k_txt, k_vis], dim=2)
+    dense_v = torch.cat([v_txt, v_vis], dim=2)
     
     text_len = k_txt.shape[2]
     vis_len_q, vis_len_k = q.shape[2], k_vis.shape[2]
     
-    if vis_len_q % (LATENT_H * LATENT_W) != 0:
-        return F.scaled_dot_product_attention(q, torch.cat([k_txt, k_vis], dim=2), torch.cat([v_txt, v_vis], dim=2), is_causal=False)
+    if not HAS_TRITON or vis_len_q % (LATENT_H * LATENT_W) != 0:
+        return F.scaled_dot_product_attention(q, dense_k, dense_v, is_causal=False)
 
     tt, th, tw = sparse_params.get('tile_size', (4, 8, 4))
     BLOCK_SIZE = tt * th * tw
@@ -341,29 +343,20 @@ def run_sparse_attention(q, k_txt, v_txt, k_vis, v_vis, block_idx, latent_hw, sp
     k_all[:, :, :num_txt_blk].copy_(k_txt_padded.view(B, H, -1, BLOCK_SIZE, D))
     v_all[:, :, :num_txt_blk].copy_(v_txt_padded.view(B, H, -1, BLOCK_SIZE, D))
 
-    if HAS_TRITON:
-        launch_q_prep(q, q_tiled, q_pool_vis, T_q, LATENT_H, LATENT_W, tt, th, tw, nh, nw)
-        launch_kv_prep(k_vis, v_vis, k_all, v_all, k_pool_vis, num_txt_blk, 0,
-                       T_k, LATENT_H, LATENT_W, tt, th, tw, nh, nw)
-    else:
-        pass
+    launch_q_prep(q, q_tiled, q_pool_vis, T_q, LATENT_H, LATENT_W, tt, th, tw, nh, nw)
+    launch_kv_prep(k_vis, v_vis, k_all, v_all, k_pool_vis, num_txt_blk, 0,
+                   T_k, LATENT_H, LATENT_W, tt, th, tw, nh, nw)
 
     indices, counts = fast_generate_indices(
         q_pool_vis, k_pool_vis, text_len, 
         (nt_q, nh, nw), (nt_k, nh, nw), sparse_params, q.device
     )
 
-    if HAS_TRITON:
-        o_flat = longcat_flash_attn(
-            q_tiled.flatten(2, 3), k_all.flatten(2, 3), v_all.flatten(2, 3),
-            indices, counts, sm_scale=1.0/(D**0.5), logical_block_size=BLOCK_SIZE
-        )
-    else:
-        return F.scaled_dot_product_attention(q, torch.cat([k_txt, k_vis], dim=2), torch.cat([v_txt, v_vis], dim=2), is_causal=False)
+    o_flat = longcat_flash_attn(
+        q_tiled.flatten(2, 3), k_all.flatten(2, 3), v_all.flatten(2, 3),
+        indices, counts, sm_scale=1.0/(D**0.5), logical_block_size=BLOCK_SIZE
+    )
 
     o_out = torch.empty_like(q)
-    if HAS_TRITON:
-        launch_untile(o_flat.view(B, H, num_vis_blk_q, BLOCK_SIZE, D), o_out, T_q, LATENT_H, LATENT_W, tt, th, tw, nh, nw)
-        result = o_out
-
-    return result
+    launch_untile(o_flat.view(B, H, num_vis_blk_q, BLOCK_SIZE, D), o_out, T_q, LATENT_H, LATENT_W, tt, th, tw, nh, nw)
+    return o_out

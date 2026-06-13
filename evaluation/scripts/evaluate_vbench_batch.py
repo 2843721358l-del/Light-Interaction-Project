@@ -75,31 +75,33 @@ def read_score(result_path, dimensions):
 def evaluate_one(video_path, prompt, name, sandbox_root, dimensions, device):
     sandbox = sandbox_root / name.replace(" ", "_")
     sandbox.mkdir(parents=True, exist_ok=True)
-    input_video = sandbox / "input.mp4"
-    shutil.copy(video_path, input_video)
+    try:
+        input_video = sandbox / "input.mp4"
+        shutil.copy(video_path, input_video)
 
-    info_path = sandbox / "info.json"
-    metadata = [{
-        "video_list": [input_video.name],
-        "prompt_en": prompt,
-        "dimension": dimensions,
-    }]
-    with open(info_path, "w", encoding="utf-8") as f:
-        json.dump(metadata, f)
+        info_path = sandbox / "info.json"
+        metadata = [{
+            "video_list": [input_video.name],
+            "prompt_en": prompt,
+            "dimension": dimensions,
+        }]
+        with open(info_path, "w", encoding="utf-8") as f:
+            json.dump(metadata, f)
 
-    bench = VBench(device=device, full_info_dir=str(info_path), output_path=str(sandbox))
-    bench.evaluate(
-        videos_path=str(sandbox),
-        name="vbench",
-        dimension_list=dimensions,
-        mode="custom_input",
-    )
-    scores = read_score(sandbox / "vbench_eval_results.json", dimensions)
-    del bench
-    gc.collect()
-    torch.cuda.empty_cache()
-    shutil.rmtree(sandbox, ignore_errors=True)
-    return scores
+        bench = VBench(device=device, full_info_dir=str(info_path), output_path=str(sandbox))
+        bench.evaluate(
+            videos_path=str(sandbox),
+            name="vbench",
+            dimension_list=dimensions,
+            mode="custom_input",
+        )
+        scores = read_score(sandbox / "vbench_eval_results.json", dimensions)
+        del bench
+        gc.collect()
+        torch.cuda.empty_cache()
+        return scores
+    finally:
+        shutil.rmtree(sandbox, ignore_errors=True)
 
 
 def main():
@@ -107,17 +109,22 @@ def main():
     prompt_map = load_prompt_map(args.prompt_json)
     sandbox_root = Path(args.sandbox_root or f"vbench_sandbox_{int(time.time())}")
     sandbox_root.mkdir(parents=True, exist_ok=True)
+    Path(args.output_csv).parent.mkdir(parents=True, exist_ok=True)
 
     rows = []
+    missing = 0
+    failed = 0
     for base_name, prompt in tqdm(sorted(prompt_map.items()), desc="VBench"):
         video_path = find_video(args.video_dir, base_name)
         if not video_path:
+            missing += 1
             continue
         try:
             scores = evaluate_one(video_path, prompt, base_name, sandbox_root, args.dimensions, args.device)
         except Exception as exc:
             print(f"[warn] VBench failed for {base_name}: {exc}")
             scores = {dim: None for dim in args.dimensions}
+            failed += 1
         row = {"Video Name": base_name, **scores}
         valid = [v for v in scores.values() if v is not None]
         row["Video_Avg"] = float(np.mean(valid)) if valid else 0.0
@@ -129,8 +136,11 @@ def main():
         for col in [c for c in df.columns if c != "Video Name"]:
             avg[col] = df[col].mean()
         pd.concat([df, pd.DataFrame([avg])], ignore_index=True).to_csv(args.output_csv, index=False)
+    else:
+        print("[warn] no VBench rows were produced; CSV was not written.")
 
     shutil.rmtree(sandbox_root, ignore_errors=True)
+    print(f"[vbench] wrote {len(rows)} rows; missing videos: {missing}; failed evaluations: {failed}")
 
 
 if __name__ == "__main__":
