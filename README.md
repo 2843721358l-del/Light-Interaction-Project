@@ -13,9 +13,7 @@ Training-free acceleration for autoregressive interactive video generation
 
 <p align="center">
   <a href="https://arxiv.org/abs/2605.31158"><img src="https://img.shields.io/static/v1?label=arXiv&message=2605.31158&color=b31b1b&logo=arxiv"></a> &ensp;
-  <a href="LICENSE"><img src="https://img.shields.io/static/v1?label=License&message=MIT&color=green"></a> &ensp;
-  <img src="https://img.shields.io/static/v1?label=Patch&message=HY-WorldPlay&color=blue"> &ensp;
-  <img src="https://img.shields.io/static/v1?label=Training&message=Free&color=orange">
+  <a href="LICENSE"><img src="https://img.shields.io/static/v1?label=License&message=MIT&color=green"></a>
 </p>
 
 **Light Interaction** accelerates autoregressive interactive video generation without model retraining. It combines:
@@ -68,13 +66,22 @@ Recommended environment:
 - PyTorch and Triton versions compatible with the upstream HY-WorldPlay checkout
 - `patch` command-line utility
 
-For evaluation-only dependencies:
+For evaluation, use a separate environment rather than mixing metric packages into the HY-WorldPlay runtime:
 
 ```bash
-pip install -r evaluation/requirements.txt
+bash evaluation/scripts/setup_evaluation_env.sh
+conda activate light-interaction-eval
+python evaluation/scripts/check_evaluation_env.py
 ```
 
-VBench evaluation requires a separate VBench environment; see [evaluation/README.md](evaluation/README.md).
+If conda channels are unavailable on your machine, use the venv backend:
+
+```bash
+EVAL_ENV_BACKEND=venv bash evaluation/scripts/setup_evaluation_env.sh
+source .venv-light-interaction-eval/bin/activate
+```
+
+See [evaluation/README.md](evaluation/README.md) for CUDA wheel options and VBench notes.
 
 ## 🚀 Quick Start
 
@@ -138,6 +145,16 @@ More patch details are in [hy-worldplay/README.md](hy-worldplay/README.md).
 ## 📊 Evaluation
 
 The evaluation folder contains 200 fixed prompts and 200 initial images.
+
+Create the standalone evaluation environment once:
+
+```bash
+bash evaluation/scripts/setup_evaluation_env.sh
+conda activate light-interaction-eval
+python evaluation/scripts/check_evaluation_env.py
+```
+
+Use the patched HY-WorldPlay environment to generate videos, then switch to `light-interaction-eval` to compute PSNR / SSIM / LPIPS and VBench scores.
 
 ### Batch Generation
 

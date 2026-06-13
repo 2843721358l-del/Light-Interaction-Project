@@ -1,6 +1,12 @@
-opencv-python
-lpips
-torchmetrics
+# Evaluation dependencies that can be installed on top of a compatible
+# PyTorch environment. For a fresh conda environment, prefer:
+#   bash evaluation/scripts/setup_evaluation_env.sh
+numpy<2
 pandas
 tqdm
-numpy
+opencv-python-headless
+pillow
+scikit-image
+lpips
+torchmetrics
+vbench==0.1.5
