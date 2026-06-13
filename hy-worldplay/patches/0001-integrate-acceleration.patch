@@ -4602,10 +4602,20 @@ diff --git a/run.sh b/run.sh
 index de80815..c33c7ff 100644
 --- a/run.sh
 +++ b/run.sh
-@@ -11,19 +11,19 @@ IMAGE_PATH=./assets/img/test.png # Now we only provide the i2v model, so the pat
- SEED=1
- ASPECT_RATIO=16:9
- RESOLUTION=480p # Now we only provide the 480p model
+@@ -6,22 +6,22 @@ export I2V_REWRITE_BASE_URL="<your_vllm_server_base_url>"
+ export I2V_REWRITE_MODEL_NAME="<your_model_name>"
+ 
+-PROMPT='A paved pathway leads towards a stone arch bridge spanning a calm body of water.  Lush green trees and foliage line the path and the far bank of the water. A traditional-style pavilion with a tiered, reddish-brown roof sits on the far shore. The water reflects the surrounding greenery and the sky.  The scene is bathed in soft, natural light, creating a tranquil and serene atmosphere. The pathway is composed of large, rectangular stones, and the bridge is constructed of light gray stone.  The overall composition emphasizes the peaceful and harmonious nature of the landscape.'
++PROMPT=${HY_PROMPT:-'A paved pathway leads towards a stone arch bridge spanning a calm body of water.  Lush green trees and foliage line the path and the far bank of the water. A traditional-style pavilion with a tiered, reddish-brown roof sits on the far shore. The water reflects the surrounding greenery and the sky.  The scene is bathed in soft, natural light, creating a tranquil and serene atmosphere. The pathway is composed of large, rectangular stones, and the bridge is constructed of light gray stone.  The overall composition emphasizes the peaceful and harmonious nature of the landscape.'}
+ 
+-IMAGE_PATH=./assets/img/test.png # Now we only provide the i2v model, so the path cannot be None
+-SEED=1
+-ASPECT_RATIO=16:9
+-RESOLUTION=480p # Now we only provide the 480p model
++IMAGE_PATH=${HY_IMAGE_PATH:-./assets/img/test.png} # Now we only provide the i2v model, so the path cannot be None
++SEED=${HY_SEED:-1}
++ASPECT_RATIO=${HY_ASPECT_RATIO:-16:9}
++RESOLUTION=${HY_RESOLUTION:-480p} # Now we only provide the 480p model
 -OUTPUT_PATH=./outputs/
 -MODEL_PATH=                   # Path to pretrained hunyuanvideo-1.5 model
 -AR_ACTION_MODEL_PATH=         # Path to our HY-World 1.5 autoregressive checkpoints
@@ -4613,15 +4623,17 @@ index de80815..c33c7ff 100644
 -AR_DISTILL_ACTION_MODEL_PATH= # Path to our HY-World 1.5 autoregressive distilled checkpoints
 -POSE='w-31'                   # Camera trajectory: pose string (e.g., 'w-31' means generating [1 + 31] latents) or JSON file path
 -NUM_FRAMES=125
+-WIDTH=832
+-HEIGHT=480
 +OUTPUT_PATH=${HY_OUTPUT_PATH:-./outputs/}
 +MODEL_PATH=${HY_MODEL_PATH:-}                                     # Path to pretrained hunyuanvideo-1.5 model
 +AR_ACTION_MODEL_PATH=${HY_AR_ACTION_MODEL_PATH:-}                 # Path to HY-WorldPlay autoregressive checkpoint
 +BI_ACTION_MODEL_PATH=${HY_BI_ACTION_MODEL_PATH:-}                 # Path to HY-WorldPlay bidirectional checkpoint
 +AR_DISTILL_ACTION_MODEL_PATH=${HY_AR_DISTILL_ACTION_MODEL_PATH:-} # Path to HY-WorldPlay autoregressive distilled checkpoint
-+POSE='left-31, right-32'
-+NUM_FRAMES=253
- WIDTH=832
- HEIGHT=480
++POSE=${HY_POSE:-'left-31, right-32'}                             # Camera trajectory string or JSON file path
++NUM_FRAMES=${HY_NUM_FRAMES:-253}
++WIDTH=${HY_WIDTH:-832}
++HEIGHT=${HY_HEIGHT:-480}
  
  # Configuration for faster inference
  # The maximum number recommended is 8.

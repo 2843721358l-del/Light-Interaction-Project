@@ -29,6 +29,18 @@ hyvideo/models/transformers/worldplay_1_5_transformer.py
 hyvideo/models/transformers/modules/attention.py
 ```
 
+## Helper Scripts
+
+These scripts are not copied into the upstream checkout. Run them from the
+Light Interaction repository and pass the HY-WorldPlay checkout path:
+
+```text
+hy-worldplay/scripts/apply_patch.sh
+hy-worldplay/scripts/setup_worldplay_env.sh
+hy-worldplay/scripts/check_worldplay_env.py
+hy-worldplay/scripts/check_worldplay_assets.py
+```
+
 ## Why Use A Patch
 
 The pipeline, transformer, attention module, context-selection helper,
