@@ -26,6 +26,19 @@ if [ ! -d "$TARGET_ROOT" ]; then
   exit 1
 fi
 
+if [ ! -f "$TARGET_ROOT/hyvideo/generate.py" ] || [ ! -f "$TARGET_ROOT/run.sh" ]; then
+  echo "Error: target does not look like a HY-WorldPlay checkout: $TARGET_ROOT"
+  exit 1
+fi
+
+if ! command -v patch >/dev/null 2>&1; then
+  echo "Error: patch utility is required but was not found."
+  exit 1
+fi
+
+echo "Checking integration patch ..."
+patch --dry-run --forward -d "$TARGET_ROOT" -p1 < "$PATCH_ROOT/patches/0001-integrate-acceleration.patch" >/dev/null
+
 echo "Copying acceleration modules ..."
 cp -R "$PATCH_ROOT/files/." "$TARGET_ROOT/"
 
@@ -35,3 +48,5 @@ patch --forward -d "$TARGET_ROOT" -p1 < "$PATCH_ROOT/patches/0001-integrate-acce
 echo ""
 echo "Patch applied successfully to: $TARGET_ROOT"
 echo "Next: set HY_MODEL_PATH and HY_AR_DISTILL_ACTION_MODEL_PATH, then run:"
+echo "  cd \"$TARGET_ROOT\""
+echo "  bash run.sh"

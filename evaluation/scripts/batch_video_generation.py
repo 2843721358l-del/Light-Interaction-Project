@@ -9,6 +9,7 @@ import json
 import logging
 import multiprocessing as mp
 import os
+import shutil
 import subprocess
 import time
 from datetime import datetime
@@ -40,7 +41,8 @@ def parse_args():
     parser.add_argument("--height", type=int, default=480)
     parser.add_argument("--seed", type=int, default=1)
     parser.add_argument("--acceleration-preset", default="all", choices=["off", "context", "sparse", "cache", "all"])
-    parser.add_argument("--skip-existing", action="store_true", default=True)
+    parser.add_argument("--skip-existing", dest="skip_existing", action="store_true", default=True)
+    parser.add_argument("--no-skip-existing", dest="skip_existing", action="store_false")
     return parser.parse_args()
 
 
@@ -55,8 +57,10 @@ def parse_actions(items):
 
 
 def free_gpus(threshold_mb, allowed):
-    cmd = "nvidia-smi --query-gpu=index,memory.used --format=csv,noheader,nounits"
-    output = subprocess.check_output(cmd, shell=True, text=True).strip()
+    if shutil.which("nvidia-smi") is None:
+        raise RuntimeError("nvidia-smi was not found; GPU scheduling requires NVIDIA tools.")
+    cmd = ["nvidia-smi", "--query-gpu=index,memory.used", "--format=csv,noheader,nounits"]
+    output = subprocess.check_output(cmd, text=True).strip()
     available = []
     for line in output.splitlines():
         if not line.strip():
@@ -118,18 +122,27 @@ def run_one(gpu_id, task, args, action_name, pose):
     if result.returncode == 0:
         logging.info("[GPU %s] done %s/%s in %.1fs", gpu_id, action_name, task["filename"], duration)
     else:
-        logging.error("[%s] failed %s/%s\n%s", datetime.now(), action_name, task["filename"], result.stderr[-4000:])
+        logging.error(
+            "[%s] failed %s/%s\nSTDOUT:\n%s\nSTDERR:\n%s",
+            datetime.now(),
+            action_name,
+            task["filename"],
+            result.stdout[-4000:],
+            result.stderr[-4000:],
+        )
 
 
 def run_action(action_name, pose, tasks, args, allowed):
     pending = []
+    skipped = 0
     for task in tasks:
         out_dir = Path(args.output_root, action_name, safe_stem(task["filename"]))
         if args.skip_existing and out_dir.exists() and any(out_dir.iterdir()):
+            skipped += 1
             continue
         pending.append(task)
 
-    print(f"[{action_name}] pending {len(pending)} / {len(tasks)}")
+    print(f"[{action_name}] pending {len(pending)} / {len(tasks)} (skipped existing: {skipped})")
     active = {}
     while pending or active:
         finished = [gpu for gpu, proc in active.items() if not proc.is_alive()]

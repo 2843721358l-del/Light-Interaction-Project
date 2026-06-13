@@ -19,6 +19,9 @@ This directory contains the **Light Interaction acceleration patch** for [HY-Wor
 > [!IMPORTANT]
 > Check and follow the upstream repositories' license terms before using or redistributing any upstream code or weights.
 
+> [!NOTE]
+> The patch is tested against a specific upstream HY-WorldPlay code shape and may fail if upstream files have changed. For reproducible experiments, record the upstream commit hash together with your PyTorch, Triton, CUDA, and GPU versions.
+
 ---
 
 ## 📂 What Is Included
@@ -76,7 +79,7 @@ bash scripts/apply_patch.sh /path/to/HY-WorldPlay
 ```
 
 > [!NOTE]
-> If the target tree has local edits, inspect them first. The script copies files from `files/` and then applies `patches/0001-integrate-acceleration.patch`.
+> If the target tree has local edits, inspect them first. The script performs a patch dry run before copying files and applying `patches/0001-integrate-acceleration.patch`.
 
 ---
 
