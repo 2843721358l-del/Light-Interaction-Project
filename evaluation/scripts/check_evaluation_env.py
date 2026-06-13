@@ -7,14 +7,17 @@ import importlib
 import os
 import sys
 import tempfile
+import warnings
 
 
 os.environ.setdefault(
     "MPLCONFIGDIR", os.path.join(tempfile.gettempdir(), "light-interaction-matplotlib")
 )
+warnings.filterwarnings("ignore", message="pkg_resources is deprecated as an API.*")
 
 
 REQUIRED_MODULES = [
+    ("clip", "openai-clip"),
     ("cv2", "opencv-python"),
     ("lpips", "lpips"),
     ("numpy", "numpy"),

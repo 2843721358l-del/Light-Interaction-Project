@@ -12,7 +12,12 @@ Supports two modes:
 import argparse
 import os
 from pathlib import Path
+import tempfile
 import warnings
+
+os.environ.setdefault(
+    "MPLCONFIGDIR", os.path.join(tempfile.gettempdir(), "light-interaction-matplotlib")
+)
 
 import cv2
 import lpips

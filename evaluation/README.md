@@ -13,6 +13,7 @@ evaluation/
     ├── check_evaluation_env.py
     ├── evaluate_psnr_ssim_lpips.py
     ├── evaluate_vbench_batch.py
+    ├── prepare_evaluation_assets.py
     └── setup_evaluation_env.sh
 ```
 
@@ -31,6 +32,30 @@ This keeps benchmark dependencies out of the model runtime while still giving on
 bash evaluation/scripts/setup_evaluation_env.sh
 conda activate light-interaction-eval
 python evaluation/scripts/check_evaluation_env.py
+```
+
+The setup script also downloads/checks the default evaluation assets used by LPIPS and the documented VBench dimensions. Assets are cached outside the repository by default:
+
+- VBench checkpoints: `~/.cache/light-interaction/vbench`
+- Torch Hub / LPIPS checkpoints: `~/.cache/light-interaction/torch`
+
+To refresh or prepare those assets separately:
+
+```bash
+python evaluation/scripts/prepare_evaluation_assets.py
+```
+
+If Hugging Face is slow or blocked, use an endpoint mirror:
+
+```bash
+HF_ENDPOINT=https://hf-mirror.com bash evaluation/scripts/setup_evaluation_env.sh
+```
+
+or, for asset preparation only:
+
+```bash
+python evaluation/scripts/prepare_evaluation_assets.py \
+  --hf-endpoint https://hf-mirror.com
 ```
 
 By default the setup script installs PyTorch from the CUDA 12.1 wheel index:
@@ -60,9 +85,15 @@ To install into the currently activated environment:
 EVAL_ENV_BACKEND=current bash evaluation/scripts/setup_evaluation_env.sh
 ```
 
+To install Python packages only and skip model asset preparation:
+
+```bash
+PREPARE_EVAL_ASSETS=0 bash evaluation/scripts/setup_evaluation_env.sh
+```
+
 If VBench dependencies conflict with a local machine-specific setup, create a separate VBench environment as a fallback. The preferred documented path remains the unified evaluation environment above.
 
-Model checkpoints are not installed by this script. HY-WorldPlay and HunyuanVideo-1.5 weights should be downloaded following upstream instructions. VBench may download or cache metric weights on first use; keep those caches outside this repository.
+HY-WorldPlay and HunyuanVideo-1.5 generation weights are not installed by this script; download them following the upstream instructions. Evaluation metric assets are prepared by the script and kept in cache directories outside this repository.
 
 ## 🖼️ Dataset
 
@@ -133,7 +164,7 @@ The scripts print missing-video and decode-failure counts so incomplete runs are
 
 ## 🏷️ VBench
 
-Run VBench in `light-interaction-eval`.
+Run VBench in `light-interaction-eval`. The default device is `auto`: CUDA is used when available, otherwise CPU is used as a slower fallback.
 
 ```bash
 python evaluation/scripts/evaluate_vbench_batch.py \

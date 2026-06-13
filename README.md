@@ -74,6 +74,14 @@ conda activate light-interaction-eval
 python evaluation/scripts/check_evaluation_env.py
 ```
 
+This installs PSNR / SSIM / LPIPS / VBench dependencies and prepares the default evaluation metric assets in `~/.cache/light-interaction/`.
+
+If Hugging Face access is slow, use a mirror endpoint:
+
+```bash
+HF_ENDPOINT=https://hf-mirror.com bash evaluation/scripts/setup_evaluation_env.sh
+```
+
 If conda channels are unavailable on your machine, use the venv backend:
 
 ```bash
@@ -154,7 +162,7 @@ conda activate light-interaction-eval
 python evaluation/scripts/check_evaluation_env.py
 ```
 
-Use the patched HY-WorldPlay environment to generate videos, then switch to `light-interaction-eval` to compute PSNR / SSIM / LPIPS and VBench scores.
+Use the patched HY-WorldPlay environment to generate videos, then switch to `light-interaction-eval` to compute PSNR / SSIM / LPIPS and VBench scores. The setup step prepares LPIPS and VBench metric assets; rerun `python evaluation/scripts/prepare_evaluation_assets.py` if you move or clear the cache.
 
 ### Batch Generation
 

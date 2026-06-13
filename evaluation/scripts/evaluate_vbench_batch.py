@@ -7,9 +7,19 @@
 import argparse
 import gc
 import json
+import os
 import shutil
+import tempfile
 import time
+import warnings
 from pathlib import Path
+
+os.environ.setdefault(
+    "MPLCONFIGDIR", os.path.join(tempfile.gettempdir(), "light-interaction-matplotlib")
+)
+warnings.filterwarnings("ignore", message="pkg_resources is deprecated as an API.*")
+warnings.filterwarnings("ignore", message="Importing from timm.models.layers is deprecated.*")
+warnings.filterwarnings("ignore", message="You are using `torch.load` with `weights_only=False`.*")
 
 import numpy as np
 import pandas as pd
@@ -33,9 +43,18 @@ def parse_args():
     parser.add_argument("--video-dir", required=True)
     parser.add_argument("--output-csv", required=True)
     parser.add_argument("--sandbox-root", default=None)
-    parser.add_argument("--device", default="cuda")
+    parser.add_argument("--device", default="auto", help="auto, cuda, cuda:0, or cpu")
     parser.add_argument("--dimensions", nargs="*", default=DEFAULT_DIMENSIONS)
     return parser.parse_args()
+
+
+def resolve_device(device):
+    if device == "auto":
+        return "cuda" if torch.cuda.is_available() else "cpu"
+    if device.startswith("cuda") and not torch.cuda.is_available():
+        print(f"[warn] requested {device}, but CUDA is not available; falling back to CPU.")
+        return "cpu"
+    return device
 
 
 def load_prompt_map(path):
@@ -106,6 +125,7 @@ def evaluate_one(video_path, prompt, name, sandbox_root, dimensions, device):
 
 def main():
     args = parse_args()
+    device = resolve_device(args.device)
     prompt_map = load_prompt_map(args.prompt_json)
     sandbox_root = Path(args.sandbox_root or f"vbench_sandbox_{int(time.time())}")
     sandbox_root.mkdir(parents=True, exist_ok=True)
@@ -120,7 +140,7 @@ def main():
             missing += 1
             continue
         try:
-            scores = evaluate_one(video_path, prompt, base_name, sandbox_root, args.dimensions, args.device)
+            scores = evaluate_one(video_path, prompt, base_name, sandbox_root, args.dimensions, device)
         except Exception as exc:
             print(f"[warn] VBench failed for {base_name}: {exc}")
             scores = {dim: None for dim in args.dimensions}
