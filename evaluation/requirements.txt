@@ -1,0 +1,6 @@
+opencv-python
+lpips
+torchmetrics
+pandas
+tqdm
+numpy
