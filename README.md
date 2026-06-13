@@ -56,17 +56,33 @@ Light-Interaction-Project/
 
 ## 📋 Requirements
 
-Use a working HY-WorldPlay environment first. The patch assumes the upstream model can already run.
-
-Recommended environment:
+Recommended runtime:
 
 - Linux
 - NVIDIA GPU with CUDA support
-- Python 3.10 or newer
-- PyTorch and Triton versions compatible with the upstream HY-WorldPlay checkout
+- Python 3.10
+- PyTorch 2.6.0 / torchvision 0.21.0 / torchaudio 2.6.0
 - `patch` command-line utility
 
-For evaluation, use a separate environment rather than mixing metric packages into the HY-WorldPlay runtime:
+HY-WorldPlay inference and evaluation use separate environments. Create the patched HY-WorldPlay runtime from a clean upstream checkout:
+
+```bash
+git clone https://github.com/Tencent-Hunyuan/HY-WorldPlay.git
+
+bash hy-worldplay/scripts/apply_patch.sh /path/to/HY-WorldPlay
+bash hy-worldplay/scripts/setup_worldplay_env.sh /path/to/HY-WorldPlay
+conda activate light-interaction-worldplay
+python hy-worldplay/scripts/check_worldplay_env.py --worldplay-root /path/to/HY-WorldPlay --require-cuda
+```
+
+If conda channels are unavailable, use:
+
+```bash
+WORLDPLAY_ENV_BACKEND=venv bash hy-worldplay/scripts/setup_worldplay_env.sh /path/to/HY-WorldPlay
+source .venv-light-interaction-worldplay/bin/activate
+```
+
+For evaluation metrics, use the standalone evaluation environment rather than mixing metric packages into the HY-WorldPlay runtime:
 
 ```bash
 bash evaluation/scripts/setup_evaluation_env.sh
@@ -102,10 +118,13 @@ cd Light-Interaction-Project
 
 ### 2. Prepare HY-WorldPlay
 
-Clone and set up upstream HY-WorldPlay following its official instructions:
+Clone upstream HY-WorldPlay, apply the Light Interaction patch, and create the runtime environment:
 
 ```bash
 git clone https://github.com/Tencent-Hunyuan/HY-WorldPlay.git
+bash hy-worldplay/scripts/apply_patch.sh /path/to/HY-WorldPlay
+bash hy-worldplay/scripts/setup_worldplay_env.sh /path/to/HY-WorldPlay
+conda activate light-interaction-worldplay
 ```
 
 Download the required checkpoints from:
@@ -113,16 +132,20 @@ Download the required checkpoints from:
 - HY-WorldPlay: <https://huggingface.co/tencent/HY-WorldPlay>
 - HunyuanVideo-1.5: <https://huggingface.co/tencent/HunyuanVideo-1.5>
 
-Before applying this patch, verify that the original HY-WorldPlay inference works.
+The patch script performs a dry run before copying files. This release was tested on upstream HY-WorldPlay commit `1588e1336e842b03b0a7860c654ebd7c46bb065e`.
 
-### 3. Apply the Patch
+Check that the environment and model paths are complete:
 
 ```bash
-cd Light-Interaction-Project/hy-worldplay
-bash scripts/apply_patch.sh /path/to/HY-WorldPlay
-```
+python hy-worldplay/scripts/check_worldplay_env.py \
+  --worldplay-root /path/to/HY-WorldPlay \
+  --require-cuda
 
-The script performs a patch dry run before copying files. If the upstream checkout has changed substantially, the patch may fail and should be inspected manually.
+python hy-worldplay/scripts/check_worldplay_assets.py \
+  --worldplay-root /path/to/HY-WorldPlay \
+  --model-path /path/to/HunyuanVideo-1.5 \
+  --action-ckpt /path/to/HY-WorldPlay/ar_distilled_action_model/diffusion_pytorch_model.safetensors
+```
 
 ## ▶️ Run Inference
 
@@ -135,6 +158,16 @@ export HY_AR_DISTILL_ACTION_MODEL_PATH=/path/to/HY-WorldPlay/ar_distilled_action
 # Optional: use one GPU. Upstream run.sh may default to multi-GPU inference.
 export HY_N_INFERENCE_GPU=1
 
+bash run.sh
+```
+
+For a fast smoke test before full generation:
+
+```bash
+HY_N_INFERENCE_GPU=1 \
+HY_NUM_FRAMES=13 \
+HY_POSE='left-3' \
+HY_OUTPUT_PATH=/tmp/light-interaction-worldplay-smoke-output \
 bash run.sh
 ```
 
