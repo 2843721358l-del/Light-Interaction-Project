@@ -71,7 +71,8 @@ def main():
         ok = False
 
     if not ok:
-        print("\nModel asset check failed. Download models with upstream download_models.py, then rerun this check.")
+        print("\nModel asset check failed. Prepare the minimal required assets, then rerun this check:")
+        print("  python hy-worldplay/scripts/download_minimal_worldplay_assets.py")
         return 1
 
     print("\nWorldPlay model assets are ready.")

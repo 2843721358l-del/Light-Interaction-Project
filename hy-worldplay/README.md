@@ -20,6 +20,7 @@ hy-worldplay/
     ├── apply_patch.sh
     ├── check_worldplay_assets.py
     ├── check_worldplay_env.py
+    ├── download_minimal_worldplay_assets.py
     └── setup_worldplay_env.sh
 ```
 
@@ -32,6 +33,38 @@ hy-worldplay/
 | HY-WorldPlay code | <https://github.com/Tencent-Hunyuan/HY-WorldPlay> |
 | HY-WorldPlay checkpoints | <https://huggingface.co/tencent/HY-WorldPlay> |
 | HunyuanVideo-1.5 checkpoints | <https://huggingface.co/tencent/HunyuanVideo-1.5> |
+
+## 🧩 Minimal Model Assets
+
+This release only needs the **few-step distilled autoregressive** HY-WorldPlay action checkpoint:
+
+```text
+ar_distilled_action_model/*.safetensors
+```
+
+You do **not** need to download the bidirectional action model, the multi-step autoregressive action model, or RL variants for the released Light Interaction inference path.
+
+After creating the WorldPlay environment, the recommended download path is:
+
+```bash
+python hy-worldplay/scripts/download_minimal_worldplay_assets.py
+```
+
+To store assets in a regular directory instead of the Hugging Face cache:
+
+```bash
+python hy-worldplay/scripts/download_minimal_worldplay_assets.py \
+  --output-root /path/to/light-interaction-models
+```
+
+If the FLUX vision encoder or other Hugging Face assets require authentication:
+
+```bash
+HF_TOKEN=<your_huggingface_read_token> \
+python hy-worldplay/scripts/download_minimal_worldplay_assets.py
+```
+
+The script prints the exact `HY_MODEL_PATH` and `HY_AR_DISTILL_ACTION_MODEL_PATH` exports to use with `run.sh`.
 
 ## 🚀 Reproducible Setup
 
@@ -78,13 +111,13 @@ python hy-worldplay/scripts/check_worldplay_env.py \
   --require-cuda
 ```
 
-After downloading models with upstream `download_models.py` or Hugging Face CLI:
+After downloading the minimal model assets:
 
 ```bash
 python hy-worldplay/scripts/check_worldplay_assets.py \
   --worldplay-root /path/to/HY-WorldPlay \
   --model-path /path/to/HunyuanVideo-1.5 \
-  --action-ckpt /path/to/HY-WorldPlay/ar_distilled_action_model/diffusion_pytorch_model.safetensors
+  --action-ckpt /path/to/HY-WorldPlay/ar_distilled_action_model/model.safetensors
 ```
 
 The HunyuanVideo-1.5 model root should contain:
@@ -105,7 +138,7 @@ vision_encoder/siglip/
 cd /path/to/HY-WorldPlay
 
 export HY_MODEL_PATH=/path/to/HunyuanVideo-1.5
-export HY_AR_DISTILL_ACTION_MODEL_PATH=/path/to/HY-WorldPlay/ar_distilled_action_model/diffusion_pytorch_model.safetensors
+export HY_AR_DISTILL_ACTION_MODEL_PATH=/path/to/HY-WorldPlay/ar_distilled_action_model/model.safetensors
 export HY_N_INFERENCE_GPU=1
 
 bash run.sh

@@ -93,7 +93,15 @@ PREPARE_EVAL_ASSETS=0 bash evaluation/scripts/setup_evaluation_env.sh
 
 If VBench dependencies conflict with a local machine-specific setup, create a separate VBench environment as a fallback. The preferred documented path remains the unified evaluation environment above.
 
-HY-WorldPlay and HunyuanVideo-1.5 generation weights are not installed by this script; download them following the upstream instructions. Evaluation metric assets are prepared by the script and kept in cache directories outside this repository.
+HY-WorldPlay and HunyuanVideo-1.5 generation weights are not installed by this script; prepare them with the minimal downloader below. Evaluation metric assets are prepared by the setup script and kept in cache directories outside this repository.
+
+For the released Light Interaction HY-WorldPlay path, only the HunyuanVideo-1.5 runtime assets and the few-step distilled autoregressive action checkpoint are required. You can prepare just those assets with:
+
+```bash
+python hy-worldplay/scripts/download_minimal_worldplay_assets.py
+```
+
+The bidirectional action model, multi-step autoregressive action model, and RL variants are not required for the documented evaluation pipeline.
 
 ## 🖼️ Dataset
 
@@ -117,7 +125,7 @@ python evaluation/scripts/batch_video_generation.py \
   --prompt-json evaluation/data/refined_prompts_llava16.json \
   --hy-worldplay-root /path/to/patched/HY-WorldPlay \
   --model-path /path/to/HunyuanVideo-1.5 \
-  --action-ckpt /path/to/ar_distilled_action_model/diffusion_pytorch_model.safetensors \
+  --action-ckpt /path/to/ar_distilled_action_model/model.safetensors \
   --output-root outputs/fixed_prompt \
   --allowed-gpus 0,1,2,3 \
   --acceleration-preset all
