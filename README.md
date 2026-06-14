@@ -140,12 +140,13 @@ Evaluation initial images are selected from the official VBench-I2V 16:9 cropped
 python evaluation/scripts/download_eval_assets.py
 ```
 
-Then use the patched HY-WorldPlay environment to generate videos, and switch to `light-interaction-eval` for PSNR / SSIM / LPIPS and VBench.
+Then use the patched HY-WorldPlay or Matrix-Game-3.0 environment to generate videos, and switch to `light-interaction-eval` for PSNR / SSIM / LPIPS and VBench.
 
 ### Batch Generation
 
 ```bash
 python evaluation/scripts/batch_video_generation.py \
+  --backend hy-worldplay \
   --prompt-json evaluation/data/refined_prompts_llava16.json \
   --hy-worldplay-root /path/to/patched/HY-WorldPlay \
   --model-path /path/to/HunyuanVideo-1.5 \
@@ -154,6 +155,8 @@ python evaluation/scripts/batch_video_generation.py \
   --allowed-gpus 0,1,2,3 \
   --acceleration-preset all
 ```
+
+For Matrix-Game-3.0, use the same script with `--backend matrix-game`, `--matrix-game-root`, and `--ckpt-dir`. Full examples are in [evaluation/README.md](evaluation/README.md).
 
 ### PSNR / SSIM / LPIPS
 

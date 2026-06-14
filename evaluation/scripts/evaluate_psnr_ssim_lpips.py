@@ -41,8 +41,11 @@ def parse_args():
     parser.add_argument("--tag", default="eval")
     parser.add_argument("--fps", type=int, default=24)
     parser.add_argument("--one-way-sec", type=float, default=5.0)
+    parser.add_argument("--self-profile", default="hy-worldplay", choices=["hy-worldplay", "matrix-game"])
     parser.add_argument("--mutual-window", type=int, default=30)
     parser.add_argument("--self-window", type=int, default=50)
+    parser.add_argument("--matrix-forward-frames", type=int, default=177)
+    parser.add_argument("--matrix-backward-frames", type=int, default=160)
     parser.add_argument("--run-mutual", action="store_true")
     parser.add_argument("--run-self", action="store_true")
     return parser.parse_args()
@@ -165,6 +168,48 @@ def self_metrics(video_path, loss_fn, device, fps, one_way_sec, search_window):
     return np.mean(psnr_scores), np.mean(ssim_scores), np.mean(lpips_scores)
 
 
+def matrix_self_metrics(video_path, loss_fn, device, search_window, forward_frames, backward_frames):
+    video = read_video(video_path, device)
+    if video is None or video.shape[0] < 10:
+        return None
+
+    pivot = forward_frames - 1
+    mapping_sum = pivot * 2
+    start_analyze = max(0, forward_frames - backward_frames - 1)
+    end_analyze = min(pivot - 1, video.shape[0] - 1)
+    if start_analyze >= end_analyze:
+        return None
+
+    small = F.interpolate(video, size=(256, 256), mode="bilinear", align_corners=False)
+    psnr_scores, ssim_scores, lpips_scores = [], [], []
+    for i in range(start_analyze, end_analyze):
+        ideal = min(mapping_sum - i, video.shape[0] - 1)
+        start = max(pivot + 1, ideal - search_window)
+        end = min(video.shape[0] - 1, ideal + search_window)
+        if start >= end:
+            continue
+
+        best_score, best_idx = -1.0, -1
+        ref_small = small[i:i + 1]
+        for j in range(start, end + 1):
+            score = ssim_pt(ref_small, small[j:j + 1], kernel_size=3, data_range=1.0).item()
+            if score > best_score:
+                best_score, best_idx = score, j
+
+        if best_idx >= 0:
+            ref_frame = video[i:i + 1]
+            match_frame = video[best_idx:best_idx + 1]
+            psnr_scores.append(cap_psnr(psnr_pt(ref_frame, match_frame, data_range=1.0).item()))
+            ssim_scores.append(ssim_pt(ref_frame, match_frame, kernel_size=7, data_range=1.0).item())
+            with torch.no_grad():
+                lpips_scores.append(loss_fn(ref_frame * 2.0 - 1.0, match_frame * 2.0 - 1.0).item())
+
+    del video, small
+    if not psnr_scores:
+        return None
+    return np.mean(psnr_scores), np.mean(ssim_scores), np.mean(lpips_scores)
+
+
 def list_video_ids(video_dir):
     root = Path(video_dir)
     if not root.exists():
@@ -227,7 +272,17 @@ def main():
             if not video_path:
                 missing += 1
                 continue
-            metrics = self_metrics(video_path, loss_fn, device, args.fps, args.one_way_sec, args.self_window)
+            if args.self_profile == "matrix-game":
+                metrics = matrix_self_metrics(
+                    video_path,
+                    loss_fn,
+                    device,
+                    args.self_window,
+                    args.matrix_forward_frames,
+                    args.matrix_backward_frames,
+                )
+            else:
+                metrics = self_metrics(video_path, loss_fn, device, args.fps, args.one_way_sec, args.self_window)
             if metrics:
                 rows.append({"Video_ID": video_id, "PSNR": metrics[0], "SSIM": metrics[1], "LPIPS": metrics[2]})
             else:
