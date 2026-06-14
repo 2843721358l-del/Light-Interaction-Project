@@ -13,3 +13,4 @@ scikit-image
 lpips
 torchmetrics
 vbench==0.1.5
+gdown

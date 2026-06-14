@@ -7,6 +7,7 @@ evaluation/
 ├── data/
 │   ├── eval_assets_manifest.json
 │   ├── refined_prompts_llava16.json
+│   ├── selected_vbench_i2v_16_9_200.txt
 │   └── sampled_200/.gitkeep
 ├── requirements.txt
 └── scripts/
@@ -93,10 +94,13 @@ Advanced options:
 
 ## 🎬 Batch Generation
 
-Run batch generation in the patched HY-WorldPlay environment, not in `light-interaction-eval`, because it calls upstream `hyvideo/generate.py` and uses model checkpoints.
+Run batch generation in the patched model runtime environment, not in `light-interaction-eval`, because generation calls upstream model code and uses model checkpoints. The same script supports both released backends.
+
+HY-WorldPlay:
 
 ```bash
 python evaluation/scripts/batch_video_generation.py \
+  --backend hy-worldplay \
   --prompt-json evaluation/data/refined_prompts_llava16.json \
   --hy-worldplay-root /path/to/patched/HY-WorldPlay \
   --model-path /path/to/HunyuanVideo-1.5 \
@@ -106,14 +110,35 @@ python evaluation/scripts/batch_video_generation.py \
   --acceleration-preset all
 ```
 
-Default action groups:
+Matrix-Game-3.0:
+
+```bash
+python evaluation/scripts/batch_video_generation.py \
+  --backend matrix-game \
+  --prompt-json evaluation/data/refined_prompts_llava16.json \
+  --matrix-game-root /path/to/patched/Matrix-Game/Matrix-Game-3 \
+  --ckpt-dir /path/to/Matrix-Game-3.0 \
+  --output-root outputs/fixed_prompt_matrix \
+  --allowed-gpus 0,1,2,3 \
+  --acceleration-preset all \
+  --matrix-num-iterations 8
+```
+
+Default HY-WorldPlay action groups:
 
 ```text
 left_right=left-5, right-5.5
 forward_backward=w-5, s-5.5
 ```
 
-Use `--actions name=pose` to provide custom action groups. Existing non-empty output folders are skipped by default; pass `--no-skip-existing` to regenerate them.
+Default Matrix-Game-3.0 action groups:
+
+```text
+left_right=j:q*4,l:q*4
+forward_backward=u:w*4,u:s*4
+```
+
+Use `--actions name=pose` to provide custom HY-WorldPlay action groups. For Matrix-Game-3.0, use `name=mouse:key*repeat,...`, for example `left_right=j:q*4,l:q*4`. Existing non-empty output folders are skipped by default; pass `--no-skip-existing` to regenerate them.
 
 ## 📐 PSNR / SSIM / LPIPS
 
@@ -143,6 +168,18 @@ python evaluation/scripts/evaluate_psnr_ssim_lpips.py \
   --self-window 50
 ```
 
+For Matrix-Game-3.0 return-trajectory videos, use the Matrix self-alignment profile:
+
+```bash
+python evaluation/scripts/evaluate_psnr_ssim_lpips.py \
+  --run-self \
+  --self-profile matrix-game \
+  --test-dir outputs/fixed_prompt_matrix/forward_backward \
+  --output-dir evaluation_results \
+  --tag matrix_forward_backward \
+  --self-window 40
+```
+
 The scripts print missing-video and decode-failure counts so incomplete runs are visible.
 
 ## 🏷️ VBench
@@ -155,6 +192,8 @@ python evaluation/scripts/evaluate_vbench_batch.py \
   --video-dir outputs/light_interaction/left_right \
   --output-csv evaluation_results/vbench_left_right.csv
 ```
+
+The same VBench command works for Matrix-Game-3.0 outputs by changing `--video-dir` and `--output-csv`.
 
 Default dimensions:
 
