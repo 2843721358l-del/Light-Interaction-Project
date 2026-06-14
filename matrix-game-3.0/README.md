@@ -91,6 +91,8 @@ Useful `run_accel_preset.sh` overrides:
 | `MG_ACTION_SEQUENCE` | left actions for the first half, right actions for the second half |
 | `MG_OUTPUT_DIR` | `./output` |
 
+The release helper keeps `MG_NUM_ITERATIONS=4` for quick demos. The evaluation batch script uses 8 iterations for the documented left/right and forward/backward protocol.
+
 ## 🎛️ Presets
 
 The patched helper uses `MG_PRESET=all` through `run_light_interaction.sh`.

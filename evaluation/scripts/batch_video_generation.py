@@ -26,11 +26,6 @@ DEFAULT_HY_ACTIONS = {
     "forward_backward": "w-5, s-5.5",
 }
 
-DEFAULT_MATRIX_ACTIONS = {
-    "left_right": "j:q*4,l:q*4",
-    "forward_backward": "u:w*4,u:s*4",
-}
-
 
 def drain_results(result_queue):
     succeeded = 0
@@ -70,7 +65,12 @@ def parse_args():
     parser.add_argument("--seed", type=int, default=1)
     parser.add_argument("--acceleration-preset", default="all", choices=["off", "context", "sparse", "cache", "all"])
     parser.add_argument("--matrix-size", default="704*1280")
-    parser.add_argument("--matrix-num-iterations", type=int, default=8)
+    parser.add_argument(
+        "--matrix-num-iterations",
+        type=int,
+        default=8,
+        help="Matrix-Game-3.0 interaction iterations. Use 8 for the documented evaluation and 4 for quick demos.",
+    )
     parser.add_argument("--matrix-num-steps", type=int, default=3)
     parser.add_argument("--matrix-fa-version", default="0")
     parser.add_argument("--matrix-lightvae-pruning-rate", default="0.5")
@@ -90,8 +90,15 @@ def parse_actions(items):
     return actions
 
 
-def default_action_items(backend):
-    defaults = DEFAULT_MATRIX_ACTIONS if backend == "matrix-game" else DEFAULT_HY_ACTIONS
+def default_action_items(backend, matrix_num_iterations=8):
+    if backend == "matrix-game":
+        first_half = matrix_num_iterations // 2
+        second_half = matrix_num_iterations - first_half
+        return [
+            f"left_right=j:q*{first_half},l:q*{second_half}",
+            f"forward_backward=u:w*{first_half},u:s*{second_half}",
+        ]
+    defaults = DEFAULT_HY_ACTIONS
     return [f"{key}={value}" for key, value in defaults.items()]
 
 
@@ -341,9 +348,10 @@ def main():
         validate_args(args)
     except ValueError as exc:
         raise SystemExit(f"Error: {exc}") from exc
+    args.output_root = str(Path(args.output_root).expanduser().resolve())
     logging.basicConfig(filename="batch_generation.log", level=logging.INFO, format="%(asctime)s %(message)s")
     allowed = {int(x) for x in args.allowed_gpus.split(",") if x.strip()} if args.allowed_gpus else set()
-    actions = parse_actions(args.actions or default_action_items(args.backend))
+    actions = parse_actions(args.actions or default_action_items(args.backend, args.matrix_num_iterations))
 
     with open(args.prompt_json, encoding="utf-8") as f:
         tasks = json.load(f)

@@ -79,11 +79,6 @@ def parse_args():
         help="Skip manifest-based file verification.",
     )
     parser.add_argument(
-        "--keep-vbench",
-        action="store_true",
-        help="Keep the VBench clone after extraction (default behavior preserves it).",
-    )
-    parser.add_argument(
         "--target-ratio",
         default="16-9",
         help="Target crop ratio for selecting image source directory.",
