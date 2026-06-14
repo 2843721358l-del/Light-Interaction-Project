@@ -26,7 +26,13 @@ Training-free acceleration for autoregressive interactive video generation
 This repository currently releases the **HY-WorldPlay integration patch**, the **Matrix-Game-3.0 integration patch**, and **evaluation scripts**.
 
 <p align="center">
-  <img src="asset/teaser.png" width="90%" alt="Light Interaction overview"/>
+  <img src="asset/readme_teaser.png" width="95%" alt="Light Interaction qualitative examples and speedup overview"/>
+</p>
+
+<p align="center">
+  <b>Qualitative examples with single-A100 latency and speedup.</b><br>
+  Full video demos are available on the
+  <a href="https://2843721358l-del.github.io/Light-Interaction-Project/">Project Page</a>.
 </p>
 
 ## 🔥 News
