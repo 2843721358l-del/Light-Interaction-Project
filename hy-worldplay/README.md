@@ -116,15 +116,15 @@ The patched pipeline prints an inference summary:
 
 ```text
 [Inference Summary]
- Prompt & Vision Encode    :    15.45 s
- History Selection         :     1.29 s
- KV Cache Recompute        :   206.89 s
- Denoise Loop              :   217.26 s
- DiT Core (KV + Denoise)   :   424.15 s
- Transformer AR Rollout    :   443.99 s
- VAE Pixel Decoding        :    34.89 s
- Total End-to-End Time     :   494.39 s
- Peak VRAM                 :    48.70 GB
+ Prompt & Vision Encode    :     0.63 s
+ History Selection         :     0.83 s
+ KV Cache Recompute        :   102.35 s
+ Denoise Loop              :   121.67 s
+ DiT Core (KV + Denoise)   :   224.02 s
+ Transformer AR Rollout    :   232.15 s
+ VAE Pixel Decoding        :    31.24 s
+ Total End-to-End Time     :   264.06 s
+ Peak VRAM                 :    75.78 GB
 ```
 
 For paper-style timing, use:
