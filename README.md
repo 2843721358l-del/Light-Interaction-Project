@@ -132,6 +132,16 @@ Download the required checkpoints from:
 - HY-WorldPlay: <https://huggingface.co/tencent/HY-WorldPlay>
 - HunyuanVideo-1.5: <https://huggingface.co/tencent/HunyuanVideo-1.5>
 
+For this release, you only need HunyuanVideo-1.5 runtime assets and the few-step distilled autoregressive HY-WorldPlay action checkpoint. You do **not** need the bidirectional model, the multi-step autoregressive model, or RL variants.
+
+Recommended minimal download:
+
+```bash
+python hy-worldplay/scripts/download_minimal_worldplay_assets.py
+```
+
+The script prints the `HY_MODEL_PATH` and `HY_AR_DISTILL_ACTION_MODEL_PATH` values to export before running inference.
+
 The patch script performs a dry run before copying files. This release was tested on upstream HY-WorldPlay commit `1588e1336e842b03b0a7860c654ebd7c46bb065e`.
 
 Check that the environment and model paths are complete:
@@ -144,7 +154,7 @@ python hy-worldplay/scripts/check_worldplay_env.py \
 python hy-worldplay/scripts/check_worldplay_assets.py \
   --worldplay-root /path/to/HY-WorldPlay \
   --model-path /path/to/HunyuanVideo-1.5 \
-  --action-ckpt /path/to/HY-WorldPlay/ar_distilled_action_model/diffusion_pytorch_model.safetensors
+  --action-ckpt /path/to/HY-WorldPlay/ar_distilled_action_model/model.safetensors
 ```
 
 ## ▶️ Run Inference
@@ -153,7 +163,7 @@ python hy-worldplay/scripts/check_worldplay_assets.py \
 cd /path/to/HY-WorldPlay
 
 export HY_MODEL_PATH=/path/to/HunyuanVideo-1.5
-export HY_AR_DISTILL_ACTION_MODEL_PATH=/path/to/HY-WorldPlay/ar_distilled_action_model/diffusion_pytorch_model.safetensors
+export HY_AR_DISTILL_ACTION_MODEL_PATH=/path/to/HY-WorldPlay/ar_distilled_action_model/model.safetensors
 
 # Optional: use one GPU. Upstream run.sh may default to multi-GPU inference.
 export HY_N_INFERENCE_GPU=1
@@ -204,7 +214,7 @@ python evaluation/scripts/batch_video_generation.py \
   --prompt-json evaluation/data/refined_prompts_llava16.json \
   --hy-worldplay-root /path/to/patched/HY-WorldPlay \
   --model-path /path/to/HunyuanVideo-1.5 \
-  --action-ckpt /path/to/ar_distilled_action_model/diffusion_pytorch_model.safetensors \
+  --action-ckpt /path/to/ar_distilled_action_model/model.safetensors \
   --output-root outputs/fixed_prompt \
   --allowed-gpus 0,1,2,3 \
   --acceleration-preset all

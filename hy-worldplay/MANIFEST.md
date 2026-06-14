@@ -36,6 +36,7 @@ Light Interaction repository and pass the HY-WorldPlay checkout path:
 
 ```text
 hy-worldplay/scripts/apply_patch.sh
+hy-worldplay/scripts/download_minimal_worldplay_assets.py
 hy-worldplay/scripts/setup_worldplay_env.sh
 hy-worldplay/scripts/check_worldplay_env.py
 hy-worldplay/scripts/check_worldplay_assets.py
