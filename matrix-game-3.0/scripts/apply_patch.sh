@@ -3,7 +3,7 @@
 # Licensed under the MIT License.
 # See the LICENSE file in the repository root for details.
 
-# Apply the Light Interaction acceleration patch to a Matrix-Game-3 checkout.
+# Apply the Light Interaction acceleration patch to a Matrix-Game-3.0 checkout.
 #
 # Usage:
 #   bash matrix-game-3.0/scripts/apply_patch.sh /path/to/Matrix-Game/Matrix-Game-3
@@ -23,7 +23,7 @@ if [ ! -d "$TARGET_ROOT" ]; then
 fi
 
 if [ ! -f "$TARGET_ROOT/generate.py" ] || [ ! -d "$TARGET_ROOT/wan/modules" ]; then
-  echo "Error: target does not look like a Matrix-Game-3 checkout: $TARGET_ROOT"
+  echo "Error: target does not look like a Matrix-Game-3.0 checkout: $TARGET_ROOT"
   exit 1
 fi
 

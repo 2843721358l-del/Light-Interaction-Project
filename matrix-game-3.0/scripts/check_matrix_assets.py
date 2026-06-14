@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Copyright (c) 2026 Jiacheng Lu and contributors.
 # Licensed under the MIT License.
-"""Validate local model files needed by patched Matrix-Game-3 inference."""
+"""Validate local model files needed by patched Matrix-Game-3.0 inference."""
 
 import argparse
 from pathlib import Path

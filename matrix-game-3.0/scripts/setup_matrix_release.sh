@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Prepare a patched Matrix-Game-3 checkout for Light Interaction inference.
+# Prepare a patched Matrix-Game-3.0 checkout for Light Interaction inference.
 #
 # Usage:
 #   bash matrix-game-3.0/scripts/setup_matrix_release.sh /path/to/Matrix-Game/Matrix-Game-3
@@ -95,7 +95,7 @@ else
 fi
 
 echo ""
-echo "Light Interaction Matrix-Game setup is ready."
+echo "Light Interaction Matrix-Game-3.0 setup is ready."
 echo "Activate with:"
 if [ "$ENV_BACKEND" = "conda" ]; then
   echo "  conda activate $ENV_NAME"

@@ -1,6 +1,6 @@
 """Triton block-sparse attention kernel used by Light Interaction.
 
-Adapted from the LongCat-Video sparse-attention implementation for Matrix-Game-3
+Adapted from the LongCat-Video sparse-attention implementation for Matrix-Game-3.0
 autoregressive inference.
 """
 

@@ -1,4 +1,4 @@
-"""Block-sparse attention utilities for Light Interaction Matrix-Game-3.
+"""Block-sparse attention utilities for Light Interaction Matrix-Game-3.0.
 
 Authored for the Light Interaction adaptation. The Triton kernel entry point is
 implemented in ``longcat_kernel.py``.

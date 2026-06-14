@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Run a Matrix-Game-3 Light Interaction acceleration preset.
+# Run a Matrix-Game-3.0 Light Interaction acceleration preset.
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
