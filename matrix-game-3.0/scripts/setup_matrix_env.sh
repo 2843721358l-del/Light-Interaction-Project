@@ -2,7 +2,7 @@
 # Create a fresh runtime environment for a patched Matrix-Game-3 checkout.
 #
 # Usage:
-#   bash matrix-game/scripts/setup_matrix_env.sh /path/to/Matrix-Game/Matrix-Game-3
+#   bash matrix-game-3.0/scripts/setup_matrix_env.sh /path/to/Matrix-Game/Matrix-Game-3
 #
 # Optional environment variables:
 #   MATRIX_ENV_NAME=light-interaction-matrix
@@ -22,7 +22,7 @@ TORCH_INDEX_URL="${TORCH_INDEX_URL:-https://download.pytorch.org/whl/cu128}"
 
 if [ -z "$MATRIX_ROOT" ]; then
   echo "Error: missing Matrix-Game-3 checkout path."
-  echo "Usage: bash matrix-game/scripts/setup_matrix_env.sh /path/to/Matrix-Game/Matrix-Game-3"
+  echo "Usage: bash matrix-game-3.0/scripts/setup_matrix_env.sh /path/to/Matrix-Game/Matrix-Game-3"
   exit 1
 fi
 
@@ -74,7 +74,7 @@ python -m pip install -r "$MATRIX_ROOT/requirements.txt" --extra-index-url "$TOR
 
 echo ""
 echo "Running import check ..."
-python "$REPO_ROOT/matrix-game/scripts/check_matrix_env.py" --matrix-root "$MATRIX_ROOT"
+python "$REPO_ROOT/matrix-game-3.0/scripts/check_matrix_env.py" --matrix-root "$MATRIX_ROOT"
 
 echo ""
 echo "Environment ready: $ENV_NAME ($ENV_BACKEND)"

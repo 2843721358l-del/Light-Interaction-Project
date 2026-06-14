@@ -8,7 +8,7 @@ Training-free acceleration for autoregressive interactive video generation
   <a href="https://arxiv.org/abs/2605.31158"><b>📄 Paper</b></a> |
   <a href="https://2843721358l-del.github.io/Light-Interaction-Project/"><b>🌐 Project Page</b></a> |
   <a href="hy-worldplay/README.md"><b>🔌 HY-WorldPlay Patch</b></a> |
-  <a href="matrix-game/README.md"><b>🎮 Matrix-Game Patch</b></a> |
+  <a href="matrix-game-3.0/README.md"><b>🎮 Matrix-Game Patch</b></a> |
   <a href="evaluation/README.md"><b>📊 Evaluation</b></a>
 </p>
 
@@ -47,7 +47,7 @@ This repository currently releases the **HY-WorldPlay integration patch**, the *
 ```text
 Light-Interaction-Project/
 ├── hy-worldplay/      # Patch package for upstream HY-WorldPlay
-├── matrix-game/       # Patch package for upstream Matrix-Game-3.0
+├── matrix-game-3.0/       # Patch package for upstream Matrix-Game-3.0
 ├── evaluation/        # Fixed prompts, initial images, and evaluation scripts
 ├── asset/             # Project figures
 ├── NOTICE.md          # Third-party and upstream license notes
@@ -92,7 +92,7 @@ Clone upstream Matrix-Game, then prepare the patched Matrix-Game-3 runtime with 
 
 ```bash
 git clone https://github.com/SkyworkAI/Matrix-Game.git ../Matrix-Game
-bash matrix-game/scripts/setup_matrix_release.sh ../Matrix-Game/Matrix-Game-3
+bash matrix-game-3.0/scripts/setup_matrix_release.sh ../Matrix-Game/Matrix-Game-3
 ```
 
 ## ▶️ Run Inference
@@ -123,7 +123,7 @@ conda activate light-interaction-matrix
 bash run_light_interaction.sh
 ```
 
-More patch details are in [matrix-game/README.md](matrix-game/README.md).
+More patch details are in [matrix-game-3.0/README.md](matrix-game-3.0/README.md).
 
 ## 📊 Evaluation
 
@@ -183,12 +183,15 @@ HY-WorldPlay, 480P image-to-video, single A100:
 | TeaCache | 20.90 | 0.8150 | 203.25 | 1.12x | 76.64 |
 | Light Interaction | 24.81 | 0.8220 | 88.24 | 2.59x | 54.66 |
 
-Matrix-Game-3.0, 704×1280 image-to-world, single A100, 8 interactions:
+Matrix-Game-3.0, 720P image-to-video, single A100:
 
-| Method | DiT Core (s) | Video Generation (s) | Peak VRAM Allocated (GB) | Peak VRAM Reserved (GB) |
-|:---|---:|---:|---:|---:|
-| Original | 60.12 | 103.25 | 35.03 | 51.46 |
-| Light Interaction | 37.56 | 78.96 | 35.03 | 49.55 |
+| Method | PSNR vs. Original | VBench | Latency (s) | Speedup | Peak VRAM (GB) |
+|:---|---:|---:|---:|---:|---:|
+| Original | - | 0.7432 | 59.70 | 1.00x | 35.04 |
+| SVG | 12.98 | 0.7511 | 96.16 | 0.62x | 35.02 |
+| BSA | 13.34 | 0.7336 | 63.26 | 0.94x | 35.03 |
+| TeaCache | 19.03 | 0.7146 | 41.49 | 1.44x | 35.32 |
+| Light Interaction | 17.76 | 0.7350 | 37.07 | 1.61x | 35.04 |
 
 See the paper for full ablations and metric definitions.
 
@@ -197,7 +200,7 @@ See the paper for full ablations and metric definitions.
 | Document | Contents |
 |:---|:---|
 | [hy-worldplay/README.md](hy-worldplay/README.md) | Patch structure, apply script, presets, timing log, diagnostics |
-| [matrix-game/README.md](matrix-game/README.md) | Matrix-Game patch structure, setup script, presets, timing log, diagnostics |
+| [matrix-game-3.0/README.md](matrix-game-3.0/README.md) | Matrix-Game patch structure, setup script, presets, timing log, diagnostics |
 | [evaluation/README.md](evaluation/README.md) | Sample set, batch generation, metrics, VBench |
 | [NOTICE.md](NOTICE.md) | Upstream scope, third-party attribution, license notes |
 

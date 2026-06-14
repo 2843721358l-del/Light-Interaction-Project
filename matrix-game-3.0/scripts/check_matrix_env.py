@@ -95,7 +95,7 @@ def main():
 
     if not ok:
         print("\nMatrix-Game environment check failed. Rerun:")
-        print("  bash matrix-game/scripts/setup_matrix_env.sh /path/to/Matrix-Game/Matrix-Game-3")
+        print("  bash matrix-game-3.0/scripts/setup_matrix_env.sh /path/to/Matrix-Game/Matrix-Game-3")
         return 1
 
     print("\nMatrix-Game environment is ready.")

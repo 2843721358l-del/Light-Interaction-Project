@@ -6,11 +6,11 @@
 # Apply the Light Interaction acceleration patch to a Matrix-Game-3 checkout.
 #
 # Usage:
-#   bash matrix-game/scripts/apply_patch.sh /path/to/Matrix-Game/Matrix-Game-3
+#   bash matrix-game-3.0/scripts/apply_patch.sh /path/to/Matrix-Game/Matrix-Game-3
 set -euo pipefail
 
 if [ "$#" -ne 1 ]; then
-  echo "Usage: bash matrix-game/scripts/apply_patch.sh /path/to/Matrix-Game/Matrix-Game-3"
+  echo "Usage: bash matrix-game-3.0/scripts/apply_patch.sh /path/to/Matrix-Game/Matrix-Game-3"
   exit 1
 fi
 

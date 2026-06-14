@@ -32,12 +32,12 @@ These scripts are not copied into the upstream checkout. Run them from the
 Light Interaction repository and pass the Matrix-Game-3 checkout path:
 
 ```text
-matrix-game/scripts/apply_patch.sh
-matrix-game/scripts/download_matrix_assets.py
-matrix-game/scripts/setup_matrix_release.sh
-matrix-game/scripts/setup_matrix_env.sh
-matrix-game/scripts/check_matrix_env.py
-matrix-game/scripts/check_matrix_assets.py
+matrix-game-3.0/scripts/apply_patch.sh
+matrix-game-3.0/scripts/download_matrix_assets.py
+matrix-game-3.0/scripts/setup_matrix_release.sh
+matrix-game-3.0/scripts/setup_matrix_env.sh
+matrix-game-3.0/scripts/check_matrix_env.py
+matrix-game-3.0/scripts/check_matrix_assets.py
 ```
 
 ## Why Use A Patch
