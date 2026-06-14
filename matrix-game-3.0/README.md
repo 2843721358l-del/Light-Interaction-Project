@@ -2,7 +2,7 @@
 
 This folder provides the Light Interaction patch for upstream [Matrix-Game-3.0](https://github.com/SkyworkAI/Matrix-Game/tree/main/Matrix-Game-3).
 
-It does not include the original Matrix-Game source tree or any model checkpoints. Clone upstream Matrix-Game and download checkpoints from the official sources before applying this patch.
+It does not include the original Matrix-Game-3.0 source tree or any model checkpoints. Clone the upstream repository and download checkpoints from the official sources before applying this patch.
 
 ## 📂 Contents
 
@@ -26,19 +26,19 @@ matrix-game-3.0/
     └── setup_matrix_env.sh
 ```
 
-`files/` contains new Light Interaction modules and benchmark helpers. `patches/0001-integrate-acceleration.patch` modifies upstream Matrix-Game-3 entry points, interactive pipeline code, DiT code, and camera context-selection logic.
+`files/` contains new Light Interaction modules and benchmark helpers. `patches/0001-integrate-acceleration.patch` modifies upstream Matrix-Game-3.0 entry points, interactive pipeline code, DiT code, and camera context-selection logic.
 
 ## 📦 Upstream Resources
 
 | Resource | Link |
 |:---|:---|
-| Matrix-Game code | <https://github.com/SkyworkAI/Matrix-Game> |
-| Matrix-Game-3 checkpoints | <https://huggingface.co/Skywork/Matrix-Game-3.0> |
-| Matrix-Game-3 project page | <https://matrix-game-v3.github.io/> |
+| Matrix-Game-3.0 code | <https://github.com/SkyworkAI/Matrix-Game> |
+| Matrix-Game-3.0 checkpoints | <https://huggingface.co/Skywork/Matrix-Game-3.0> |
+| Matrix-Game-3.0 project page | <https://matrix-game-v3.github.io/> |
 
 ## 🚀 Reproducible Setup
 
-The recommended path is one command after cloning upstream Matrix-Game:
+The recommended path is one command after cloning the upstream repository:
 
 ```bash
 git clone https://github.com/SkyworkAI/Matrix-Game.git ../Matrix-Game
@@ -46,9 +46,9 @@ bash matrix-game-3.0/scripts/setup_matrix_release.sh ../Matrix-Game/Matrix-Game-
 conda activate light-interaction-matrix
 ```
 
-This applies the patch, creates the Matrix-Game runtime environment, downloads the model assets, and runs environment/asset checks.
+This applies the patch, creates the Matrix-Game-3.0 runtime environment, downloads the model assets, and runs environment/asset checks.
 
-This release was tested on upstream Matrix-Game commit:
+This release was tested on upstream Matrix-Game-3.0 commit:
 
 ```text
 71c3cd7
@@ -81,7 +81,7 @@ Useful `run_accel_preset.sh` overrides:
 
 | Variable | Default |
 |:---|:---|
-| `MG_PROMPT` | Built-in official Matrix-Game demo prompt |
+| `MG_PROMPT` | Built-in official Matrix-Game-3.0 demo prompt |
 | `MG_IMAGE` | `demo_images/001/image.png` |
 | `MG_CKPT_DIR` | `./Matrix-Game-3.0` |
 | `MG_NUM_GPUS` | `1` |
@@ -114,14 +114,14 @@ MG_PRESET=context bash run_light_interaction.sh
 - Use `MATRIX_ASSET_OUTPUT_ROOT=/path/to/models` to store downloaded weights outside the Hugging Face cache.
 - Use `MATRIX_MODEL_REPO=<repo-id>` if the official Hugging Face repo id changes or a mirror is required.
 - Use `HF_TOKEN=<token>` if gated Hugging Face assets require authentication.
-- CPU-only environments can run package checks, but Matrix-Game-3 inference requires NVIDIA GPUs.
+- CPU-only environments can run package checks, but Matrix-Game-3.0 inference requires NVIDIA GPUs.
 
 ## ⏱️ Inference Log
 
 The patched entry point prints an inference summary:
 
 ```text
-Matrix-Game Light Interaction Benchmark
+Matrix-Game-3.0 Light Interaction Benchmark
 ==================================================
 Preset                : all
 Model Load Time       :   64.98 s
@@ -157,4 +157,4 @@ The release keeps one tested Triton config by default to avoid first-run autotun
 
 ## 📄 License Notes
 
-This folder stores patch-style modifications instead of full upstream files. Upstream Matrix-Game files and model weights remain governed by their own licenses. `longcat_kernel.py` includes attribution for LongCat-Video-derived code; see [../NOTICE.md](../NOTICE.md).
+This folder stores patch-style modifications instead of full upstream files. Upstream Matrix-Game-3.0 files and model weights remain governed by their own licenses. `longcat_kernel.py` includes attribution for LongCat-Video-derived code; see [../NOTICE.md](../NOTICE.md).

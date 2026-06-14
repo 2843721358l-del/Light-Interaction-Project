@@ -1,6 +1,6 @@
 # Patch Manifest
 
-This repository is intended to be applied on top of an upstream Matrix-Game-3
+This repository is intended to be applied on top of an upstream Matrix-Game-3.0
 checkout.
 
 ## New Or Replaced Files
@@ -29,7 +29,7 @@ wan/modules/model.py
 ## Helper Scripts
 
 These scripts are not copied into the upstream checkout. Run them from the
-Light Interaction repository and pass the Matrix-Game-3 checkout path:
+Light Interaction repository and pass the Matrix-Game-3.0 checkout path:
 
 ```text
 matrix-game-3.0/scripts/apply_patch.sh
@@ -53,4 +53,4 @@ obtain the upstream repository first, then apply this patch.
 `longcat_kernel.py`.
 
 `bi_sparse_operation.py` is authored by the Light Interaction authors for
-Matrix-Game-3 autoregressive sparse attention.
+Matrix-Game-3.0 autoregressive sparse attention.

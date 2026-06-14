@@ -3,7 +3,7 @@ index a697f29..12f8f56 100644
 --- a/generate.py
 +++ b/generate.py
 @@ -1,3 +1,11 @@
-+"""Matrix-Game-3 entry point with Light Interaction inference hooks.
++"""Matrix-Game-3.0 entry point with Light Interaction inference hooks.
 +
 +Light Interaction additions:
 +- scripted interactive actions for reproducible benchmark runs
@@ -71,7 +71,7 @@ index a697f29..12f8f56 100644
      world_size = int(os.getenv("WORLD_SIZE", 1))
 @@ -137,6 +175,10 @@ def generate(args):
      logging.info(f"Input prompt: {args.prompt}")
-     logging.info("Creating Matrix-Game-3 pipeline.")
+     logging.info("Creating Matrix-Game-3.0 pipeline.")
  
 +    if torch.cuda.is_available():
 +        torch.cuda.synchronize()
@@ -117,7 +117,7 @@ index a697f29..12f8f56 100644
 +
 +    if rank == 0:
 +        print("\n" + "="*50)
-+        print("Matrix-Game Light Interaction Benchmark")
++        print("Matrix-Game-3.0 Light Interaction Benchmark")
 +        print("="*50)
 +        print(f"Preset                : {args.acceleration_preset}")
 +        print(f"Model Load Time       : {model_load_time:7.2f} s")
@@ -144,9 +144,9 @@ index afc2da9..e8c540c 100644
 --- a/pipeline/inference_interactive_pipeline.py
 +++ b/pipeline/inference_interactive_pipeline.py
 @@ -1,3 +1,10 @@
-+"""Interactive Matrix-Game-3 pipeline with Light Interaction acceleration hooks.
++"""Interactive Matrix-Game-3.0 pipeline with Light Interaction acceleration hooks.
 +
-+This file starts from the upstream Matrix-Game-3 interactive pipeline and adds
++This file starts from the upstream Matrix-Game-3.0 interactive pipeline and adds
 +training-free inference controls for context pruning, denoising reuse, sparse
 +attention, scripted actions, and benchmark timing.
 +"""
@@ -733,7 +733,7 @@ index 821f25c..250b743 100644
 --- a/utils/cam_utils.py
 +++ b/utils/cam_utils.py
 @@ -1,3 +1,6 @@
-+"""Camera utilities used by Matrix-Game-3 and Light Interaction context logic."""
++"""Camera utilities used by Matrix-Game-3.0 and Light Interaction context logic."""
 +
 +import os
  import numpy as np
@@ -775,7 +775,7 @@ index 225b3c1..38156f5 100644
 --- a/wan/modules/model.py
 +++ b/wan/modules/model.py
 @@ -1,3 +1,10 @@
-+"""Matrix-Game-3 DiT model with Light Interaction inference hooks.
++"""Matrix-Game-3.0 DiT model with Light Interaction inference hooks.
 +
 +This file keeps the upstream model architecture and adds training-free runtime
 +switches for sparse attention, context-only sequence compaction, and optional

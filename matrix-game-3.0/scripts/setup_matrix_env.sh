@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Create a fresh runtime environment for a patched Matrix-Game-3 checkout.
+# Create a fresh runtime environment for a patched Matrix-Game-3.0 checkout.
 #
 # Usage:
 #   bash matrix-game-3.0/scripts/setup_matrix_env.sh /path/to/Matrix-Game/Matrix-Game-3
@@ -21,14 +21,14 @@ PYTHON_VERSION="${PYTHON_VERSION:-3.12}"
 TORCH_INDEX_URL="${TORCH_INDEX_URL:-https://download.pytorch.org/whl/cu128}"
 
 if [ -z "$MATRIX_ROOT" ]; then
-  echo "Error: missing Matrix-Game-3 checkout path."
+  echo "Error: missing Matrix-Game-3.0 checkout path."
   echo "Usage: bash matrix-game-3.0/scripts/setup_matrix_env.sh /path/to/Matrix-Game/Matrix-Game-3"
   exit 1
 fi
 
 MATRIX_ROOT="$(cd "$MATRIX_ROOT" && pwd)"
 if [ ! -f "$MATRIX_ROOT/requirements.txt" ] || [ ! -f "$MATRIX_ROOT/generate.py" ]; then
-  echo "Error: $MATRIX_ROOT does not look like a Matrix-Game-3 checkout."
+  echo "Error: $MATRIX_ROOT does not look like a Matrix-Game-3.0 checkout."
   exit 1
 fi
 
@@ -69,7 +69,7 @@ esac
 
 python -m pip install --upgrade pip wheel setuptools
 
-echo "Installing Matrix-Game-3 dependencies from: $MATRIX_ROOT/requirements.txt"
+echo "Installing Matrix-Game-3.0 dependencies from: $MATRIX_ROOT/requirements.txt"
 python -m pip install -r "$MATRIX_ROOT/requirements.txt" --extra-index-url "$TORCH_INDEX_URL"
 
 echo ""

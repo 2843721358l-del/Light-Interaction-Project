@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Copyright (c) 2026 Jiacheng Lu and contributors.
 # Licensed under the MIT License.
-"""Check whether a patched Matrix-Game-3 runtime environment is usable."""
+"""Check whether a patched Matrix-Game-3.0 runtime environment is usable."""
 
 import argparse
 import importlib
@@ -49,7 +49,7 @@ def main():
     parser.add_argument(
         "--matrix-root",
         required=True,
-        help="Path to a patched Matrix-Game-3 checkout.",
+        help="Path to a patched Matrix-Game-3.0 checkout.",
     )
     parser.add_argument(
         "--require-cuda",
@@ -60,7 +60,7 @@ def main():
 
     matrix_root = os.path.abspath(args.matrix_root)
     if not os.path.isfile(os.path.join(matrix_root, "generate.py")):
-        print(f"[missing] Matrix-Game-3 source tree: {matrix_root}")
+        print(f"[missing] Matrix-Game-3.0 source tree: {matrix_root}")
         return 1
 
     sys.path.insert(0, matrix_root)
@@ -80,7 +80,7 @@ def main():
             print(f"CUDA device count: {torch.cuda.device_count()}")
             print(f"Current device: {torch.cuda.get_device_name(0)}")
         elif args.require_cuda:
-            print("[missing] CUDA device is required for Matrix-Game-3 inference.")
+            print("[missing] CUDA device is required for Matrix-Game-3.0 inference.")
             ok = False
     except Exception as exc:
         print(f"[missing] torch CUDA check failed: {exc}")
@@ -94,11 +94,11 @@ def main():
         print("\nSkipping Light Interaction sparse kernel import check because CUDA is unavailable.")
 
     if not ok:
-        print("\nMatrix-Game environment check failed. Rerun:")
+        print("\nMatrix-Game-3.0 environment check failed. Rerun:")
         print("  bash matrix-game-3.0/scripts/setup_matrix_env.sh /path/to/Matrix-Game/Matrix-Game-3")
         return 1
 
-    print("\nMatrix-Game environment is ready.")
+    print("\nMatrix-Game-3.0 environment is ready.")
     return 0
 
 

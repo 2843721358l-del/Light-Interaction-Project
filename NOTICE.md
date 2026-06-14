@@ -6,7 +6,7 @@ evaluation utilities.
 
 ## Repository Scope
 
-This repository does not redistribute original HY-WorldPlay or Matrix-Game
+This repository does not redistribute original HY-WorldPlay or Matrix-Game-3.0
 source trees, model checkpoints, datasets, generated videos, benchmark outputs,
 or private development logs. Users must obtain upstream projects and checkpoints
 separately and comply with the corresponding upstream licenses, acceptable-use
@@ -38,7 +38,7 @@ policy.
 ## Matrix-Game-3.0
 
 The Matrix-Game-3.0 integration is released as a patch-style package. This
-repository does not redistribute the full Matrix-Game source tree or model
+repository does not redistribute the full Matrix-Game-3.0 source tree or model
 weights. Users must obtain Matrix-Game-3.0 from the official source and comply
 with its upstream license terms.
 

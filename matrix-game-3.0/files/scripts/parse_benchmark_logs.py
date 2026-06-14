@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Parse Light Interaction Matrix-Game benchmark logs into CSV rows."""
+"""Parse Light Interaction Matrix-Game-3.0 benchmark logs into CSV rows."""
 
 import re
 import sys

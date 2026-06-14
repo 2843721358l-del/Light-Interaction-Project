@@ -8,7 +8,7 @@ Training-free acceleration for autoregressive interactive video generation
   <a href="https://arxiv.org/abs/2605.31158"><b>📄 Paper</b></a> |
   <a href="https://2843721358l-del.github.io/Light-Interaction-Project/"><b>🌐 Project Page</b></a> |
   <a href="hy-worldplay/README.md"><b>🔌 HY-WorldPlay Patch</b></a> |
-  <a href="matrix-game-3.0/README.md"><b>🎮 Matrix-Game Patch</b></a> |
+  <a href="matrix-game-3.0/README.md"><b>🎮 Matrix-Game-3.0 Patch</b></a> |
   <a href="evaluation/README.md"><b>📊 Evaluation</b></a>
 </p>
 
@@ -88,7 +88,7 @@ This downloads only the assets used by this release: HunyuanVideo-1.5 runtime fi
 
 ### 3. Prepare Matrix-Game-3.0
 
-Clone upstream Matrix-Game, then prepare the patched Matrix-Game-3 runtime with one command:
+Clone the upstream repository, then prepare the patched Matrix-Game-3.0 runtime with one command:
 
 ```bash
 git clone https://github.com/SkyworkAI/Matrix-Game.git ../Matrix-Game
@@ -200,7 +200,7 @@ See the paper for full ablations and metric definitions.
 | Document | Contents |
 |:---|:---|
 | [hy-worldplay/README.md](hy-worldplay/README.md) | Patch structure, apply script, presets, timing log, diagnostics |
-| [matrix-game-3.0/README.md](matrix-game-3.0/README.md) | Matrix-Game patch structure, setup script, presets, timing log, diagnostics |
+| [matrix-game-3.0/README.md](matrix-game-3.0/README.md) | Matrix-Game-3.0 patch structure, setup script, presets, timing log, diagnostics |
 | [evaluation/README.md](evaluation/README.md) | Sample set, batch generation, metrics, VBench |
 | [NOTICE.md](NOTICE.md) | Upstream scope, third-party attribution, license notes |
 
@@ -219,7 +219,7 @@ See the paper for full ablations and metric definitions.
 For each experiment, record:
 
 - Upstream HY-WorldPlay commit hash
-- Upstream Matrix-Game commit hash, if using Matrix-Game-3.0
+- Upstream Matrix-Game-3.0 commit hash, if using Matrix-Game-3.0
 - Light Interaction commit hash
 - GPU type and count
 - CUDA, PyTorch, and Triton versions
