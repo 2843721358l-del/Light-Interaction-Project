@@ -7,7 +7,7 @@ It does not include the original Matrix-Game source tree or any model checkpoint
 ## 📂 Contents
 
 ```text
-matrix-game/
+matrix-game-3.0/
 ├── files/
 │   ├── scripts/
 │   │   ├── parse_benchmark_logs.py
@@ -42,7 +42,7 @@ The recommended path is one command after cloning upstream Matrix-Game:
 
 ```bash
 git clone https://github.com/SkyworkAI/Matrix-Game.git ../Matrix-Game
-bash matrix-game/scripts/setup_matrix_release.sh ../Matrix-Game/Matrix-Game-3
+bash matrix-game-3.0/scripts/setup_matrix_release.sh ../Matrix-Game/Matrix-Game-3
 conda activate light-interaction-matrix
 ```
 

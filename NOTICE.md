@@ -47,7 +47,7 @@ with its upstream license terms.
 The file:
 
 hy-worldplay/files/hyvideo/models/transformers/modules/longcat_kernel.py
-matrix-game/files/wan/modules/longcat_kernel.py
+matrix-game-3.0/files/wan/modules/longcat_kernel.py
 
 is adapted from the LongCat-Video sparse-attention implementation and should
 preserve the original LongCat-Video MIT license notice.
@@ -56,7 +56,7 @@ Other sparse-attention integration files, including:
 
 hy-worldplay/files/hyvideo/models/transformers/modules/ar_sparse_operation.py
 hy-worldplay/files/hyvideo/models/transformers/modules/bi_sparse_operation_for_KV_cache.py
-matrix-game/files/wan/modules/bi_sparse_operation.py
+matrix-game-3.0/files/wan/modules/bi_sparse_operation.py
 
 are authored by the Light Interaction authors for autoregressive sparse
 attention scheduling and KV-cache recomputation.

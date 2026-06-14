@@ -2,7 +2,7 @@
 # Prepare a patched Matrix-Game-3 checkout for Light Interaction inference.
 #
 # Usage:
-#   bash matrix-game/scripts/setup_matrix_release.sh /path/to/Matrix-Game/Matrix-Game-3
+#   bash matrix-game-3.0/scripts/setup_matrix_release.sh /path/to/Matrix-Game/Matrix-Game-3
 #
 # Optional environment variables:
 #   MATRIX_ENV_BACKEND=conda|venv|current
@@ -22,7 +22,7 @@ PREPARE_MATRIX_ASSETS="${PREPARE_MATRIX_ASSETS:-1}"
 REQUIRE_CUDA="${REQUIRE_CUDA:-1}"
 
 if [ -z "$MATRIX_ROOT" ]; then
-  echo "Usage: bash matrix-game/scripts/setup_matrix_release.sh /path/to/Matrix-Game/Matrix-Game-3"
+  echo "Usage: bash matrix-game-3.0/scripts/setup_matrix_release.sh /path/to/Matrix-Game/Matrix-Game-3"
   exit 1
 fi
 
