@@ -62,7 +62,7 @@ The setup script installs all metric dependencies, prepares LPIPS/VBench assets,
 - VBench checkpoints: `~/.cache/light-interaction/vbench`
 - Torch Hub / LPIPS checkpoints: `~/.cache/light-interaction/torch`
 
-HY-WorldPlay and HunyuanVideo-1.5 generation weights are not installed by this script; prepare them with the minimal downloader below. Evaluation metric assets are prepared by the setup script and kept in cache directories outside this repository.
+HY-WorldPlay, HunyuanVideo-1.5, and Matrix-Game-3.0 generation weights are not installed by this script. Evaluation metric assets are prepared by the setup script and kept in cache directories outside this repository.
 
 For the released Light Interaction HY-WorldPlay path, only the HunyuanVideo-1.5 runtime assets and the few-step distilled autoregressive action checkpoint are required. You can prepare just those assets with:
 
@@ -71,6 +71,12 @@ python hy-worldplay/scripts/download_minimal_worldplay_assets.py
 ```
 
 The bidirectional action model, multi-step autoregressive action model, and RL variants are not required for the documented evaluation pipeline.
+
+For Matrix-Game-3.0 generation, prepare the patched Matrix runtime and model assets with:
+
+```bash
+bash matrix-game-3.0/scripts/setup_matrix_release.sh /path/to/Matrix-Game/Matrix-Game-3
+```
 
 Advanced options:
 
@@ -124,6 +130,8 @@ python evaluation/scripts/batch_video_generation.py \
   --matrix-num-iterations 8
 ```
 
+The Matrix-Game-3.0 release helper defaults to `MG_NUM_ITERATIONS=4` for quick demos. The batch evaluation example uses `--matrix-num-iterations 8` to reproduce the 8-interaction left/right and forward/backward evaluation protocol.
+
 Default HY-WorldPlay action groups:
 
 ```text
@@ -138,7 +146,11 @@ left_right=j:q*4,l:q*4
 forward_backward=u:w*4,u:s*4
 ```
 
+The repeat counts above are generated from `--matrix-num-iterations`; for example, 4 iterations become `j:q*2,l:q*2`.
+
 Use `--actions name=pose` to provide custom HY-WorldPlay action groups. For Matrix-Game-3.0, use `name=mouse:key*repeat,...`, for example `left_right=j:q*4,l:q*4`. Existing non-empty output folders are skipped by default; pass `--no-skip-existing` to regenerate them.
+
+Relative `--output-root` values are resolved from the directory where you launch `batch_video_generation.py`, then passed to the backend as absolute paths. This keeps resume/skip checks and generated outputs in the same location.
 
 ## 📐 PSNR / SSIM / LPIPS
 

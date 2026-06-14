@@ -4638,7 +4638,7 @@ index de80815..c33c7ff 100644
  # Configuration for faster inference
  # The maximum number recommended is 8.
 -N_INFERENCE_GPU=8 # Parallel inference GPU count.
-+N_INFERENCE_GPU=${HY_N_INFERENCE_GPU:-8} # Parallel inference GPU count.
++N_INFERENCE_GPU=${HY_N_INFERENCE_GPU:-1} # Parallel inference GPU count.
  
  # Configuration for better quality
  REWRITE=false   # Enable prompt rewriting. Please ensure rewrite vLLM server is deployed and configured.
