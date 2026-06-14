@@ -10,6 +10,7 @@ action checkpoint only.
 
 import argparse
 import os
+import shlex
 import sys
 from pathlib import Path
 
@@ -87,6 +88,11 @@ def main():
         default=None,
         help="Optional local directory for downloaded assets. By default, uses the Hugging Face cache.",
     )
+    parser.add_argument(
+        "--env-file",
+        default=None,
+        help="Optional shell file to write HY_MODEL_PATH and HY_AR_DISTILL_ACTION_MODEL_PATH exports.",
+    )
     args = parser.parse_args()
 
     output_root = Path(args.output_root).resolve() if args.output_root else None
@@ -131,6 +137,12 @@ def main():
     print("\nUse these paths:")
     print(f"  export HY_MODEL_PATH={hunyuan_path}")
     print(f"  export HY_AR_DISTILL_ACTION_MODEL_PATH={action_ckpt}")
+    if args.env_file:
+        env_file = Path(args.env_file)
+        with env_file.open("w", encoding="utf-8") as f:
+            f.write(f"export HY_MODEL_PATH={shlex.quote(str(hunyuan_path))}\n")
+            f.write(f"export HY_AR_DISTILL_ACTION_MODEL_PATH={shlex.quote(str(action_ckpt))}\n")
+        print(f"\nWrote environment exports to: {env_file}")
     print("\nThen verify:")
     print("  python hy-worldplay/scripts/check_worldplay_assets.py \\")
     print("    --worldplay-root /path/to/HY-WorldPlay \\")
