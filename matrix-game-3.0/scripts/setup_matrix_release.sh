@@ -20,6 +20,7 @@ ENV_BACKEND="${MATRIX_ENV_BACKEND:-conda}"
 ENV_NAME="${MATRIX_ENV_NAME:-light-interaction-matrix}"
 PREPARE_MATRIX_ASSETS="${PREPARE_MATRIX_ASSETS:-1}"
 REQUIRE_CUDA="${REQUIRE_CUDA:-1}"
+EXPECTED_COMMIT="71c3cd7f741311f8100f6cf9cde942b6c1378d11"
 
 if [ -z "$MATRIX_ROOT" ]; then
   echo "Usage: bash matrix-game-3.0/scripts/setup_matrix_release.sh /path/to/Matrix-Game/Matrix-Game-3"
@@ -28,12 +29,13 @@ fi
 
 MATRIX_ROOT="$(cd "$MATRIX_ROOT" && pwd)"
 
-if [ -f "$MATRIX_ROOT/wan/modules/bi_sparse_operation.py" ] \
-  && grep -q -- "--acceleration_preset" "$MATRIX_ROOT/generate.py"; then
-  echo "Patch already appears to be applied: $MATRIX_ROOT"
-else
-  bash "$SCRIPT_DIR/apply_patch.sh" "$MATRIX_ROOT"
+CURRENT_COMMIT="$(git -C "$MATRIX_ROOT" rev-parse HEAD 2>/dev/null || true)"
+if [ -n "$CURRENT_COMMIT" ] && [[ "$CURRENT_COMMIT" != "$EXPECTED_COMMIT"* ]]; then
+  echo "Warning: this patch was tested on upstream commit $EXPECTED_COMMIT, but the target checkout is $CURRENT_COMMIT." >&2
+  echo "The patch may still work, but failures are more likely if upstream changed." >&2
 fi
+
+bash "$SCRIPT_DIR/apply_patch.sh" "$MATRIX_ROOT"
 
 bash "$SCRIPT_DIR/setup_matrix_env.sh" "$MATRIX_ROOT"
 
@@ -85,7 +87,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # shellcheck disable=SC1091
 source "$SCRIPT_DIR/light_interaction_env.sh"
-export MG_NUM_ITERATIONS="${MG_NUM_ITERATIONS:-8}"
+export MG_NUM_ITERATIONS="${MG_NUM_ITERATIONS:-4}"
 export MG_PRESET="${MG_PRESET:-all}"
 exec bash "$SCRIPT_DIR/scripts/run_accel_preset.sh" "$MG_PRESET"
 EOF

@@ -8,6 +8,7 @@ It does not include the original Matrix-Game-3.0 source tree or any model checkp
 
 ```text
 matrix-game-3.0/
+├── LICENSE_LONGCAT
 ├── files/
 │   ├── scripts/
 │   │   ├── parse_benchmark_logs.py
@@ -51,7 +52,7 @@ This applies the patch, creates the Matrix-Game-3.0 runtime environment, downloa
 This release was tested on upstream Matrix-Game-3.0 commit:
 
 ```text
-71c3cd7
+71c3cd7f741311f8100f6cf9cde942b6c1378d11
 ```
 
 Required model assets:

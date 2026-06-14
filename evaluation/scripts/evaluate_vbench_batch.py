@@ -143,11 +143,11 @@ def main():
             scores = evaluate_one(video_path, prompt, base_name, sandbox_root, args.dimensions, device)
         except Exception as exc:
             print(f"[warn] VBench failed for {base_name}: {exc}")
-            scores = {dim: None for dim in args.dimensions}
+            scores = {dim: np.nan for dim in args.dimensions}
             failed += 1
         row = {"Video Name": base_name, **scores}
-        valid = [v for v in scores.values() if v is not None]
-        row["Video_Avg"] = float(np.mean(valid)) if valid else 0.0
+        valid = [v for v in scores.values() if pd.notna(v)]
+        row["Video_Avg"] = float(np.mean(valid)) if valid else np.nan
         rows.append(row)
 
     if rows:

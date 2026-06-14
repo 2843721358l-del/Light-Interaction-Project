@@ -7,8 +7,8 @@ __pycache__/
 *.png
 *.jpg
 *.jpeg
-!evaluation/data/sampled_200/*.jpg
-!evaluation/data/sampled_200/*.jpeg
+evaluation/data/sampled_200/*
+!evaluation/data/sampled_200/.gitkeep
 !asset/*.png
 *.pdf
 *.npy

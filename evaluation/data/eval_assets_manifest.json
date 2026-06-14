@@ -1,0 +1,1008 @@
+{
+  "description": "Evaluation assets for Light Interaction. Image assets are hosted externally on Hugging Face Dataset.",
+  "external_assets": true,
+  "files": [
+    {
+      "path": "sampled_200/A black and white abstract video featuring mesmerizing bubbles.jpg",
+      "sha256": "8517b29db37c27eb5a22571d5eb8b8d051cbd6936f8c4e9cc2e009c8cca79a16",
+      "size": 611537
+    },
+    {
+      "path": "sampled_200/A budding and blossoming flower bud seedling.jpg",
+      "sha256": "0d1abd442a2eb060d59483c6623bdfd77716760e532c7273bf364b9088a34c12",
+      "size": 985108
+    },
+    {
+      "path": "sampled_200/A bunch of cars are driving on a highway.jpg",
+      "sha256": "f1086f404427b61788d7eae56d4644598e977936f91737aa88630c4ccc948c8c",
+      "size": 916246
+    },
+    {
+      "path": "sampled_200/A group of people in a yellow raft is rowing through turbulent waters.jpg",
+      "sha256": "3fa285b66235ee23b9c8ba89c1c10f1bfad2f4de857fab6ecdca1fb5fd139040",
+      "size": 562545
+    },
+    {
+      "path": "sampled_200/A man and woman dressed as sugar skulls in a field of flowers, sharing a loving gaze with each other.jpg",
+      "sha256": "a72259d4af3a15f0cc011412b58bc62f01ffea47208464a591dff607c7ceb61a",
+      "size": 976413
+    },
+    {
+      "path": "sampled_200/A person is making dumplings.jpg",
+      "sha256": "4db772d80a7fc18c5adf2088d0f1d6714baf447fe9276cc996ff4b34942fa7f4",
+      "size": 2058885
+    },
+    {
+      "path": "sampled_200/A person is pouring water into a teacup.jpg",
+      "sha256": "f929498b3dc97c0a858c874c6a645d0f9a7c5628e629c3b12680fdac6cd9a890",
+      "size": 1282539
+    },
+    {
+      "path": "sampled_200/A red sports car driving through sand, kicking up a large amount of dust.jpg",
+      "sha256": "64be84f0019db17706afa2d8d61c035e0c4e68db109e39669b64d2b1e47f07ab",
+      "size": 426144
+    },
+    {
+      "path": "sampled_200/A teddy bear is climbing over a wooden fence.jpg",
+      "sha256": "1d5a7bc7ca8de8c4b562e7baa91b17d96cb1d18d145ad6fc1bd84c6cb7ab5498",
+      "size": 992577
+    },
+    {
+      "path": "sampled_200/A yellow boat is cruising in front of a bridge.jpg",
+      "sha256": "409aa68acbee36a290906a85727ba93e2c59771b5059c4e7bbb78707dabe0752",
+      "size": 3329643
+    },
+    {
+      "path": "sampled_200/A young boy is lifting a bundle of dry grass wrapped in waterproof fabric over his head.jpg",
+      "sha256": "17a8a801ffcfa89c9e796948439486f32329f36a1f2df56965487d967e65f96d",
+      "size": 1387525
+    },
+    {
+      "path": "sampled_200/Chopsticks are slowly picking up the buns from the plastic container.jpg",
+      "sha256": "f9284988fbafa0d1c50ec6c0425314b60592e3568e435b086bc10a1c8e4b3141",
+      "size": 363914
+    },
+    {
+      "path": "sampled_200/Colorful buildings on the seaside cliffs.jpg",
+      "sha256": "9a487eeda0799fbf808270e70d9cf4be895f7914bb991107965b4045eace90f6",
+      "size": 1196432
+    },
+    {
+      "path": "sampled_200/One person is riding on the back of a horse led by another person.jpg",
+      "sha256": "c1ad2fd96102b1e07fc96ea2fcadbc81a84bede5d9931ceb0f0f736b57da554a",
+      "size": 1592571
+    },
+    {
+      "path": "sampled_200/a bald eagle flying over a tree filled forest.jpg",
+      "sha256": "053cd5c3d5bfeeee39f0969e2759a4401169cbad0ac70e11f27e486231936df7",
+      "size": 1029944
+    },
+    {
+      "path": "sampled_200/a beach with a lot of buildings on the side of a cliff.jpg",
+      "sha256": "af19d09bca846d3ef2a5622ec58e5999eee6866fe2c752d9387ae2ae73b1b073",
+      "size": 2545917
+    },
+    {
+      "path": "sampled_200/a bicycle leaning against a fence in the snow.jpg",
+      "sha256": "8d8befe2602c473192da4f1d8ebb92ae20b8dbc9e0ed1687a276bd803f00e1fd",
+      "size": 2271455
+    },
+    {
+      "path": "sampled_200/a bird with a fish in its beak flying over a field.jpg",
+      "sha256": "31a0714da8e9a388cb0b24637326c783c8e09009ec46038449158c023f4ed8e6",
+      "size": 962001
+    },
+    {
+      "path": "sampled_200/a blue and white smoke is swirly in the dark.jpg",
+      "sha256": "373e45596c37e61347ffb01d25c1333251346c5dc976ad78f8dee179a3cba2f1",
+      "size": 328807
+    },
+    {
+      "path": "sampled_200/a blue car driving down a dirt road near train tracks.jpg",
+      "sha256": "ccace0d909afc286dd9a20efbf10e01f6faf022cd077714502c137d0329cf48d",
+      "size": 1016234
+    },
+    {
+      "path": "sampled_200/a blue fishing boat is navigating in the ocean next to a cruise ship.jpg",
+      "sha256": "4ad2bc9e28c4bcc9f717671c3b8a754ffc92eed87376d0c955af650cbe2fde15",
+      "size": 1037312
+    },
+    {
+      "path": "sampled_200/a blue train traveling through a lush green area.jpg",
+      "sha256": "a834255a97cba13e3cb53ddb3871bf46108a51df830663e30562e641335c61d3",
+      "size": 1549396
+    },
+    {
+      "path": "sampled_200/a boat sits on the shore of a lake with mt fuji in the background.jpg",
+      "sha256": "1a0b34ca7fce319fb474dea5c83352c373ffd331bfe4f34fee3206a76d796151",
+      "size": 1129074
+    },
+    {
+      "path": "sampled_200/a book on fire with flames coming out of it.jpg",
+      "sha256": "4f36567ce8f6e60595fcc474670ccb87b78b79bc1fd2a4e8f8e2016e237f4262",
+      "size": 503794
+    },
+    {
+      "path": "sampled_200/a bridge that is over a body of water.jpg",
+      "sha256": "3783f237204bcb875a4b0bc757a0c40cec75bffa7fa81790b2e97222c1263506",
+      "size": 1509807
+    },
+    {
+      "path": "sampled_200/a brown bear in the water with a fish in its mouth.jpg",
+      "sha256": "bbcf851ef52d17f8e1eccce9d449109e61a35d5548d1556d3b8f57e9830b23df",
+      "size": 261355
+    },
+    {
+      "path": "sampled_200/a bunch of food is cooking on a grill over an open fire.jpg",
+      "sha256": "39957f64e10ee42e6d6ae392868c52670aaf2450178623cc9899f4d904b50638",
+      "size": 1231030
+    },
+    {
+      "path": "sampled_200/a busy street with cars and people on motorcycles.jpg",
+      "sha256": "1cc599d84ec0d3a36916571a6fe7837f3a8c1dbfdaca7530ed418e594d1f3966",
+      "size": 2429521
+    },
+    {
+      "path": "sampled_200/a castle on top of a hill covered in snow.jpg",
+      "sha256": "8e1662b777349fcb71fe47020a17917c89fe619f76fb34a6a5e9d4c686ee4d7d",
+      "size": 607305
+    },
+    {
+      "path": "sampled_200/a chair in a room next to some drawings.jpg",
+      "sha256": "02e9cd332bdb13e32cb575fc2a5c5fe689c9416f6f8f209eff9922ea253d3783",
+      "size": 333769
+    },
+    {
+      "path": "sampled_200/a church sits on top of a hill under a cloudy sky.jpg",
+      "sha256": "451a3c3fb18a12fa9792b9a7cc80d1b4a118d1ece38a91ee604bc8de12b8f0bb",
+      "size": 733827
+    },
+    {
+      "path": "sampled_200/a city bus driving down a snowy street at night.jpg",
+      "sha256": "03f29d124c2fce735a419991bc03cd6fbbcd035fd5c65557eb69a3348833c745",
+      "size": 2195390
+    },
+    {
+      "path": "sampled_200/a city street at night during a snow storm.jpg",
+      "sha256": "306a6a70d0aa1459a4f5258a18df97cc1daeac67bcfe0b748413ac57c857f88b",
+      "size": 1818484
+    },
+    {
+      "path": "sampled_200/a city street with cars driving in the rain.jpg",
+      "sha256": "9e99c73c48316ceefc573170ab3381a95b610dcbe48f680d6dc695ddf53de020",
+      "size": 1154156
+    },
+    {
+      "path": "sampled_200/a close up of leaves with water droplets on them.jpg",
+      "sha256": "3179323fc2e2cfdd84814f8ddfc74bde6fa4900bc2fb9d39dc1ecb9b788ef302",
+      "size": 1297505
+    },
+    {
+      "path": "sampled_200/a close-up of a pink rose with water droplets on it.jpg",
+      "sha256": "6e6edb62891c61c48231c3733bc83e2bb42707f9eeb37ce6138cc3fdde2c5224",
+      "size": 476366
+    },
+    {
+      "path": "sampled_200/a close-up of a sea anemone in the water.jpg",
+      "sha256": "8af70e0e302b97f2198a7ef99521273a781cf067a3ead72813cf4b64513a02f4",
+      "size": 3199529
+    },
+    {
+      "path": "sampled_200/a close-up view of a green plant with unfurled fronds.jpg",
+      "sha256": "0f010faf09c3199f7335bcedeeccde1270db5ac975925386864b89ce25a1439d",
+      "size": 242568
+    },
+    {
+      "path": "sampled_200/a close-up view of a sea fan in the water.jpg",
+      "sha256": "390a0d93f26f442101b5b7de1af563e09d92af66a5695aceeec030cc07ed27ab",
+      "size": 296224
+    },
+    {
+      "path": "sampled_200/a close-up view of the flames of a fireplace.jpg",
+      "sha256": "08a99f497a52e04f7378daa55980ce9a2302cb7c79c7e54346b484cee252ce01",
+      "size": 543380
+    },
+    {
+      "path": "sampled_200/a clown fish hiding in a purple anemone.jpg",
+      "sha256": "510d323937c0f8d38d9a2da593ba08cafbfeeee7d9ba5711f115cced30a11a2e",
+      "size": 1593953
+    },
+    {
+      "path": "sampled_200/a couple of boats floating on a body of water.jpg",
+      "sha256": "837f4139fa792cf0272a86748ee5fe1919309548ad838f3d11d79bfa26edfcbd",
+      "size": 856980
+    },
+    {
+      "path": "sampled_200/a couple of wooden benches in the middle of a street.jpg",
+      "sha256": "5ff92304d92633fa34ac5334b08938ae806d2db9b87017bb5f7d8764259cf884",
+      "size": 3805747
+    },
+    {
+      "path": "sampled_200/a dandelion blowing in the wind.jpg",
+      "sha256": "08e8003b4a9d0ce980b9f9b9dadcac9c11255d8e9ff7c04f1176256ed032e5ea",
+      "size": 701947
+    },
+    {
+      "path": "sampled_200/a dark alleyway with a bus driving down it.jpg",
+      "sha256": "073e2bf822add3984cf57bf5e33768cb1cac2dd2857cdd923c0144f861e7d7bc",
+      "size": 1773019
+    },
+    {
+      "path": "sampled_200/a dog carrying a soccer ball in its mouth.jpg",
+      "sha256": "2a4441fa15d42a03d7fd5debd24fc2f9f96c4add9c4dbbb32d4be811b180b26c",
+      "size": 1658127
+    },
+    {
+      "path": "sampled_200/a dynamic video of a blurry neon light in the dark, radiating captivating colors.jpg",
+      "sha256": "7ecc662e257e0d4ae6a4a42e40d5b0fca0a8e2c6588fdf94f8e8fbc4cdd17993",
+      "size": 425737
+    },
+    {
+      "path": "sampled_200/a flock of birds flying over a tree at sunset.jpg",
+      "sha256": "70a5935d80202df41584ed0b78ac0099a134b327eeaa5b03f40c3969d80021bd",
+      "size": 502396
+    },
+    {
+      "path": "sampled_200/a frog sitting on top of water lily leaves.jpg",
+      "sha256": "5208fa8ca56574409fb00ee79fa19c47650c01a3c136d5277ce5e50eb2c77046",
+      "size": 844343
+    },
+    {
+      "path": "sampled_200/a green toy car is sitting on the ground.jpg",
+      "sha256": "b6c9b91b1c641a1b741e7e859d506ea592481d6e36fb082fc8b5d64766c9500c",
+      "size": 1518531
+    },
+    {
+      "path": "sampled_200/a group of cactus plants in the desert.jpg",
+      "sha256": "a6bd86d753ece4f35b6dd5d4aac69c22027d5bec9a393bf949d77e6640dd80db",
+      "size": 473050
+    },
+    {
+      "path": "sampled_200/a group of fish swimming over a coral reef.jpg",
+      "sha256": "417ac60b8948eaa6ba66eeb7af05d8f06ed29b187caa308b221e7004f0faf23d",
+      "size": 861979
+    },
+    {
+      "path": "sampled_200/a group of hot air balloons flying over a field.jpg",
+      "sha256": "9aea2210cf2348b9acefb11a10d03c22d0b9cb17328293f572839253fbeaa21b",
+      "size": 1928254
+    },
+    {
+      "path": "sampled_200/a group of hot air balloons flying over a valley.jpg",
+      "sha256": "cf78712e9839915590c1eb7410b6e89906f595e6b244ca66716a80051f2bc7cf",
+      "size": 1977766
+    },
+    {
+      "path": "sampled_200/a group of jellyfish swimming in an aquarium.jpg",
+      "sha256": "3a4d0de683d981d126773afea58bf357521d96cceed057a69f891285bba5fa69",
+      "size": 581005
+    },
+    {
+      "path": "sampled_200/a group of people in orange jumpsuits running along a river.jpg",
+      "sha256": "437fbb989deb4589c8db139ec7cc3a6af0d213abe1cab472430fb7b00046ac10",
+      "size": 2474625
+    },
+    {
+      "path": "sampled_200/a group of people riding bikes down a street.jpg",
+      "sha256": "028e5e10e59c467ffc21d8a182fe4f1fa14280d9f10ab4e5a7fe658df9696ee8",
+      "size": 1096529
+    },
+    {
+      "path": "sampled_200/a hot-air balloon flying over a desert landscape.jpg",
+      "sha256": "1172e461c3e580e8d9f62141d6b4f1faf7b426ec3f3e129d6646fce3dfa67462",
+      "size": 1113524
+    },
+    {
+      "path": "sampled_200/a house with snow on the ground.jpg",
+      "sha256": "72d2f61785dbd47081c86cb9a451a37ad4377a8fe922ba57f142d0bbbdc517aa",
+      "size": 1889369
+    },
+    {
+      "path": "sampled_200/a kettle is sitting on top of a campfire.jpg",
+      "sha256": "496a03499f2a821ddbf022ed7e32056477f97e25835a8e4a60535b979585f1b5",
+      "size": 2110674
+    },
+    {
+      "path": "sampled_200/a lake surrounded by mountains and flowers.jpg",
+      "sha256": "bd735d1767ae80c17c3d934d4258bbe1781f5558a5cc91e4fc483ab64545405f",
+      "size": 398972
+    },
+    {
+      "path": "sampled_200/a large bonfire is burning in the night sky.jpg",
+      "sha256": "be0c5bac0605dce25d05af43f82b099ec1988fc31dbc69952adb079c8c497ed9",
+      "size": 1278202
+    },
+    {
+      "path": "sampled_200/a large cargo ship sailing in the water.jpg",
+      "sha256": "70b36990f1ec6b240682dced6e6bbd8b1dc6b9eb36a4a7c39156d8e3bf634838",
+      "size": 1205881
+    },
+    {
+      "path": "sampled_200/a large crowd of people walking in a shopping mall.jpg",
+      "sha256": "201eeba5bccf1f929c47f4a6b33b0d52876e76d7b6966f20b527db33762b0442",
+      "size": 1730505
+    },
+    {
+      "path": "sampled_200/a large flock of birds flying in the sky.jpg",
+      "sha256": "e85b2bdf24dba963eff5e9116a0cb5b2930c62797701bccfd40e53545ac27822",
+      "size": 551199
+    },
+    {
+      "path": "sampled_200/a large waterfall in the middle of a building.jpg",
+      "sha256": "fa9fd6dcb792733775647cbf033d75de32c43a282ecbae52602a0fb4463a93e9",
+      "size": 1981541
+    },
+    {
+      "path": "sampled_200/a large waterfall in the middle of a lush green hillside.jpg",
+      "sha256": "758abb0f041508506dce6c60367a11feff7c22a93c39eb6674d43861d0d8daa9",
+      "size": 1292741
+    },
+    {
+      "path": "sampled_200/a large wave crashes into a lighthouse on a stormy day.jpg",
+      "sha256": "1c2ade1f218edc83d9e187da6c219ec26df006d4c4268f11209c0d0610c7ec63",
+      "size": 2225172
+    },
+    {
+      "path": "sampled_200/a large wave crashes into a lighthouse.jpg",
+      "sha256": "4d6d4bed3a7f204e6472c2fc07a42575ddb22a094424f26c86edf0381eed95fd",
+      "size": 504147
+    },
+    {
+      "path": "sampled_200/a light house on the edge of the water.jpg",
+      "sha256": "fedff536cbc3f65ee72be8b8dd5ad8aa7e4224b3a232515d534c2866432ab84b",
+      "size": 767128
+    },
+    {
+      "path": "sampled_200/a lion is roaring in the wild.jpg",
+      "sha256": "d884416043765701809ba00b32fd0cc6631f7ad6eb0181d3ac0fcdba0d993f6a",
+      "size": 4830279
+    },
+    {
+      "path": "sampled_200/a lioness yawning in a field.jpg",
+      "sha256": "31b02565d7d4f9021ffbb6808d3d225d0cf61c700c538621d23b815bbdac010b",
+      "size": 207768
+    },
+    {
+      "path": "sampled_200/a little crab scurried on the sandy beach.jpg",
+      "sha256": "b988bfde5e1b5b1d4bbee093940b2509916f19f024042794bfe92af5ebc29dc2",
+      "size": 1039491
+    },
+    {
+      "path": "sampled_200/a living room with a couch, table, and a window.jpg",
+      "sha256": "aae943ebcc14baf304a378df384b2051044ea5bdb8b426b5fedf056522a8da02",
+      "size": 823907
+    },
+    {
+      "path": "sampled_200/a man and a boy sitting on a beach near the ocean.jpg",
+      "sha256": "c6b4f7098cbb7403d532288be5446e085b23402be521dcfba7f7feda9fbfdec3",
+      "size": 461309
+    },
+    {
+      "path": "sampled_200/a man holding a baby in his arms.jpg",
+      "sha256": "708ee6b81169d156373cf04f8d468d0b5f6951ed2ce910c7f093dc9cca2b5f46",
+      "size": 617449
+    },
+    {
+      "path": "sampled_200/a man in a hat sitting in front of a brick oven.jpg",
+      "sha256": "a9994b24863fcf930de76ee66a46bdb4b85b2d2651dcbc88c543d5f490f1b0a8",
+      "size": 1949019
+    },
+    {
+      "path": "sampled_200/a man in a mask is walking through a crowd of people.jpg",
+      "sha256": "3eb4d7ea8b8f9cbf436d21784e349ebd399adadd726eb7b0423c44c8264722df",
+      "size": 8661084
+    },
+    {
+      "path": "sampled_200/a man in a mexican outfit holding an acoustic guitar.jpg",
+      "sha256": "196f1177c88d2216b75d19139db5037ef8a35c2bd4ab1f4b928119ef7b3e3381",
+      "size": 1964603
+    },
+    {
+      "path": "sampled_200/a man in a small boat fishing in the ocean.jpg",
+      "sha256": "43e40b84937e4d88791719af251db1a9c4992ccd7e8124983a197fa998830023",
+      "size": 2900582
+    },
+    {
+      "path": "sampled_200/a man is running on a dirt road.jpg",
+      "sha256": "16b2f0d4f1b408720d46c6e1b617435649005e2ba4b98f37854a437dd24f621e",
+      "size": 1224750
+    },
+    {
+      "path": "sampled_200/a man riding a mountain bike on top of a rocky hill.jpg",
+      "sha256": "3422248b46c3b69f322253b54bf3eab3d19cfcaec59ac511d8f72ea049fbbe2e",
+      "size": 860867
+    },
+    {
+      "path": "sampled_200/a man sitting in the driver_s seat of a car wearing sunglasses.jpg",
+      "sha256": "3835ffb6300dd214abe8307789e3bb419a3426e7ae8b9cbcf81102ebfde4487d",
+      "size": 475612
+    },
+    {
+      "path": "sampled_200/a man sitting on steps playing an acoustic guitar.jpg",
+      "sha256": "f5409f204e8346fcb43f19a6b422277eda3eb125efd6d3e1f5db24045ee6dc9d",
+      "size": 1301579
+    },
+    {
+      "path": "sampled_200/a man sitting on the ground playing a musical instrument.jpg",
+      "sha256": "d9cae0208064b116fed77afff926fc5015ee2d44d623ac5dbd1ee8eb697cfe52",
+      "size": 1959732
+    },
+    {
+      "path": "sampled_200/a man standing on a boat with a net.jpg",
+      "sha256": "a9a02099e1eda740c8042326c7173a3cb504e5caa21fdaef53f4df7937f141ca",
+      "size": 1604893
+    },
+    {
+      "path": "sampled_200/a man standing on top of a sand dune in the desert.jpg",
+      "sha256": "0cd4ae254826ea719a9c50fe8c6adc4afcf5b7e99c91b1f7ac4e9644a80164a3",
+      "size": 327293
+    },
+    {
+      "path": "sampled_200/a modern living room with wood floors and a tv.jpg",
+      "sha256": "f54539a93bf5473e4f0c67685a3fe676d6436f263759e874657a7670a5db5495",
+      "size": 315743
+    },
+    {
+      "path": "sampled_200/a monochromatic video capturing a cat_s gaze into the camera.jpg",
+      "sha256": "3fba8138089c49acd66485a1cbb02b0d14d233214d0abee1e17fbb0574e7f744",
+      "size": 250602
+    },
+    {
+      "path": "sampled_200/a motorcycle driving down a road.jpg",
+      "sha256": "d179693af55098b084581a68cfe22067a73bee99850bfe49f434786500e33865",
+      "size": 2444690
+    },
+    {
+      "path": "sampled_200/a mountain covered in snow with evergreen trees.jpg",
+      "sha256": "cb273c9996ea59c956f617bc1e9d3c9454c8305b3b3c383b398091a72ce33750",
+      "size": 2288856
+    },
+    {
+      "path": "sampled_200/a mountain range with a sky background.jpg",
+      "sha256": "0d50d15f018d8be92f467c3a103ec535a3c89c6fed4ae0115c5f7b83820fa019",
+      "size": 940945
+    },
+    {
+      "path": "sampled_200/a mountain range with snow on the ground.jpg",
+      "sha256": "3515b8e87a8331410c7b0006d6f1f7206bc3ccacfd934fd7f4c6448c626fe120",
+      "size": 2368756
+    },
+    {
+      "path": "sampled_200/a mountain with snow on it.jpg",
+      "sha256": "c43c2e653785dcadac10ccb2ae941509ce87d6ddfaec79416d794a2dff9aa751",
+      "size": 1683856
+    },
+    {
+      "path": "sampled_200/a pagoda sits on top of a mountain in japan.jpg",
+      "sha256": "3875aedf8767e709f8d614b8cd7eba80e3f99fec66a6c4e4b5a77d3ba62e7b76",
+      "size": 661771
+    },
+    {
+      "path": "sampled_200/a painting of a cloudy sky next to an easel.jpg",
+      "sha256": "b278825b0a3ab4993e0cec361f7a1e4db933b2e8afcb2e7bf0c05d6874550cce",
+      "size": 1437024
+    },
+    {
+      "path": "sampled_200/a panda bear is eating a piece of bamboo.jpg",
+      "sha256": "f54d07892badc85967bfac68a2e1115a488c4a5c94174e8ddecaa0a46aa60384",
+      "size": 4305966
+    },
+    {
+      "path": "sampled_200/a person holding a sparkler in front of a sunset.jpg",
+      "sha256": "a06d34da072c06fa6cbdb179d169397c6610da7e825d85ecd583f098a6dfca89",
+      "size": 1251116
+    },
+    {
+      "path": "sampled_200/a person holding chopsticks over a bowl of food.jpg",
+      "sha256": "0348813372d88b5ca0bdd54b46417944f5eb6d4e7dbbddb50522bde0287fca94",
+      "size": 3683579
+    },
+    {
+      "path": "sampled_200/a person is cooking eggs on an outdoor grill.jpg",
+      "sha256": "ec702ec229fbc4fe6d9a1daf3cbd64a2e88739fc0ed6f145b766b4845ee7a0d9",
+      "size": 2270717
+    },
+    {
+      "path": "sampled_200/a person is cooking food in a wok on a stove.jpg",
+      "sha256": "a3170488098e63d1b047b1679a1fc4617665cbaf3aabc0cf5a90c98d61f15e89",
+      "size": 1954314
+    },
+    {
+      "path": "sampled_200/a person is cooking meat on a grill with flames.jpg",
+      "sha256": "b7d59840c57d357b534a3a05a194e7ac23857e2db63a7fbfb4910bb762fe66b2",
+      "size": 656544
+    },
+    {
+      "path": "sampled_200/a person is holding up a burger with his hands.jpg",
+      "sha256": "0b747feaae17e93558d7c2f65613e301f96fac2952738dfefdce72de1408e0c8",
+      "size": 1888235
+    },
+    {
+      "path": "sampled_200/a person riding a dirt bike.jpg",
+      "sha256": "dd74dc91c2ae6b9034c9505600f25e4fdfa0bd2ae58084981a8f5707818d3413",
+      "size": 2811327
+    },
+    {
+      "path": "sampled_200/a person riding a horse in a polo match.jpg",
+      "sha256": "5527ed9697e019fa140dcd5a5f8395af2b355c35f686a27bc36584ecd847460a",
+      "size": 290423
+    },
+    {
+      "path": "sampled_200/a person riding a wave on a surfboard.jpg",
+      "sha256": "974e06b07a3434c6fa9834529219318f67f7451db81b21b7e086658ae46608c3",
+      "size": 1238221
+    },
+    {
+      "path": "sampled_200/a plant with water droplets on it.jpg",
+      "sha256": "b506e740decace14b4ec0509de251ae31ae5a7af47aa2196f5ae4fcae9f7c0ff",
+      "size": 1164397
+    },
+    {
+      "path": "sampled_200/a pot is sitting on top of a campfire.jpg",
+      "sha256": "2d203e2b274cd03245c33ffe878e4a648af6ff400812df56a769666e4cc1b09f",
+      "size": 1189312
+    },
+    {
+      "path": "sampled_200/a purple and yellow abstract painting with a black background.jpg",
+      "sha256": "aeb79de979224747c0ce990e51c369ccacfbe45ca8c635fadfb6f0f4dfe609aa",
+      "size": 895784
+    },
+    {
+      "path": "sampled_200/a red and white tram traveling down a snowy street.jpg",
+      "sha256": "ff592b3202e7e5bad052df0a616375f50aae2b6cf8be40068c5b277abd22e5ba",
+      "size": 3053397
+    },
+    {
+      "path": "sampled_200/a red bus driving down a snowy street at night.jpg",
+      "sha256": "9c1fcdc9b49a33880290c3edf14ad968d399833e6b70436154bac59298776b73",
+      "size": 1166627
+    },
+    {
+      "path": "sampled_200/a red double decker bus driving down a street.jpg",
+      "sha256": "6b5e2b46abc03a346c1ddd5b3b01e2853a36ed75d59493c4017378ff8455951d",
+      "size": 1700319
+    },
+    {
+      "path": "sampled_200/a red panda eating bamboo in a zoo.jpg",
+      "sha256": "f52af44526b98f2999e9305bca172dc134af4b192a5413373d18751c531bb00e",
+      "size": 2503898
+    },
+    {
+      "path": "sampled_200/a reflection of a city with buildings in the water.jpg",
+      "sha256": "cad88b8fe1a0d0882c3c428f0d6b03ae22be5c7f4f50177f377cc8bd58749ac0",
+      "size": 737214
+    },
+    {
+      "path": "sampled_200/a room filled with books and teddy bears.jpg",
+      "sha256": "b48a6e84d03e78b000dd07a3c89c609beaf3abf98e9723286642c99bc8c43000",
+      "size": 2371507
+    },
+    {
+      "path": "sampled_200/a room with a lot of pictures on the walls.jpg",
+      "sha256": "6b82a9a2cc6f212dce6d979931d647646921fe523175ecf53715b1c48a122df0",
+      "size": 2188855
+    },
+    {
+      "path": "sampled_200/a sailboat is drifting on the ocean.jpg",
+      "sha256": "f3ac6971c25ffcf2fd764fff45848d3050e66c49c1159703111f54679cc7ba91",
+      "size": 697210
+    },
+    {
+      "path": "sampled_200/a sandy beach with a wooden pier in the water.jpg",
+      "sha256": "8c6268173913a0b159522739112042dee42a6b39ab3b2add49130dbad5838c56",
+      "size": 1355223
+    },
+    {
+      "path": "sampled_200/a sandy beach with palm trees on the shore.jpg",
+      "sha256": "acd0b7bc6d9110511eb68040d3f7f904666f8170de8c6104db5136ba527261c1",
+      "size": 694539
+    },
+    {
+      "path": "sampled_200/a sea anemone on a coral reef.jpg",
+      "sha256": "bc9b056f1f516e80999fb77b93447305b9bc2a65f8ee09845777ffb3cf94bc02",
+      "size": 2630352
+    },
+    {
+      "path": "sampled_200/a sea turtle swimming in the ocean under the water.jpg",
+      "sha256": "d5a383c998e54616f5bc224bee0d9ccd8dd1418164ee7a7914e82a62a1d97285",
+      "size": 1113176
+    },
+    {
+      "path": "sampled_200/a small bird sits on a moss covered branch.jpg",
+      "sha256": "b1ec9be7041a576b797cd7a63af4d074708fa18871a9302114f602c667928004",
+      "size": 2563826
+    },
+    {
+      "path": "sampled_200/a snake sitting on the ground next to a bowl.jpg",
+      "sha256": "f85f66ead6353f9194b48c6be1fca2c06df77ce553249b6823e0869cd8623890",
+      "size": 1505433
+    },
+    {
+      "path": "sampled_200/a snow covered street.jpg",
+      "sha256": "9cfdb3a69b75eca8b898eac186ade42c2282501f3d1d9611390f17104ce99e39",
+      "size": 2607864
+    },
+    {
+      "path": "sampled_200/a snow man holding a lantern in the snow.jpg",
+      "sha256": "23c0672e4a4e0ec772cd64a2f79b5f47351abe43934b7c308438de343ed01b72",
+      "size": 3116281
+    },
+    {
+      "path": "sampled_200/a snowman wearing a santa hat and scarf.jpg",
+      "sha256": "75b0d2d6c6ac767da89b9586fc32bfd63617c5e7bf093e418705035e93fde2ab",
+      "size": 1426756
+    },
+    {
+      "path": "sampled_200/a space shuttle taking off into the sky.jpg",
+      "sha256": "456c4892f41eaf67261c2f543589101f5b11e6e183dfd1d703e6cb35a04bcbcc",
+      "size": 306238
+    },
+    {
+      "path": "sampled_200/a stack of pancakes covered in syrup and fruit.jpg",
+      "sha256": "fe3483570997c494aaeb16830f94e771a02a42166cc8bbda9c0e1a539bb87f25",
+      "size": 432107
+    },
+    {
+      "path": "sampled_200/a statue of a lion is sitting on a pedestal.jpg",
+      "sha256": "2140478ae5b36f1cc01ce90dc272c4e5dd764c6e60aa444268464dab39754f0f",
+      "size": 1926659
+    },
+    {
+      "path": "sampled_200/a steam train traveling through the woods.jpg",
+      "sha256": "e3d652c6064126196b8f1afb3f2d03d8c036ae802510f59594a8cabb398de887",
+      "size": 1938409
+    },
+    {
+      "path": "sampled_200/a table and chairs in a room with sunlight coming through the window.jpg",
+      "sha256": "3d79a27920c9ff6c9d55f89afce9bed9682815948addde45b01a4b57bb9e9087",
+      "size": 636942
+    },
+    {
+      "path": "sampled_200/a teddy bear sitting on a moss covered ground.jpg",
+      "sha256": "c01a35d14d3e00be94d7215b64aa6e163da0d9eeeb20f34b3e2d4c0107d14231",
+      "size": 1777669
+    },
+    {
+      "path": "sampled_200/a tiger walking on a dirt path in the woods.jpg",
+      "sha256": "778893df584a27593f134e6c89ca7e853cea4d2aee4169d018bc31ebdb196a21",
+      "size": 2131590
+    },
+    {
+      "path": "sampled_200/a tiger walking through a wooded area.jpg",
+      "sha256": "93ef511b32d80650ce382517983dc46acc96ca9d31ded4856b1bd19dde44dbeb",
+      "size": 1757261
+    },
+    {
+      "path": "sampled_200/a toad is sitting on top of some moss.jpg",
+      "sha256": "d4398eefc9c8a39516254a89f6aa1e3c4716ad216e6098dd692ff725d7120456",
+      "size": 721091
+    },
+    {
+      "path": "sampled_200/a train traveling down tracks through the woods with leaves on the ground.jpg",
+      "sha256": "b153ec59c36d5a3765017393ac7f3f04957b35cfa7e179e29ac4535f05e08b0a",
+      "size": 1823246
+    },
+    {
+      "path": "sampled_200/a very large waterfall in the middle of the day.jpg",
+      "sha256": "2c2df024e1676251c8d5d4bb4294729e9f862564c3c2119f2c47a4c7c2fcfd1b",
+      "size": 686167
+    },
+    {
+      "path": "sampled_200/a view of a star trail in the night sky.jpg",
+      "sha256": "15daedca235f8266340fe3a450edba260a82f70e75aa09d4ad7bd24e6310c107",
+      "size": 967448
+    },
+    {
+      "path": "sampled_200/a view of a waterfall from a distance.jpg",
+      "sha256": "358500f6d1f98b8ff42d33627bf99661eed833ce4060f38524c7c71e18e0c6e0",
+      "size": 2392570
+    },
+    {
+      "path": "sampled_200/a visually captivating abstract video, rich in color, set against a dramatic black background.jpg",
+      "sha256": "e36054fbc7e68e22e08c75a207bb14bc9069ed8ade58ed598f19fcdbdc81cbe1",
+      "size": 877975
+    },
+    {
+      "path": "sampled_200/a warthog is walking in the grass.jpg",
+      "sha256": "4c0ff6a6adfbe88fe451b6dfbadb9145c8ce079043ec8be9bc3f1cc4c5772145",
+      "size": 1665390
+    },
+    {
+      "path": "sampled_200/a waterfall is shown in the middle of a lush green hillside.jpg",
+      "sha256": "f3d2fa09ab6e7148aa062ef0bcaee6e979c62b17fa7a460a47a1f50a1ee9f5aa",
+      "size": 460853
+    },
+    {
+      "path": "sampled_200/a white and blue airplane flying in the sky.jpg",
+      "sha256": "112562bdf9af391d07fbdbe49cce983cd21f699889bb3c6bbbe19252278f2b43",
+      "size": 528722
+    },
+    {
+      "path": "sampled_200/a white car is swiftly driving on a dirt road near a bush, kicking up dust.jpg",
+      "sha256": "bb9c2e6348d692b448ce2616d276e4109057972b7b4058ea68e74a5a1c19e4ef",
+      "size": 876709
+    },
+    {
+      "path": "sampled_200/a woman carrying a bundle of plants over their head.jpg",
+      "sha256": "26a06d22e0253a4f99b4a08561ed5647cfb94e8dac7d176735425cab0f40fa7d",
+      "size": 1975411
+    },
+    {
+      "path": "sampled_200/a woman in a colorful shirt is cooking food.jpg",
+      "sha256": "3d4e4f8571179512223be3d9e574ab963002133d765773c3b031759e29ffaf86",
+      "size": 1735398
+    },
+    {
+      "path": "sampled_200/a woman in a kimono holding an umbrella.jpg",
+      "sha256": "62c1494d6c7588f2fbc76935278a97ee6a9fbf65ab0dc1c828f2de81cd081140",
+      "size": 2386642
+    },
+    {
+      "path": "sampled_200/a woman in a white dress jumping in the air in a field of pink flowers.jpg",
+      "sha256": "9561476446b5287fd412c496f27c8d10f46857cb01b3774c1ea72ae150cc8c00",
+      "size": 524653
+    },
+    {
+      "path": "sampled_200/a woman is making bread in an oven.jpg",
+      "sha256": "37de4dc9b093db6000b92d14521969fdfed3bdc91f55aeccfb54c978b69902f2",
+      "size": 3547705
+    },
+    {
+      "path": "sampled_200/a woman walking down a sidewalk with a bag.jpg",
+      "sha256": "29f048a2ffbb056a915f4e55f87780692e813bf5b97cd066f59eb3100b21c6e7",
+      "size": 758817
+    },
+    {
+      "path": "sampled_200/a woman wearing a hijab reading a book on the beach.jpg",
+      "sha256": "4a369c06cf42a14b82170871ec9e49d4bbcccd6d8a87519195dcaa84a17e4b13",
+      "size": 799911
+    },
+    {
+      "path": "sampled_200/a woman wearing a shawl in front of a mountain.jpg",
+      "sha256": "d17633328fd736426d44a1de901d738c3c84b391bb35390c299e2025e2e0e93e",
+      "size": 1888982
+    },
+    {
+      "path": "sampled_200/a woman with afro hair is smiling while wearing earphones.jpg",
+      "sha256": "7314e952c25c913ce0f63ba651119f8b991ed6c6e88f9ad914a3d607b1a05ab6",
+      "size": 346046
+    },
+    {
+      "path": "sampled_200/a woman with long black hair is posing for a picture.jpg",
+      "sha256": "6dd839c95ba8f4ed467689c2c1c0381dfafc1fedbadab220e1f2fc99b183359c",
+      "size": 756063
+    },
+    {
+      "path": "sampled_200/a yellow and white jellyfish is floating in the ocean.jpg",
+      "sha256": "d21236815b0e00dbde4d41234980588051eae843d7195c26ac456f2c48b8ef49",
+      "size": 1110382
+    },
+    {
+      "path": "sampled_200/a yellow toy car parked on a rock near the water.jpg",
+      "sha256": "eba1a7cc70f2487652f28e7c7e1299e9e8c8ee0486301140985d2a109ca9a139",
+      "size": 725297
+    },
+    {
+      "path": "sampled_200/a yellow water lily is floating in a pond.jpg",
+      "sha256": "4d4c70da310ca05f025f40de70a13e7d38be58f82ba206a32a34e994f8420ed2",
+      "size": 1507215
+    },
+    {
+      "path": "sampled_200/a young boy is jumping in the mud.jpg",
+      "sha256": "f4f3d86494e82c0c5cc7f69734eb11a1e0eca5fc691a2e981f7c96e0c787f216",
+      "size": 2214917
+    },
+    {
+      "path": "sampled_200/a young boy leaning on a wooden pole.jpg",
+      "sha256": "4f243644a6dda2bbbe930954be35ef2a266bd250f0639522bba5b05d7dbe2978",
+      "size": 1401541
+    },
+    {
+      "path": "sampled_200/a young boy standing in a field with horses in the background.jpg",
+      "sha256": "76ca395e35d21edbb77bef76e93876ce33ea9d90fd697d04a46fd39fd1f58975",
+      "size": 1315132
+    },
+    {
+      "path": "sampled_200/an aerial view of a body of water and a beach.jpg",
+      "sha256": "059e5cbdbc3231a8e26cc800def328ddb69083d3d1a57a5b02c8af715c87dde4",
+      "size": 525861
+    },
+    {
+      "path": "sampled_200/an aerial view of a busy city with a bridge in the background.jpg",
+      "sha256": "4c739a14b4049bd638b4e1493fd243260f97fc01032e8fcedd1096b0d390f4f8",
+      "size": 1167449
+    },
+    {
+      "path": "sampled_200/an aerial view of a curvy road in the middle of a forest.jpg",
+      "sha256": "5c12aa1f4c9d123a984f77a790f8a847eb02992cb182c166fe07ba9a7afb02e0",
+      "size": 1534070
+    },
+    {
+      "path": "sampled_200/an aerial view of a futuristic building on a cliff overlooking a body of water.jpg",
+      "sha256": "81136d28125fbf3d75ab1349ac1909e371a5a5d677286246c717f09a9e0f1e1e",
+      "size": 928186
+    },
+    {
+      "path": "sampled_200/an aerial view of a rocky beach in indonesia.jpg",
+      "sha256": "a5bcf8a47ba0d844e6197f2ef796ca6fc6030939dc25957c145c87d1b1c4b4e1",
+      "size": 2109828
+    },
+    {
+      "path": "sampled_200/an aerial view of a snowy road in a forest.jpg",
+      "sha256": "461fdcfb1082159ea7199b327b4039b49cc0bdaf2f488734e42b22b32a1fcf60",
+      "size": 2099034
+    },
+    {
+      "path": "sampled_200/an airplane is flying through the sky at sunset.jpg",
+      "sha256": "31b33872355efcbb497ed2c67f4ea84368d023b00f1daceec1ddb6711167d983",
+      "size": 383320
+    },
+    {
+      "path": "sampled_200/an alligator is covered in green plants in the water.jpg",
+      "sha256": "81a8661353c47ffd10e8093c93a51858ec524d1bbd1615b497e4bc7212d4b769",
+      "size": 3751733
+    },
+    {
+      "path": "sampled_200/an eagle is flying over a mountain with trees in the background.jpg",
+      "sha256": "cdbd5493f1e032e28ddd8ac41a3716c721ae09bc3e7c50bec77c318e8709829b",
+      "size": 684907
+    },
+    {
+      "path": "sampled_200/an elephant walking through a forest.jpg",
+      "sha256": "05501cc287b8eae7ff34ad811100342a522988932b404734cebea78316f2caf9",
+      "size": 748253
+    },
+    {
+      "path": "sampled_200/an indian police officer talking to an old woman.jpg",
+      "sha256": "7aec2e343dfbaad582aa54a7c34bd22a73fe016803bff18100712b77199c593a",
+      "size": 4619739
+    },
+    {
+      "path": "sampled_200/an old man standing in the middle of a field holding a bunch of plants.jpg",
+      "sha256": "4131264cda654f6f2c6d09e80ea1cbeb62b2237625a9469540b2742236f44cf5",
+      "size": 1305039
+    },
+    {
+      "path": "sampled_200/an old rusty car sits in the middle of a field.jpg",
+      "sha256": "68a676001895342570024c5f0219d2cc521027f8d46e8f0f40b0a871f22f8402",
+      "size": 557719
+    },
+    {
+      "path": "sampled_200/an older man playing a saxophone on the street.jpg",
+      "sha256": "d5ea92bca65e1c2ea3cc6a84bd83cf544d0e6eb140c07ba58ecc24816f7cda5c",
+      "size": 1424822
+    },
+    {
+      "path": "sampled_200/an older woman is drinking a bottle of water.jpg",
+      "sha256": "087b291e50b91afadf86e269662ae88205ada3e207a73dc22d03b2ae147f4ea2",
+      "size": 1857581
+    },
+    {
+      "path": "sampled_200/an older woman sitting in front of an old building.jpg",
+      "sha256": "3f1010f59deacfab33a9b6a81c51392192d0f14b2187d6d7a94c83315ac12966",
+      "size": 1619992
+    },
+    {
+      "path": "sampled_200/an orange mushroom sitting on top of a tree stump in the woods.jpg",
+      "sha256": "a44aac2d68925ace033275ae2daab1b9e8447eaf2c30ca1c0f4c530773638359",
+      "size": 1705563
+    },
+    {
+      "path": "sampled_200/an outdoor dining area surrounded by plants and a brick walkway.jpg",
+      "sha256": "5d6dce9d3e56adc4e5f5ff823331ebd7d48ee78147e47b16ab528732a8407fc4",
+      "size": 834434
+    },
+    {
+      "path": "sampled_200/cars are driving down a street lined with tall trees.jpg",
+      "sha256": "957ec58089bfc5d608d44fe283ff584d290a247638c54fc7e9f3d7f5388b232f",
+      "size": 1680883
+    },
+    {
+      "path": "sampled_200/cars parked on the side of the road during a snowstorm.jpg",
+      "sha256": "88dc355aa2ab85ef8351546e6f0b2f5e3a751736cbf111a2858ea826e80fa5cc",
+      "size": 2298516
+    },
+    {
+      "path": "sampled_200/fireworks in the night sky over a city.jpg",
+      "sha256": "1b06224f5e80acee1744834255db4fd1abd1d7409f836d31656558f303070dee",
+      "size": 1164763
+    },
+    {
+      "path": "sampled_200/metal balls are suspended in the air.jpg",
+      "sha256": "8f7ad1509f77e3c712a934165fe3f2dc8806ba619857b9fd14ff51e6659a5b9f",
+      "size": 515159
+    },
+    {
+      "path": "sampled_200/pink water lilies in a pond with leaves.jpg",
+      "sha256": "a2538d28291fb65ae3a68d4a3343ede7ed555927f0d080990b49c06f3f9601b7",
+      "size": 575717
+    },
+    {
+      "path": "sampled_200/pink water lilies in a pond.jpg",
+      "sha256": "780c69d560acd18f9ef021073fb055237533d06ac0ab2d134bedfc229cbbcab5",
+      "size": 1242933
+    },
+    {
+      "path": "sampled_200/reeds blowing in the wind against a cloudy sky.jpg",
+      "sha256": "eb950422e4c2666509f085860320cec1cccb6281a6b7500910c837b048951e22",
+      "size": 1112796
+    },
+    {
+      "path": "sampled_200/the cars on the street are waiting for the traffic lights.jpg",
+      "sha256": "6e3d42f0cfaedc38159eeb7af158e5e75c8e7c7e1a510c73b61467e918da64c2",
+      "size": 1067976
+    },
+    {
+      "path": "sampled_200/the otter is standing in the water.jpg",
+      "sha256": "64bca1e56a73f87957cefa96ffe7801db9e80506be015da23fcaec1655042f65",
+      "size": 1624707
+    },
+    {
+      "path": "sampled_200/the pyramids of giza, egypt.jpg",
+      "sha256": "0f12b95b45634f0a61256ed74c2470759fb59f9516488d43d975fb7ee7ac91e7",
+      "size": 2330985
+    },
+    {
+      "path": "sampled_200/the red Alfa sports car is speeding down the road.jpg",
+      "sha256": "fbdcd5db600fbbd02e8578427a56931c267649d9b2aa08bceb5603f1188396ca",
+      "size": 1692977
+    },
+    {
+      "path": "sampled_200/the sun is shining through the trees near a waterfall.jpg",
+      "sha256": "0f977a122a150f62c89ceff6774c7f2a9c45c33ed2a5ff8208b779322e65df0e",
+      "size": 1368039
+    },
+    {
+      "path": "sampled_200/tokyo skyline at night.jpg",
+      "sha256": "bc49c9bd817b373d22eb00e3caaea5502c98fad7ea744c585efd498381de0fdb",
+      "size": 3375909
+    },
+    {
+      "path": "sampled_200/two cars that have been involved in a violent collision.jpg",
+      "sha256": "d4658d33ed2cbd9be3138e03683889b1aa6172f4f913c9b410ad5719403adaaa",
+      "size": 1671666
+    },
+    {
+      "path": "sampled_200/two men in white clothing standing next to each other.jpg",
+      "sha256": "242a0e4b7d960dab9ff8aca4e739c0d6449fdcd45dc6bef67ceb2d271994c94f",
+      "size": 839588
+    },
+    {
+      "path": "sampled_200/two men riding bikes down a road near a forest.jpg",
+      "sha256": "497584144558eaaa9d418713bcc51fa77116fe754f01e88d54f039c54d7a48fe",
+      "size": 2852423
+    },
+    {
+      "path": "sampled_200/two people in a canoe on a lake with mountains in the background.jpg",
+      "sha256": "be9d17077882a36e92a2d69f37770ecf1019177aa87c4b93b0cc3130847daa0c",
+      "size": 2627001
+    },
+    {
+      "path": "sampled_200/two people performing a sword fight in front of a forest.jpg",
+      "sha256": "63950197b55e76a3174677b1f0b38b01e61559806b0f7f7a692f038d072182fd",
+      "size": 2717799
+    },
+    {
+      "path": "sampled_200/two sheep grazing in the grass next to a wooden bridge.jpg",
+      "sha256": "397dbed23789b044b54f58931ad3cf62e99f94485da431691bfebb1f69289048",
+      "size": 975683
+    },
+    {
+      "path": "sampled_200/two tall cacti in the middle of the desert.jpg",
+      "sha256": "1cd60650504acb9be528a71cb5de6f73330741b6e1bbfa1dabbd4b17ff5d3c10",
+      "size": 1195307
+    },
+    {
+      "path": "sampled_200/two women carrying bowls on their heads.jpg",
+      "sha256": "d41f897533f80e883d70debffb1910dfb02226a386500af0efa12c03d079abf3",
+      "size": 1652270
+    },
+    {
+      "path": "sampled_200/two women eating pizza at a restaurant.jpg",
+      "sha256": "07478f4d66989f34188aef3ecdc2248b1c2e943a70114adca877f82c036a3477",
+      "size": 1287783
+    }
+  ],
+  "repo_id": "2843721358l/Light-Interaction-Eval-Assets",
+  "repo_type": "dataset"
+}

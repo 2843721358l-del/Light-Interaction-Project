@@ -5,12 +5,14 @@ This folder contains the fixed sample set and scripts used for Light Interaction
 ```text
 evaluation/
 ├── data/
+│   ├── eval_assets_manifest.json
 │   ├── refined_prompts_llava16.json
-│   └── sampled_200/
+│   └── sampled_200/.gitkeep
 ├── requirements.txt
 └── scripts/
     ├── batch_video_generation.py
     ├── check_evaluation_env.py
+    ├── download_eval_assets.py
     ├── evaluate_psnr_ssim_lpips.py
     ├── evaluate_vbench_batch.py
     ├── prepare_evaluation_assets.py
@@ -18,6 +20,20 @@ evaluation/
 ```
 
 Generated videos, CSV files, logs, and debug files are not included.
+
+## 🖼️ Evaluation Assets
+
+The GitHub repository keeps the prompt JSON, asset manifest, and downloader only. The 200 evaluation initial images are hosted externally on Hugging Face Dataset to keep this repository lightweight.
+
+Download the evaluation images before batch generation:
+
+```bash
+python evaluation/scripts/download_eval_assets.py \
+  --repo-id 2843721358l/Light-Interaction-Eval-Assets \
+  --local-dir evaluation/data
+```
+
+The downloader verifies that `refined_prompts_llava16.json` and `sampled_200/` exist. When `evaluation/data/eval_assets_manifest.json` is present, it also checks file sizes and SHA256 hashes.
 
 ## 🛠️ Evaluation Environment
 
@@ -61,7 +77,7 @@ Advanced options:
 | `refined_prompt` | Prompt used for I2V generation |
 | `image_path` | Repository-relative image path |
 
-`data/sampled_200/` contains the corresponding 200 initial images.
+`data/sampled_200/` is populated by `download_eval_assets.py` and contains the corresponding 200 initial images after download.
 
 ## 🎬 Batch Generation
 

@@ -134,6 +134,14 @@ bash evaluation/scripts/setup_evaluation_env.sh
 conda activate light-interaction-eval
 ```
 
+Evaluation images are hosted externally on Hugging Face to keep this repository lightweight. Download them before batch evaluation:
+
+```bash
+python evaluation/scripts/download_eval_assets.py \
+  --repo-id 2843721358l/Light-Interaction-Eval-Assets \
+  --local-dir evaluation/data
+```
+
 Then use the patched HY-WorldPlay environment to generate videos, and switch to `light-interaction-eval` for PSNR / SSIM / LPIPS and VBench.
 
 ### Batch Generation
@@ -195,6 +203,8 @@ Matrix-Game-3.0, 720P image-to-video, single A100:
 
 See the paper for full ablations and metric definitions.
 
+Numbers are measured with the documented tested upstream commits and single-A100 settings. They may vary with GPU type, CUDA/PyTorch/Triton versions, and upstream changes.
+
 ## 📚 Documentation Map
 
 | Document | Contents |
@@ -211,7 +221,7 @@ See the paper for full ablations and metric definitions.
 - [x] 3D block sparse attention backend with Triton kernels
 - [x] Acceleration presets for reproduction and ablation
 - [x] Latency and peak-memory reporting
-- [x] Evaluation scripts and fixed 200-prompt sample set
+- [x] Evaluation scripts, fixed 200-prompt JSON, and external image-asset manifest
 - [ ] Additional upstream model support
 
 ## 🧪 Reproducibility Notes
@@ -248,4 +258,4 @@ This project builds on HY-WorldPlay, HunyuanVideo-1.5, LongCat-Video, Matrix-Gam
 
 ## 📄 License
 
-The Light Interaction patch code is released under the repository [MIT License](LICENSE). Upstream projects and model weights are governed by their own licenses and usage terms.
+The original Light Interaction code is released under the [MIT License](LICENSE). Integration patches may modify or refer to upstream projects, and upstream projects, model weights, datasets, and third-party-derived files remain governed by their own licenses and usage terms. See [NOTICE.md](NOTICE.md) for details.

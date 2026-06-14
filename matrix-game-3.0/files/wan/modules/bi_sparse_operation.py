@@ -8,18 +8,18 @@ import torch
 import torch.nn.functional as F
 import math
 
-# === [测速开关] ===
-# 设置为 True 开启阶段耗时分析，False 则完全不影响原本性能
+# Lightweight profiling switch for sparse-attention development.
+# Keep disabled by default to avoid affecting release performance.
 ENABLE_SPARSE_PROFILING = False
 
 try:
     import triton
     import triton.language as tl
-    from .longcat_kernel import longcat_flash_attn  # 恢复了你原有的稀疏内核导入！
+    from .longcat_kernel import longcat_flash_attn
     HAS_TRITON = True
 except ImportError:
     HAS_TRITON = False
-    print("⚠️ [SparseAttn] Triton not found. Fallback to SDPA.")
+    print("[SparseAttn] Triton not found. Falling back to SDPA.")
 
 if HAS_TRITON:
     @triton.jit
@@ -234,9 +234,7 @@ def generate_prefill_indices(q_in, k_in, text_len, grid_thw, params, device):
     return final_indices, final_counts
 
 def run_sparse_attention(q, k, v, text_len, block_idx, latent_hw, sparse_params):
-    # ==========================================
-    # 探针初始化
-    # ==========================================
+    # Initialize optional profiling probes.
     if ENABLE_SPARSE_PROFILING:
         events = {}
         def mark(name):
@@ -268,9 +266,7 @@ def run_sparse_attention(q, k, v, text_len, block_idx, latent_hw, sparse_params)
 
     B, H, _, D = q.shape
 
-    # ==========================================
-    # 阶段 1: 显存分配 (Alloc)
-    # ==========================================
+    # Stage 1: allocate tiled sparse-attention buffers.
     if ENABLE_SPARSE_PROFILING: mark("alloc_start")
     
     q_tiled = torch.empty((B, H, num_vis_blk_q, BLOCK_SIZE, D), device=q.device, dtype=q.dtype)
@@ -291,9 +287,7 @@ def run_sparse_attention(q, k, v, text_len, block_idx, latent_hw, sparse_params)
 
     if ENABLE_SPARSE_PROFILING: mark("alloc_end")
 
-    # ==========================================
-    # 阶段 2: 数据 Tiling 预处理 (Prep)
-    # ==========================================
+    # Stage 2: tile Q/K/V tensors and pool block features.
     if ENABLE_SPARSE_PROFILING: mark("prep_start")
     
     launch_q_prep(q, q_tiled, q_pool_vis, T_q, LATENT_H, LATENT_W, tt, th, tw, nh, nw)
@@ -302,9 +296,7 @@ def run_sparse_attention(q, k, v, text_len, block_idx, latent_hw, sparse_params)
                    
     if ENABLE_SPARSE_PROFILING: mark("prep_end")
 
-    # ==========================================
-    # 阶段 3: 稀疏索引生成 (Index)
-    # ==========================================
+    # Stage 3: build sparse block indices.
     if ENABLE_SPARSE_PROFILING: mark("index_start")
     
     indices, counts = generate_prefill_indices(
@@ -314,9 +306,7 @@ def run_sparse_attention(q, k, v, text_len, block_idx, latent_hw, sparse_params)
     
     if ENABLE_SPARSE_PROFILING: mark("index_end")
 
-    # ==========================================
-    # 阶段 4: 你的长序列稀疏注意力 (Sparse Attn)
-    # ==========================================
+    # Stage 4: run long-sequence sparse attention.
     if ENABLE_SPARSE_PROFILING: mark("attn_start")
     
     # Long-sequence block sparse attention.
@@ -327,9 +317,7 @@ def run_sparse_attention(q, k, v, text_len, block_idx, latent_hw, sparse_params)
     
     if ENABLE_SPARSE_PROFILING: mark("attn_end")
     
-    # ==========================================
-    # 阶段 5: 数据还原 (Untile)
-    # ==========================================
+    # Stage 5: restore tiled output to the original token layout.
     if ENABLE_SPARSE_PROFILING: mark("untile_start")
     
     o_out = torch.empty_like(q)
@@ -337,11 +325,9 @@ def run_sparse_attention(q, k, v, text_len, block_idx, latent_hw, sparse_params)
     
     if ENABLE_SPARSE_PROFILING: mark("untile_end")
 
-    # ==========================================
-    # 测速报告输出
-    # ==========================================
+    # Print profiling report when explicitly enabled.
     if ENABLE_SPARSE_PROFILING:
-        # 为了获得绝对时间，必须做一次同步
+        # Synchronize once to report absolute CUDA timings.
         torch.cuda.synchronize()
         
         t_alloc = events["alloc_start"].elapsed_time(events["alloc_end"])

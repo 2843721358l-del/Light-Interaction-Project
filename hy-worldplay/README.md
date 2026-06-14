@@ -8,6 +8,7 @@ It does not include the original HY-WorldPlay source tree or any model checkpoin
 
 ```text
 hy-worldplay/
+├── LICENSE_LONGCAT
 ├── files/
 │   ├── worldplay_acceleration_config.py
 │   └── hyvideo/models/transformers/modules/
@@ -84,7 +85,7 @@ Useful `run.sh` overrides:
 | `HY_IMAGE_PATH` | `./assets/img/test.png` |
 | `HY_MODEL_PATH` | empty, must be set |
 | `HY_AR_DISTILL_ACTION_MODEL_PATH` | empty, must be set |
-| `HY_N_INFERENCE_GPU` | `8` |
+| `HY_N_INFERENCE_GPU` | `1` |
 | `HY_NUM_FRAMES` | `253` |
 | `HY_POSE` | `left-31, right-32` |
 | `HY_OUTPUT_PATH` | `./outputs/` |

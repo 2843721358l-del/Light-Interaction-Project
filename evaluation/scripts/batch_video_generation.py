@@ -9,6 +9,7 @@ import json
 import logging
 import multiprocessing as mp
 import os
+import queue
 import shutil
 import subprocess
 import time
@@ -20,6 +21,21 @@ DEFAULT_ACTIONS = {
     "left_right": "left-5, right-5.5",
     "forward_backward": "w-5, s-5.5",
 }
+
+
+def drain_results(result_queue):
+    succeeded = 0
+    failed = 0
+    while True:
+        try:
+            result = result_queue.get_nowait()
+        except queue.Empty:
+            break
+        if result.get("ok"):
+            succeeded += 1
+        else:
+            failed += 1
+    return succeeded, failed
 
 
 def parse_args():
@@ -77,7 +93,7 @@ def safe_stem(filename):
     return Path(filename).stem.replace(" ", "_")
 
 
-def run_one(gpu_id, task, args, action_name, pose):
+def run_one(gpu_id, task, args, action_name, pose, result_queue):
     env = os.environ.copy()
     env["CUDA_VISIBLE_DEVICES"] = str(gpu_id)
     if args.pythonpath:
@@ -121,6 +137,12 @@ def run_one(gpu_id, task, args, action_name, pose):
     duration = time.time() - start
     if result.returncode == 0:
         logging.info("[GPU %s] done %s/%s in %.1fs", gpu_id, action_name, task["filename"], duration)
+        result_queue.put({
+            "ok": True,
+            "action": action_name,
+            "filename": task["filename"],
+            "duration": duration,
+        })
     else:
         logging.error(
             "[%s] failed %s/%s\nSTDOUT:\n%s\nSTDERR:\n%s",
@@ -130,6 +152,13 @@ def run_one(gpu_id, task, args, action_name, pose):
             result.stdout[-4000:],
             result.stderr[-4000:],
         )
+        result_queue.put({
+            "ok": False,
+            "action": action_name,
+            "filename": task["filename"],
+            "duration": duration,
+            "returncode": result.returncode,
+        })
 
 
 def run_action(action_name, pose, tasks, args, allowed):
@@ -144,17 +173,26 @@ def run_action(action_name, pose, tasks, args, allowed):
 
     print(f"[{action_name}] pending {len(pending)} / {len(tasks)} (skipped existing: {skipped})")
     active = {}
+    result_queue = mp.Queue()
+    succeeded = 0
+    failed = 0
     while pending or active:
         finished = [gpu for gpu, proc in active.items() if not proc.is_alive()]
         for gpu in finished:
             active[gpu].join()
+            if active[gpu].exitcode != 0:
+                failed += 1
             del active[gpu]
+
+        new_succeeded, new_failed = drain_results(result_queue)
+        succeeded += new_succeeded
+        failed += new_failed
 
         idle = [gpu for gpu in free_gpus(args.vram_threshold_mb, allowed) if gpu not in active]
         while idle and pending and len(active) < args.max_concurrent:
             gpu_id = idle.pop(0)
             task = pending.pop(0)
-            proc = mp.Process(target=run_one, args=(gpu_id, task, args, action_name, pose))
+            proc = mp.Process(target=run_one, args=(gpu_id, task, args, action_name, pose, result_queue))
             proc.start()
             active[gpu_id] = proc
             print(f"[dispatch] gpu={gpu_id} action={action_name} file={task['filename']}")
@@ -163,6 +201,23 @@ def run_action(action_name, pose, tasks, args, allowed):
 
         if pending:
             time.sleep(10)
+
+    new_succeeded, new_failed = drain_results(result_queue)
+    succeeded += new_succeeded
+    failed += new_failed
+
+    summary = {
+        "action": action_name,
+        "total": len(tasks),
+        "skipped": skipped,
+        "succeeded": succeeded,
+        "failed": failed,
+    }
+    print(
+        f"[{action_name}] summary: total={summary['total']} skipped={summary['skipped']} "
+        f"succeeded={summary['succeeded']} failed={summary['failed']}"
+    )
+    return summary
 
 
 def main():
@@ -175,8 +230,17 @@ def main():
         tasks = json.load(f)
 
     mp.set_start_method("spawn", force=True)
+    summaries = []
     for action_name, pose in actions.items():
-        run_action(action_name, pose, tasks, args, allowed)
+        summaries.append(run_action(action_name, pose, tasks, args, allowed))
+
+    total = sum(item["total"] for item in summaries)
+    skipped = sum(item["skipped"] for item in summaries)
+    succeeded = sum(item["succeeded"] for item in summaries)
+    failed = sum(item["failed"] for item in summaries)
+    print(f"[batch] summary: total={total} skipped={skipped} succeeded={succeeded} failed={failed}")
+    if failed > 0:
+        raise SystemExit(1)
 
 
 if __name__ == "__main__":

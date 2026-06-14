@@ -54,7 +54,8 @@ first, then apply this patch.
 ## License Attribution
 
 `LICENSE_LONGCAT` preserves the MIT license notice for the LongCat-Video-derived
-`longcat_kernel.py`.
+`longcat_kernel.py`. It is part of this patch package and is not copied into
+the upstream checkout by the apply script.
 
 `ar_sparse_operation.py` and `bi_sparse_operation_for_KV_cache.py` are authored
 by the Light Interaction authors.
