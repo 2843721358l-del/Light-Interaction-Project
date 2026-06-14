@@ -9,7 +9,6 @@ cd "$REPO_ROOT"
 PRESET="${1:-${MG_PRESET:-off}}"
 CKPT_DIR="${MG_CKPT_DIR:-$REPO_ROOT/Matrix-Game-3.0}"
 OUTPUT_DIR="${MG_OUTPUT_DIR:-$REPO_ROOT/output}"
-CUDA_DEVICES="${CUDA_VISIBLE_DEVICES:-0}"
 NUM_GPUS="${MG_NUM_GPUS:-1}"
 MASTER_PORT="${MG_MASTER_PORT:-29500}"
 
@@ -26,6 +25,33 @@ if [[ ! -d "$CKPT_DIR" ]]; then
   exit 1
 fi
 
+if ! [[ "$NUM_GPUS" =~ ^[0-9]+$ ]] || (( NUM_GPUS < 1 )); then
+  echo "MG_NUM_GPUS must be a positive integer, got: $NUM_GPUS" >&2
+  exit 1
+fi
+
+CUDA_ENV=()
+if [[ -n "${CUDA_VISIBLE_DEVICES:-}" ]]; then
+  CUDA_ENV=(CUDA_VISIBLE_DEVICES="$CUDA_VISIBLE_DEVICES")
+  IFS=',' read -r -a visible_gpu_list <<< "$CUDA_VISIBLE_DEVICES"
+  visible_gpu_count=0
+  for gpu_id in "${visible_gpu_list[@]}"; do
+    if [[ -n "${gpu_id// /}" ]]; then
+      visible_gpu_count=$((visible_gpu_count + 1))
+    fi
+  done
+  if (( NUM_GPUS > visible_gpu_count )); then
+    echo "MG_NUM_GPUS=$NUM_GPUS but CUDA_VISIBLE_DEVICES exposes only $visible_gpu_count GPU(s): $CUDA_VISIBLE_DEVICES" >&2
+    exit 1
+  fi
+elif command -v nvidia-smi >/dev/null 2>&1; then
+  detected_gpu_count="$(nvidia-smi --query-gpu=index --format=csv,noheader 2>/dev/null | wc -l | tr -d ' ')"
+  if [[ -n "$detected_gpu_count" ]] && (( NUM_GPUS > detected_gpu_count )); then
+    echo "MG_NUM_GPUS=$NUM_GPUS but nvidia-smi reports only $detected_gpu_count GPU(s)." >&2
+    exit 1
+  fi
+fi
+
 mkdir -p "$OUTPUT_DIR"
 
 action_pairs=()
@@ -38,7 +64,7 @@ for ((i = 0; i < NUM_ITERATIONS; i++)); do
 done
 ACTION_SEQUENCE="${MG_ACTION_SEQUENCE:-$(IFS=,; echo "${action_pairs[*]}")}"
 
-env CUDA_VISIBLE_DEVICES="$CUDA_DEVICES" torchrun \
+env "${CUDA_ENV[@]}" torchrun \
   --nproc_per_node="$NUM_GPUS" \
   --master_port="$MASTER_PORT" \
   "$REPO_ROOT/generate.py" \

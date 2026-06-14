@@ -20,6 +20,7 @@ ENV_BACKEND="${WORLDPLAY_ENV_BACKEND:-conda}"
 ENV_NAME="${WORLDPLAY_ENV_NAME:-light-interaction-worldplay}"
 PREPARE_WORLDPLAY_ASSETS="${PREPARE_WORLDPLAY_ASSETS:-1}"
 REQUIRE_CUDA="${REQUIRE_CUDA:-1}"
+EXPECTED_COMMIT="1588e1336e842b03b0a7860c654ebd7c46bb065e"
 
 if [ -z "$WORLDPLAY_ROOT" ]; then
   echo "Usage: bash hy-worldplay/scripts/setup_worldplay_release.sh /path/to/HY-WorldPlay"
@@ -28,12 +29,13 @@ fi
 
 WORLDPLAY_ROOT="$(cd "$WORLDPLAY_ROOT" && pwd)"
 
-if [ -f "$WORLDPLAY_ROOT/worldplay_acceleration_config.py" ] \
-  && grep -q -- "--acceleration_preset" "$WORLDPLAY_ROOT/run.sh"; then
-  echo "Patch already appears to be applied: $WORLDPLAY_ROOT"
-else
-  bash "$SCRIPT_DIR/apply_patch.sh" "$WORLDPLAY_ROOT"
+CURRENT_COMMIT="$(git -C "$WORLDPLAY_ROOT" rev-parse HEAD 2>/dev/null || true)"
+if [ -n "$CURRENT_COMMIT" ] && [[ "$CURRENT_COMMIT" != "$EXPECTED_COMMIT"* ]]; then
+  echo "Warning: this patch was tested on upstream commit $EXPECTED_COMMIT, but the target checkout is $CURRENT_COMMIT." >&2
+  echo "The patch may still work, but failures are more likely if upstream changed." >&2
 fi
+
+bash "$SCRIPT_DIR/apply_patch.sh" "$WORLDPLAY_ROOT"
 
 bash "$SCRIPT_DIR/setup_worldplay_env.sh" "$WORLDPLAY_ROOT"
 

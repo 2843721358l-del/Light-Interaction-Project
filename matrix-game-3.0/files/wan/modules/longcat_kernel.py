@@ -1,19 +1,21 @@
-"""Triton block-sparse attention kernel used by Light Interaction.
-
-Adapted from the LongCat-Video sparse-attention implementation for Matrix-Game-3.0
-autoregressive inference.
-"""
+# Adapted from LongCat-Video.
+# Original copyright (c) 2025 Meituan.
+# Licensed under the MIT License.
+#
+# Modifications for Light Interaction:
+# - adapted the sparse-attention kernel to Matrix-Game-3.0
+# - integrated it with autoregressive inference and camera-aware sparse attention
+#
+# Modifications copyright (c) 2026 Jiacheng Lu and contributors.
+"""Triton block-sparse attention kernel used by Light Interaction."""
 
 import torch
 import triton
 import triton.language as tl
 import os
 
-# =================================================================
-# 1. Configs 调优
-# =================================================================
-# 修复：移除 kwargs 中的 'BLOCK_N'，避免与 kernel 调用时的显式传参冲突。
-# Triton 现在只会自动搜索最佳的 stages 和 warps 组合。
+# Triton autotune candidates. Keep one tested config enabled by default to
+# avoid first-run autotuning noise in release runs.
 configs_fwd_bsa_align = [
     #triton.Config({}, num_stages=2, num_warps=4),
     #triton.Config({}, num_stages=3, num_warps=4),
@@ -71,7 +73,7 @@ def _attn_fwd_bsa_align(
         offsets=(start_m * BLOCK_M, 0), block_shape=(BLOCK_M, HEAD_DIM), order=(1, 0)
     )
 
-    # 优化点 1: 初始化索引指针，消除循环内的 + i * stride 计算
+    # Initialize the index pointer once to avoid repeated stride arithmetic.
     index_ptr = block_indices + b_offset + start_m * stride_bm
     S = tl.load(block_indices_lens + l_offset + start_m * stride_lm)
 
@@ -84,28 +86,25 @@ def _attn_fwd_bsa_align(
     # Load Q 
     q = tl.load(Q_block_ptr)
 
-    # ============================================================
-    # 核心优化：软件流水线预加载 (Prefetching)
-    # ============================================================
-    # 在进入循环前，提前加载**第一个** block_id。
+    # Software-pipeline the sparse block-id loads.
     next_block_id = tl.load(index_ptr).to(tl.int32)
     index_ptr += stride_bs
 
     for i in range(S):
-        # 1. 继承上一轮（或循环外）预取的 block_id
+        # Use the block id prefetched by the previous iteration.
         block_id = next_block_id
         
-        # 2. 提前发起对**下一个** block_id 的异步读取
+        # Prefetch the next block id.
         is_not_last = i < S - 1
         next_block_id = tl.load(index_ptr, mask=is_not_last, other=0).to(tl.int32)
         index_ptr += stride_bs 
         
-        # 3. 计算对齐偏移
+        # Compute aligned K/V offsets.
         lo = block_id * BLOCK_N
         KT_curr = tl.advance(KT_block_ptr, (0, lo))
         V_curr = tl.advance(V_block_ptr, (lo, 0))
 
-        # 4. 加载与计算
+        # Load K/V blocks and run the FlashAttention update.
         kT = tl.load(KT_curr)
         qkT = tl.dot(q, kT)
 
@@ -139,8 +138,7 @@ def longcat_flash_attn(q, k, v, block_indices, block_counts, sm_scale=None, logi
 
     half_dtypes = (torch.float16, torch.bfloat16)
     
-    # 2. 检查 QKV：只有当不是 16位时，才强制转为 BF16
-    # 这样 WorldPlay (原生16位) 不会有任何多余的转换开销
+    # Convert only non-half tensors to avoid extra casts in normal inference.
     if q.dtype not in half_dtypes:
         q = q.to(torch.bfloat16)
     if k.dtype not in half_dtypes:
