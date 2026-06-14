@@ -8,6 +8,7 @@ Training-free acceleration for autoregressive interactive video generation
   <a href="https://arxiv.org/abs/2605.31158"><b>📄 Paper</b></a> |
   <a href="https://2843721358l-del.github.io/Light-Interaction-Project/"><b>🌐 Project Page</b></a> |
   <a href="hy-worldplay/README.md"><b>🔌 HY-WorldPlay Patch</b></a> |
+  <a href="matrix-game/README.md"><b>🎮 Matrix-Game Patch</b></a> |
   <a href="evaluation/README.md"><b>📊 Evaluation</b></a>
 </p>
 
@@ -22,7 +23,7 @@ Training-free acceleration for autoregressive interactive video generation
 - Denoising cache acceleration
 - Hardware-software co-designed 3D block sparse attention
 
-This repository currently releases the **HY-WorldPlay integration patch** and **evaluation scripts**. Matrix-Game-3.0 results are reported in the paper, but its integration patch is not included in this release.
+This repository currently releases the **HY-WorldPlay integration patch**, the **Matrix-Game-3.0 integration patch**, and **evaluation scripts**.
 
 <p align="center">
   <img src="asset/teaser.png" width="90%" alt="Light Interaction overview"/>
@@ -30,13 +31,14 @@ This repository currently releases the **HY-WorldPlay integration patch** and **
 
 ## 🔥 News
 
-- 🔥 [2026/06] HY-WorldPlay acceleration patch and evaluation utilities released.
+- 🔥 [2026/06] HY-WorldPlay and Matrix-Game-3.0 acceleration patches released.
+- 🔥 [2026/06] Evaluation utilities released.
 - 📄 [2026/05] Paper released on arXiv.
 
 ## 💡 Highlights
 
 - **Training-free**: no retraining or fine-tuning is required.
-- **Plug-in patch release**: applies to an upstream HY-WorldPlay checkout instead of redistributing upstream code.
+- **Plug-in patch release**: applies to upstream HY-WorldPlay or Matrix-Game-3.0 checkouts instead of redistributing upstream code.
 - **Preset-based ablations**: `off`, `context`, `sparse`, `cache`, and `all`.
 - **Reproducible evaluation**: fixed 200-prompt sample set with PSNR / SSIM / LPIPS and VBench helpers.
 
@@ -45,6 +47,7 @@ This repository currently releases the **HY-WorldPlay integration patch** and **
 ```text
 Light-Interaction-Project/
 ├── hy-worldplay/      # Patch package for upstream HY-WorldPlay
+├── matrix-game/       # Patch package for upstream Matrix-Game-3.0
 ├── evaluation/        # Fixed prompts, initial images, and evaluation scripts
 ├── asset/             # Project figures
 ├── NOTICE.md          # Third-party and upstream license notes
@@ -52,16 +55,16 @@ Light-Interaction-Project/
 ```
 
 > [!IMPORTANT]
-> This repository does not redistribute upstream source trees, checkpoints, generated videos, or benchmark outputs. Users must obtain HY-WorldPlay and model weights from the official upstream sources.
+> This repository does not redistribute upstream source trees, checkpoints, generated videos, or benchmark outputs. Users must obtain HY-WorldPlay, Matrix-Game-3.0, and model weights from the official upstream sources.
 
 ## 📋 Requirements
 
 - Linux
 - NVIDIA GPU with CUDA support
-- Python 3.10
+- Python 3.10 for HY-WorldPlay and Python 3.12 for Matrix-Game-3.0
 - `patch` command-line utility
 
-Inference and evaluation use two separate environments. The setup scripts below install the required packages and run import checks.
+HY-WorldPlay inference, Matrix-Game-3.0 inference, and evaluation use separate environments. The setup scripts below install the required packages and run import checks.
 
 ## 🚀 Quick Start
 
@@ -83,6 +86,15 @@ bash hy-worldplay/scripts/setup_worldplay_release.sh ../HY-WorldPlay
 
 This downloads only the assets used by this release: HunyuanVideo-1.5 runtime files and the few-step distilled autoregressive HY-WorldPlay action checkpoint. Bidirectional, multi-step AR, and RL action models are not required.
 
+### 3. Prepare Matrix-Game-3.0
+
+Clone upstream Matrix-Game, then prepare the patched Matrix-Game-3 runtime with one command:
+
+```bash
+git clone https://github.com/SkyworkAI/Matrix-Game.git ../Matrix-Game
+bash matrix-game/scripts/setup_matrix_release.sh ../Matrix-Game/Matrix-Game-3
+```
+
 ## ▶️ Run Inference
 
 ```bash
@@ -102,6 +114,16 @@ The default preset is `all`, which enables all acceleration components. To repro
 | `all` | Context management + sparse attention + denoising cache |
 
 More patch details are in [hy-worldplay/README.md](hy-worldplay/README.md).
+
+For Matrix-Game-3.0:
+
+```bash
+cd ../Matrix-Game/Matrix-Game-3
+conda activate light-interaction-matrix
+bash run_light_interaction.sh
+```
+
+More patch details are in [matrix-game/README.md](matrix-game/README.md).
 
 ## 📊 Evaluation
 
@@ -161,24 +183,32 @@ HY-WorldPlay, 480P image-to-video, single A100:
 | TeaCache | 20.90 | 0.8150 | 203.25 | 1.12x | 76.64 |
 | Light Interaction | 24.81 | 0.8220 | 88.24 | 2.59x | 54.66 |
 
-See the paper for full Matrix-Game-3.0 results, ablations, and metric definitions.
+Matrix-Game-3.0, 704×1280 image-to-world, single A100, 8 interactions:
+
+| Method | DiT Core (s) | Video Generation (s) | Peak VRAM Allocated (GB) | Peak VRAM Reserved (GB) |
+|:---|---:|---:|---:|---:|
+| Original | 60.12 | 103.25 | 35.03 | 51.46 |
+| Light Interaction | 37.56 | 78.96 | 35.03 | 49.55 |
+
+See the paper for full ablations and metric definitions.
 
 ## 📚 Documentation Map
 
 | Document | Contents |
 |:---|:---|
 | [hy-worldplay/README.md](hy-worldplay/README.md) | Patch structure, apply script, presets, timing log, diagnostics |
+| [matrix-game/README.md](matrix-game/README.md) | Matrix-Game patch structure, setup script, presets, timing log, diagnostics |
 | [evaluation/README.md](evaluation/README.md) | Sample set, batch generation, metrics, VBench |
 | [NOTICE.md](NOTICE.md) | Upstream scope, third-party attribution, license notes |
 
 ## ✅ Release Status
 
 - [x] HY-WorldPlay acceleration patch
+- [x] Matrix-Game-3.0 acceleration patch
 - [x] 3D block sparse attention backend with Triton kernels
 - [x] Acceleration presets for reproduction and ablation
 - [x] Latency and peak-memory reporting
 - [x] Evaluation scripts and fixed 200-prompt sample set
-- [ ] Matrix-Game-3.0 acceleration patch
 - [ ] Additional upstream model support
 
 ## 🧪 Reproducibility Notes
@@ -186,6 +216,7 @@ See the paper for full Matrix-Game-3.0 results, ablations, and metric definition
 For each experiment, record:
 
 - Upstream HY-WorldPlay commit hash
+- Upstream Matrix-Game commit hash, if using Matrix-Game-3.0
 - Light Interaction commit hash
 - GPU type and count
 - CUDA, PyTorch, and Triton versions

@@ -37,16 +37,17 @@ policy.
 
 ## Matrix-Game-3.0
 
-Matrix-Game-3.0 integration is planned for a future release. This repository
-does not currently redistribute Matrix-Game-3.0 source trees or model weights.
-Users must obtain Matrix-Game-3.0 from the official source and comply with its
-upstream license terms.
+The Matrix-Game-3.0 integration is released as a patch-style package. This
+repository does not redistribute the full Matrix-Game source tree or model
+weights. Users must obtain Matrix-Game-3.0 from the official source and comply
+with its upstream license terms.
 
 ## LongCat-Video
 
 The file:
 
 hy-worldplay/files/hyvideo/models/transformers/modules/longcat_kernel.py
+matrix-game/files/wan/modules/longcat_kernel.py
 
 is adapted from the LongCat-Video sparse-attention implementation and should
 preserve the original LongCat-Video MIT license notice.
@@ -55,6 +56,7 @@ Other sparse-attention integration files, including:
 
 hy-worldplay/files/hyvideo/models/transformers/modules/ar_sparse_operation.py
 hy-worldplay/files/hyvideo/models/transformers/modules/bi_sparse_operation_for_KV_cache.py
+matrix-game/files/wan/modules/bi_sparse_operation.py
 
 are authored by the Light Interaction authors for autoregressive sparse
 attention scheduling and KV-cache recomputation.

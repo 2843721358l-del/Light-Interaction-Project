@@ -1,0 +1,1085 @@
+diff --git a/generate.py b/generate.py
+index a697f29..12f8f56 100644
+--- a/generate.py
++++ b/generate.py
+@@ -1,3 +1,11 @@
++"""Matrix-Game-3 entry point with Light Interaction inference hooks.
++
++Light Interaction additions:
++- scripted interactive actions for reproducible benchmark runs
++- acceleration preset flags
++- concise timing and peak-VRAM reporting
++"""
++
+ import sys
+ import os
+ import argparse
+@@ -5,6 +13,7 @@ import logging
+ import warnings
+ import random
+ import torch
++import time
+ import torch.distributed as dist
+ warnings.filterwarnings('ignore')
+ from PIL import Image
+@@ -53,10 +62,32 @@ def _parse_args():
+     parser.add_argument("--prompt", type=str, default=None, help="The prompt to generate the video from.")
+     parser.add_argument("--seed", type=int, default=42, help="The seed to use for generating the video.")
+     parser.add_argument("--image", type=str, default=None, help="The image to generate the video from.")
++    parser.add_argument(
++        "--action_sequence",
++        type=str,
++        default=None,
++        help="Comma-separated interactive actions, e.g. 'j:q,j:q,l:q,l:q'. Each item is mouse:key.",
++    )
+     parser.add_argument('--num_iterations', type=int, default=12)
+     parser.add_argument("--convert_model_dtype", action="store_true", default=False, help="Whether to convert model paramerters dtype.")
+     parser.add_argument('--output_dir', type=str, default="./output")
+     parser.add_argument('--save_name', type=str, default="generated_video")
++
++    # Light Interaction acceleration presets
++    parser.add_argument(
++        "--acceleration_preset",
++        type=str,
++        default="off",
++        choices=["off", "all", "cache", "context", "sparse"],
++        help=(
++            "Acceleration preset: off disables all acceleration; cache enables "
++            "FOV-conditioned denoising reuse; context enables FOV memory pruning; "
++            "sparse enables block sparse self-attention; all enables every method."
++        ),
++    )
++    parser.add_argument("--fov_threshold", type=float, default=0.45)
++    parser.add_argument("--sparse_topk_ratio", type=float, default=0.2)
++    parser.add_argument("--enable_step_diff_debug", action="store_true", default=False)
+     # Sampling parameters
+     parser.add_argument("--sample_shift", type=float, default=None, help="Sampling shift factor for flow matching schedulers.")
+     parser.add_argument("--sample_guide_scale", type=float, default=5.0, help="Classifier free guidance scale.")
+@@ -90,6 +121,13 @@ def _init_logging(rank):
+         logging.basicConfig(level=logging.ERROR)
+ 
+ def generate(args):
++    if torch.cuda.is_available():
++        torch.cuda.synchronize()
++        torch.cuda.reset_peak_memory_stats()
++        torch.cuda.empty_cache() 
++        
++    e2e_start_time = time.perf_counter()
++
+     os.makedirs(args.output_dir, exist_ok=True)
+     rank = int(os.getenv("RANK", 0))
+     world_size = int(os.getenv("WORLD_SIZE", 1))
+@@ -137,6 +175,10 @@ def generate(args):
+     logging.info(f"Input prompt: {args.prompt}")
+     logging.info("Creating Matrix-Game-3 pipeline.")
+ 
++    if torch.cuda.is_available():
++        torch.cuda.synchronize()
++    model_load_start = time.perf_counter()
++
+     if args.interactive:
+         pipeline = MatrixGame3InteractivePipeline(
+             config=cfg,
+@@ -168,7 +210,16 @@ def generate(args):
+             use_base_model=args.use_base_model,
+         )
+ 
+-    logging.info("Generating video ...")
++    if torch.cuda.is_available():
++        torch.cuda.synchronize()
++    model_load_time = time.perf_counter() - model_load_start
++    
++    if rank == 0:
++        print(f"\nModel loaded in {model_load_time:.2f} s", flush=True)
++        print(f"Acceleration preset: {args.acceleration_preset}", flush=True)
++
++    infer_start_time = time.perf_counter()
++
+     pipeline.generate(
+         args.prompt,
+         pil_image,
+@@ -180,14 +231,36 @@ def generate(args):
+         use_base_model=args.use_base_model,
+         args=args)
+ 
+-    torch.cuda.synchronize()
++    if torch.cuda.is_available():
++        torch.cuda.synchronize()
++        # 🌟 捕获显存峰值数据 (转换为 GB)
++        peak_allocated = torch.cuda.max_memory_allocated(device) / (1024 ** 3)
++        peak_reserved = torch.cuda.max_memory_reserved(device) / (1024 ** 3)
++    else:
++        peak_allocated = 0.0
++        peak_reserved = 0.0
++
++    infer_time = time.perf_counter() - infer_start_time
++    e2e_total_time = time.perf_counter() - e2e_start_time
++
++    if rank == 0:
++        print("\n" + "="*50)
++        print("Matrix-Game Light Interaction Benchmark")
++        print("="*50)
++        print(f"Preset                : {args.acceleration_preset}")
++        print(f"Model Load Time       : {model_load_time:7.2f} s")
++        print(f"Video Generation Time : {infer_time:7.2f} s")
++        print(f"End-to-End Time       : {e2e_total_time:7.2f} s")
++        print("-" * 50)
++        print(f"Peak VRAM Allocated   : {peak_allocated:7.2f} GB")
++        print(f"Peak VRAM Reserved    : {peak_reserved:7.2f} GB")
++        print("="*50 + "\n")
++        logging.info("Finished.")
++
+     if dist.is_initialized():
+         dist.barrier()
+         dist.destroy_process_group()
+ 
+-    logging.info("Finished.")
+-
+-
+ if __name__ == "__main__":
+     args = _parse_args()
+     generate(args)
+diff --git a/pipeline/inference_interactive_pipeline.py b/pipeline/inference_interactive_pipeline.py
+index afc2da9..e8c540c 100644
+--- a/pipeline/inference_interactive_pipeline.py
++++ b/pipeline/inference_interactive_pipeline.py
+@@ -1,3 +1,10 @@
++"""Interactive Matrix-Game-3 pipeline with Light Interaction acceleration hooks.
++
++This file starts from the upstream Matrix-Game-3 interactive pipeline and adds
++training-free inference controls for context pruning, denoising reuse, sparse
++attention, scripted actions, and benchmark timing.
++"""
++
+ import gc
+ import logging
+ import math
+@@ -391,28 +398,41 @@ class MatrixGame3Pipeline:
+                  args=None):
+         r"""
+         Generates video frames from input image and text prompt using diffusion process.
+-
+-        Args:
+-            input_prompt (`str`):
+-                Text prompt for content generation.
+-            img (PIL.Image.Image):
+-                Input image tensor. Shape: [3, H, W]
+-            max_area (`int`, *optional*, defaults to 720*1280):
+-                Maximum pixel area for latent space calculation. Controls video resolution scaling
+-            frame_num (`int`, *optional*, defaults to 81):
+-                How many frames to sample from a video. The number should be 4n+1
+-            shift (`float`, *optional*, defaults to 5.0):
+-                Noise schedule shift parameter. Affects temporal dynamics
+-                [NOTE]: If you want to generate a 480p video, it is recommended to set the shift value to 3.0.
+-            num_inference_steps (`int`, *optional*, defaults to 40):
+-                Number of diffusion sampling steps. Higher values improve quality but slow generation
+-            guide_scale (`float` or tuple[`float`], *optional*, defaults 5.0):
+-                Classifier-free guidance scale. Controls prompt adherence vs. creativity.
+-                If tuple, the first guide_scale will be used for low noise model and
+-                the second guide_scale will be used for high noise model.
+-            seed (`int`, *optional*, defaults to -1):
+-                Random seed for noise generation. If -1, use random seed
+         """
++        import time 
++        import math
++        import numpy as np
++        import os
++        import torch
++        import torch.nn.functional as torch_F
++        from einops import rearrange
++        from tqdm import tqdm
++
++        try:
++            from your_project_path import get_infer_state
++        except ImportError:
++            class InferState: pass
++            if not hasattr(self, 'global_infer_state'):
++                self.global_infer_state = InferState()
++            get_infer_state = lambda: self.global_infer_state
++
++        infer_state = get_infer_state()
++        infer_state.enable_step_diff_debug = getattr(args, "enable_step_diff_debug", False)
++        if not hasattr(infer_state, 'step_diff_logs'):
++            infer_state.step_diff_logs = []
++
++        preset = getattr(args, "acceleration_preset", "off")
++        enable_context_pruning = preset in ("context", "all")
++        enable_sparse_attention = preset in ("sparse", "all")
++        enable_denoise_cache = preset in ("cache", "all")
++        fov_threshold = getattr(args, "fov_threshold", 0.45)
++
++        self.model.enable_teacache = False 
++        self.model.num_steps = num_inference_steps
++        self.model.enable_context_sequence_compaction = enable_context_pruning
++        self.model.enable_sparse_attention = enable_sparse_attention
++        self.model.sparse_topk_ratio = getattr(args, "sparse_topk_ratio", 0.2)
++
+         self._log_flash_attention_config(args)
+         mouse_icon = "assets/images/mouse.png"
+         vae_cache = [None for _ in range(34)]
+@@ -426,6 +446,49 @@ class MatrixGame3Pipeline:
+         past_frame = 16
+ 
+         num_iterations = args.num_iterations
++        scripted_actions = []
++        if getattr(args, "action_sequence", None):
++            for item in args.action_sequence.split(","):
++                mouse_key = item.strip().lower()
++                if not mouse_key:
++                    continue
++                try:
++                    mouse_token, keyboard_token = mouse_key.split(":", 1)
++                except ValueError as exc:
++                    raise ValueError(
++                        "Invalid --action_sequence item. Expected mouse:key, e.g. 'j:q'."
++                    ) from exc
++                scripted_actions.append((mouse_token.strip(), keyboard_token.strip()))
++        scripted_action_idx = 0
++
++        def next_action():
++            nonlocal scripted_action_idx
++            if not scripted_actions:
++                return get_current_action()
++
++            camera_value = 0.1
++            camera_value_map = {
++                "i": [camera_value, 0],
++                "k": [-camera_value, 0],
++                "j": [0, -camera_value],
++                "l": [0, camera_value],
++                "u": [0, 0],
++            }
++            keyboard_idx = {
++                "w": [1, 0, 0, 0, 0, 0],
++                "s": [0, 1, 0, 0, 0, 0],
++                "a": [0, 0, 1, 0, 0, 0],
++                "d": [0, 0, 0, 1, 0, 0],
++                "q": [0, 0, 0, 0, 0, 0],
++            }
++            mouse_token, keyboard_token = scripted_actions[min(scripted_action_idx, len(scripted_actions) - 1)]
++            scripted_action_idx += 1
++            if mouse_token not in camera_value_map or keyboard_token not in keyboard_idx:
++                raise ValueError(f"Unsupported action pair: {mouse_token}:{keyboard_token}")
++            return {
++                "mouse": torch.tensor(camera_value_map[mouse_token]),
++                "keyboard": torch.tensor(keyboard_idx[keyboard_token]),
++            }
+ 
+         generator = torch.Generator(device=self.device).manual_seed(seed)
+         num_frames = first_clip_frame + (num_iterations - 1) * 40
+@@ -460,8 +523,9 @@ class MatrixGame3Pipeline:
+             dist.broadcast(img_cond, src=0)
+ 
+         max_lat_f = (first_clip_frame - 1) // self.vae_stride[0] + 1
+-        max_mem_f = 5
++        max_mem_f = 5 
+         max_total_f = max_lat_f + max_mem_f
++        
+         max_seq_len = max_total_f * lat_h * lat_w // (self.patch_size[1] * self.patch_size[2])
+ 
+         if self.sp_size > 1:
+@@ -472,23 +536,30 @@ class MatrixGame3Pipeline:
+             all_latents_list = []
+             all_videos_list = []
+             
++            total_dit_time = 0.0 
++            
+             for clip_idx in range(num_iterations):
++                
++                infer_state.current_chunk_index = clip_idx
++                
++                if self.rank == 0:
++                    torch.cuda.synchronize()
++                    iter_start_time = time.perf_counter()
++                    phase_times = {}
++                    t0 = time.perf_counter()
++
+                 first_clip = (clip_idx == 0)
+                 if self.rank == 0:
+-                    print(f" Iteration {clip_idx + 1}/{num_iterations}", flush=True)
++                    print(f"\n[{'='*20} Iteration {clip_idx + 1}/{num_iterations} {'='*20}]", flush=True)
+                     if first_clip:
+                         action_frames = 57
+-                        actions = get_current_action()
++                        actions = next_action()
+                         keyboard_condition_curr = actions['keyboard'].repeat(action_frames, 1)
+                         mouse_condition_curr = actions['mouse'].repeat(action_frames, 1)
+                         first_pose = np.concatenate([np.zeros(3), np.zeros(2)], axis=0)
+-                        # Compute poses from actions (first frame pose is all zeros)
+                         all_poses, last_pose = compute_all_poses_from_actions(keyboard_condition_curr, mouse_condition_curr, first_pose=first_pose, return_last_pose=True)
+-                        positions = all_poses[:, :3].tolist()  # (T, 3)
+-                        rotations = np.concatenate([
+-                            np.zeros((all_poses.shape[0], 1)), # roll = 0
+-                            all_poses[:, 3:5]  # pitch, yaw
+-                        ], axis=1).tolist()  
++                        positions = all_poses[:, :3].tolist()
++                        rotations = np.concatenate([np.zeros((all_poses.shape[0], 1)), all_poses[:, 3:5]], axis=1).tolist()
+                         extrinsics_all = get_extrinsics(rotations, positions)
+                         keyboard_condition_curr = keyboard_condition_curr.unsqueeze(0).to(device=self.device, dtype=weight_dtype)
+                         mouse_condition_curr = mouse_condition_curr.unsqueeze(0).to(device=self.device, dtype=weight_dtype)
+@@ -496,16 +567,12 @@ class MatrixGame3Pipeline:
+                         mouse_condition_all = mouse_condition_curr
+                     else:
+                         action_frames = 40
+-                        actions = get_current_action()
++                        actions = next_action()
+                         keyboard_condition_curr = actions['keyboard'].repeat(action_frames, 1)
+                         mouse_condition_curr = actions['mouse'].repeat(action_frames, 1)
+-                        # Compute poses from actions (first frame pose is all zeros)
+                         poses_curr, last_pose = compute_all_poses_from_actions(keyboard_condition_curr, mouse_condition_curr, first_pose=last_pose, return_last_pose=True)
+-                        positions = poses_curr[:, :3].tolist()  # (T, 3)
+-                        rotations = np.concatenate([
+-                            np.zeros((poses_curr.shape[0], 1)), # roll = 0
+-                            poses_curr[:, 3:5]  # pitch, yaw
+-                        ], axis=1).tolist()  # (T, 3) - [roll, pitch, yaw]
++                        positions = poses_curr[:, :3].tolist()
++                        rotations = np.concatenate([np.zeros((poses_curr.shape[0], 1)), poses_curr[:, 3:5]], axis=1).tolist()
+                         extrinsics_curr = get_extrinsics(rotations, positions)
+                         keyboard_condition_curr = keyboard_condition_curr.unsqueeze(0).to(device=self.device, dtype=weight_dtype)
+                         mouse_condition_curr = mouse_condition_curr.unsqueeze(0).to(device=self.device, dtype=weight_dtype)
+@@ -513,22 +580,27 @@ class MatrixGame3Pipeline:
+                         mouse_condition_all = torch.cat([mouse_condition_all, mouse_condition_curr], dim=1)
+                         extrinsics_all = torch.cat([extrinsics_all, extrinsics_curr], dim=0)
+ 
++                if self.rank == 0:
++                    torch.cuda.synchronize()
++                    phase_times['1. 动作与相机位姿计算'] = time.perf_counter() - t0
++                    t1 = time.perf_counter()
++
+                 if dist.is_initialized():
+                     dist.barrier()
+                     if self.rank == 0:
+-                        keyboard_condition_all = [keyboard_condition_all]
+-                        mouse_condition_all = [mouse_condition_all]
+-                        extrinsics_all = [extrinsics_all]
++                        keyboard_condition_all_list = [keyboard_condition_all]
++                        mouse_condition_all_list = [mouse_condition_all]
++                        extrinsics_all_list = [extrinsics_all]
+                     else:
+-                        keyboard_condition_all = [None]
+-                        mouse_condition_all = [None]
+-                        extrinsics_all = [None]
+-                    dist.broadcast_object_list(keyboard_condition_all, src=0)
+-                    dist.broadcast_object_list(mouse_condition_all, src=0)
+-                    dist.broadcast_object_list(extrinsics_all, src=0)
+-                    keyboard_condition_all = keyboard_condition_all[0]
+-                    mouse_condition_all = mouse_condition_all[0]
+-                    extrinsics_all = extrinsics_all[0]
++                        keyboard_condition_all_list = [None]
++                        mouse_condition_all_list = [None]
++                        extrinsics_all_list = [None]
++                    dist.broadcast_object_list(keyboard_condition_all_list, src=0)
++                    dist.broadcast_object_list(mouse_condition_all_list, src=0)
++                    dist.broadcast_object_list(extrinsics_all_list, src=0)
++                    keyboard_condition_all = keyboard_condition_all_list[0]
++                    mouse_condition_all = mouse_condition_all_list[0]
++                    extrinsics_all = extrinsics_all_list[0]
+ 
+                 def align_frame_to_block(frame_idx):
+                     return (frame_idx - 1) // 4 * 4 + 1 if frame_idx > 0 else 1
+@@ -564,29 +636,65 @@ class MatrixGame3Pipeline:
+                     memory_keyboard_condition = None
+                     latent_idx = None
+                     timestep_memory = None
++                    selected_index = [] 
++                    allow_zoh_bypass = False
+                 else:                   
+                     if self.rank == 0:
+-                        mem_end = ((current_start_frame_idx - 1) // 4 * 4 + 1) if current_start_frame_idx > 1 else 1
+-                        selected_index_base = [current_end_frame_idx - o for o in range(1, 34, 8)]
+-                        selected_index = select_memory_idx_fov(
++                        selected_index_base_raw = [current_end_frame_idx - o for o in range(1, 34, 8)]
++                        selected_index_raw, selected_confidence = select_memory_idx_fov(
+                             extrinsics_all,
+                             current_start_frame_idx,
+-                            selected_index_base,
++                            selected_index_base_raw,
++                            return_confidence=True,
+                             use_gpu=True
+                         )
+-                        selected_index[-1] = 4 
+-                        selected_index_base = [current_end_frame_idx - o for o in range(1, 34, 8)]
++                        
++                        allow_zoh_bypass = False
++                        if len(selected_confidence) > 0:
++                            min_conf = min(selected_confidence) 
++                            if min_conf >= fov_threshold:
++                                allow_zoh_bypass = True
++
++                        selected_index = []
++                        selected_index_base = []
++                        
++                        if enable_context_pruning:
++                            for i in range(len(selected_index_raw) - 1):
++                                if selected_confidence[i] >= fov_threshold:
++                                    selected_index.append(selected_index_raw[i])
++                                    selected_index_base.append(selected_index_base_raw[i])
++                            selected_index.append(4)
++                            selected_index_base.append(selected_index_base_raw[-1])
++                        else:
++                            for i in range(len(selected_index_raw) - 1):
++                                selected_index.append(selected_index_raw[i])
++                                selected_index_base.append(selected_index_base_raw[i])
++                            selected_index.append(4)
++                            selected_index_base.append(selected_index_base_raw[-1])
+                     else:
+                         selected_index = [0] * 5 
+                         selected_index_base = [current_end_frame_idx - o for o in range(1, 34, 8)]
++                        allow_zoh_bypass = False 
++
++                if dist.is_initialized():
++                    len_tensor = torch.tensor([len(selected_index)], dtype=torch.long, device=self.device)
++                    dist.broadcast(len_tensor, src=0)
+ 
+-                    if dist.is_initialized():
+-                        dist.broadcast_object_list(selected_index, src=0)
++                    allow_list = [allow_zoh_bypass]
++                    dist.broadcast_object_list(allow_list, src=0)
++                    allow_zoh_bypass = allow_list[0]
+                     
++                    if self.rank != 0:
++                        selected_index = [0] * len_tensor.item()
++                        selected_index_base = [0] * len_tensor.item()
++                        
++                    dist.broadcast_object_list(selected_index, src=0)
++                    dist.broadcast_object_list(selected_index_base, src=0)
++                
++                if not first_clip:
+                     memory_pluckers = []
+                     latent_idx = []
+                     for mem_idx, reference_idx in zip(selected_index, selected_index_base):
+-
+                         l_idx = get_latent_idx(mem_idx)
+                         latent_idx.append(l_idx)
+                         
+@@ -622,20 +730,40 @@ class MatrixGame3Pipeline:
+                     memory_keyboard_condition = -torch.ones((1, len(selected_index), 6)).to(device=self.device, dtype=weight_dtype)
+                     timestep_memory = x_memory.new_zeros((1, x_memory.shape[2] * x_memory.shape[3] * x_memory.shape[4] // 4))
+ 
++                if self.rank == 0:
++                    torch.cuda.synchronize()
++                    phase_times['2. 记忆搜索与特征组合'] = time.perf_counter() - t1
++                    t2 = time.perf_counter()
++
+                 keyboard_condition = keyboard_condition_all[:, current_start_frame_idx:current_end_frame_idx]
+                 mouse_condition = mouse_condition_all[:, current_start_frame_idx:current_end_frame_idx]
+                 plucker = plucker.to(device=self.device, dtype=weight_dtype)
+                 plucker_no_mem = plucker_no_mem.to(device=self.device, dtype=weight_dtype)
+ 
++                current_steps = num_inference_steps 
++                infer_state.use_fov_cache = allow_zoh_bypass and enable_denoise_cache
++                
++                if self.rank == 0:
++                    if not first_clip:
++                        print(
++                            f"  [FOV] memory={len(selected_index)} "
++                            f"denoise_cache={'on' if infer_state.use_fov_cache else 'off'} "
++                            f"steps={current_steps}",
++                            flush=True,
++                        )
++
+                 test_scheduler = FlowUniPCMultistepScheduler()
+-                timesteps = test_scheduler.set_timesteps(num_inference_steps, device=self.device, shift=shift)
++                timesteps = test_scheduler.set_timesteps(current_steps, device=self.device, shift=shift)
+                 timesteps = test_scheduler.timesteps
+                 
+                 latent_start_idx = get_latent_idx(current_start_frame_idx)
+                 latent_end_idx = get_latent_idx(current_end_frame_idx)
+ 
+-                latents = torch.randn((1, 48, latent_end_idx - latent_start_idx, img_cond.shape[-2], img_cond.shape[-1]), generator=generator, device=self.device, dtype=weight_dtype)
+-                latents = torch.cat([img_cond, latents[:, :, img_cond.shape[2]:]], dim = 2)
++                latents = torch.randn(
++                    (1, 48, latent_end_idx - latent_start_idx, lat_h, lat_w), 
++                    generator=generator, device=self.device, dtype=weight_dtype
++                )
++                latents = torch.cat([img_cond, latents[:, :, img_cond.shape[2]:]], dim=2)
+ 
+                 conditions_full = {
+                     "mouse_cond": mouse_condition,
+@@ -648,7 +776,7 @@ class MatrixGame3Pipeline:
+                     "mouse_cond_memory": memory_mouse_condition,
+                     "memory_latent_idx": latent_idx,
+                     "predict_latent_idx": (latent_start_idx, latent_end_idx),
+-                    "fa_version": self.fa_version,
++                    "fa_version": getattr(self, 'fa_version', None),
+                 }
+ 
+                 conditions_null = {
+@@ -664,26 +792,25 @@ class MatrixGame3Pipeline:
+                     "predict_latent_idx": (latent_start_idx, latent_end_idx),
+                 }
+                     
+-                for _, t in enumerate(tqdm(timesteps, disable=(self.rank != 0))):
++                for i, t in enumerate(tqdm(timesteps, disable=(self.rank != 0))):
++                    
+                     latent_model_input = latents
+-
+                     timestep = latents.new_full((latents.shape[2], latents.shape[3] * latents.shape[4] // 4), t)
+                     timestep[:img_cond.shape[2]].zero_()
+                     timestep = timestep.flatten().unsqueeze(0)
+                    
+-                    model_kwargs = {
+-                        "x": latent_model_input,
+-                        "t": timestep,
+-                        "seq_len": max_seq_len,
+-                        **conditions_full
+-                    }
+-
+-                    model_kwargs_null = {
+-                        "x": latent_model_input,
+-                        "t": timestep,
+-                        "seq_len": max_seq_len,
+-                        **conditions_null
++                    model_kwargs = {"x": latent_model_input, "t": timestep, "seq_len": max_seq_len, **conditions_full}
++                    model_kwargs_null = {"x": latent_model_input, "t": timestep, "seq_len": max_seq_len, **conditions_null}
++                    
++                    control_flags = {
++                        "current_step_index": i,
++                        "use_fov_cache": infer_state.use_fov_cache,
++                        "enable_step_diff_debug": infer_state.enable_step_diff_debug,
++                        "current_chunk_index": clip_idx,
++                        "step_diff_logs": infer_state.step_diff_logs  # 🌟 传递可变列表的引用！
+                     }
++                    model_kwargs.update(control_flags)
++                    model_kwargs_null.update(control_flags)
+                     
+                     if use_base_model:
+                         noise_pred_full = self.model(**model_kwargs)
+@@ -692,118 +819,89 @@ class MatrixGame3Pipeline:
+                     else:
+                         noise_pred = self.model(**model_kwargs)
+ 
+-                    latents = test_scheduler.step(
+-                        noise_pred, t, latents, return_dict=False)[0]
++                    latents = test_scheduler.step(noise_pred, t, latents, return_dict=False)[0]
+                     latents = torch.cat([img_cond, latents[:,:,img_cond.shape[2]:]], dim=2)
+                                  
++                if self.rank == 0:
++                    torch.cuda.synchronize()
++                    phase_times['3. DiT扩散去噪主循环'] = time.perf_counter() - t2
++                    total_dit_time += phase_times['3. DiT扩散去噪主循环']
++                    t3 = time.perf_counter()
++
+                 img_cond = latents[:, :, -4:]
+                 denoised_pred = latents if first_clip else latents[:, :, -10:]
++                denoised_pred_for_vae = denoised_pred
+ 
+                 if self.use_async_vae:
+                     if self.rank == 0:
++                        self.vae_latent_queue.put({
++                            "latent": denoised_pred_for_vae.detach().cpu(), 
++                            "first_chunk": first_clip,
++                            "clip_idx": clip_idx,
++                            "mouse_condition": mouse_condition_curr,
++                            "keyboard_condition": keyboard_condition_curr,
++                            "mouse_condition_all": mouse_condition_all,
++                            "keyboard_condition_all": keyboard_condition_all,
++                            "interactive": True,
++                            "save_name": save_name,
++                        })
+                         warmup_iters = getattr(args, 'async_vae_warmup_iters', 0)
+-                        if clip_idx == num_iterations - 1:
+-                            self.vae_latent_queue.put(
+-                                {
+-                                    "latent": denoised_pred.detach().cpu(),
+-                                    "first_chunk": first_clip,
+-                                    "clip_idx": clip_idx,
+-                                    "mouse_condition": mouse_condition_curr,
+-                                    "keyboard_condition": keyboard_condition_curr,
+-                                    "mouse_condition_all": mouse_condition_all,
+-                                    "keyboard_condition_all": keyboard_condition_all,
+-                                    "interactive": True,
+-                                    "save_name": save_name,
+-                                }
+-                            )
+-                        else:
+-                            self.vae_latent_queue.put(
+-                                {
+-                                    "latent": denoised_pred.detach().cpu(),
+-                                    "first_chunk": first_clip,
+-                                    "clip_idx": clip_idx,
+-                                    "mouse_condition": mouse_condition_curr,
+-                                    "keyboard_condition": keyboard_condition_curr,
+-                                    "interactive": True,
+-                                    "save_name": save_name,
+-                                }
+-                            )
+                         if clip_idx < warmup_iters:
+-                            print(f" [Rank 0] ⏱️  Async VAE Warmup Sync: Waiting for decode {clip_idx + 1}/{warmup_iters}...", flush=True)
+                             ack = self.vae_ack_queue.get()
+-                            assert ack == clip_idx, (ack, clip_idx)
+-                            print(f" [Rank 0] ✨ Iter {clip_idx + 1} Warmup Sync Done.", flush=True)
++                            assert ack == clip_idx
+                 else:
+                     if self.rank == 0:
+-                        vae_profiler = {}
+-                        do_compile = getattr(args, "compile_vae", False) and clip_idx >= 1
+                         vae_segment_size = int(os.environ.get("WAN_VAE_SEGMENT_SIZE", "4"))
+                         video, vae_cache = self.vae.stream_decode(
+-                            denoised_pred.to(dtype=self.vae.dtype), 
++                            denoised_pred_for_vae.to(dtype=self.vae.dtype), 
+                             vae_cache, 
+                             first_chunk=first_clip, 
+                             segment_size=vae_segment_size,
+-                            profiler=vae_profiler,
+-                            compile_decoder=do_compile
++                            compile_decoder=getattr(args, "compile_vae", False) and clip_idx >= 1
+                         )
+-                        video_np = np.ascontiguousarray(((rearrange(video[0], "C T H W -> T H W C").float() + 1) * 127.5)
+-                            .clip(0, 255).cpu().numpy().astype(np.uint8))
+-                        config = (keyboard_condition_curr.squeeze(0).float().cpu().numpy(), mouse_condition_curr.squeeze(0).float().cpu().numpy())
+-                        process_video(video_np.astype(np.uint8), f"{self.output_dir}/{save_name}_current_iteration_{clip_idx}.mp4", config, mouse_icon, mouse_scale=0.2, default_frame_res=(height, width),)
++                        video_np = np.ascontiguousarray(((rearrange(video[0], "C T H W -> T H W C").float() + 1) * 127.5).clip(0, 255).cpu().numpy().astype(np.uint8))
++                        
++                        import imageio
++                        imageio.mimsave(f"{self.output_dir}/{save_name}_current_iteration_{clip_idx}.mp4", video_np, fps=17)
+                         all_videos_list.append(video.cpu())
+                         
+                 all_latents_list.append(denoised_pred)
+-                current_frames = 57 if first_clip else 40
+-                total_frames += current_frames
+-
+-            def denormalize_video(video):
+-                return np.ascontiguousarray(
+-                    ((rearrange(video, "C T H W -> T H W C").float() + 1) * 127.5)
+-                    .clip(0, 255)
+-                    .numpy()
+-                    .astype(np.uint8)
+-                )
++                total_frames += (57 if first_clip else 40)
+ 
+-            if self.use_async_vae:
+-                if self.rank == 0:
+-                    print(f"\n[Rank 0] Diffusion finished. Latents were sent to async VAE ({self.output_dir})", flush=True)
+-                    print(f"Rank 0] Waiting for VAE decode done signal...", flush=True)
+-                    if not self.vae_done_event.wait(timeout=600):
+-                        print(f"[Rank 0] VAE worker done_event wait timed out after 600s.", flush=True)
+-                    if hasattr(self, 'vae_process'):
+-                        print(f"[Rank 0] Waiting for VAE Worker exit (PID: {self.vae_process.pid})...", flush=True)
+-                        self.vae_process.join(timeout=60)
+-                        if self.vae_process.is_alive():
+-                            print(f"[Rank 0] VAE Worker timed out, killing it...", flush=True)
+-                            self.vae_process.kill()
+-                            self.vae_process.join(timeout=10)
+-                        else:
+-                            print(f"[Rank 0] VAE Worker finished gracefully.", flush=True)
+-                video = None
+-            else:
+                 if self.rank == 0:
+-                    if len(all_videos_list) > 0:
+-                        concatenated_video = denormalize_video(
+-                            torch.concat(all_videos_list, dim=2)[0]
+-                        )
+-                        def to_numpy(x):
+-                            return x[:current_end_frame_idx].float().cpu().numpy()
+-                        process_video(
+-                            concatenated_video.astype(np.uint8),
+-                            f"{self.output_dir}/{save_name}.mp4",
+-                            (to_numpy(keyboard_condition_all.squeeze(0)), to_numpy(mouse_condition_all.squeeze(0))),
+-                            mouse_icon,
+-                            mouse_scale=0.2,
+-                            default_frame_res=(height, width),
+-                        )
+-                        print(f"Saved concatenated video with {len(all_videos_list)} segments")
+-                        video = torch.concat(all_videos_list, dim=2)[0]
+-                    else:
+-                        video = None
+-                else:
+-                    video = None
+-
+-            if dist.is_initialized():
+-                dist.barrier()
+-                dist.destroy_process_group()
+-            exit()
+\ No newline at end of file
++                    torch.cuda.synchronize()
++                    phase_times['4. VAE解码与视频保存'] = time.perf_counter() - t3
++                    
++                    total_iter_time = time.perf_counter() - iter_start_time
++                    if os.environ.get("MG_VERBOSE_TIMING", "0") == "1":
++                        print(f"[{'-'*45}]")
++                        print("Iteration timing:")
++                        for phase, t_val in phase_times.items():
++                            print(f"  - {phase}: {t_val:.2f} s ({(t_val/total_iter_time)*100:.1f}%)")
++                        print(f"  => iteration total: {total_iter_time:.2f} s")
++                        print(f"[{'='*45}]\n", flush=True)
++
++            if not self.use_async_vae and self.rank == 0:
++                if len(all_videos_list) > 0:
++                    concatenated_video = np.ascontiguousarray(((rearrange(torch.concat(all_videos_list, dim=2)[0], "C T H W -> T H W C").float() + 1) * 127.5).clip(0, 255).numpy().astype(np.uint8))
++                    import imageio
++                    imageio.mimsave(f"{self.output_dir}/{save_name}.mp4", concatenated_video, fps=17)
++                    print(f"Saved concatenated video with {len(all_videos_list)} segments")
++
++            # =======================================================
++            # 🌟 视频生成终点的全局耗时播报
++            # =======================================================
++            if self.rank == 0:
++                print(f"\n" + "="*50)
++                print(f"DiT Core Time: {total_dit_time:.2f} s")
++                print(f"="*50 + "\n")
++                
++                # 🚨 [ZOH 核心修改 7] 生成结束后导出 Debug 数据
++                if infer_state.enable_step_diff_debug and hasattr(infer_state, "step_diff_logs"):
++                    output_dir = getattr(self, 'output_dir', 'experiment_data')
++                    os.makedirs(output_dir, exist_ok=True)
++                    import json
++                    diff_log_path = os.path.join(output_dir, f"{save_name}_step_diff_logs.json")
++                    with open(diff_log_path, 'w') as f:
++                        json.dump(infer_state.step_diff_logs, f, indent=2)
++                    print(f"[Debug] Denoising step difference logs saved to {diff_log_path}")
+diff --git a/utils/cam_utils.py b/utils/cam_utils.py
+index 821f25c..250b743 100644
+--- a/utils/cam_utils.py
++++ b/utils/cam_utils.py
+@@ -1,3 +1,6 @@
++"""Camera utilities used by Matrix-Game-3 and Light Interaction context logic."""
++
++import os
+ import numpy as np
+ import torch
+ from scipy.interpolate import interp1d
+@@ -360,6 +363,11 @@ def select_memory_idx_fov(extrinsics_all, current_start_frame_idx, selected_inde
+             selected_index.append(candidate_indices[best_idx].item())
+             selected_confidence.append(ratios[best_idx].item())
+ 
++        if os.environ.get("MG_VERBOSE_FOV", "0") == "1":
++            print(f"  -> FOV search bases: {selected_index_base}")
++            print(f"  -> FOV selected frames: {selected_index}")
++            print(f"  -> FOV overlap ratios: {[round(c, 4) for c in selected_confidence]}")
++
+         return (selected_index, selected_confidence) if return_confidence else selected_index
+     else:
+         video_w = 1280
+@@ -388,6 +396,11 @@ def select_memory_idx_fov(extrinsics_all, current_start_frame_idx, selected_inde
+             selected_index.append(sorted_idx[0])
+             selected_confidence.append(ratios_arr[sorted_idx[0]])
+ 
++        if os.environ.get("MG_VERBOSE_FOV", "0") == "1":
++            print(f"  -> FOV search bases: {selected_index_base}")
++            print(f"  -> FOV selected frames: {selected_index}")
++            print(f"  -> FOV overlap ratios: {[round(c, 4) for c in selected_confidence]}")
++
+         if return_confidence:
+             return selected_index, selected_confidence
+         return selected_index
+@@ -623,4 +636,4 @@ def _interpolate_camera_poses_handedness(
+     if flip_handedness:
+         flip_mat_t = torch.from_numpy(flip_mat).to(c2ws.device, dtype=c2ws.dtype)
+         c2ws[:, :3, :3] = c2ws[:, :3, :3] @ flip_mat_t
+-    return c2ws
+\ No newline at end of file
++    return c2ws
+diff --git a/wan/modules/model.py b/wan/modules/model.py
+index 225b3c1..38156f5 100644
+--- a/wan/modules/model.py
++++ b/wan/modules/model.py
+@@ -1,3 +1,10 @@
++"""Matrix-Game-3 DiT model with Light Interaction inference hooks.
++
++This file keeps the upstream model architecture and adds training-free runtime
++switches for sparse attention, context-only sequence compaction, and optional
++denoising reuse.
++"""
++
+ import math
+ import re
+ import torch
+@@ -105,7 +112,7 @@ class Int8Linear(nn.Module):
+             rank = 0
+             if torch.distributed.is_initialized():
+                 rank = torch.distributed.get_rank()
+-            if rank == 0:
++            if rank == 0 and os.environ.get("MG_VERBOSE_KERNELS", "0") == "1":
+                 print(f"DEBUG: [Int8Linear] New Shape detected: M={M}, N={N}, K={K}. JIT Compiling/Switching...", flush=True)
+             Int8Linear._global_last_shapes.add(shape_key)
+ 
+@@ -405,24 +412,12 @@ class WanSelfAttention(nn.Module):
+         """
+         b, s, n, d = *x.shape[:2], self.num_heads, self.head_dim
+ 
+-        def qkv_fn(x):
+-            q = self.norm_q(self.q(x)).view(b, s, n, d)
+-            k = self.norm_k(self.k(x)).view(b, s, n, d)
+-            v = self.v(x).view(b, s, n, d)
+-            return q, k, v
+-
+-        x_orig = x 
+-        q = self.norm_q(self.q(x_orig)).view(b, s, n, d)
+-        k = self.norm_k(self.k(x_orig)).view(b, s, n, d)
+-        v = self.v(x_orig).view(b, s, n, d)
++        q = self.norm_q(self.q(x)).view(b, s, n, d)
++        k = self.norm_k(self.k(x)).view(b, s, n, d)
++        v = self.v(x).view(b, s, n, d)
+ 
+         if self.use_memory:
+             if memory_length > 0:
+-                '''
+-                memory_length: the length of the memory
+-                grid_sizes: the grid sizes of the input
+-                add rope to memory and pred frames separately.
+-                '''
+                 hw = grid_sizes[0][1]*grid_sizes[0][2]
+                 q_pred = q[:, memory_length*hw:, :]
+                 k_pred = k[:, memory_length*hw:, :]
+@@ -472,13 +467,33 @@ class WanSelfAttention(nn.Module):
+             q = rope_apply(q, grid_sizes, freqs)
+             k = rope_apply(k, grid_sizes, freqs)
+ 
+-        x = flash_attention(
+-            q=q,
+-            k=k,
+-            v=v,
+-            k_lens=seq_lens,
+-            window_size=self.window_size,
+-            version=fa_version)
++        ALLOW_SPARSE = getattr(self, "enable_sparse_attention", False)
++        ENABLE_SPARSE = ALLOW_SPARSE and (memory_length > 0)
++        
++        if ENABLE_SPARSE:
++            sparse_params = {
++                'tile_size': (4, 4, 8),
++                'topk_ratio': getattr(self, "sparse_topk_ratio", 0.2),
++                'sim_metric': 'cosine',
++                'profile_layers': []
++            }
++            q_trans = q.transpose(1, 2).contiguous()
++            k_trans = k.transpose(1, 2).contiguous()
++            v_trans = v.transpose(1, 2).contiguous()
++            latent_h = grid_sizes[0][1].item()
++            latent_w = grid_sizes[0][2].item()
++            from .bi_sparse_operation import run_sparse_attention 
++            o_sparse = run_sparse_attention(
++                q=q_trans, k=k_trans, v=v_trans, text_len=0,
++                block_idx=getattr(self, 'block_idx', 0),
++                latent_hw=(latent_h, latent_w), sparse_params=sparse_params
++            )
++            x = o_sparse.transpose(1, 2).contiguous()
++        else:
++            x = flash_attention(
++                q=q, k=k, v=v, k_lens=seq_lens,
++                window_size=self.window_size, version=fa_version
++            )
+ 
+         x = x.flatten(2)
+         x = self.o(x)
+@@ -894,26 +909,44 @@ class WanModel(ModelMixin, ConfigMixin):
+         predict_latent_idx=None,
+         return_memory=False,
+         fa_version=None,
++        # =====================================================================
++        # 🚨 [ZOH 核心修改 1] 新增接收通道：前端直接传过来的调度指令和日志列表
++        # =====================================================================
++        current_step_index=0, 
++        use_fov_cache=False, 
++        enable_step_diff_debug=False, 
++        current_chunk_index=0,
++        step_diff_logs=None
+     ):
+         r"""
+         Forward pass through the diffusion model
+-
+-        Args:
+-            x (List[Tensor]):
+-                List of input video tensors, each with shape [C_in, F, H, W]
+-            t (Tensor):
+-                Diffusion timesteps tensor of shape [B]
+-            context (List[Tensor]):
+-                List of text embeddings each with shape [L, C]
+-            seq_len (`int`):
+-                Maximum sequence length for positional encoding
+-            y (List[Tensor], *optional*):
+-                Conditional video inputs for image-to-video mode, same shape as x
+-
+-        Returns:
+-            List[Tensor]:
+-                List of denoised video tensors with original input shapes [C_out, F, H / 8, W / 8]
+         """
++        # =====================================================================
++        # 🚨 [ZOH 核心修改 2] 在最外围直接进行物理截断！算力节省 100%
++        # =====================================================================
++        current_step = current_step_index
++        # 最多只能跳中间的一个
++        if use_fov_cache and current_step in [1]:
++            if hasattr(self, '_zoh_cached_output') and self._zoh_cached_output is not None:
++                # 🛠️ [Debug 探针]：记录被 ZOH 跳过时的差异 (0.00) 和 余弦相似度 (1.00)
++                if enable_step_diff_debug:
++                    print(f"    📊 [Debug Diff] Chunk {current_chunk_index} | Step {current_step-1} -> {current_step} | Rel L1: 0.00000 | Cosine Sim: 1.00000 (ZOH 物理短路生效！)")
++                    if step_diff_logs is not None:
++                        step_diff_logs.append({
++                            "chunk_idx": current_chunk_index,
++                            "step": current_step,
++                            "rel_l1": 0.0,
++                            "abs_l1": 0.0,
++                            "cosine_sim": 1.0,
++                            "is_zoh": True
++                        })
++                
++                # ⚡ 瞬间返回！连 patch_embedding 和 PE 都不用算！
++                return self._zoh_cached_output
++
++        # =====================================================================
++        # 以下为模型原生的全量计算逻辑
++        # =====================================================================
+         memory_length = 0
+         if x_memory is not None:
+             memory_length = x_memory.shape[2]
+@@ -943,25 +976,33 @@ class WanModel(ModelMixin, ConfigMixin):
+         x = [u.flatten(2).transpose(1, 2) for u in x]
+         seq_lens = torch.tensor([u.size(1) for u in x], dtype=torch.long)
+ 
+-        assert seq_lens.max() <= seq_len
+-        x = torch.cat([
+-            torch.cat([u, u.new_zeros(1, seq_len - u.size(1), u.size(2))],
+-                      dim=1) for u in x
+-        ])
++        compact_context_sequence = getattr(self, "enable_context_sequence_compaction", False)
++        if compact_context_sequence:
++            x = torch.cat(x, dim=0)
++            real_seq_len = x.size(1)
++        else:
++            assert seq_lens.max() <= seq_len
++            x = torch.cat([
++                torch.cat([u, u.new_zeros(1, seq_len - u.size(1), u.size(2))],
++                          dim=1) for u in x
++            ])
++            real_seq_len = seq_len
+ 
+         if t.dim() == 1:
+-            t = t.expand(t.size(0), seq_len)
+-        elif t.dim() == 2 and t.size(1) < seq_len:
++            t = t.expand(t.size(0), real_seq_len)
++        elif t.dim() == 2 and t.size(1) < real_seq_len:
+             t = torch.cat([
+-                t, t.new_zeros(t.size(0), seq_len - t.size(1))
++                t, t.new_zeros(t.size(0), real_seq_len - t.size(1))
+             ], dim=1)
++        elif t.dim() == 2 and t.size(1) > real_seq_len:
++            t = t[:, :real_seq_len]
+ 
+         with torch.amp.autocast('cuda', dtype=torch.float32):
+             bt = t.size(0)
+             t = t.flatten()
+             e = self.time_embedding(
+                 sinusoidal_embedding_1d(self.freq_dim,
+-                                        t).unflatten(0, (bt, seq_len)).float())
++                                        t).unflatten(0, (bt, real_seq_len)).float())
+             e0 = self.time_projection(e).unflatten(2, (6, self.dim))
+             e = e.float()
+             e0 = e0.float()
+@@ -970,7 +1011,6 @@ class WanModel(ModelMixin, ConfigMixin):
+         context_lens = None
+         # plucker embeddings
+         if plucker_emb is not None:
+-            # Accept batched tensor [B, C, F, H, W] or list of [1, C, F, H, W].
+             if torch.is_tensor(plucker_emb):
+                 plucker_items = [u.unsqueeze(0) for u in plucker_emb]
+             else:
+@@ -985,10 +1025,14 @@ class WanModel(ModelMixin, ConfigMixin):
+                 ) for i in plucker_items
+             ]
+             plucker_emb = torch.cat(plucker_emb, dim=1)
+-            if plucker_emb.size(1) < seq_len:
++            if plucker_emb.size(1) < real_seq_len:
+                 plucker_emb = torch.cat([
+-                    plucker_emb, 
+-                    plucker_emb.new_zeros(plucker_emb.size(0), seq_len - plucker_emb.size(1), plucker_emb.size(2))
++                    plucker_emb,
++                    plucker_emb.new_zeros(
++                        plucker_emb.size(0),
++                        real_seq_len - plucker_emb.size(1),
++                        plucker_emb.size(2),
++                    ),
+                 ], dim=1)
+             plucker_emb = self.patch_embedding_wancamctrl(plucker_emb)
+             plucker_hidden = self.c2ws_hidden_states_layer2(
+@@ -1028,18 +1072,84 @@ class WanModel(ModelMixin, ConfigMixin):
+                 )
+ 
+         for block in self.blocks:
++            block.self_attn.enable_sparse_attention = getattr(self, "enable_sparse_attention", False)
++            block.self_attn.sparse_topk_ratio = getattr(self, "sparse_topk_ratio", 0.2)
+             x = block(x, **kwargs)
+ 
+         x = self.head(x, e)
+         x = self.unpatchify(x, grid_sizes)
+ 
++        # =====================================================================
++        # 🚨 [ZOH 核心修改 3] 统一拦截输出并进行缓存与探针计算
++        # =====================================================================
+         if self.use_memory:
+             if return_memory:
+-                return [u[:, :memory_length] for u in x], [u[:, memory_length:] for u in x]
+-            if not torch.distributed.is_initialized() or torch.distributed.get_world_size() <= 1:
+-                return torch.stack([u[:, memory_length:] for u in x])
+-            return [u[:, memory_length:] for u in x]
+-        return [u.float() for u in x]
++                final_output = ([u[:, :memory_length] for u in x], [u[:, memory_length:] for u in x])
++            elif not torch.distributed.is_initialized() or torch.distributed.get_world_size() <= 1:
++                final_output = torch.stack([u[:, memory_length:] for u in x])
++            else:
++                final_output = [u[:, memory_length:] for u in x]
++        else:
++            final_output = [u.float() for u in x]
++
++        # 辅助函数：深度克隆输出
++        def clone_output(out):
++            if isinstance(out, tuple):
++                return tuple(clone_output(o) for o in out)
++            elif isinstance(out, list):
++                return [o.clone().detach() for o in out]
++            elif isinstance(out, torch.Tensor):
++                return out.clone().detach()
++            return out
++
++        # 辅助函数：提取用于计算 Diff 差异的纯 Tensor
++        def get_tensor_for_diff(out):
++            if isinstance(out, tuple):
++                return get_tensor_for_diff(out[1]) 
++            if isinstance(out, list):
++                return out[0]
++            return out
++
++        diff_tensor = get_tensor_for_diff(final_output)
++
++        if current_step == 0:
++            # 1. 存下第一步的结果 (作为 ZOH 的弹药)
++            self._zoh_cached_output = clone_output(final_output)
++            
++            # 2. 存下用于计算差异的基础 Tensor
++            if enable_step_diff_debug:
++                self._debug_prev_out = diff_tensor.clone().detach()
++        else:
++            # 当全量计算中间步时，计算真实差异 (L1 + Cosine Sim)
++            if enable_step_diff_debug and hasattr(self, '_debug_prev_out') and self._debug_prev_out is not None:
++                curr_tensor = diff_tensor.clone().detach()
++                
++                # 计算绝对差与相对差
++                diff_abs = (curr_tensor - self._debug_prev_out).abs().mean().item()
++                diff_rel = diff_abs / (self._debug_prev_out.abs().mean().item() + 1e-8)
++                
++                # 🌟 计算方向余弦相似度
++                cos_sim = torch.nn.functional.cosine_similarity(
++                    curr_tensor.flatten().unsqueeze(0), 
++                    self._debug_prev_out.flatten().unsqueeze(0)
++                ).item()
++                
++                print(f"    📊 [Debug Diff] Chunk {current_chunk_index} | Step {current_step-1} -> {current_step} | Rel L1: {diff_rel:.5f} | Cosine Sim: {cos_sim:.5f} (Full Compute)")
++                
++                if step_diff_logs is not None:
++                    step_diff_logs.append({
++                        "chunk_idx": current_chunk_index,
++                        "step": current_step,
++                        "rel_l1": diff_rel,
++                        "abs_l1": diff_abs,
++                        "cosine_sim": cos_sim,
++                        "is_zoh": False
++                    })
++                
++                # 更新供下一步比对
++                self._debug_prev_out = curr_tensor
++
++        return final_output
+ 
+     def unpatchify(self, x, grid_sizes):
+         r"""
