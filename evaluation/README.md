@@ -23,17 +23,29 @@ Generated videos, CSV files, logs, and debug files are not included.
 
 ## 🖼️ Evaluation Assets
 
-The GitHub repository keeps the prompt JSON, asset manifest, and downloader only. The 200 evaluation initial images are hosted externally on Hugging Face Dataset to keep this repository lightweight.
+The GitHub repository keeps the prompt JSON, asset manifest, selected filename list, and downloader only. The 200 evaluation initial images are selected from the official VBench-I2V Image Suite, specifically the 16:9 cropped image subset. To avoid redistributing third-party image assets, this repository does not host the images directly. The downloader fetches the official VBench-I2V assets and extracts the selected 200 images used in our evaluation.
 
 Download the evaluation images before batch generation:
 
 ```bash
-python evaluation/scripts/download_eval_assets.py \
-  --repo-id 2843721358l/Light-Interaction-Eval-Assets \
-  --local-dir evaluation/data
+python evaluation/scripts/download_eval_assets.py
 ```
 
-The downloader verifies that `refined_prompts_llava16.json` and `sampled_200/` exist. When `evaluation/data/eval_assets_manifest.json` is present, it also checks file sizes and SHA256 hashes.
+If you already have VBench data, provide the path and skip the download step:
+
+```bash
+python evaluation/scripts/download_eval_assets.py \
+  --vbench-root /path/to/VBench \
+  --skip-download
+```
+
+The downloader requires `gdown`. If it is not installed:
+
+```bash
+pip install gdown
+```
+
+When `evaluation/data/eval_assets_manifest.json` is present, the downloader also checks file sizes and SHA256 hashes against the expected values.
 
 ## 🛠️ Evaluation Environment
 

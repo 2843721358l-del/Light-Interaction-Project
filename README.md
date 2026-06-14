@@ -48,7 +48,7 @@ This repository currently releases the **HY-WorldPlay integration patch**, the *
 Light-Interaction-Project/
 ├── hy-worldplay/      # Patch package for upstream HY-WorldPlay
 ├── matrix-game-3.0/       # Patch package for upstream Matrix-Game-3.0
-├── evaluation/        # Fixed prompts, initial images, and evaluation scripts
+├── evaluation/        # Fixed prompt metadata, external asset manifest, and evaluation scripts
 ├── asset/             # Project figures
 ├── NOTICE.md          # Third-party and upstream license notes
 └── LICENSE
@@ -134,12 +134,10 @@ bash evaluation/scripts/setup_evaluation_env.sh
 conda activate light-interaction-eval
 ```
 
-Evaluation images are hosted externally on Hugging Face to keep this repository lightweight. Download them before batch evaluation:
+Evaluation initial images are selected from the official VBench-I2V 16:9 cropped image suite. This repository does not redistribute the images; run the downloader below to fetch the official VBench-I2V assets and extract the selected 200 images.
 
 ```bash
-python evaluation/scripts/download_eval_assets.py \
-  --repo-id 2843721358l/Light-Interaction-Eval-Assets \
-  --local-dir evaluation/data
+python evaluation/scripts/download_eval_assets.py
 ```
 
 Then use the patched HY-WorldPlay environment to generate videos, and switch to `light-interaction-eval` for PSNR / SSIM / LPIPS and VBench.
