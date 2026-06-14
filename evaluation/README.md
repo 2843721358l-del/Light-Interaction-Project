@@ -21,77 +21,17 @@ Generated videos, CSV files, logs, and debug files are not included.
 
 ## 🛠️ Evaluation Environment
 
-Recommended setup:
-
-- Use the patched HY-WorldPlay environment only for video generation.
-- Use a standalone `light-interaction-eval` environment for PSNR / SSIM / LPIPS and VBench.
-
-This keeps benchmark dependencies out of the model runtime while still giving one unified environment for all evaluation metrics.
+Use the patched HY-WorldPlay environment for video generation, and use this standalone environment for PSNR / SSIM / LPIPS / VBench:
 
 ```bash
 bash evaluation/scripts/setup_evaluation_env.sh
 conda activate light-interaction-eval
-python evaluation/scripts/check_evaluation_env.py
 ```
 
-The setup script also downloads/checks the default evaluation assets used by LPIPS and the documented VBench dimensions. Assets are cached outside the repository by default:
+The setup script installs all metric dependencies, prepares LPIPS/VBench assets, and runs an import check. Assets are cached outside the repository:
 
 - VBench checkpoints: `~/.cache/light-interaction/vbench`
 - Torch Hub / LPIPS checkpoints: `~/.cache/light-interaction/torch`
-
-To refresh or prepare those assets separately:
-
-```bash
-python evaluation/scripts/prepare_evaluation_assets.py
-```
-
-If Hugging Face is slow or blocked, use an endpoint mirror:
-
-```bash
-HF_ENDPOINT=https://hf-mirror.com bash evaluation/scripts/setup_evaluation_env.sh
-```
-
-or, for asset preparation only:
-
-```bash
-python evaluation/scripts/prepare_evaluation_assets.py \
-  --hf-endpoint https://hf-mirror.com
-```
-
-By default the setup script installs PyTorch from the CUDA 12.1 wheel index:
-
-```bash
-TORCH_INDEX_URL=https://download.pytorch.org/whl/cu121 \
-  bash evaluation/scripts/setup_evaluation_env.sh
-```
-
-For CUDA 11.8:
-
-```bash
-TORCH_INDEX_URL=https://download.pytorch.org/whl/cu118 \
-  bash evaluation/scripts/setup_evaluation_env.sh
-```
-
-If conda channels are unavailable, use the venv backend:
-
-```bash
-EVAL_ENV_BACKEND=venv bash evaluation/scripts/setup_evaluation_env.sh
-source .venv-light-interaction-eval/bin/activate
-```
-
-To install into the currently activated environment:
-
-```bash
-EVAL_ENV_BACKEND=current bash evaluation/scripts/setup_evaluation_env.sh
-```
-
-To install Python packages only and skip model asset preparation:
-
-```bash
-PREPARE_EVAL_ASSETS=0 bash evaluation/scripts/setup_evaluation_env.sh
-```
-
-If VBench dependencies conflict with a local machine-specific setup, create a separate VBench environment as a fallback. The preferred documented path remains the unified evaluation environment above.
 
 HY-WorldPlay and HunyuanVideo-1.5 generation weights are not installed by this script; prepare them with the minimal downloader below. Evaluation metric assets are prepared by the setup script and kept in cache directories outside this repository.
 
@@ -102,6 +42,13 @@ python hy-worldplay/scripts/download_minimal_worldplay_assets.py
 ```
 
 The bidirectional action model, multi-step autoregressive action model, and RL variants are not required for the documented evaluation pipeline.
+
+Advanced options:
+
+- `HF_ENDPOINT=https://hf-mirror.com bash evaluation/scripts/setup_evaluation_env.sh` for a Hugging Face mirror.
+- `EVAL_ENV_BACKEND=venv bash evaluation/scripts/setup_evaluation_env.sh` if conda is unavailable.
+- `TORCH_INDEX_URL=https://download.pytorch.org/whl/cu118 bash evaluation/scripts/setup_evaluation_env.sh` for CUDA 11.8 wheels.
+- `PREPARE_EVAL_ASSETS=0 bash evaluation/scripts/setup_evaluation_env.sh` to skip metric asset preparation.
 
 ## 🖼️ Dataset
 

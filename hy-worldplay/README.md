@@ -21,6 +21,7 @@ hy-worldplay/
     ├── check_worldplay_assets.py
     ├── check_worldplay_env.py
     ├── download_minimal_worldplay_assets.py
+    ├── setup_worldplay_release.sh
     └── setup_worldplay_env.sh
 ```
 
@@ -34,48 +35,17 @@ hy-worldplay/
 | HY-WorldPlay checkpoints | <https://huggingface.co/tencent/HY-WorldPlay> |
 | HunyuanVideo-1.5 checkpoints | <https://huggingface.co/tencent/HunyuanVideo-1.5> |
 
-## 🧩 Minimal Model Assets
-
-This release only needs the **few-step distilled autoregressive** HY-WorldPlay action checkpoint:
-
-```text
-ar_distilled_action_model/*.safetensors
-```
-
-You do **not** need to download the bidirectional action model, the multi-step autoregressive action model, or RL variants for the released Light Interaction inference path.
-
-After creating the WorldPlay environment, the recommended download path is:
-
-```bash
-python hy-worldplay/scripts/download_minimal_worldplay_assets.py
-```
-
-To store assets in a regular directory instead of the Hugging Face cache:
-
-```bash
-python hy-worldplay/scripts/download_minimal_worldplay_assets.py \
-  --output-root /path/to/light-interaction-models
-```
-
-If the FLUX vision encoder or other Hugging Face assets require authentication:
-
-```bash
-HF_TOKEN=<your_huggingface_read_token> \
-python hy-worldplay/scripts/download_minimal_worldplay_assets.py
-```
-
-The script prints the exact `HY_MODEL_PATH` and `HY_AR_DISTILL_ACTION_MODEL_PATH` exports to use with `run.sh`.
-
 ## 🚀 Reproducible Setup
 
+The recommended path is one command after cloning upstream HY-WorldPlay:
+
 ```bash
-git clone https://github.com/Tencent-Hunyuan/HY-WorldPlay.git
-bash hy-worldplay/scripts/apply_patch.sh /path/to/HY-WorldPlay
-bash hy-worldplay/scripts/setup_worldplay_env.sh /path/to/HY-WorldPlay
+git clone https://github.com/Tencent-Hunyuan/HY-WorldPlay.git ../HY-WorldPlay
+bash hy-worldplay/scripts/setup_worldplay_release.sh ../HY-WorldPlay
 conda activate light-interaction-worldplay
 ```
 
-The patch script checks that the target looks like a HY-WorldPlay checkout and runs `patch --dry-run` before copying files. The environment script installs PyTorch 2.6.0, HY-WorldPlay requirements, Triton, and the Python packages needed by the Light Interaction modules.
+This applies the patch, creates the WorldPlay runtime environment, downloads the minimal model assets, and runs environment/asset checks.
 
 This release was tested on upstream HY-WorldPlay commit:
 
@@ -83,75 +53,27 @@ This release was tested on upstream HY-WorldPlay commit:
 1588e1336e842b03b0a7860c654ebd7c46bb065e
 ```
 
-If patching fails, check whether the upstream HY-WorldPlay files have changed. For reproducibility, record the upstream commit hash used in your experiments.
+Minimal model assets:
 
-If conda channels are unavailable, use a local venv:
+- HunyuanVideo-1.5 480P-I2V runtime files
+- HY-WorldPlay `ar_distilled_action_model/*.safetensors`
 
-```bash
-WORLDPLAY_ENV_BACKEND=venv bash hy-worldplay/scripts/setup_worldplay_env.sh /path/to/HY-WorldPlay
-source .venv-light-interaction-worldplay/bin/activate
-```
+You do not need the bidirectional action model, the multi-step autoregressive action model, or RL variants.
 
-For CUDA 11.8 or CPU-only package checks, override the PyTorch index:
-
-```bash
-TORCH_INDEX_URL=https://download.pytorch.org/whl/cu118 bash hy-worldplay/scripts/setup_worldplay_env.sh /path/to/HY-WorldPlay
-TORCH_INDEX_URL=https://download.pytorch.org/whl/cpu bash hy-worldplay/scripts/setup_worldplay_env.sh /path/to/HY-WorldPlay
-```
-
-CPU-only environments are useful for import checks, but HY-WorldPlay inference requires NVIDIA GPUs.
-
-## ✅ Environment And Asset Checks
-
-After activating the runtime environment:
-
-```bash
-python hy-worldplay/scripts/check_worldplay_env.py \
-  --worldplay-root /path/to/HY-WorldPlay \
-  --require-cuda
-```
-
-After downloading the minimal model assets:
-
-```bash
-python hy-worldplay/scripts/check_worldplay_assets.py \
-  --worldplay-root /path/to/HY-WorldPlay \
-  --model-path /path/to/HunyuanVideo-1.5 \
-  --action-ckpt /path/to/HY-WorldPlay/ar_distilled_action_model/model.safetensors
-```
-
-The HunyuanVideo-1.5 model root should contain:
-
-```text
-vae/
-scheduler/
-transformer/480p_i2v/
-text_encoder/llm/
-text_encoder/byt5-small/
-text_encoder/Glyph-SDXL-v2/
-vision_encoder/siglip/
-```
+If you already manage environments or checkpoints manually, use `apply_patch.sh`, `setup_worldplay_env.sh`, `download_minimal_worldplay_assets.py`, and the two check scripts separately.
 
 ## ▶️ Run
 
 ```bash
-cd /path/to/HY-WorldPlay
-
-export HY_MODEL_PATH=/path/to/HunyuanVideo-1.5
-export HY_AR_DISTILL_ACTION_MODEL_PATH=/path/to/HY-WorldPlay/ar_distilled_action_model/model.safetensors
-export HY_N_INFERENCE_GPU=1
-
-bash run.sh
+cd ../HY-WorldPlay
+conda activate light-interaction-worldplay
+bash run_light_interaction.sh
 ```
 
 For a quick smoke test before full 253-frame generation:
 
 ```bash
-HY_N_INFERENCE_GPU=1 \
-HY_NUM_FRAMES=13 \
-HY_POSE='left-3' \
-HY_OUTPUT_PATH=/tmp/light-interaction-worldplay-smoke-output \
-bash run.sh
+HY_NUM_FRAMES=13 HY_POSE='left-3' bash run_light_interaction.sh
 ```
 
 Useful `run.sh` overrides:
@@ -180,6 +102,13 @@ The patched `run.sh` uses `--acceleration_preset all` by default.
 | `all` | Enables all Light Interaction components |
 
 To switch presets, edit the `--acceleration_preset` argument in the patched `run.sh`.
+
+## 🔧 Advanced Notes
+
+- Use `WORLDPLAY_ENV_BACKEND=venv` with `setup_worldplay_release.sh` if conda is unavailable.
+- Use `WORLDPLAY_ASSET_OUTPUT_ROOT=/path/to/models` to store downloaded weights outside the Hugging Face cache.
+- Use `HF_TOKEN=<token>` if gated Hugging Face assets require authentication.
+- CPU-only environments can run package checks, but HY-WorldPlay inference requires NVIDIA GPUs.
 
 ## ⏱️ Inference Log
 

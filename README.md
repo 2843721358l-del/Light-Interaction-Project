@@ -56,56 +56,12 @@ Light-Interaction-Project/
 
 ## 📋 Requirements
 
-Recommended runtime:
-
 - Linux
 - NVIDIA GPU with CUDA support
 - Python 3.10
-- PyTorch 2.6.0 / torchvision 0.21.0 / torchaudio 2.6.0
 - `patch` command-line utility
 
-HY-WorldPlay inference and evaluation use separate environments. Create the patched HY-WorldPlay runtime from a clean upstream checkout:
-
-```bash
-git clone https://github.com/Tencent-Hunyuan/HY-WorldPlay.git
-
-bash hy-worldplay/scripts/apply_patch.sh /path/to/HY-WorldPlay
-bash hy-worldplay/scripts/setup_worldplay_env.sh /path/to/HY-WorldPlay
-conda activate light-interaction-worldplay
-python hy-worldplay/scripts/check_worldplay_env.py --worldplay-root /path/to/HY-WorldPlay --require-cuda
-```
-
-If conda channels are unavailable, use:
-
-```bash
-WORLDPLAY_ENV_BACKEND=venv bash hy-worldplay/scripts/setup_worldplay_env.sh /path/to/HY-WorldPlay
-source .venv-light-interaction-worldplay/bin/activate
-```
-
-For evaluation metrics, use the standalone evaluation environment rather than mixing metric packages into the HY-WorldPlay runtime:
-
-```bash
-bash evaluation/scripts/setup_evaluation_env.sh
-conda activate light-interaction-eval
-python evaluation/scripts/check_evaluation_env.py
-```
-
-This installs PSNR / SSIM / LPIPS / VBench dependencies and prepares the default evaluation metric assets in `~/.cache/light-interaction/`.
-
-If Hugging Face access is slow, use a mirror endpoint:
-
-```bash
-HF_ENDPOINT=https://hf-mirror.com bash evaluation/scripts/setup_evaluation_env.sh
-```
-
-If conda channels are unavailable on your machine, use the venv backend:
-
-```bash
-EVAL_ENV_BACKEND=venv bash evaluation/scripts/setup_evaluation_env.sh
-source .venv-light-interaction-eval/bin/activate
-```
-
-See [evaluation/README.md](evaluation/README.md) for CUDA wheel options and VBench notes.
+Inference and evaluation use two separate environments. The setup scripts below install the required packages and run import checks.
 
 ## 🚀 Quick Start
 
@@ -118,67 +74,21 @@ cd Light-Interaction-Project
 
 ### 2. Prepare HY-WorldPlay
 
-Clone upstream HY-WorldPlay, apply the Light Interaction patch, and create the runtime environment:
+Clone upstream HY-WorldPlay, then prepare the patched runtime and minimal model assets with one command:
 
 ```bash
-git clone https://github.com/Tencent-Hunyuan/HY-WorldPlay.git
-bash hy-worldplay/scripts/apply_patch.sh /path/to/HY-WorldPlay
-bash hy-worldplay/scripts/setup_worldplay_env.sh /path/to/HY-WorldPlay
-conda activate light-interaction-worldplay
+git clone https://github.com/Tencent-Hunyuan/HY-WorldPlay.git ../HY-WorldPlay
+bash hy-worldplay/scripts/setup_worldplay_release.sh ../HY-WorldPlay
 ```
 
-Download the required checkpoints from:
-
-- HY-WorldPlay: <https://huggingface.co/tencent/HY-WorldPlay>
-- HunyuanVideo-1.5: <https://huggingface.co/tencent/HunyuanVideo-1.5>
-
-For this release, you only need HunyuanVideo-1.5 runtime assets and the few-step distilled autoregressive HY-WorldPlay action checkpoint. You do **not** need the bidirectional model, the multi-step autoregressive model, or RL variants.
-
-Recommended minimal download:
-
-```bash
-python hy-worldplay/scripts/download_minimal_worldplay_assets.py
-```
-
-The script prints the `HY_MODEL_PATH` and `HY_AR_DISTILL_ACTION_MODEL_PATH` values to export before running inference.
-
-The patch script performs a dry run before copying files. This release was tested on upstream HY-WorldPlay commit `1588e1336e842b03b0a7860c654ebd7c46bb065e`.
-
-Check that the environment and model paths are complete:
-
-```bash
-python hy-worldplay/scripts/check_worldplay_env.py \
-  --worldplay-root /path/to/HY-WorldPlay \
-  --require-cuda
-
-python hy-worldplay/scripts/check_worldplay_assets.py \
-  --worldplay-root /path/to/HY-WorldPlay \
-  --model-path /path/to/HunyuanVideo-1.5 \
-  --action-ckpt /path/to/HY-WorldPlay/ar_distilled_action_model/model.safetensors
-```
+This downloads only the assets used by this release: HunyuanVideo-1.5 runtime files and the few-step distilled autoregressive HY-WorldPlay action checkpoint. Bidirectional, multi-step AR, and RL action models are not required.
 
 ## ▶️ Run Inference
 
 ```bash
-cd /path/to/HY-WorldPlay
-
-export HY_MODEL_PATH=/path/to/HunyuanVideo-1.5
-export HY_AR_DISTILL_ACTION_MODEL_PATH=/path/to/HY-WorldPlay/ar_distilled_action_model/model.safetensors
-
-# Optional: use one GPU. Upstream run.sh may default to multi-GPU inference.
-export HY_N_INFERENCE_GPU=1
-
-bash run.sh
-```
-
-For a fast smoke test before full generation:
-
-```bash
-HY_N_INFERENCE_GPU=1 \
-HY_NUM_FRAMES=13 \
-HY_POSE='left-3' \
-HY_OUTPUT_PATH=/tmp/light-interaction-worldplay-smoke-output \
-bash run.sh
+cd ../HY-WorldPlay
+conda activate light-interaction-worldplay
+bash run_light_interaction.sh
 ```
 
 The default preset is `all`, which enables all acceleration components. To reproduce ablations, edit the `--acceleration_preset` argument in `run.sh`.
@@ -195,17 +105,14 @@ More patch details are in [hy-worldplay/README.md](hy-worldplay/README.md).
 
 ## 📊 Evaluation
 
-The evaluation folder contains 200 fixed prompts and 200 initial images.
-
 Create the standalone evaluation environment once:
 
 ```bash
 bash evaluation/scripts/setup_evaluation_env.sh
 conda activate light-interaction-eval
-python evaluation/scripts/check_evaluation_env.py
 ```
 
-Use the patched HY-WorldPlay environment to generate videos, then switch to `light-interaction-eval` to compute PSNR / SSIM / LPIPS and VBench scores. The setup step prepares LPIPS and VBench metric assets; rerun `python evaluation/scripts/prepare_evaluation_assets.py` if you move or clear the cache.
+Then use the patched HY-WorldPlay environment to generate videos, and switch to `light-interaction-eval` for PSNR / SSIM / LPIPS and VBench.
 
 ### Batch Generation
 
