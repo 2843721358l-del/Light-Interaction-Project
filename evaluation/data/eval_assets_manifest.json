@@ -1,5 +1,9 @@
 {
-  "description": "Evaluation assets for Light Interaction. Image assets are hosted externally on Hugging Face Dataset.",
+  "description": "Evaluation assets for Light Interaction. The selected initial images are derived from the official VBench-I2V Image Suite.",
+  "source": "VBench-I2V Image Suite",
+  "source_url": "https://github.com/Vchitect/VBench/tree/master/vbench2_beta_i2v",
+  "source_subset": "crop/16-9",
+  "redistribution": "This repository does not redistribute VBench-I2V image assets. Use evaluation/scripts/download_eval_assets.py to download the official VBench-I2V assets and extract the selected 200 images.",
   "external_assets": true,
   "files": [
     {
@@ -1003,6 +1007,6 @@
       "size": 1287783
     }
   ],
-  "repo_id": "2843721358l/Light-Interaction-Eval-Assets",
-  "repo_type": "dataset"
+  "repo_id": null,
+  "repo_type": null
 }
