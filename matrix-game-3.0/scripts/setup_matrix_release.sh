@@ -10,6 +10,7 @@
 #   MATRIX_ASSET_OUTPUT_ROOT=/path/to/light-interaction-models
 #   PREPARE_MATRIX_ASSETS=0
 #   REQUIRE_CUDA=0
+#   ALLOW_UPSTREAM_MISMATCH=1
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -31,8 +32,13 @@ MATRIX_ROOT="$(cd "$MATRIX_ROOT" && pwd)"
 
 CURRENT_COMMIT="$(git -C "$MATRIX_ROOT" rev-parse HEAD 2>/dev/null || true)"
 if [ -n "$CURRENT_COMMIT" ] && [[ "$CURRENT_COMMIT" != "$EXPECTED_COMMIT"* ]]; then
-  echo "Warning: this patch was tested on upstream commit $EXPECTED_COMMIT, but the target checkout is $CURRENT_COMMIT." >&2
-  echo "The patch may still work, but failures are more likely if upstream changed." >&2
+  echo "Error: this patch was tested on upstream commit $EXPECTED_COMMIT, but the target checkout is $CURRENT_COMMIT." >&2
+  echo "Please run: git -C \"$MATRIX_ROOT\" checkout $EXPECTED_COMMIT" >&2
+  echo "To proceed anyway, set ALLOW_UPSTREAM_MISMATCH=1." >&2
+  if [ "${ALLOW_UPSTREAM_MISMATCH:-0}" != "1" ]; then
+    exit 1
+  fi
+  echo "Continuing despite upstream commit mismatch because ALLOW_UPSTREAM_MISMATCH=1." >&2
 fi
 
 bash "$SCRIPT_DIR/apply_patch.sh" "$MATRIX_ROOT"

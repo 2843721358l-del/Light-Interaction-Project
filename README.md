@@ -98,6 +98,7 @@ Clone upstream HY-WorldPlay, then prepare the patched runtime and minimal model 
 
 ```bash
 git clone https://github.com/Tencent-Hunyuan/HY-WorldPlay.git ../HY-WorldPlay
+git -C ../HY-WorldPlay checkout 1588e1336e842b03b0a7860c654ebd7c46bb065e
 bash hy-worldplay/scripts/setup_worldplay_release.sh ../HY-WorldPlay
 ```
 
@@ -109,8 +110,13 @@ Clone the upstream repository, then prepare the patched Matrix-Game-3.0 runtime 
 
 ```bash
 git clone https://github.com/SkyworkAI/Matrix-Game.git ../Matrix-Game
+git -C ../Matrix-Game checkout 71c3cd7f741311f8100f6cf9cde942b6c1378d11
 bash matrix-game-3.0/scripts/setup_matrix_release.sh ../Matrix-Game/Matrix-Game-3
 ```
+
+For reproducibility, use the tested upstream commits above. Newer upstream commits may work, but patch compatibility is not guaranteed.
+
+This downloads the required Matrix-Game-3.0 assets from the official Hugging Face repository, including the distilled base model, T5 text encoder, Wan VAE, and Matrix-Game LightVAE checkpoints.
 
 ## ▶️ Run Inference
 

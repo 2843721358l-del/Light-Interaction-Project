@@ -42,11 +42,14 @@ The recommended path is one command after cloning upstream HY-WorldPlay:
 
 ```bash
 git clone https://github.com/Tencent-Hunyuan/HY-WorldPlay.git ../HY-WorldPlay
+git -C ../HY-WorldPlay checkout 1588e1336e842b03b0a7860c654ebd7c46bb065e
 bash hy-worldplay/scripts/setup_worldplay_release.sh ../HY-WorldPlay
 conda activate light-interaction-worldplay
 ```
 
 This applies the patch, creates the WorldPlay runtime environment, downloads the minimal model assets, and runs environment/asset checks.
+
+For reproducibility, use the tested upstream commit above. Newer upstream commits may work, but patch compatibility is not guaranteed.
 
 This release was tested on upstream HY-WorldPlay commit:
 

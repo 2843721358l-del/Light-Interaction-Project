@@ -43,11 +43,14 @@ The recommended path is one command after cloning the upstream repository:
 
 ```bash
 git clone https://github.com/SkyworkAI/Matrix-Game.git ../Matrix-Game
+git -C ../Matrix-Game checkout 71c3cd7f741311f8100f6cf9cde942b6c1378d11
 bash matrix-game-3.0/scripts/setup_matrix_release.sh ../Matrix-Game/Matrix-Game-3
 conda activate light-interaction-matrix
 ```
 
 This applies the patch, creates the Matrix-Game-3.0 runtime environment, downloads the model assets, and runs environment/asset checks.
+
+For reproducibility, use the tested upstream commit above. Newer upstream commits may work, but patch compatibility is not guaranteed.
 
 This release was tested on upstream Matrix-Game-3.0 commit:
 
