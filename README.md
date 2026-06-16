@@ -18,19 +18,19 @@ Training-free acceleration for autoregressive interactive video generation
   <a href="LICENSE"><img src="https://img.shields.io/static/v1?label=License&message=MIT&color=green"></a>
 </p>
 
-**Light Interaction** accelerates autoregressive interactive video generation without model retraining. It combines:
-
-- Adaptive context management
-- Denoising cache acceleration
-- Hardware-software co-designed 3D block sparse attention
-
-This repository currently releases the **HY-WorldPlay integration patch**, the **Matrix-Game-3.0 integration patch**, and **evaluation scripts**.
-
 ## 🎥 Demo
 
 <p align="center">
   <video src="https://github.com/user-attachments/assets/4e6e1f91-b691-4720-823e-08dea4180a3c" width="95%"> </video>
 </p>
+
+## 💡 Introduction
+
+**Light Interaction** is a training-free inference acceleration framework for autoregressive interactive video world models. Interactive systems such as HY-WorldPlay and Matrix-Game-3.0 generate videos chunk by chunk under user-controlled camera trajectories, but long rollouts are expensive because context memory grows over time, attention scales quadratically, and the transformer is repeatedly executed during denoising.
+
+The key idea is to make computation adapt to interaction dynamics. Light Interaction prunes unreliable spatial memory according to camera-pose-aware retrieval similarity, adjusts temporal context windows based on local latent dynamics, reuses early denoising outputs when revisiting familiar regions, and uses an AR-aware 3D block sparse attention backend to turn algorithmic sparsity into practical speedup.
+
+This repository releases patch-style integrations for **HY-WorldPlay** and **Matrix-Game-3.0**, along with reproducible setup scripts, fixed-prompt generation helpers, and evaluation utilities.
 
 ## 🔥 News
 
