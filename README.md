@@ -26,9 +26,7 @@ Training-free acceleration for autoregressive interactive video generation
 This repository currently releases the **HY-WorldPlay integration patch**, the **Matrix-Game-3.0 integration patch**, and **evaluation scripts**.
 
 <p align="center">
-  <a href="asset/paper_reel_draft.mp4">
-    <img src="asset/paper_reel_draft_cover.png" width="95%" alt="Light Interaction qualitative demo video"/>
-  </a>
+  <video src="https://github.com/2843721358l-del/Light-Interaction-Project/raw/main/asset/paper_reel_draft.mp4" width="95%"> </video>
 </p>
 
 ## 🔥 News
