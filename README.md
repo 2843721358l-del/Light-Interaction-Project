@@ -7,6 +7,7 @@ Training-free acceleration for autoregressive interactive video generation
 <p align="center">
   <a href="https://arxiv.org/abs/2605.31158"><b>📄 Paper</b></a> |
   <a href="https://2843721358l-del.github.io/Light-Interaction-Project/"><b>🌐 Project Page</b></a> |
+  <a href="#-demo"><b>🎥 Demo</b></a> |
   <a href="hy-worldplay/README.md"><b>🔌 HY-WorldPlay Patch</b></a> |
   <a href="matrix-game-3.0/README.md"><b>🎮 Matrix-Game-3.0 Patch</b></a> |
   <a href="evaluation/README.md"><b>📊 Evaluation</b></a>
@@ -24,6 +25,8 @@ Training-free acceleration for autoregressive interactive video generation
 - Hardware-software co-designed 3D block sparse attention
 
 This repository currently releases the **HY-WorldPlay integration patch**, the **Matrix-Game-3.0 integration patch**, and **evaluation scripts**.
+
+## 🎥 Demo
 
 <p align="center">
   <video src="https://github.com/user-attachments/assets/79f6fe8d-f244-4fb9-a1be-3db5dd00ccbd" width="95%"> </video>
