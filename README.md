@@ -29,7 +29,7 @@ This repository currently releases the **HY-WorldPlay integration patch**, the *
 ## 🎥 Demo
 
 <p align="center">
-  <video src="https://github.com/user-attachments/assets/79f6fe8d-f244-4fb9-a1be-3db5dd00ccbd" width="95%"> </video>
+  <video src="https://github.com/user-attachments/assets/4e6e1f91-b691-4720-823e-08dea4180a3c" width="95%"> </video>
 </p>
 
 ## 🔥 News
