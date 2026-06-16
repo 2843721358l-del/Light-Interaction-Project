@@ -34,9 +34,10 @@ This repository releases patch-style integrations for **HY-WorldPlay** and **Mat
 
 ## 🔥 News
 
-- 🔥 [2026/06] HY-WorldPlay and Matrix-Game-3.0 acceleration patches released.
-- 🔥 [2026/06] Evaluation utilities released.
 - 📄 [2026/05] Paper released on arXiv.
+- 🔥 [2026/06] HY-WorldPlay acceleration patch released.
+- 🔥 [2026/06] Matrix-Game-3.0 acceleration patch released.
+- 📊 [2026/06] Evaluation utilities released.
 
 ## 💡 Highlights
 
