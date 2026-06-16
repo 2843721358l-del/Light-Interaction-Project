@@ -26,24 +26,9 @@ Training-free acceleration for autoregressive interactive video generation
 This repository currently releases the **HY-WorldPlay integration patch**, the **Matrix-Game-3.0 integration patch**, and **evaluation scripts**.
 
 <p align="center">
-  <b>HY-WorldPlay 480P Image-to-Video</b><br>
-  Forward → Backward Camera Trajectory &nbsp;|&nbsp;
-  228.60s → 88.24s &nbsp;|&nbsp; 2.59× Speedup &nbsp;|&nbsp; PSNR 24.81 &nbsp;|&nbsp; Peak VRAM 54.66GB<br>
-  <img src="asset/worldplay_acc.png" width="95%" alt="HY-WorldPlay forward to backward camera trajectory qualitative example"/>
-</p>
-
-<br>
-
-<p align="center">
-  <b>Matrix-Game-3.0 720P Image-to-Video</b><br>
-  Forward → Backward Camera Trajectory &nbsp;|&nbsp;
-  59.70s → 37.07s &nbsp;|&nbsp; 1.61× Speedup &nbsp;|&nbsp; PSNR 17.76 &nbsp;|&nbsp; Peak VRAM 35.04GB<br>
-  <img src="asset/matrix_acc.png" width="95%" alt="Matrix-Game-3.0 forward to backward camera trajectory qualitative example"/>
-</p>
-
-<p align="center">
-  Full video demos are available on the
-  <a href="https://2843721358l-del.github.io/Light-Interaction-Project/">Project Page</a>.
+  <video src="asset/paper_reel_draft.mp4" width="95%" controls autoplay muted loop playsinline>
+    Light Interaction qualitative demo video.
+  </video>
 </p>
 
 ## 🔥 News
