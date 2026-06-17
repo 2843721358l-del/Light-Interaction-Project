@@ -37,8 +37,8 @@ For license compatibility and faithful upstream reproduction, the adapters are i
 ## 🔥 News
 
 - 📄 [2026/05] Paper released on arXiv.
-- 🔥 [2026/06] HY-WorldPlay adapter release published.
-- 🔥 [2026/06] Matrix-Game-3.0 adapter release published.
+- 🔥 [2026/06] HY-WorldPlay adapter released.
+- 🔥 [2026/06] Matrix-Game-3.0 adapter released.
 - 📊 [2026/06] Evaluation utilities released.
 
 ## 💡 Highlights
