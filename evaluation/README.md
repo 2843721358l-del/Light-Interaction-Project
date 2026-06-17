@@ -50,7 +50,7 @@ When `evaluation/data/eval_assets_manifest.json` is present, the downloader also
 
 ## 🛠️ Evaluation Environment
 
-Use the patched HY-WorldPlay environment for video generation, and use this standalone environment for PSNR / SSIM / LPIPS / VBench:
+Use the Light Interaction-enabled HY-WorldPlay environment for video generation, and use this standalone environment for PSNR / SSIM / LPIPS / VBench:
 
 ```bash
 bash evaluation/scripts/setup_evaluation_env.sh
@@ -72,7 +72,7 @@ python hy-worldplay/scripts/download_minimal_worldplay_assets.py
 
 The bidirectional action model, multi-step autoregressive action model, and RL variants are not required for the documented evaluation pipeline.
 
-For Matrix-Game-3.0 generation, prepare the patched Matrix runtime and model assets with:
+For Matrix-Game-3.0 generation, prepare the Light Interaction-enabled Matrix runtime and model assets with:
 
 ```bash
 bash matrix-game-3.0/scripts/setup_matrix_release.sh /path/to/Matrix-Game/Matrix-Game-3
@@ -100,7 +100,7 @@ Advanced options:
 
 ## 🎬 Batch Generation
 
-Run batch generation in the patched model runtime environment, not in `light-interaction-eval`, because generation calls upstream model code and uses model checkpoints. The same script supports both released backends.
+Run batch generation in the adapted model runtime environment, not in `light-interaction-eval`, because generation calls upstream model code and uses model checkpoints. The same script supports both released backends.
 
 HY-WorldPlay:
 
@@ -108,7 +108,7 @@ HY-WorldPlay:
 python evaluation/scripts/batch_video_generation.py \
   --backend hy-worldplay \
   --prompt-json evaluation/data/refined_prompts_llava16.json \
-  --hy-worldplay-root /path/to/patched/HY-WorldPlay \
+  --hy-worldplay-root /path/to/adapted/HY-WorldPlay \
   --model-path /path/to/HunyuanVideo-1.5 \
   --action-ckpt /path/to/ar_distilled_action_model/model.safetensors \
   --output-root outputs/fixed_prompt \
@@ -122,7 +122,7 @@ Matrix-Game-3.0:
 python evaluation/scripts/batch_video_generation.py \
   --backend matrix-game \
   --prompt-json evaluation/data/refined_prompts_llava16.json \
-  --matrix-game-root /path/to/patched/Matrix-Game/Matrix-Game-3 \
+  --matrix-game-root /path/to/adapted/Matrix-Game/Matrix-Game-3 \
   --ckpt-dir /path/to/Matrix-Game-3.0 \
   --output-root outputs/fixed_prompt_matrix \
   --allowed-gpus 0,1,2,3 \

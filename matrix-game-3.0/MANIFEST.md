@@ -1,4 +1,4 @@
-# Patch Manifest
+# Adapter Manifest
 
 This repository is intended to be applied on top of an upstream Matrix-Game-3.0
 checkout.
@@ -14,9 +14,9 @@ scripts/run_accel_preset.sh
 scripts/parse_benchmark_logs.py
 ```
 
-## Upstream Files Modified By Patch
+## Integration Diffs Applied To Upstream Files
 
-These upstream files are modified by
+These upstream files are updated by
 `patches/0001-integrate-acceleration.patch`:
 
 ```text
@@ -40,17 +40,17 @@ matrix-game-3.0/scripts/check_matrix_env.py
 matrix-game-3.0/scripts/check_matrix_assets.py
 ```
 
-## Why Use A Patch
+## Why Use An Integration Diff
 
 The entry point, interactive pipeline, DiT model, and camera-selection helper
 are upstream-derived files. To avoid redistributing the full upstream codebase,
 this repository stores only the integration diff for those files. Users should
-obtain the upstream repository first, then apply this patch.
+obtain the upstream repository first, then apply this lightweight integration diff.
 
 ## License Attribution
 
 `LICENSE_LONGCAT` preserves the MIT license notice for the LongCat-Video-derived
-`longcat_kernel.py`. It is part of this patch package and is not copied into
+`longcat_kernel.py`. It is part of this adapter package and is not copied into
 the upstream checkout by the apply script.
 
 `bi_sparse_operation.py` is authored by the Light Interaction authors for

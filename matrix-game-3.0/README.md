@@ -1,8 +1,8 @@
-# 🔌 Matrix-Game-3.0 Acceleration Patch
+# 🔌 Matrix-Game-3.0 Adapter for Light Interaction
 
-This folder provides the Light Interaction patch for upstream [Matrix-Game-3.0](https://github.com/SkyworkAI/Matrix-Game/tree/main/Matrix-Game-3).
+This folder provides the Light Interaction adapter for upstream [Matrix-Game-3.0](https://github.com/SkyworkAI/Matrix-Game/tree/main/Matrix-Game-3).
 
-It does not include the original Matrix-Game-3.0 source tree or any model checkpoints. Clone the upstream repository and download checkpoints from the official sources before applying this patch.
+It does not include the original Matrix-Game-3.0 source tree or any model checkpoints. Clone the upstream repository and download checkpoints from the official sources before installing this adapter.
 
 ## 📂 Contents
 
@@ -27,7 +27,7 @@ matrix-game-3.0/
     └── setup_matrix_env.sh
 ```
 
-`files/` contains new Light Interaction modules and benchmark helpers. `patches/0001-integrate-acceleration.patch` modifies upstream Matrix-Game-3.0 entry points, interactive pipeline code, DiT code, and camera context-selection logic.
+`files/` contains new Light Interaction modules and benchmark helpers. The lightweight integration diff at `patches/0001-integrate-acceleration.patch` updates upstream Matrix-Game-3.0 entry points, interactive pipeline code, DiT code, and camera context-selection logic.
 
 ## 📦 Upstream Resources
 
@@ -37,7 +37,7 @@ matrix-game-3.0/
 | Matrix-Game-3.0 checkpoints | <https://huggingface.co/Skywork/Matrix-Game-3.0> |
 | Matrix-Game-3.0 project page | <https://matrix-game-v3.github.io/> |
 
-## 🚀 Reproducible Setup
+## 🚀 Install the Adapter
 
 The recommended path is one command after cloning the upstream repository:
 
@@ -48,9 +48,9 @@ bash matrix-game-3.0/scripts/setup_matrix_release.sh ../Matrix-Game/Matrix-Game-
 conda activate light-interaction-matrix
 ```
 
-This applies the patch, creates the Matrix-Game-3.0 runtime environment, downloads the model assets, and runs environment/asset checks.
+This installs the adapter, creates the Matrix-Game-3.0 runtime environment, downloads the model assets, and runs environment/asset checks.
 
-For reproducibility, use the tested upstream commit above. Newer upstream commits may work, but patch compatibility is not guaranteed.
+For reproducibility, use the tested upstream commit above. Newer upstream commits may work, but integration compatibility is not guaranteed.
 
 This release was tested on upstream Matrix-Game-3.0 commit:
 
@@ -66,6 +66,8 @@ Required model assets:
 - `MG-LightVAE.pth` and `MG-LightVAE_v2.pth`
 
 If you already manage environments or checkpoints manually, use `apply_patch.sh`, `setup_matrix_env.sh`, `download_matrix_assets.py`, and the two check scripts separately.
+
+To avoid redistributing upstream-derived files, we provide lightweight integration diffs that are applied to an official Matrix-Game-3.0 checkout.
 
 ## ▶️ Run
 
@@ -98,7 +100,7 @@ The release helper keeps `MG_NUM_ITERATIONS=4` for quick demos. The evaluation b
 
 ## 🎛️ Presets
 
-The patched helper uses `MG_PRESET=all` through `run_light_interaction.sh`.
+The adapted helper uses `MG_PRESET=all` through `run_light_interaction.sh`.
 
 | Preset | Behavior |
 |:---|:---|
@@ -124,7 +126,7 @@ MG_PRESET=context bash run_light_interaction.sh
 
 ## ⏱️ Inference Log
 
-The patched entry point prints an inference summary:
+The Light Interaction-enabled entry point prints an inference summary:
 
 ```text
 Matrix-Game-3.0 Light Interaction Benchmark
@@ -163,4 +165,4 @@ The release keeps one tested Triton config by default to avoid first-run autotun
 
 ## 📄 License Notes
 
-This folder stores patch-style modifications instead of full upstream files. Upstream Matrix-Game-3.0 files and model weights remain governed by their own licenses. `longcat_kernel.py` includes attribution for LongCat-Video-derived code; see [../NOTICE.md](../NOTICE.md).
+This folder stores adapter files and lightweight integration diffs instead of full upstream files. Upstream Matrix-Game-3.0 files and model weights remain governed by their own licenses. `longcat_kernel.py` includes attribution for LongCat-Video-derived code; see [../NOTICE.md](../NOTICE.md).

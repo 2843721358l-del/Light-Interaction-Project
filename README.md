@@ -8,8 +8,8 @@ Training-free acceleration for autoregressive interactive video generation
   <a href="https://arxiv.org/abs/2605.31158"><b>📄 Paper</b></a> |
   <a href="https://2843721358l-del.github.io/Light-Interaction-Project/"><b>🌐 Project Page</b></a> |
   <a href="#-demo"><b>🎥 Demo</b></a> |
-  <a href="hy-worldplay/README.md"><b>🔌 HY-WorldPlay Patch</b></a> |
-  <a href="matrix-game-3.0/README.md"><b>🎮 Matrix-Game-3.0 Patch</b></a> |
+  <a href="hy-worldplay/README.md"><b>🔌 HY-WorldPlay Adapter</b></a> |
+  <a href="matrix-game-3.0/README.md"><b>🎮 Matrix-Game-3.0 Adapter</b></a> |
   <a href="evaluation/README.md"><b>📊 Evaluation</b></a>
 </p>
 
@@ -30,19 +30,21 @@ Training-free acceleration for autoregressive interactive video generation
 
 The key idea is to make computation adapt to interaction dynamics. Light Interaction prunes unreliable spatial memory according to camera-pose-aware retrieval similarity, adjusts temporal context windows based on local latent dynamics, reuses early denoising outputs when revisiting familiar regions, and uses an AR-aware 3D block sparse attention backend to turn algorithmic sparsity into practical speedup.
 
-This repository releases patch-style integrations for **HY-WorldPlay** and **Matrix-Game-3.0**, along with reproducible setup scripts, fixed-prompt generation helpers, and evaluation utilities.
+This repository releases adapter-based integrations for **HY-WorldPlay** and **Matrix-Game-3.0**, along with reproducible setup scripts, fixed-prompt generation helpers, and evaluation utilities.
+
+For license compatibility and faithful upstream reproduction, the adapters are installed on top of official upstream checkouts through setup scripts and lightweight integration diffs. This packaging choice supports clean reproducibility and compliance; it should not be read as a claim that the method is only a narrow incremental modification.
 
 ## 🔥 News
 
 - 📄 [2026/05] Paper released on arXiv.
-- 🔥 [2026/06] HY-WorldPlay acceleration patch released.
-- 🔥 [2026/06] Matrix-Game-3.0 acceleration patch released.
+- 🔥 [2026/06] HY-WorldPlay adapter release published.
+- 🔥 [2026/06] Matrix-Game-3.0 adapter release published.
 - 📊 [2026/06] Evaluation utilities released.
 
 ## 💡 Highlights
 
 - **Training-free**: no retraining or fine-tuning is required.
-- **Plug-in patch release**: applies to upstream HY-WorldPlay or Matrix-Game-3.0 checkouts instead of redistributing upstream code.
+- **Adapter-based release**: installs on top of official HY-WorldPlay or Matrix-Game-3.0 checkouts instead of redistributing upstream code.
 - **Preset-based ablations**: `off`, `context`, `sparse`, `cache`, and `all`.
 - **Reproducible evaluation**: fixed 200-prompt sample set with PSNR / SSIM / LPIPS and VBench helpers.
 
@@ -50,8 +52,8 @@ This repository releases patch-style integrations for **HY-WorldPlay** and **Mat
 
 ```text
 Light-Interaction-Project/
-├── hy-worldplay/      # Patch package for upstream HY-WorldPlay
-├── matrix-game-3.0/       # Patch package for upstream Matrix-Game-3.0
+├── hy-worldplay/      # Adapter package for upstream HY-WorldPlay
+├── matrix-game-3.0/  # Adapter package for upstream Matrix-Game-3.0
 ├── evaluation/        # Fixed prompt metadata, external asset manifest, and evaluation scripts
 ├── asset/             # Project figures
 ├── NOTICE.md          # Third-party and upstream license notes
@@ -81,7 +83,7 @@ cd Light-Interaction-Project
 
 ### 2. Prepare HY-WorldPlay
 
-Clone upstream HY-WorldPlay, then prepare the patched runtime and minimal model assets with one command:
+Clone upstream HY-WorldPlay, then prepare the Light Interaction-enabled runtime and minimal model assets with one command:
 
 ```bash
 git clone https://github.com/Tencent-Hunyuan/HY-WorldPlay.git ../HY-WorldPlay
@@ -93,7 +95,7 @@ This downloads only the assets used by this release: HunyuanVideo-1.5 runtime fi
 
 ### 3. Prepare Matrix-Game-3.0
 
-Clone the upstream repository, then prepare the patched Matrix-Game-3.0 runtime with one command:
+Clone the upstream repository, then prepare the Light Interaction-enabled Matrix-Game-3.0 runtime with one command:
 
 ```bash
 git clone https://github.com/SkyworkAI/Matrix-Game.git ../Matrix-Game
@@ -101,7 +103,7 @@ git -C ../Matrix-Game checkout 71c3cd7f741311f8100f6cf9cde942b6c1378d11
 bash matrix-game-3.0/scripts/setup_matrix_release.sh ../Matrix-Game/Matrix-Game-3
 ```
 
-For reproducibility, use the tested upstream commits above. Newer upstream commits may work, but patch compatibility is not guaranteed.
+For reproducibility, use the tested upstream commits above. Newer upstream commits may work, but integration compatibility is not guaranteed.
 
 This downloads the required Matrix-Game-3.0 assets from the official Hugging Face repository, including the distilled base model, T5 text encoder, Wan VAE, and Matrix-Game LightVAE checkpoints.
 
@@ -123,7 +125,7 @@ The default preset is `all`, which enables all acceleration components. To repro
 | `cache` | Denoising cache acceleration |
 | `all` | Context management + sparse attention + denoising cache |
 
-More patch details are in [hy-worldplay/README.md](hy-worldplay/README.md).
+More adapter details are in [hy-worldplay/README.md](hy-worldplay/README.md).
 
 For Matrix-Game-3.0:
 
@@ -133,7 +135,7 @@ conda activate light-interaction-matrix
 bash run_light_interaction.sh
 ```
 
-More patch details are in [matrix-game-3.0/README.md](matrix-game-3.0/README.md).
+More adapter details are in [matrix-game-3.0/README.md](matrix-game-3.0/README.md).
 
 ## 📊 Evaluation
 
@@ -150,7 +152,7 @@ Evaluation initial images are selected from the official VBench-I2V 16:9 cropped
 python evaluation/scripts/download_eval_assets.py
 ```
 
-Then use the patched HY-WorldPlay or Matrix-Game-3.0 environment to generate videos, and switch to `light-interaction-eval` for PSNR / SSIM / LPIPS and VBench.
+Then use the Light Interaction-enabled HY-WorldPlay or Matrix-Game-3.0 environment to generate videos, and switch to `light-interaction-eval` for PSNR / SSIM / LPIPS and VBench.
 
 ### Batch Generation
 
@@ -158,7 +160,7 @@ Then use the patched HY-WorldPlay or Matrix-Game-3.0 environment to generate vid
 python evaluation/scripts/batch_video_generation.py \
   --backend hy-worldplay \
   --prompt-json evaluation/data/refined_prompts_llava16.json \
-  --hy-worldplay-root /path/to/patched/HY-WorldPlay \
+  --hy-worldplay-root /path/to/adapted/HY-WorldPlay \
   --model-path /path/to/HunyuanVideo-1.5 \
   --action-ckpt /path/to/ar_distilled_action_model/model.safetensors \
   --output-root outputs/fixed_prompt \
@@ -220,15 +222,15 @@ Numbers are measured with the documented tested upstream commits and single-A100
 
 | Document | Contents |
 |:---|:---|
-| [hy-worldplay/README.md](hy-worldplay/README.md) | Patch structure, apply script, presets, timing log, diagnostics |
-| [matrix-game-3.0/README.md](matrix-game-3.0/README.md) | Matrix-Game-3.0 patch structure, setup script, presets, timing log, diagnostics |
+| [hy-worldplay/README.md](hy-worldplay/README.md) | Adapter structure, installation script, presets, timing log, diagnostics |
+| [matrix-game-3.0/README.md](matrix-game-3.0/README.md) | Matrix-Game-3.0 adapter structure, setup script, presets, timing log, diagnostics |
 | [evaluation/README.md](evaluation/README.md) | Sample set, batch generation, metrics, VBench |
 | [NOTICE.md](NOTICE.md) | Upstream scope, third-party attribution, license notes |
 
 ## ✅ Release Status
 
-- [x] HY-WorldPlay acceleration patch
-- [x] Matrix-Game-3.0 acceleration patch
+- [x] HY-WorldPlay adapter release
+- [x] Matrix-Game-3.0 adapter release
 - [x] 3D block sparse attention backend with Triton kernels
 - [x] Acceleration presets for reproduction and ablation
 - [x] Latency and peak-memory reporting
@@ -269,4 +271,4 @@ This project builds on HY-WorldPlay, HunyuanVideo-1.5, LongCat-Video, Matrix-Gam
 
 ## 📄 License
 
-The original Light Interaction code is released under the [MIT License](LICENSE). Integration patches may modify or refer to upstream projects, and upstream projects, model weights, datasets, and third-party-derived files remain governed by their own licenses and usage terms. See [NOTICE.md](NOTICE.md) for details.
+The original Light Interaction code is released under the [MIT License](LICENSE). Lightweight integration diffs may modify or refer to upstream projects, and upstream projects, model weights, datasets, and third-party-derived files remain governed by their own licenses and usage terms. See [NOTICE.md](NOTICE.md) for details.
