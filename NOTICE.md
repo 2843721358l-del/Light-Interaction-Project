@@ -52,7 +52,7 @@ matrix-game-3.0/files/wan/modules/longcat_kernel.py
 is adapted from the LongCat-Video sparse-attention implementation and should
 preserve the original LongCat-Video MIT license notice.
 
-Other sparse-attention integration files, including:
+Other sparse-attention implementation files, including:
 
 hy-worldplay/files/hyvideo/models/transformers/modules/ar_sparse_operation.py
 hy-worldplay/files/hyvideo/models/transformers/modules/bi_sparse_operation_for_KV_cache.py
