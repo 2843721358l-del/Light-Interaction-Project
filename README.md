@@ -21,7 +21,15 @@ Training-free acceleration for autoregressive interactive video generation
 ## 🎥 Demo
 
 <p align="center">
-  <video src="https://github.com/user-attachments/assets/89ca2551-c5d6-48df-a9a9-15bdee4cb0ed" width="95%"> </video>
+  <video
+    src="https://2843721358l-del.github.io/Light-Interaction-Project/static/assets/hero_combined.mp4"
+    controls
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    width="95%"
+  ></video>
 </p>
 
 ## 💡 Introduction
