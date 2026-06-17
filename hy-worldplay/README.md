@@ -1,8 +1,8 @@
-# 🔌 HY-WorldPlay Adapter for Light Interaction
+# 🔌 HY-WorldPlay Support for Light Interaction
 
-This folder provides the Light Interaction adapter for upstream [HY-WorldPlay](https://github.com/Tencent-Hunyuan/HY-WorldPlay).
+This folder contains the model-specific files required to apply Light Interaction to upstream [HY-WorldPlay](https://github.com/Tencent-Hunyuan/HY-WorldPlay).
 
-It does not include the original HY-WorldPlay source tree or any model checkpoints. Clone upstream HY-WorldPlay and download checkpoints from the official sources before installing this adapter.
+It does not include the original HY-WorldPlay source tree or any model checkpoints. Clone upstream HY-WorldPlay and download checkpoints from the official sources before applying these files.
 
 ## 📂 Contents
 
@@ -26,7 +26,7 @@ hy-worldplay/
     └── setup_worldplay_env.sh
 ```
 
-`files/` contains new Light Interaction modules. The lightweight integration diff at `patches/0001-integrate-acceleration.patch` updates upstream HY-WorldPlay entry points, pipeline code, transformer code, attention code, and context-selection logic.
+`files/` contains new Light Interaction modules. The patch at `patches/0001-integrate-acceleration.patch` updates upstream HY-WorldPlay entry points, pipeline code, transformer code, attention code, and context-selection logic.
 
 ## 📦 Upstream Resources
 
@@ -36,7 +36,7 @@ hy-worldplay/
 | HY-WorldPlay checkpoints | <https://huggingface.co/tencent/HY-WorldPlay> |
 | HunyuanVideo-1.5 checkpoints | <https://huggingface.co/tencent/HunyuanVideo-1.5> |
 
-## 🚀 Install the Adapter
+## 🚀 Install
 
 The recommended path is one command after cloning upstream HY-WorldPlay:
 
@@ -47,9 +47,9 @@ bash hy-worldplay/scripts/setup_worldplay_release.sh ../HY-WorldPlay
 conda activate light-interaction-worldplay
 ```
 
-This installs the adapter, creates the WorldPlay runtime environment, downloads the minimal model assets, and runs environment/asset checks.
+This installs the support files, creates the WorldPlay runtime environment, downloads the minimal model assets, and runs environment/asset checks.
 
-For reproducibility, use the tested upstream commit above. Newer upstream commits may work, but integration compatibility is not guaranteed.
+For reproducibility, use the tested upstream commit above. Newer upstream commits may work, but patch compatibility is not guaranteed.
 
 This release was tested on upstream HY-WorldPlay commit:
 
@@ -66,7 +66,7 @@ You do not need the bidirectional action model, the multi-step autoregressive ac
 
 If you already manage environments or checkpoints manually, use `apply_patch.sh`, `setup_worldplay_env.sh`, `download_minimal_worldplay_assets.py`, and the two check scripts separately.
 
-To avoid redistributing upstream-derived files, we provide lightweight integration diffs that are applied to an official HY-WorldPlay checkout.
+To avoid redistributing upstream-derived files, we provide patch files that are applied to an official HY-WorldPlay checkout.
 
 ## ▶️ Run
 
@@ -157,4 +157,4 @@ The release keeps one tested Triton config by default to avoid first-run autotun
 
 ## 📄 License Notes
 
-This folder stores adapter files and lightweight integration diffs instead of full upstream files. Upstream HY-WorldPlay files and model weights remain governed by their own licenses. `longcat_kernel.py` includes attribution for LongCat-Video-derived code; see [../NOTICE.md](../NOTICE.md).
+This folder stores support files and patch files instead of full upstream files. Upstream HY-WorldPlay files and model weights remain governed by their own licenses. `longcat_kernel.py` includes attribution for LongCat-Video-derived code; see [../NOTICE.md](../NOTICE.md).

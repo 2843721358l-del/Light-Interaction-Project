@@ -1,8 +1,8 @@
-# 🔌 Matrix-Game-3.0 Adapter for Light Interaction
+# 🔌 Matrix-Game-3.0 Support for Light Interaction
 
-This folder provides the Light Interaction adapter for upstream [Matrix-Game-3.0](https://github.com/SkyworkAI/Matrix-Game/tree/main/Matrix-Game-3).
+This folder contains the model-specific files required to apply Light Interaction to upstream [Matrix-Game-3.0](https://github.com/SkyworkAI/Matrix-Game/tree/main/Matrix-Game-3).
 
-It does not include the original Matrix-Game-3.0 source tree or any model checkpoints. Clone the upstream repository and download checkpoints from the official sources before installing this adapter.
+It does not include the original Matrix-Game-3.0 source tree or any model checkpoints. Clone the upstream repository and download checkpoints from the official sources before applying these files.
 
 ## 📂 Contents
 
@@ -27,7 +27,7 @@ matrix-game-3.0/
     └── setup_matrix_env.sh
 ```
 
-`files/` contains new Light Interaction modules and benchmark helpers. The lightweight integration diff at `patches/0001-integrate-acceleration.patch` updates upstream Matrix-Game-3.0 entry points, interactive pipeline code, DiT code, and camera context-selection logic.
+`files/` contains new Light Interaction modules and benchmark helpers. The patch at `patches/0001-integrate-acceleration.patch` updates upstream Matrix-Game-3.0 entry points, interactive pipeline code, DiT code, and camera context-selection logic.
 
 ## 📦 Upstream Resources
 
@@ -37,7 +37,7 @@ matrix-game-3.0/
 | Matrix-Game-3.0 checkpoints | <https://huggingface.co/Skywork/Matrix-Game-3.0> |
 | Matrix-Game-3.0 project page | <https://matrix-game-v3.github.io/> |
 
-## 🚀 Install the Adapter
+## 🚀 Install
 
 The recommended path is one command after cloning the upstream repository:
 
@@ -48,9 +48,9 @@ bash matrix-game-3.0/scripts/setup_matrix_release.sh ../Matrix-Game/Matrix-Game-
 conda activate light-interaction-matrix
 ```
 
-This installs the adapter, creates the Matrix-Game-3.0 runtime environment, downloads the model assets, and runs environment/asset checks.
+This installs the support files, creates the Matrix-Game-3.0 runtime environment, downloads the model assets, and runs environment/asset checks.
 
-For reproducibility, use the tested upstream commit above. Newer upstream commits may work, but integration compatibility is not guaranteed.
+For reproducibility, use the tested upstream commit above. Newer upstream commits may work, but patch compatibility is not guaranteed.
 
 This release was tested on upstream Matrix-Game-3.0 commit:
 
@@ -67,7 +67,7 @@ Required model assets:
 
 If you already manage environments or checkpoints manually, use `apply_patch.sh`, `setup_matrix_env.sh`, `download_matrix_assets.py`, and the two check scripts separately.
 
-To avoid redistributing upstream-derived files, we provide lightweight integration diffs that are applied to an official Matrix-Game-3.0 checkout.
+To avoid redistributing upstream-derived files, we provide patch files that are applied to an official Matrix-Game-3.0 checkout.
 
 ## ▶️ Run
 
@@ -165,4 +165,4 @@ The release keeps one tested Triton config by default to avoid first-run autotun
 
 ## 📄 License Notes
 
-This folder stores adapter files and lightweight integration diffs instead of full upstream files. Upstream Matrix-Game-3.0 files and model weights remain governed by their own licenses. `longcat_kernel.py` includes attribution for LongCat-Video-derived code; see [../NOTICE.md](../NOTICE.md).
+This folder stores support files and patch files instead of full upstream files. Upstream Matrix-Game-3.0 files and model weights remain governed by their own licenses. `longcat_kernel.py` includes attribution for LongCat-Video-derived code; see [../NOTICE.md](../NOTICE.md).
