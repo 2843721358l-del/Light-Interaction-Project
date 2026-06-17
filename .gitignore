@@ -25,3 +25,6 @@ checkpoints/
 
 .DS_Store
 .cache/
+
+_tools/
+static/
