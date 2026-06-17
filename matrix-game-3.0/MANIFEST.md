@@ -1,4 +1,4 @@
-# Adapter Manifest
+# Matrix-Game-3.0 Support Manifest
 
 This repository is intended to be applied on top of an upstream Matrix-Game-3.0
 checkout.
@@ -14,7 +14,7 @@ scripts/run_accel_preset.sh
 scripts/parse_benchmark_logs.py
 ```
 
-## Integration Diffs Applied To Upstream Files
+## Model-Specific Patch Files Applied To Upstream Files
 
 These upstream files are updated by
 `patches/0001-integrate-acceleration.patch`:
@@ -50,7 +50,7 @@ obtain the upstream repository first, then apply this patch.
 ## License Attribution
 
 `LICENSE_LONGCAT` preserves the MIT license notice for the LongCat-Video-derived
-`longcat_kernel.py`. It is part of this support package and is not copied into
+`longcat_kernel.py`. It is part of these support files and is not copied into
 the upstream checkout by the apply script.
 
 `bi_sparse_operation.py` is authored by the Light Interaction authors for

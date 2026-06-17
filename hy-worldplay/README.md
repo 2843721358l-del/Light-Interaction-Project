@@ -97,7 +97,7 @@ Useful `run.sh` overrides:
 
 ## 🎛️ Presets
 
-The adapted `run.sh` uses `--acceleration_preset all` by default.
+The Light Interaction-enabled `run.sh` uses `--acceleration_preset all` by default.
 
 | Preset | Behavior |
 |:---|:---|
@@ -107,7 +107,7 @@ The adapted `run.sh` uses `--acceleration_preset all` by default.
 | `cache` | Denoising cache acceleration |
 | `all` | Enables all Light Interaction components |
 
-To switch presets, edit the `--acceleration_preset` argument in the adapted `run.sh`.
+To switch presets, edit the `--acceleration_preset` argument in the Light Interaction-enabled `run.sh`.
 
 ## 🔧 Advanced Notes
 

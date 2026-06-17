@@ -100,7 +100,7 @@ The release helper keeps `MG_NUM_ITERATIONS=4` for quick demos. The evaluation b
 
 ## 🎛️ Presets
 
-The adapted helper uses `MG_PRESET=all` through `run_light_interaction.sh`.
+The Light Interaction-enabled helper uses `MG_PRESET=all` through `run_light_interaction.sh`.
 
 | Preset | Behavior |
 |:---|:---|

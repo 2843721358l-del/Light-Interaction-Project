@@ -1,4 +1,4 @@
-# Adapter Manifest
+# HY-WorldPlay Support Manifest
 
 This repository is intended to be applied on top of an upstream HY-WorldPlay
 checkout.
@@ -14,7 +14,7 @@ hyvideo/models/transformers/modules/bi_sparse_operation_for_KV_cache.py
 hyvideo/models/transformers/modules/longcat_kernel.py
 ```
 
-## Integration Diffs Applied To Upstream Files
+## Model-Specific Patch Files Applied To Upstream Files
 
 These upstream files are updated by
 `patches/0001-integrate-acceleration.patch`:
@@ -54,7 +54,7 @@ first, then apply this patch.
 ## License Attribution
 
 `LICENSE_LONGCAT` preserves the MIT license notice for the LongCat-Video-derived
-`longcat_kernel.py`. It is part of this support package and is not copied into
+`longcat_kernel.py`. It is part of these support files and is not copied into
 the upstream checkout by the apply script.
 
 `ar_sparse_operation.py` and `bi_sparse_operation_for_KV_cache.py` are authored

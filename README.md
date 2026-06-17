@@ -161,7 +161,7 @@ Then use the Light Interaction-enabled HY-WorldPlay or Matrix-Game-3.0 environme
 python evaluation/scripts/batch_video_generation.py \
   --backend hy-worldplay \
   --prompt-json evaluation/data/refined_prompts_llava16.json \
-  --hy-worldplay-root /path/to/adapted/HY-WorldPlay \
+  --hy-worldplay-root /path/to/HY-WorldPlay \
   --model-path /path/to/HunyuanVideo-1.5 \
   --action-ckpt /path/to/ar_distilled_action_model/model.safetensors \
   --output-root outputs/fixed_prompt \

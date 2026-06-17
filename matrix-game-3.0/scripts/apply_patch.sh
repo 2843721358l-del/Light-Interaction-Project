@@ -50,12 +50,12 @@ fi
 
 warn_if_commit_mismatch
 
-echo "Checking integration patch ..."
+echo "Checking model-specific patch file ..."
 if patch --dry-run --forward -d "$TARGET_ROOT" -p1 < "$PATCH_FILE" >/dev/null; then
   echo "Copying acceleration modules and helper scripts ..."
   cp -R "$PATCH_ROOT/files/." "$TARGET_ROOT/"
 
-  echo "Applying integration patch ..."
+  echo "Applying Light Interaction patch file ..."
   patch --forward -d "$TARGET_ROOT" -p1 < "$PATCH_FILE"
 
   echo ""
