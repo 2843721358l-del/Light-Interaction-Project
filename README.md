@@ -24,13 +24,6 @@ Training-free acceleration for autoregressive interactive video generation
   <video src="https://github.com/user-attachments/assets/e4131a8e-2a89-4d85-b08e-b9b4ccf26707" width="95%"> </video>
 </p>
 
-<p align="center">
-  If playback fails in your browser, use the
-  <a href="https://2843721358l-del.github.io/Light-Interaction-Project/">project page</a>
-  or download the
-  <a href="https://2843721358l-del.github.io/Light-Interaction-Project/static/assets/hero_combined.mp4">demo video</a>.
-</p>
-
 ## 💡 Introduction
 
 **Light Interaction** is a training-free inference acceleration framework for autoregressive interactive video world models. Interactive systems such as HY-WorldPlay and Matrix-Game-3.0 generate videos chunk by chunk under user-controlled camera trajectories, but long rollouts are expensive because context memory grows over time, attention scales quadratically, and the transformer is repeatedly executed during denoising.
