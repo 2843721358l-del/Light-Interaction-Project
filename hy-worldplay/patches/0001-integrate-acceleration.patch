@@ -4602,7 +4602,7 @@ diff --git a/run.sh b/run.sh
 index de80815..c33c7ff 100644
 --- a/run.sh
 +++ b/run.sh
-@@ -6,22 +6,22 @@ export I2V_REWRITE_BASE_URL="<your_vllm_server_base_url>"
+@@ -6,24 +6,24 @@ export I2V_REWRITE_BASE_URL="<your_vllm_server_base_url>"
  export I2V_REWRITE_MODEL_NAME="<your_model_name>"
  
 -PROMPT='A paved pathway leads towards a stone arch bridge spanning a calm body of water.  Lush green trees and foliage line the path and the far bank of the water. A traditional-style pavilion with a tiered, reddish-brown roof sits on the far shore. The water reflects the surrounding greenery and the sky.  The scene is bathed in soft, natural light, creating a tranquil and serene atmosphere. The pathway is composed of large, rectangular stones, and the bridge is constructed of light gray stone.  The overall composition emphasizes the peaceful and harmonious nature of the landscape.'
