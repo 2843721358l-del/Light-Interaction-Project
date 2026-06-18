@@ -21,7 +21,7 @@ Training-free acceleration for autoregressive interactive video generation
 ## 🎥 Demo
 
 <p align="center">
-  <video src="https://github.com/user-attachments/assets/00648389-cc2c-4b05-b0ca-ba287bcb982f" width="95%"> </video>
+  <video src="https://github.com/user-attachments/assets/fc55a1fc-a7c5-4817-8eb8-875e379a8473" width="95%"> </video>
 </p>
 
 ## 💡 Introduction
